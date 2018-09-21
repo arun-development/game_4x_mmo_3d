@@ -75,8 +75,15 @@
 + Для подключения внешних источников авторизации соответствующие данные для приложения из  FB VK  итп (или без них)
 
 ## Перед началом работы
-+ Установите Visual Studio 2017+ c поддержкой  sql  express 
++ Установите Visual Studio 2017 (comunity  так же подожет) c поддержкой  .net core 2.0, net .freamwork 4.7, sql data tools  должна идти  по умолчанию
++ Установите расширение [Bundler & Minifier](https://github.com/madskristensen/BundlerMinifier)  если  не  стоит
++ Установите расширение [WebEssentials 2017](https://github.com/madskristensen/WebEssentials2017) если  не  стоит
 + Перейдите на ветку "dev"
++ Восстановите пакеты bower  и  npm
++ Найдите файл bundleconfig.json контекст меню => "Диспетчер выполнения задач" и запустите следующие задачи
+  + bundleconfig.json => Update all files
+  + compilerconfig.json => all files
+
 + выгрузите проект "app"  найдите и закомментируйте строку "\<UserSecretsId>655b1111-2b8b-42c8-b4d3-262b36c14fa8</UserSecretsId\>" если такая есть 
 + перегрузите проект "app" и в контекстном меню  "app"  выберите "Управление секретами пользователя" откроется файл секрета
 + Зайдите в app/appsettings.json там находятся примеры необходимых секретов и строки подключения к локальным базам
