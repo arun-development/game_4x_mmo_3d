@@ -1,0 +1,57 @@
+﻿@using Server.Modules.Localize.Site.Store
+@* Это представление замещает тег <div class="menu-personal"></div> в файле /Views/Shared/_Layout.cshtml *@
+@{
+    Layout = null;
+}
+<div id="my-account" ng-controller="personalNavMenuCtrl as pnmCtrl" layout="column" ng-cloak>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+            <md-toolbar class="chest-header" layout="row" layout-align="end center">
+                <button ng-click="pnmCtrl.toggleLeft()" class="md-accent bs-glyphicons close glyphicon glyphicon-remove-circle" aria-hidden="true"></button>
+            </md-toolbar>
+            <md-content class="md-padding">
+                <ul>
+                    <li>
+                        <div class="underlay_animate">
+                            <a asp-controller="Manage" 
+                               asp-action="Index"   title="@Resource.PersonalSettings">@Resource.PersonalSettings</a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="icon"></div>
+                    </li>
+                    <li>
+                        <div class="underlay_animate">
+                            <a asp-controller="Store" 
+                               asp-action="Index"  
+                               title="@Resource.Store">
+                                @Resource.Store
+                            </a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="icon"></div>
+                    </li>
+                    <li>
+                        <div class="underlay_animate">
+                            @*todo need url*@
+                            <a href="">@Resource.Support</a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="icon"></div>
+                    </li>
+
+                    <li>
+                        <form id="logoutForm"  asp-controller="Account" asp-action="Logout" thod="post">
+                            <div class="underlay_animate">
+                                <a href="javascript:void(0)" ng-click="pnmCtrl.logOut()" id="log-out-link"> @Resource.Logout </a>
+                                <div class="line"></div>
+                            </div>
+                        </form>
+                        <div class="icon"></div>
+                    </li>
+                </ul>
+            </md-content>
+            <user-chest></user-chest>
+        </md-sidenav>
+    </section>
+
+</div>

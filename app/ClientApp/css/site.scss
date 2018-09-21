@@ -1,0 +1,55 @@
+﻿@import "_outFonts";
+@import "pages-mixin";
+@import "common";
+
+
+@import "site/tabs/angular-tabs";
+
+@import "site/forms/site-form-group";
+
+@import "site/header/header";
+
+
+@import "site/partial/banner",
+"site/partial/filter",
+"site/partial/pagination";
+
+@import 
+"site/home/article",
+"site/home/footer",
+
+"site/home/index",
+"site/home/media",
+
+"site/home/race",
+"site/home/story",
+"site/home/_video",
+"site/home/_video_control";
+
+@import "site/account/account";
+
+@import "site/store/list";
+
+@import 
+"site/community/community",
+"site/community/forum";
+
+@import "site/_images";
+
+
+@import "site/paymentForm/payment_form";
+
+
+//amdin
+@import "admin/admin";
+//result pages fixes
+@include pages-mixin();
+
+ 
+
+
+
+
+
+
+

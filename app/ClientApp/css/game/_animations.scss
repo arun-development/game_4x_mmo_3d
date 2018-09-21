@@ -1,0 +1,31 @@
+﻿@import "suples";
+@import "animation-vars";
+// bor tabs
+
+
+@include prefix-keyframes(fadeout) {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@include prefix-keyframes($change-color-tab-control) {
+    0% {
+        color: #FFF;
+        background-color: rgba(181, 80, 62, 0.36);
+    }
+
+    100% {
+        color: #000;
+        background-color: rgba(24, 235, 234, 0.5);
+    }
+}
+
+
+
+
+

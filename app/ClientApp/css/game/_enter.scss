@@ -1,0 +1,201 @@
+﻿/*========================================= индикатор загрузки ======================================================*/
+@import "suples";
+
+#scene-loader {
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 1000;
+    position: fixed;
+    overflow: hidden;
+    @include flex-JcAc();
+    @include vendor-prefix(transition,opacity 2s linear);
+
+    & .loadProgress {
+        height: 10px;
+        width: 90%;
+        border: 2px solid $white;
+        box-shadow: 0 0 15px $white;
+        overflow: hidden;
+    }
+
+    & #scene-loader-progress {
+        width: 0;
+        height: 100%;
+        background-color: $blue;
+        @include vendor-prefix(transition, width .2s linear);
+    }
+
+    & .scene-loader-words {
+        top: 80%;
+        left: 50%;
+        position: absolute;
+        @include translate(-50%,-50%);
+
+        & .slw {
+            $animation-name: scene-loader-words-animation;
+
+            color: rgba(255,255,255,0.1);
+            display: inline-block;
+            font-family: arial;
+            font-size: 30px;
+            @include transition(transform 0.5s linear);
+            @include animation($animation-name 2s infinite);
+
+            $delay-step: 0.1;
+            $delay-count: 7;
+
+            @for $i from 1 through $delay-count {
+                &.slw-#{$i} {
+                    $_delay: $i*$delay-step;
+                    @include animation-delay($_delay#{s});
+                }
+            }
+
+            @include prefix-keyframes($animation-name) {
+                0% {
+                    color: rgba(255,255,255,0.1);
+                    @include translateY(0);
+                    margin-left: 0;
+                }
+
+                25% {
+                    color: #00efff;
+                    margin-left: 10px;
+                    text-shadow: 0 15px 5px rgba(0,0,0,1);
+                    @include translateY(-15px);
+                }
+
+                100% {
+                    color: rgba(255,255,255,0.1);
+                    @include translateY(0);
+                }
+            }
+            //01-0.7
+        }
+    }
+}
+
+
+
+.load-indicator {
+    z-index: 1;
+    top: 0;
+    position: absolute;
+    width: 2em;
+    color: $color-main-1;
+    @include size-full-size();
+    @include flex-JcAc();
+    @include flex-column(false);
+}
+
+
+
+.load-indicator > i {
+    color: $color-main-1;
+    text-shadow: 0 0 30px #fff;
+    transition: color 0.2s ease-in-out;
+}
+
+.load-indicator > span {
+    margin-top: 1em;
+    font-size: 3em;
+}
+
+.load-indicator.display-none {
+    z-index: -1;
+    width: 0;
+    height: 0;
+} 
+
+#Game {
+    display: initial;
+}
+/*===================================== end индикатор загрузки ======================================================*/
+
+/*=================================================  общее img ======================================================*/
+.img_bg,
+.userIcon,
+.img_user_img,
+.img_alliance_icon,
+.img-detail-conteiner,
+.img_alliance-defaultIcon {
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/*============================================== end общее img ======================================================*/
+
+
+
+/*============================================== общее кнопки ======================================================*/
+
+.btn a {
+    display: block;
+    @include size-full-size();
+    line-height: 1.5;
+}
+
+.btn.cont_bot {
+    padding: 1em 1em 2em 1em;
+}
+
+/*==========================================end общее кнопки ======================================================*/
+
+/*========================================= общее слои модулей ====================================================*/
+
+#nav-menu-left-mid,
+#planshet,
+#b-profile {
+    z-index: 2;
+}
+
+#user-couner {
+    top: 138px;
+    left: 10px;
+    z-index: 1;
+    position: absolute;
+    color: forestgreen;
+    &.medium {
+        color: darkgoldenrod;
+    }
+
+    &.hard {
+        color: darkred;
+    }
+}
+
+#estate {
+    @include size-TRBL() {
+        position: absolute;
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+.grayScale {
+    @include filter(grayscale, 100%);
+}
+
+
+
+#estateCanvas {
+    @include size-full-size();
+  @include  user-select(none);
+}
+
+
+/*===================================== end общее слои модулей ============================================*/
+.box-shadow-section {
+    background-color: $color-dark-green; 
+    @include box-shadow($box-shadow-section);
+}
+
+
+
+.border-item-animation {
+    @include vendor-prefix(transition,#{top $animation-standart, left $animation-standart, width $animation-standart, height $animation-standart} );
+}
+
+ 

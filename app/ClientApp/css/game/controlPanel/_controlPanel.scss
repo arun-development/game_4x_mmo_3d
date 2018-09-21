@@ -1,0 +1,90 @@
+﻿@import "../suples";
+@import "map-control";
+
+
+#hangar,
+#map-control {
+    @include clearfix;
+}
+
+#control-panel {
+    $control-btn-size: 90px;
+    $control-item-bottom: 30px;
+    $pdStandart: 20px;
+    padding-right: $pdStandart;
+    position: relative;
+    top: -136px;
+    overflow: hidden;
+    display: inline-block;
+    left: 10px;
+
+    & > * {
+        float: left;
+    }
+
+
+    & .control-items {
+        max-width: 1236px;
+        top: -20px;
+        display: inherit;
+        position: relative;
+        @include vendor-prefix(transition, transform $animation-standart);
+
+        & > * {
+            position: relative;
+        }
+
+        & #hangar {
+            padding-bottom: $control-item-bottom;
+        }
+
+        &.animate {
+            @include vendor-prefix(transform, translateY(- $control-btn-size - $control-item-bottom));
+        }
+    }
+
+    & .parralax-button {
+        margin-left: 20px;
+        float: left;
+        position: relative;
+        top: $pdStandart;
+        display: inline-block;
+    }
+
+
+    & #map-control.animate {
+        padding-top: $control-btn-size + $control-item-bottom + $pdStandart;
+    }
+
+    @include clearfix;
+}
+
+@import "hangar";
+
+//svg ver
+#control-panel .controll-button {
+    padding: 10px;
+    position: relative;
+    width: #{$msSize}px;
+    height: auto;
+
+    md-icon {
+        width: 100%;
+        height: auto;
+        @include transition-transform($animation-short);
+
+        &:hover {
+            @include filter(saturate,2);
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &.hangartoggle {
+        //top: 10px;
+       // left: 10px;
+    }
+}

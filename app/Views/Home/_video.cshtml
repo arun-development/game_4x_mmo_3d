@@ -1,0 +1,32 @@
+﻿
+@using Server.Core.StaticData
+@{
+    Layout = null;
+    var name = "head2";
+    var dir = Directories.VideoHomePage;
+    var file = dir + name;
+
+    var webM = ".webm";
+    var mp4 = ".mp4";
+    var jpg = ".jpg";
+
+    var webmPath = file + webM;
+    var mp4Path = file + mp4;
+    var preloadJpg = file + jpg;
+
+
+}
+
+<div class="vid_cont"> 
+    <video id="homeVideoBackground" 
+           muted
+           preload="auto"
+           poter="@preloadJpg" loop="loop" 
+           autoplay="autoplay" 
+           name="media">
+        <source src="@webmPath" type="video/webm" />
+        <source src="@mp4" type="video/mp4" />
+        @*<source src="https://eternplaypublic.blob.core.windows.net/home-video/head2.webm" type="video/webm"/>*@ 
+    </video>
+    @*<div class="home-video-poster"></div>*@
+</div>

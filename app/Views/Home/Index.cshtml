@@ -1,0 +1,251 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Localization
+@using Server.Core.StaticData
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Server.Infrastructure
+@using Server.Modules.Localize.Site.Home
+
+@{
+    Layout = "/Views/Shared/_SiteLayout.cshtml"; 
+    const string home = Directories.Home;
+    const string ext = Directories.Ext;
+    const string articleCatalog = home + "article/";
+    const string articleBodyPath = articleCatalog + "article" + ext;
+    const string articleHeadPath = articleCatalog + "head" + ext;
+    const string videoPath = home + "_video" + ext;
+    const string videoStoryPath = home + "videoStory" + ext;
+    const string racePath = home + "race" + ext;
+    const string mediaPath = home + "media" + ext;
+
+    var mcsbJs = LibCollection.JsMalihuCsp;
+    var mcsbCss = LibCollection.CssMalihuCsp;
+ 
+    
+}
+
+<cache expires-on="@DateTime.Now.AddDays(30)"
+       vary-by-cookie="_currLang"
+       priority="@Microsoft.Extensions.Caching.Memory.CacheItemPriority.High">
+ 
+    <div class="home_container container-full" itemscope itemtype="http://schema.org/WebPage" itemprop="mainContentOfPage">
+        <div id="home_page" name="home_page">
+            @await Html.PartialAsync(videoPath)
+            <div id="home_scroller">
+                <div class="img_layer2"></div>
+                <div id="vid_cont_items">
+                    <div class="name">
+                        <span class="img-responsive home-skagry-label relative"></span>
+                    </div>
+                </div>
+                <div id="scrollButton">
+                    <span class="mouse-scroll">
+                        <span class="mouse">
+                            <span class="mouse-movement"></span>
+                        </span>
+                    </span>
+                </div>
+
+                @*feature*@
+                <section id="feature" name="feature">
+                    <div class="clearfix">
+                        @Html.Partial(articleHeadPath, Resource.Features)
+                        <div class="container clearfix">
+
+                            <div class="bilboard row">
+                                <div class="col-lg-6">
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                 Resource.f_freedomOfActionHead
+                                }, { "Description",
+                                    Resource.f_freedomOfActionBody
+                                } })
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                     Resource.f_systemPvpNolimitsHead
+                                }, { "Description",Resource.f_systemPvpNolimitsBody
+                                } })
+                                </div>
+                                <div class="col-lg-6">
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                     Resource.f_systemUpgradeNoLimitsHead
+                                }, { "Description",
+                                    Resource.f_systemUpgradeNoLimitsBody
+                                    } })
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                    Resource.f_presidentElectionsHead
+                                }, { "Description",
+                                     Resource.f_presidentElectionsBody
+
+                                    } })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </section>
+
+                @*story*@
+                <section id="story" name="story">
+                    <article>
+                        <div class="clearfix">
+                            @await Html.PartialAsync(articleHeadPath,
+                             Resource.story
+                            )
+                            @await Html.PartialAsync(videoStoryPath)
+                            <div class="container">
+                                @Html.Partial(articleBodyPath, new Dictionary<string, string> { { "Description",
+
+                                 Resource.storyDescription
+
+                            } })
+                            </div>
+                            @await Html.PartialAsync(racePath)
+
+                            @*                    todo   отключенна пока не появится нашего видео *@
+                            @*                    @Html.Partial("videoStory")*@
+                        </div>
+                    </article>
+                </section>
+
+
+                @*theGame*@
+                <section id="theGame" name="theGame">
+                    <div class="clearfix">
+                        @await Html.PartialAsync(articleHeadPath,
+                         Resource.theGame
+                        )
+                        <div class="container margin-bottom-l">
+                            @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+
+                            Resource.g_gamePlayHead
+                        }, { "Description",
+                             Resource.g_gamePlay
+
+                        } })
+
+                        </div>
+                        <div class="container">
+                            <div class="bilboard row">
+                                <div class="col-lg-6">
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                     Resource.g_allianceHead
+
+                                }, { "Description",
+                                     Resource.g_alliance
+                                    } })
+                                    @Html.Partial(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                     Resource.g_ProductionHead
+                                }, { "Description",
+                                     Resource.g_Production
+                                } })
+                                </div>
+                                <div class="col-lg-6">
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                    Resource.g_PoliticsHead
+                                }, { "Description",
+                                   Resource.g_Politics
+                                } })
+
+                                    @await Html.PartialAsync(articleBodyPath, new Dictionary<string, string> { { "Head",
+                                    Resource.g_RegionsHead
+                                }, { "Description",
+                                     Resource.g_Regions
+                                } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                @*            $1$Universe#1#*@
+                @*            <section id="universe">*@
+                @*                <div class="clearfix">*@
+                @*                    @Html.Partial("article/head", Resource.TheUniverse)*@
+                @*                    <div class="container" name="universe" style="color: #fff; position: relative">*@
+                @*                        ссылка на карту или загрузка карты сюда....*@
+                @*                    </div>*@
+                @*                </div>*@
+                @*            </section>*@
+
+                @*media*@
+                <section id="media" name="media" itemscope="" itemtype="https://schema.org/ImageObject">
+                    <div class="clearfix">
+                        @await Html.PartialAsync(articleHeadPath,Resource.screenshots)
+                        <div class="media">
+                            @await Html.PartialAsync(mediaPath)
+
+                        </div>
+                    </div>
+                </section>
+
+                @*kickstarter*@
+                @{
+/*
+<section id="kickstarter" name="kickstarter">
+<div class="clearfix">
+@Html.Partial("article/head", "kickstarter")
+<div class="container">
+@Html.Partial("article/article", new Dictionary<string, string> {{"Description", ""}})
+
+
+</div>
+</div>
+</section>
+*/
+                }
+
+
+                @*footer*@
+                <footer class="clearfix">
+                    <cache expires-on="@DateTime.Now.AddDays(30)">
+                        @await Html.PartialAsync("footer/footer")
+                    </cache>
+                </footer>
+            </div>
+        </div>
+    </div>
+</cache>  
+
+@section headerTemplates{
+    <span id="preloader" class="display-none"></span>
+}
+
+@section styles {
+    <cache expires-on="@DateTime.Now.AddDays(30)">
+        <link rel="stylesheet"
+              href="@mcsbCss.CdnPathMin"
+              asp-fallback-href="@mcsbCss.LocalPathMin"
+              asp-fallback-test-class="@mcsbCss.FallbackTestClass"
+              asp-fallback-test-property="@mcsbCss.FallbackTestProperty"
+              asp-fallback-test-value="@mcsbCss.FallbackTestValue"
+              integrity="@mcsbCss.IntegrityMin"
+              crossorigin="anonymous" />
+    </cache>
+
+
+
+}
+
+@section footerScriptsLib{
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>*@
+ 
+    <cache expires-on="@DateTime.Now.AddDays(365)">
+        <script src="@mcsbJs.CdnPathMin"
+                asp-fallback-src="@mcsbJs.LocalPathMin"
+                asp-fallback-test="@mcsbJs.FallbackTest"
+                integrity="@mcsbJs.IntegrityMin"
+                crossorigin="anonymous"></script>
+    </cache>
+
+
+}
+ 
+
+
+
+
+
+
+
+

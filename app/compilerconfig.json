@@ -1,0 +1,21 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/test-signal-app.css",
+    "inputFile": "ClientApp/css/test-signal-app.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/game.css",
+    "inputFile": "ClientApp/css/game.scss",
+    //"sourceMapRoot": "../",
+    //  "sourceMap": true
+    "relativeUrls": true
+  },
+    {
+      "outputFile": "wwwroot/css/site.css",
+      "inputFile": "ClientApp/css/site.scss"
+    },
+    {
+      "outputFile": "wwwroot/lib/bootstrap-compile/bootstrap-full.css",
+      "inputFile": "wwwroot/lib/bootstrap-sass/assets/stylesheets/_bootstrap.scss"
+    }
+    ]

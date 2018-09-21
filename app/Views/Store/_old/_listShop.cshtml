@@ -1,0 +1,26 @@
+﻿@using Translate.Site.Store
+@model  DomainModels.СompexPrimitive.Products.StoreView
+@{
+    Layout = null;
+}
+
+<div id="storeListController">
+    <div class="store-select-product-container">
+
+        <select id="store-select-product-category">
+            <option value="0">@Resource.AllCategory</option>
+
+            @{
+                foreach (var i in Model.SelectList)
+                {
+
+                    var id =(byte) i.Id;
+                    <option value="@id" data-target-upgrade="#store-items-list" data-native-name="@i.NativeName">@i.TranslateText.GetTranslateName()</option>
+                }
+            }
+        </select>
+    </div>
+    <ul class="list" id="store-items-list">
+        @Html.Partial("_itemsCollection", Model.StoreList)
+    </ul>
+</div>

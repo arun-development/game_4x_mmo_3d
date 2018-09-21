@@ -1,0 +1,23 @@
+﻿@import "suples";
+.img.img-label{
+    @extend .max-full-size
+}
+
+.img-detail-conteiner {
+    height: 11em;
+    width: 11em;
+    background-size: 100% auto;
+}
+
+.user-ava {
+    @include resource-border();
+    border-radius:50%;
+    top: $resource-init-top;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    height: 107px;
+    left: 1%;
+    /*@include vendor-prefix(box-shadow, $box-shadow-out-standart);*/
+    @include vendor-prefix(box-sizing, border-box);
+}

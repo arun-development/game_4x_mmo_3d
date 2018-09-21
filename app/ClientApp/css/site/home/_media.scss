@@ -1,0 +1,98 @@
+﻿@import "../../mixins";
+#imgNav {
+    left: 0;
+    align-self: center;
+    position: relative;
+    width: calc(100% + 30px);
+    padding: 10px 0;
+    overflow: hidden;
+    @include flex-As();
+}
+
+#imgNav .transition {
+    @include transition(left .6s ease-in-out);
+}
+
+/*ease-in-out*/
+
+#imgNav > div {
+    flex-shrink: 0;
+}
+
+.carousel-control {
+    display: none;
+}
+
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control .arrow {
+    /*background-image: url('//webapp.azureedge.net/Content/images/home/arrow.svg');*/
+    background-image: url('/Content/images/home/arrow.svg');
+    width: 110px;
+    height: 124px;
+    background-repeat: no-repeat;
+}
+
+.arrow.left {
+    @include rotate(0deg);
+}
+
+.arrow.right {
+    @include rotate(180deg);
+}
+
+
+#imgNav .thumbnail {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+    @include transition(all 0.4s ease-out);
+}
+
+#imgNav .transition.active a img,
+#imgNav .transition:hover a  img{
+    outline: 1px solid $color-main-1;
+}
+
+
+.carousel-inner .item img {
+    width: 100%;
+}
+
+#media {
+    padding-bottom: 30px;
+} 
+#media .media #home-carousel {
+    padding: 0;
+}
+
+#media .media .article svg {
+    z-index: 1;
+}
+
+@include respond-to(3) {
+ 
+
+    #media .media > .container {
+        width: calc(100vw - 30px);
+        padding-bottom: 30px;
+    }
+
+    .carousel-control {
+        @include flex-JcAc();
+    }
+
+    #media .media #home-carousel {
+        padding: 0 15%;
+    }
+
+    #imgNav {
+        left: 15%;
+        width: calc(70% + 30px);
+    }
+}
+ 

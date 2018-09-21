@@ -1,0 +1,216 @@
+﻿<script type="text/ng-template" id="confederation-tab-officers.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <div ng-controller="officersCtrl as osCtrl">
+            <div ng-if="osCtrl.hasOfficers" class="officer-container" layout="column" ng-repeat="officer in osCtrl.list">
+                <h2 class="officer-head" layout="row" ng-bind="osCtrl.trName(officer)"></h2>
+                <div class="officer-content" layout="row">
+                    <div layout="column">
+                        <div class="officer-image-container" ng-click="osCtrl.getUserInfo($event,officer,true)">
+                            <h4 class="unique-name text-center">
+                                <span ng-bind="officer.Elected.UserName"></span>
+                            </h4>
+                            <div class="officer-image" style="background-image:url({{officer.Elected.UserAvatar.Detail}})"></div>
+                        </div>
+                        <div ng-if="officer.Appointed" class="officer-image-container" ng-click="osCtrl.getUserInfo($event,officer)">
+                            <hr class="w_100pr" />
+                            <h4 class="unique-name text-center">
+                                <span ng-bind="officer.Appointed.UserName"></span>
+                            </h4>
+                            <div class="officer-image" style="background-image:url({{officer.Appointed.UserAvatar.Detail}})"></div>
+                        </div>
+                    </div>
+                    <h5 class="officer-description" ng-bind-html="osCtrl.trDesctiption(officer)"></h5>
+                    <div layout="column">
+                        <div class="officer-image-container" ng-click="osCtrl.getAllianceInfo($event,officer, true)">
+                            <h4 class="unique-name text-center">
+                                <span ng-bind="officer.Elected.AllianceName"></span>
+                            </h4>
+                            <div class="officer-image" style="background-image:url({{officer.Elected.AllianceLabel.Detail}})"></div>
+                        </div>
+
+                        <div ng-if="officer.Appointed" class="officer-image-container" ng-click="osCtrl.getAllianceInfo($event,officer,false)">
+                            <hr class="w_100pr" />
+                            <h4 class="unique-name text-center">
+                                <span ng-bind="officer.Appointed.AllianceName"></span>
+                            </h4>
+                            <div class="officer-image" style="background-image:url({{officer.Appointed.AllianceLabel.Detail}})"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div ng-if="!osCtrl.hasOfficers">
+                На этой неделе не проходило голосования
+            </div>
+        </div>
+
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="confederation-tab-rating.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <div ng-controller="userRatingCtrl as urCtrl">
+            <div class="md-dialog-content custom-autocomplete" layout-gt-sm="column">
+                <md-autocomplete class="dialog-create-channel"
+                                 layout="row"
+                                 ng-disabled="urCtrl.inLock"
+                                 placeholder="{{urCtrl.serchPlaceholder}}"
+                                 md-no-asterisk
+                                 md-no-cache="false"
+                                 md-input-name="urCtrl.serchedName"
+                                 md-items="serchedItem in urCtrl.querySearch(urCtrl.searchText)"
+                                 md-item-text="serchedItem.Name"
+                                 md-selected-item-change="urCtrl.onSelectedItemChanded(serchedItem)"
+                                 md-match-case-insensitive="true"
+                                 md-selected-item="urCtrl.selectedSerchedItem"
+                                 md-search-text="urCtrl.searchText"
+                                 md-search-text-change="urCtrl.onTextChange(urCtrl.searchText)"
+                                 md-delay="300"
+                                 md-autofocus="true"
+                                 md-dropdown-items="30"
+                                 md-menu-class="custom-autocomplete-drop-1"
+                                 md-require-match="true"
+                                 md-min-length="3"
+                                 md-input-maxlength="14"
+                                 md-clear-button="true">
+                    <md-item-template>
+                        <span md-highlight-text="urCtrl.searchText" md-highlight-flags="^i">{{serchedItem.Name}}</span>
+                    </md-item-template>
+
+                </md-autocomplete>
+
+            </div>
+            <div ng-if="urCtrl.useScroll" class="user-rating"
+                 infinite-scroll="urCtrl.loadNextPage()"
+                 infinite-scroll-distance="0.5"
+                 infinite-scroll-container="'.content_scroller'"
+                 infinite-scroll-disabled="urCtrl.scrollDisabled">
+                <user-rating-item user="user"
+                                  get-user-info="urCtrl.getUserInfo(user)"
+                                  ng-repeat="user in urCtrl.users track by user.UserId"></user-rating-item>
+            </div>
+            <div ng-if="!urCtrl.useScroll" class="user-rating">
+                <user-rating-item user="urCtrl.serchedUser" get-user-info="urCtrl.getUserInfo(urCtrl.serchedUser)"></user-rating-item>
+            </div>
+
+        </div>
+
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="confederation-user-rating-item.tmpl">
+    <div layout="row" layout-align="space-between stretch" class="user-rating-row">
+        <div layout="row" flex="20" layout-align="start center">
+            <div class="text-label">Top : </div>
+            <div ng-bind="user.Top"></div>
+        </div> 
+        <div layout="row" flex="" layout-align="start center">
+            <div class="text-label">Name : </div>
+            <div ng-bind="user.UserName"></div>
+        </div> 
+        <div layout="row" flex="25" flex-offset="5" layout-align="start center">
+            <div class="text-label">PvP : </div>
+            <div ng-bind="user.PvpPoint"></div>
+        </div>
+        <md-button ng-click="getUserInfo()" aria-label="info">
+            <i class="fa fa-info fa-1x"></i>
+        </md-button>
+    </div>
+</script>
+
+
+
+
+
+<script type="text/ng-template" id="confederation-tab-election.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <div ng-controller="electionCtrl as eCtrl" class="election">
+            <div class="election-items user-rating">
+                <user-election-item user="candidat"
+                                    get-user-info="eCtrl.getUserInfo(candidat)"
+                                    is-registred-period="eCtrl.model.IsRegisterPeriod"
+                                    can-send-voice="!eCtrl.model.$params.voiceSendedInWeek"
+                                    send-voice="eCtrl.addVoice"
+                                    ng-repeat="candidat in eCtrl.model.Candidates track by candidat.Id"></user-election-item>
+            </div>
+
+
+            <div ng-if="eCtrl.model.IsRegisterPeriod && !eCtrl.model.Registred && eCtrl.model.RegistrBtn" class="btn-group-sa slim">
+                <paralax-button button="eCtrl.model.RegistrBtn"></paralax-button>
+            </div>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="confederation-user-election-item.tmpl">
+    <div layout="row" layout-align="space-between stretch" class="user-rating-row election-item">
+        <div layout="row" layout-align="start center">
+            <div class="text-label">Name : </div>
+            <div ng-bind="user.UserName"></div>
+        </div>
+        <div ng-if="isRegistredPeriod" layout="row" layout-align="center center">
+            <div class="text-label">PvP : </div>
+            <div ng-bind="user.PvpPoint"></div>
+        </div>
+        <div ng-if="!isRegistredPeriod" layout="row" layout-align="center center">
+            <div class="text-label">Votes : </div>
+            <div ng-bind="user.Persent + '%'"></div>
+        </div>
+
+        <md-button ng-if="!isRegistredPeriod && canSendVoice && sendVoice" ng-click="sendVoice($event,user)" class="" aria-label="send vote">
+            <i class="fa fa-angle-double-up fa-1x"></i>
+        </md-button>
+        <md-button ng-click="getUserInfo()" aria-label="info">
+            <i class="fa fa-info fa-1x"></i>
+        </md-button>
+    </div>
+</script>
+
+
+
+
+
+<script type="text/ng-template" id="confederation-planshet-root.tmpl">
+    <planshet-body-tabs ng-controller="confederationCtrl as confederationCtrl" tabs="planshetModel"></planshet-body-tabs>
+</script>
+
+
+<script type="text/ng-template" id="float-vote.tmpl">
+    <div id="float-vote-container" class="float-vote" ng-class="voteCtrl.model.$params.show?'active':''">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span ng-bind="voteCtrl.title"></span>
+                <span flex></span>
+            </div>
+            <md-button class="float-vote-toggle" ng-click="voteCtrl.toggleShow()" md-no-ink>
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="toggle"></md-icon>
+            </md-button>
+        </md-toolbar>
+        <md-divider></md-divider>
+        <md-content id="float-vote-content">
+            <md-list>
+                <md-list-item class="md-1-line" ng-repeat="candidat in voteCtrl.model.Candidates">
+                    <div class="md-list-item-text" flex layout="row" layout-align="space-between start">
+                        <div flex="70" layout="column" class="active link-to-target" ng-click="voteCtrl.getUserInfo(candidat)"> 
+                            <span class="unique-name" ng-bind="candidat.UserName"></span>
+                        </div>
+                        <div flex="25"> 
+                            <span class="unique-name" ng-bind="candidat.Persent +'%'"></span>
+                        </div>
+                        <button ng-if="!voteCtrl.model.$params.voiceSendedInWeek" class="color_creme_haki send-voice-btn" ng-click="voteCtrl.addVoice($event,candidat)" ng-disabled="lockedAddVoice">
+                            <i class="fa fa-angle-double-up fa-1x"></i>
+                        </button>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+</script>
+

@@ -1,0 +1,160 @@
+﻿@import "skagry-dialog-theme-mixin";
+
+@mixin _unit-detail-dialog($mainSelector, $props-selector, $font-color) {
+    $s: $mainSelector;
+    $row: #{$s}-row;
+    $props: $props-selector;
+    $color: $font-color;
+
+    @include skagry-theme-main-container($s) {
+        @extend .tech-tree-dialog;
+        width: 960px;
+
+        .md-dialog-content {
+            padding-top: 0 !important;
+            //margin-top: 20px;
+        }
+
+        #{$props} {
+            @include respond-to-media(0,959px) {
+                margin-top: 20px;
+            }
+
+            color: $color;
+            font-size: $fs-18;
+            min-width: 260px;
+            max-width: 35%;
+        }
+
+        .unit-dialog-column #{$props} {
+            max-width: 100%;
+        }
+
+        .description {
+            @extend .text_name;
+            font-style: italic;
+            text-align: justify;
+            font-size: $fs-18;
+        }
+    }
+}
+
+@mixin _unit-buy-dialog($color) {
+    .buy-unit {
+        md-toolbar {
+            padding: 20px 0;
+
+            & h2 {
+                margin-left: -10%;
+            }
+        }
+
+        max-width: 500px;
+
+
+        .resource-container {  
+            width: 100%;
+            max-width: 100%;
+            margin-top: 0;
+
+            li {
+                border-bottom: 1px solid $color
+            }
+        }
+
+
+        .resource-container li, .error {
+            min-height: 55px;
+        }
+
+        .errors {
+            margin-top: 10px;
+        }   
+        .error {
+            color: $color;
+            font-size: $fs-14;
+            display: none;
+
+            &.active {
+                padding: 10px 0;
+                @include flex-Ac();
+                border-bottom: 1px solid $red;
+            }
+        }
+
+        .input-big-centr {
+            max-width: 40%;
+            border: none;
+            outline: 1px solid transparent;
+            line-height: 1.5;
+
+            &:focus {
+                outline: 1px solid $resource-out-border-color;
+            }
+        }
+    }
+}
+
+@mixin _unit-dialogs() {
+    $prefix: ".unit-detail";
+    $selector: #{$prefix}-dialog;
+    $props-selector: #{$selector}-properties;
+    $font-color: darken($color-main-1,5%);
+    @include _unit-detail-dialog($selector,$props-selector,$font-color);
+    @include _unit-buy-dialog($font-color);
+
+    .resource-container {
+        @extend #{$props-selector};
+    }
+}
+
+@mixin _tech-dialogs() {
+    $prefix: ".tech-detail";
+    $selector: #{$prefix}-dialog;
+    $props-selector: #{$selector}-properties;
+    $font-color: darken($color-main-1,5%);
+    @include _unit-detail-dialog($selector,$props-selector,$font-color);
+
+    .resource-container {
+        @extend #{$props-selector};
+    }
+
+    $spacing: 24px;
+
+    #{$selector} {
+        width: 592px;
+
+        .md-dialog-content {
+            padding: 24px !important;
+        }
+
+        #{$props-selector} {
+            max-width: initial;
+            padding-bottom: $spacing;
+        }
+
+        .description {
+            margin-top: $spacing
+        }
+
+        .line {
+            border: 0.5px solid $color-main-1;
+            margin: 0.5em 0;
+        }
+
+        .conditions {
+            .unique-name {
+                margin: initial
+            }
+
+            .red {
+                color: $red
+            }
+        }
+    }
+    /*@include unit-buy-dialog($selector, $props-selector,$font-color);*/
+}
+
+                           
+@include _unit-dialogs();
+@include _tech-dialogs();

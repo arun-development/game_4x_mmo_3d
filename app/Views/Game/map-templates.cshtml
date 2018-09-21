@@ -1,0 +1,82 @@
+﻿<script type="text/ng-template" id="map-bookmark-planets.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <map-info ng-repeat="infoModel in bookmarkCtrl.planetItems()"></map-info>
+    </div>
+</script>
+
+<script type="text/ng-template" id="map-bookmark-sectors.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <map-info ng-repeat="infoModel in bookmarkCtrl.sectorItems()"></map-info>
+    </div>
+</script>
+
+<script type="text/ng-template" id="map-bookmark-systems.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <map-info ng-repeat="infoModel in bookmarkCtrl.systemItems()"></map-info>
+    </div>
+</script>
+<script type="text/ng-template" id="map-bookmark-planshet-root.tmpl">
+    <planshet-body-tabs ng-controller="bookmarkCtrl as bookmarkCtrl" tabs="planshetModel"></planshet-body-tabs>
+</script>
+
+
+
+
+<script type="text/ng-template" id="map-info-single-planshet-root.tmpl">
+    <section ng-controller="mapInfoCtrl as mapInfoCtrl">
+        <map-info ng-repeat="infoModel in [mapInfoCtrl.getPlanetoidInfo()]"></map-info>
+    </section>
+</script>
+
+<script type="text/ng-template" id="map-info.tmpl">
+    <div ng-attr-title="{{infoModel.NativeName}}" class="dropable">
+        <section drop-element>
+            <div ng-click="dropElementonClickByDropable()">
+                <complex-button complex-button="infoModel.ComplexButtonView"></complex-button>
+            </div>
+            <div class="drop-container">
+                <div class="drop-item">
+                    <statistic statistic-model=infoModel.mapStatsModel></statistic>
+
+                    <!--<div class="statistic-container">
+                        <ul class="statistic">
+                            <li ng-repeat="item in infoModel.contentList">
+                                <span ng-class="item.cssKey" >{{item.key}} &nbsp;:&nbsp; <br ng-if="item.hasBr"> </span>
+                                <span ng-class="item.css" ng-bind="item.value"></span>
+                            </li>
+                        </ul>
+                        <div class="img-detail-conteiner " ng-class="infoModel.SpriteImages.Detail"></div>
+                    </div>-->
+
+                    <article class="text_justify" ng-bind="infoModel.Description"></article>
+                    <!--дополнительные кнопки-->
+                    <div class="btn-group-sa slim" ng-if="infoModel.HasButtons">
+                        <paralax-button button="button" ng-repeat="button in infoModel.Buttons"></paralax-button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="map-control-navigator.tmpl">
+
+    <div id="map-control-navigator" ng-style="controlDisk.styles" ng-class="controlDisk.visible?controlDisk.activeCssClass:''">
+
+        <div class="source-container">
+            @*<span class="map-control-navigator-animate-line"></span>*@
+            <div class="animate"></div>
+        </div>
+        <div class=drop-container ng-class="controlDisk.dropContainerActiveCss?controlDisk.activeCssClass:''">
+
+            <div class="drop-item">
+                <md-button data-target="bookmark">to bookmark</md-button>
+                <md-button data-target="info">info</md-button>
+                <md-button data-target="jump-mother-dialog" ng-if="controlDisk.showMotherJump" ng-bind="controlDisk.jumpTranslate" aria-label="jump-mother-dialog"></md-button>
+            </div>
+
+        </div>
+
+    </div>
+</script>

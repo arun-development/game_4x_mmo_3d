@@ -1,0 +1,20 @@
+﻿@using Server.Infrastructure
+@{
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+    ViewData.Add(PageKeyVal.BodyCssKey, PageKeyVal.AccountBodyCssVal);
+}
+
+<div class="container">
+    @RenderBody()
+</div>
+
+
+@section footerHtmlAndTemplates{
+    <cache expires-on="@DateTime.Now.AddDays(30)">
+        @await Html.PartialAsync("footer/footer")
+    </cache>
+
+}
+
+
+

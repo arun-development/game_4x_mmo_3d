@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Signal</title>
+
+    <environment include="Development">
+        <link href="~/lib/bootstrap-compile/bootstrap-full.min.css" rel="stylesheet" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/test-signal-app.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    @Html.AntiForgeryToken()
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">signalR</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="test-signal-body container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2017 - signalR</p>
+            <p>новая тестовая русская строка</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+        <script src="~/lib/signalr.js"></script>
+        <script src="~/js/test-signal-app.js" asp-append-version="true"></script>
+    </environment>
+
+
+    @RenderSection("testScripts", required: false)
+
+
+
+</body>
+</html>

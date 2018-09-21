@@ -1,0 +1,12 @@
+﻿@import "suples";
+//#alliance-serch 
+.pager{
+   text-align:center;
+   & > a{
+       padding-right:7px;
+       text-decoration:underline;
+       &.selected{
+           @extend .f_size_36px
+       }
+   }
+}

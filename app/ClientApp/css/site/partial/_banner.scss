@@ -1,0 +1,52 @@
+@import "../../mixins";
+
+.banner {
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px 0 0;
+}
+
+
+
+.banner .slide_item > img {
+    position: relative;
+    top: -40%;
+}
+
+.banner .note {
+    color: $white;
+    text-shadow: 0.1em 0.1em $black;
+    top: 20%;
+    left: 20%;
+    right: 30%;
+    /* background-color: red; */
+    position: absolute;
+    z-index: 10;
+    font-size: 1em;
+    @include flex-column();
+}
+
+.banner .note > h1 {
+    font-style: italic;
+    font-size: 5em;
+}
+
+.banner .note > p {
+    max-width: 50%;
+    font-size: 3em;
+    padding: 0.5em 0;
+}
+
+.banner .note > a {
+    position: relative;
+    font-size: 1.5em;
+    padding: 0.5em;
+    width: 158px;
+    border: 0.1em solid $white;
+    @include flex-JcAc();
+}

@@ -1,0 +1,251 @@
+﻿@import "../suples";
+@import "../buttons-mixins";
+
+
+// Меню с кнопками для создания/настроек чатов
+// $parent-name - Имя корневого селектора
+@mixin channel-control-menu($parent-name: ".channel-control-menu") {
+    $button-prefix: #{$parent-name}-button;
+
+    #{$parent-name} { 
+        padding: 15px 0;
+        @include clearfix; 
+    }
+
+
+    #user-channels-group #{$parent-name} {
+        margin-right: -11px;
+    }
+
+    #{$button-prefix} {
+        width: 100%;
+
+        .media-triple {
+            width: 95%;
+        }
+    }
+} 
+
+
+// Блок отдельного сообщения чата
+//
+// $parent-name - Имя корневого селектора
+// $avatar-size - Размер аватара (квадрат)
+// $spacing - Расстояние между отдельными сообщениями
+// $border-radius - Величина скругления углов блока сообщения и аватара рядом с ним
+@mixin message-widget($parent-name: ".message", $avatar-size: 70px, $spacing: 10px, $border-radius: 6px) {
+    $prefix-avatar: #{$parent-name}-avatar;
+    $prefix-content: #{$parent-name}-content;
+    $prefix-content-info: #{$prefix-content}-info;
+
+    $prefix-setting: #{$parent-name}-setting;
+    $prefix-setting-content: #{$prefix-setting}-content;
+    $prefix-setting-control: #{$prefix-setting}-control;
+
+    #{$parent-name} {
+        width: 100%;
+        min-height: $avatar-size + 2px;
+        margin-bottom: $spacing;
+    }
+
+    #{$prefix-avatar},
+    #{$prefix-content} {
+        /*border-radius: $border-radius;
+        border: 1px solid $blue;*/
+        background-color: $drop-bg-colr-3;
+        border-radius: initial;
+        border: 2px solid $color-dark-green;
+        @include transition(background-color 0.5s linear);
+        @include box-shadow(inset 0 0 30px $color-dark-green);
+    }
+
+    #{$parent-name}:hover {
+        & #{$prefix-avatar},
+        & #{$prefix-content} {
+            background-color: darken($drop-bg-colr-3,10%);
+        }
+    }
+
+
+    #{$prefix-avatar} {
+        margin-top: 10px;
+        display: block;
+        width: $avatar-size;
+        height: $avatar-size;
+    }
+
+    #{$prefix-avatar}_left {
+        float: left;
+        margin-right: $spacing;
+    }
+
+    #{$prefix-avatar}_right {
+        float: right;
+        margin-left: $spacing;
+    }
+
+    #{$prefix-content} {
+        min-height: $avatar-size + 2px;
+        padding: $spacing;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    #{$prefix-content-info} {
+        @include clearfix;
+        color: $yellow-tool-bar;
+        font-size: $fs-14;
+    }
+
+    #{$prefix-content-info}-creator {
+        float: left;
+    }
+
+    #{$prefix-content-info}-date {
+        float: right;
+    }
+
+    #{$prefix-content}-text {
+        line-height: 100%;
+        text-align: justify;
+        padding: 7px 0;
+        font-size: $fs-14;
+    }
+
+    $prefix-setting-height: 50px;
+
+    #{$prefix-setting} {
+        margin: 5px -10px -10px;
+        min-height: $prefix-setting-height;
+        overflow: hidden;
+    }
+
+    $setting-btn-size: 5;
+
+
+    #{$prefix-setting-content} {
+        min-height: 100%;
+        width: 100%;
+        transition: transform .2s linear;
+        @include transition-transform($animation-short-linear);
+        /*background-color: $setting-bg-color;*/
+        &.show {
+            @include translateX(0);
+        }
+
+        &.close {
+            @include translateX(100%);
+        }
+
+        .translate-autocomplete {
+            max-width: 80%;
+
+
+            & md-autocomplete-wrap {
+                box-shadow: none;
+            }
+        }
+
+        .translate-autocomplete-input {
+            border-bottom: 1px solid;
+        }
+
+        .translate-autocomplete-label {
+            font-size: $fs-14;
+            margin-top: 6px;
+            padding: 0 10px;
+        }
+    }
+
+    #{$prefix-setting-control} {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        width: $prefix-setting-height;
+        min-width: $prefix-setting-height;
+        max-width: $prefix-setting-height;
+        height: $prefix-setting-height;
+        border-radius: initial;
+        font-size: $fs-20;
+        //color: #2e5656;
+        color: $drop-bg-colr-3;
+        text-shadow: 0 0 3px #ffffff;
+        border-radius: 50%;
+        @include transition(color $animation-short-linear);
+        /*transition: color .2s linear;*/
+        &:hover {
+            color: darken($drop-bg-colr-3,15%);
+        }
+    }
+}
+
+
+
+// Форма отправки сообщения в чат
+//
+// $parent-name - Имя корневого селектора
+// $botton-size - Размер кнопки отправки (квадрат)
+// $spacing - Расстояние между кнопкой отправки и полем ввода
+@mixin message-form-sender($parent-name: ".message-sender", $botton-size: 70px, $spacing: 10px) {
+    #{$parent-name} {
+        margin-top: $spacing + 10px;
+
+        #{$parent-name}-btn {
+            float: right;
+            margin-left: $spacing;
+            width: $botton-size;
+            height: $botton-size;
+        }
+
+        #{$parent-name}-text {
+            padding: 0 6px;
+            min-height: 160px;
+            background-color: $drop-bg-colr-3;
+            border: 2px solid $color-dark-green;
+            @extend .f_size_14px;
+            @extend .text_h_standart;
+            @extend .text_justify;
+            /*box-shadow: inset 0 0 50px $black, 0 0 100px $black;*/
+            /*position: relative;
+            border: 1px solid $blue;
+            overflow: hidden;
+            min-height: $botton-size + 2px;*/
+            md-input-container {
+                padding: 0;
+                margin: 15px 0 2px;
+            }
+
+            & textarea {
+                width: 99.2%;
+                border-width: 0 0 1px;
+                border-color: #8a8a8a;
+                @extend .f_size_14px;
+                line-height: 18px;
+                min-height: 140px;
+                /*position: absolute;*/
+                /*display: block;
+                width: 99.1%;
+                max-width: 100%;
+                @include size-TRBL();*/
+            }
+
+            .md-errors-spacer {
+                position: absolute;
+                left: 5px;
+            }
+
+            .btn-group-sa {
+                max-width: 79%;
+                padding: 10px 1% 10px 20%;
+                @include flex-Je(false);
+
+                .small {
+                    width: 30%;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}

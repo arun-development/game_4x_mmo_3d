@@ -1,0 +1,341 @@
+﻿<script type="text/ng-template" id="journal-paralax-centr.tmpl">
+    <div class="journal-centr report">
+        <div class="item">
+            <div>
+                <span ng-bind="border.Data.TargetPlanetName"></span>
+                <span ng-bind="border.Data.TargetSystemName"></span>
+            </div>
+            <div>
+                <h1 ng-bind="border.Data.CenterMessage"></h1>
+            </div>
+            <div>
+                <span data-date="{{border.Data.Date}}" ng-bind="border.Data.Date"></span>
+                <span data-time="{{border.Data.TimeNow}}" ng-bind="border.Data.TimeNow"></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="journal-report-info.tmpl">
+    <div class="report">
+        <div class="report-info" layout="row" layout-align="space-between center">
+            <div class="report-info-text-container" flex="20" layout="column" layout-align="space-between center">
+                <div  title="target systemName" ng-bind="info.TargetSystemName"></div>
+                <div title="target planet name" ng-bind="info.TargetPlanetName"></div>
+            </div>
+
+            <div class="res" layout="row" flex="60">
+                <div class="" flex="33" layout="column" layout-align="start center" ng-attr-title="{{commonTranslate.enegry}}">
+                    <div class="e s resource sprite_atlas"></div>
+                    <input class="res-value" type="text" value="{{info.TargetResource.E}}" readonly="readonly" />
+                </div>
+                <div flex="33" layout="column" layout-align="start center" ng-attr-title="{{commonTranslate.iridium}}">
+                    <div class="ir s resource sprite_atlas"></div>
+                    <input class="res-value" type="text" value="{{info.TargetResource.Ir}}" readonly="readonly" />
+                </div>
+                <div flex="33" layout="column" layout-align="start center" ng-attr-title="{{commonTranslate.darkMatter}}">
+                    <div class="dm s resource sprite_atlas"></div>
+                    <input class="res-value" type="text" value="{{info.TargetResource.Dm}}" readonly="readonly" />
+                </div>
+            </div>
+
+            <div class="report-info-text-container" flex="20" layout="column" layout-align="space-between center">
+                <div title="Date" ng-bind="info.Date"></div>
+                <div title="Time" ng-bind="info.TimeNow"></div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="journal-report-unit.tmpl">
+    <div itemscope itemid="{{unit.NativeName.toLowerCase()}}">
+        <input class="before-unit"
+               type="number"
+               min="0"
+               name="{{unit.NativeName.toLowerCase()}}"
+               ng-attr-value="{{unit.StartUnitCount}}"
+               readonly="readonly"
+               data-type="source" />
+        <div class="{{unit.SpriteImages.Medium}} {{unit.cssSepia}}"
+             ng-attr-title="{{unit.TranslateName}}"></div>
+        <input class="lose-unit"
+               type="number"
+               min="0"
+               name="{{unit.NativeName.toLowerCase()}}"
+               ng-attr-value="{{unit.LostUnitCount}}"
+               readonly="readonly"
+               data-type="lose" />
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="journal-tab-report.tmpl">
+    <div ng-attr-id="{{body.BodyId}}" scroller emit-name="journalCtrl:initializeScrollReport">
+        <div ng-repeat="item in journalCtrl.getReportCollection() track by  item.Id"
+             ng-class="item.IsLose?'lose':null"
+             class="dropable" drop-element>
+            <div ng-click="dropElementonClickByDropable()">
+                <complex-button complex-button="item.ComplexButtonView"></complex-button>
+            </div>
+            <div class="drop-container">
+                <div class="drop-item">
+                    <div>
+                        <report-info info="item"></report-info>
+                        <div class="user unique-name link-to-target"
+                             ng-class="journalCtrl.userNameIsSkagry(item.SourceUserName)?'':'active'"
+                             ng-click="journalCtrl.userNameIsSkagry(item.SourceUserName)?'':journalCtrl.getProfileInfo(item.SourceUserName)">
+                            <span ng-bind="item.SourceUserName"></span>
+                        </div>
+                        <div class="hangar-compact units {{item.AtackerCss}}" data-hangar="source">                 
+                            <report-unit unit="unit" ng-repeat="unit in item.SourceReportHangar"></report-unit>
+                        </div>
+                        <div class="user unique-name link-to-target"
+                             ng-class="journalCtrl.userNameIsSkagry(item.TargetUserName)?'':'active'"
+                             ng-click="journalCtrl.userNameIsSkagry(item.TargetUserName)?'':journalCtrl.getProfileInfo(item.TargetUserName)">
+                            <span ng-bind="item.TargetUserName"></span>
+                        </div>
+                        <div class="hangar-compact units {{item.DefendorCss}}" data-hangar="target">
+                            <report-unit unit="unit" ng-repeat="unit in item.TargetReportHangar"></report-unit>
+                        </div>
+
+                        <div  class="btn-group-sa slim" layout="row" layout-wrap layout-align="space-between center">
+                            <paralax-button button="button" ng-repeat="button in journalCtrl.getReportInfoButtons(item)"></paralax-button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="journal-tab-spy.tmpl">
+    <div ng-attr-id="{{body.BodyId}}" scroller emit-name="journalCtrl:initializeScrollSpy">
+        <form id="joutnal-new-spy" action="">
+            <div ng-controller="spyPlanetSerchCtrl as ctrl" layout="row" class="slim" layout-align="space-between stretch">
+                <md-content class="custom-autocomplete" layout="column" ng-cloak="" flex="65">
+                    <md-autocomplete md-input-id="{{ctrl.spySerchInputId}}"
+                                     md-select-on-match="true"
+                                     md-match-case-insensitive="true"
+                                     md-selected-item="ctrl.selectedItem"
+                                     md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                     md-search-text="ctrl.searchText"
+                                     md-selected-item-change="ctrl.selectedItemChange(planetItem)"
+                                     md-items="planetItem in ctrl.querySearch(ctrl.searchText)" md-item-text="planetItem.display"
+                                     md-min-length="3"
+                                     md-delay="250"
+                                     md-input-maxlength="10"
+                                     md-dropdown-items="10"
+                                     placeholder="{{ctrl.getPlaceholder()}}"
+                                     md-menu-class="custom-autocomplete-drop-1">
+                        <md-item-template>
+                            <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{planetItem.display}}</span>
+                        </md-item-template>
+                        <md-not-found ng-bind="ctrl.getNotFoundMsg()"></md-not-found>
+                    </md-autocomplete>
+                </md-content>
+                <paralax-button button="ctrl.getSpyButtonFromSerch()"></paralax-button>
+            </div>
+        </form>
+
+        <div ng-repeat="item in journalCtrl.getSpyCollection() track by item.Id" class="dropable" drop-element>
+            <div ng-click="dropElementonClickByDropable()">
+                <complex-button complex-button="item.ComplexButtonView"></complex-button>
+            </div>
+            <div class="drop-container">
+                <div class="drop-item">
+                    <div>
+                        <report-info info="item"></report-info>
+                        <div class="user unique-name link-to-target" 
+                             ng-class="journalCtrl.userNameIsSkagry(item.TargetUserName)?'':'active'"  
+                             ng-click="journalCtrl.userNameIsSkagry(item.TargetUserName)?'':journalCtrl.getProfileInfo(item.TargetUserName)">
+                            <span ng-bind="item.TargetUserName"></span>
+                        </div>
+                        <div class="hangar-compact units" data-hangar="source">
+                            <task-unit unit="unit" ng-repeat="unit in item.TargetHangar track by $index"></task-unit>
+                        </div>
+                        <div>
+                            <div>build 1</div>
+                            <div>build 2</div>
+                            <div>build 3</div>
+                            <div>build 4</div>
+                            <div>build 5</div>
+                        </div>
+                        <div class="btn-group-sa slim" layout="row" layout-wrap layout-align="space-between center" >
+                            <paralax-button button="button" ng-repeat="button in journalCtrl.getReportInfoButtons(item)"></paralax-button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="journal-tab-task.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <section ng-controller="taskPlanetSerchCtrl as ctrl">
+            <div class="btn-group-sb slim" ng-hide="ctrl.showTaskForm">
+                <paralax-button button="button" ng-repeat="button in ctrl.getNewTaskButtons() track by $index"></paralax-button>
+            </div>
+            <form class="box-shadow-section" id="joutnal-new-task" ng-if="ctrl.showTaskForm">
+                <section class="animate" ng-class="ctrl.activate?'active':''">
+                    <md-content class="custom-autocomplete" layout="column" ng-cloak="">
+                        <md-button class="md-icon-button close" ng-click="ctrl.closeTaskForm()">
+                            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                        </md-button>
+                        @*<span class="close"><i class="fa fa-times" aria-hidden="false" ng-click="ctrl.closeTaskForm()"></i></span>*@
+                        <span class="validate" ng-class="ctrl.isValide? 'succsess':'error'"><i class="fa fa-circle"></i></span>
+                        <md-autocomplete md-selected-item="ctrl.selectedItem"
+                                         md-select-on-match="true"
+                                         md-match-case-insensitive="true"
+                                         md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                         md-search-text="ctrl.searchText"
+                                         md-items="planetItem in ctrl.querySearch(ctrl.searchText)"
+                                         md-selected-item-change="ctrl.selectedItemChange(planetItem)"
+                                         md-item-text="planetItem.display"
+                                         md-min-length="ctrl.minLength"
+                                         md-delay="250"
+                                         md-input-maxlength="10"
+                                         md-dropdown-items="10"
+                                         md-dropdown-position="20px"
+                                         md-clear-button="false"
+                                         md-input-id="task-serch-planet"
+                                         placeholder="{{ctrl.getPlaceholder()}}"
+                                         md-menu-class="custom-autocomplete-drop-1">
+                            <md-item-template>
+                                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{planetItem.display}}</span>
+                            </md-item-template>
+                            <md-not-found ng-bind="ctrl.getNotFoundMsg()"></md-not-found>
+                        </md-autocomplete>
+                    </md-content>
+                    <div>
+                        <md-toolbar>
+                            <div class="md-toolbar-tools">
+                                <h2 class="md-flex" flex="50">
+                                    <span ng-bind="ctrl.transferTypeName"></span>
+                                    <span ng-bind="ctrl.curItem.display"></span>
+                                </h2>
+                                <h2 class="md-flex" flex="50">
+                                    <span ng-bind="ctrl.transferTimeName"></span>
+                                    <span ng-bind="ctrl.transferTimeVal"></span>
+                                </h2>
+                            </div>
+                        </md-toolbar>
+
+                        <md-toolbar class="md-warn" ng-show="ctrl.taskErrors.planetNotExist.showError">
+                            <div class="md-toolbar-tools">
+                                <h2 class="md-flex" ng-bind="ctrl.taskErrors.planetNotExist.getTranslateError()"></h2>
+                            </div>
+                        </md-toolbar>
+
+                        <md-toolbar class="md-warn" ng-show="ctrl.taskErrors.unitsIsEmpty.showError">
+                            <div class="md-toolbar-tools">
+                                <h2 class="md-flex" ng-bind="ctrl.taskErrors.unitsIsEmpty.getTranslateError()"></h2>
+                            </div>
+                        </md-toolbar>
+
+                    </div>
+
+
+
+                    <div class="hangar-compact units" data-hangar="source">
+                        <task-unit unit="unit" target="source" ng-repeat="unit in ctrl.taskSourceUnits track by $index"></task-unit>
+                    </div>
+                    <div class="hangar-advanced units" data-hangar="target">
+                        <task-unit unit="unit" target="target" ng-repeat="unit in ctrl.taskTargetUnits track by $index"></task-unit>
+                    </div>
+                    <div class="btn-group-sa slim">
+                        <paralax-button button="button" ng-repeat="button in ctrl.getTaskActionButtons() track by $index"></paralax-button>
+                    </div>
+
+                </section>
+            </form>
+        </section>
+
+
+        <div ng-if="journalCtrl.hasJumpMother()"
+             class="green-shadow dropable"
+             drop-element>
+            <div ng-click="dropElementonClickByDropable()">
+                <complex-button complex-button="journalCtrl.getLocalMotherJump().ComplexButtonView"
+                                advanced-cb-params="{needBroadCast: true, timerName:'journalTask_motherJumpTimer', activateUpdate:'updateJumpMotherTimer' }"></complex-button>
+            </div>
+            <div class="drop-container">
+                <div class="drop-item">
+                    <div>
+                        <div class="btn-group-sa slim">
+                            <paralax-button button="button" ng-repeat="button in journalCtrl.getLocalMotherJump().Buttons"></paralax-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-repeat="item in journalCtrl.getTaskCollection()"
+             ng-class="item.IsTransfer?'green-shadow':null"
+             class="dropable" drop-element>
+            <div ng-click="dropElementonClickByDropable()">
+                <complex-button complex-button="item.ComplexButtonView"></complex-button>
+            </div>
+            <div class="drop-container">
+                <div class="drop-item">
+                    <div>
+                        <div class="hangar-compact units" data-hangar="source">
+                            <task-unit unit="unit" ng-repeat="unit in item.HangarInTask"></task-unit>
+                        </div>
+
+                        <div class="btn-group-sa slim">
+                            <paralax-button button="button" ng-repeat="button in item.Buttons"></paralax-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="journal-task-centr.tmpl">
+    <div class="journal-centr task">
+        <div class="item">
+            <h2>
+                <span ng-bind="border.Data.SourceOwnName"></span>
+                <span ng-bind="border.Data.SourceSystemName"></span>
+            </h2>
+            <timer-progress timer-type="simpleTimer" border="border" timer-data="border.Data.DataTimer"> </timer-progress>
+            <h2>
+                <span ng-bind="border.Data.TargetPlanetName"></span>
+                <span ng-bind="border.Data.TargetSystemName"></span>
+            </h2>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="journal-task-unit.tmpl">
+    <div itemscope itemid="{{unit.NativeName.toLowerCase()}}">
+        <div class="{{unit.SpriteImages.Medium}}" ng-class="(unit.Count === 0 ||unit.Count === null) ?'grayScale':null" title="{{unit.Name}}"></div>
+
+        <!--<input type="number" min="0"
+               name="{{unit.NativeName.toLowerCase()}}"
+               ng-attr-value="{{unit.Count}}"
+               ng-readonly="target !== 'target'" />-->
+        <input type="number"
+               min="0"
+               ng-model="unit.Count"
+               ng-change="unitChange()"
+               ng-readonly="(!target)" />
+    </div>
+    <!--grayScale-->
+</script>
+
+<script type="text/ng-template" id="journal-planshet-root.tmpl">
+    <planshet-body-tabs ng-controller="journalCtrl as journalCtrl" tabs="planshetModel"></planshet-body-tabs>
+</script>
+

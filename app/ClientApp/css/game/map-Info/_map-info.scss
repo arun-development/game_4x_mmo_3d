@@ -1,0 +1,6 @@
+﻿@import "../_suples";
+
+
+$bookmark-tab-ids: #bookmark-planet #bookmark-star #bookmark-sector "[data-type=planet]";
+
+@include drop-container-list-span-font($bookmark-tab-ids, 0.6em)

@@ -1,0 +1,188 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EndPoints\Api\shop\**" />
+    <Compile Remove="EndPoints\Api\Tests\**" />
+    <Compile Remove="EndPoints\Api\user\**" />
+    <Compile Remove="EndPoints\Api\___delete___shop\**" />
+    <Compile Remove="EndPoints\Api\___delete___Tests\**" />
+    <Compile Remove="EndPoints\Api\___delete___user\**" />
+    <Compile Remove="Services\GameObjects\Cls\**" />
+    <Compile Remove="Services\GameObjects\___delete___Cls\**" />
+    <Compile Remove="Utils\m_Store\**" />
+    <EmbeddedResource Remove="EndPoints\Api\shop\**" />
+    <EmbeddedResource Remove="EndPoints\Api\Tests\**" />
+    <EmbeddedResource Remove="EndPoints\Api\user\**" />
+    <EmbeddedResource Remove="EndPoints\Api\___delete___shop\**" />
+    <EmbeddedResource Remove="EndPoints\Api\___delete___Tests\**" />
+    <EmbeddedResource Remove="EndPoints\Api\___delete___user\**" />
+    <EmbeddedResource Remove="Services\GameObjects\Cls\**" />
+    <EmbeddedResource Remove="Services\GameObjects\___delete___Cls\**" />
+    <EmbeddedResource Remove="Utils\m_Store\**" />
+    <None Remove="EndPoints\Api\shop\**" />
+    <None Remove="EndPoints\Api\Tests\**" />
+    <None Remove="EndPoints\Api\user\**" />
+    <None Remove="EndPoints\Api\___delete___shop\**" />
+    <None Remove="EndPoints\Api\___delete___Tests\**" />
+    <None Remove="EndPoints\Api\___delete___user\**" />
+    <None Remove="Services\GameObjects\Cls\**" />
+    <None Remove="Services\GameObjects\___delete___Cls\**" />
+    <None Remove="Utils\m_Store\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataLayer\BaseRepository.cs" />
+    <Compile Remove="DataLayer\DataContextFactory.cs" />
+    <Compile Remove="DataLayer\DataContextProvider.cs" />
+    <Compile Remove="DataLayer\___delete___BaseRepository.cs" />
+    <Compile Remove="DataLayer\___delete___DataContextFactory.cs" />
+    <Compile Remove="DataLayer\___delete___DataContextProvider.cs" />
+    <Compile Remove="EndPoints\Api\InicializeData\VoteController.cs" />
+    <Compile Remove="EndPoints\Api\InicializeData\___delete___VoteController.cs" />
+    <Compile Remove="EndPoints\Api\TestDbController.cs" />
+    <Compile Remove="EndPoints\Api\___delete___TestDbController.cs" />
+    <Compile Remove="Infrastructure\CompressAttribute.cs" />
+    <Compile Remove="Infrastructure\___delete___CompressAttribute.cs" />
+    <Compile Remove="Services\InitializeService\MapGInitializer.Delete.cs" />
+    <Compile Remove="Services\InitializeService\___delete___MapGInitializer.Delete.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DataLayer\Infrastructure\PrGame.V.0.8.5.3.cleaned.ready_to_init.dacpac" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataLayer\Infrastructure\scripts\generatedProcedure\" />
+    <Folder Include="DataLayer\LocalStorageCaches\" />
+    <Folder Include="EndPoints\Hubs\client-dist\" />
+    <Folder Include="EndPoints\Hubs\MyTestHub\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="ServicesConnected\Auth\Data\Migrations\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" />
+    <PackageReference Include="Dapper" Version="1.50.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.3" />
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="morelinq" Version="2.8.0" />
+    <PackageReference Include="Sendgrid" Version="9.9.0" />
+    <PackageReference Include="Twilio" Version="5.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Modules\Localize\Game\Alliance\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Game\Common\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Game\Confederation\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Game\Journal\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Game\Map\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Game\Units\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Game\UserChannels\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Site\Community\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Site\Home\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Modules\Localize\Site\Store\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Modules\Localize\Game\Alliance\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\Common\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\Confederation\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\Confederation\Resource.ru.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\Journal\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\Map\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\Units\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\UserChannels\Resource.es.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\UserChannels\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Game\UserChannels\Resource.ru.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Site\Community\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Site\Home\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Localize\Site\Store\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Email not confirmed";
+
+}
+@using Server.ServicesConnected.Auth.Models.AccountViewModels
+@model Server.ServicesConnected.Auth.Models.AccountViewModels.CreateEmailMessageViewModel
+ 
+<div class="site-form-group row">
+    
+    @{
+        if (Model.EmailReadOnly)
+        {
+            <div class="col-sm-12">
+                <h4>Мы не смогли подтвердить ваш е-mail</h4>
+            </div>
+            
+            <div class="col-sm-4">
+                <form  asp-action="ConfirmEmailCreateMailMessage" method="POST">
+                    <input asp-for="UserName" type="hidden"/>
+                    <div class="form-group">
+                        <label asp-for="Email" class="display-none"></label>
+                        <input asp-for="Email" readonly="readonly" class="form-control"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <h3></h3>
+                    <button type="submit" class="btn btn-default account-form-button">Отправить еще одно сообщение</button>
+                </form>
+
+                <h3></h3>
+                <form   asp-action="UpdateCreateEmailMessageViewModel" method="POST">
+                    <input asp-for="UserName" type="hidden"/>
+                    <label asp-for="Email" class="display-none"></label>
+                    <input asp-for="Email" type="hidden" readonly="readonly" class="form-control"/>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <button type="submit" class="btn btn-default account-form-button">Изменить Емеил</button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <h4>Изменить Емаил и отправить код</h4>
+            <form class="col-sm-4 " asp-action="ConfirmEmailChangeRegistredEmail" method="POST">
+                <input asp-for="UserName" type="hidden"/>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="display-none"></label>
+                    <input asp-for="Email"  class="form-control"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="danger-container">
+                    <p><span asp-validation-for="Email" class="text-danger"></span></p>
+                </div>
+                <button type="submit" class="btn btn-default account-form-button">Обновить</button>
+            </form>
+            
+        }
+    }
+
+ 
+    
+</div>
+

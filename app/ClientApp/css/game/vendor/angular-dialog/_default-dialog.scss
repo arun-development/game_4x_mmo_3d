@@ -1,0 +1,40 @@
+﻿@import "skagry-dialog-theme-mixin";
+
+@include skagry-theme-main-container("[aria-label='default-dialog'], .default-dialog");
+
+[aria-label="default-dialog"],
+.default-dialog {
+    $shadow-color: $dialog-base-color;
+    color: white;
+    text-shadow: 2px 0 5px $black;
+    // box-shadow: inset 0 0 30px 3px $black, 0 0 2px $shadow-color;
+    & .md-title {
+        color: hsl(hue($unique-name-color),100%,50%);
+    }
+}
+////$dialog-base-color:rgba(84, 75, 75, 1);
+
+
+@include skagry-theme-main-container(".send-message-dialog") {
+    /*background-color: #fff;*/
+    width: 1000px;
+
+    & label, & .error {
+        margin-left: 5px;
+    }
+
+    & md-input-container input {
+        color: $color-main-1;
+    }
+
+    & md-dialog-actions {
+        padding: 24px;
+    }
+
+    & .message {
+        width: calc(100% - 20px);
+        & textarea {
+            min-height: 250px;
+        }
+    }
+}

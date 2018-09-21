@@ -1,0 +1,65 @@
+﻿@import "../suples";
+
+#buildContainer .btn_big_centre .JsbAc {
+    margin: 0 10px;
+    width: calc(100% - (2 * 10px));
+}
+
+#buildContainer .center {
+    .timer-progress {
+        width: 40%;
+        height: 56%;
+    }
+
+    .time-contiol {
+        /*box-shadow: 0 0 5px $color-main-1, inset 0 0 6px #000;*/
+        @include flex-JcAc();
+        font-size: 24px !important;
+        overflow: hidden;
+        padding: 0 15px;
+        margin: 0 !important;
+
+        & span {
+            width: 100%;
+        }
+    }
+}
+
+
+#buildContainer .level .time-contiol {
+    box-shadow: initial;
+    border: none;
+}
+
+#buildContainer .sprite_atlas.s {
+    &.resource {
+        display: inline-block;
+    }
+    /*position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 86px;
+    margin-left: 1px;*/
+}
+
+#buildContainer .static-content .level {
+    @include flex-JcAc();
+}
+
+.build-proprty-list {
+    text-align: center;
+}
+
+#buildContainer .unit-item .level .time-contiol {
+    @include flex-JcAc();
+    @include size-full-size();
+
+    & .time-data {
+        z-index: 2;
+    }
+
+    & .item-indicator-progress {
+        z-index: 1;
+        max-height: 100%;
+    }
+}

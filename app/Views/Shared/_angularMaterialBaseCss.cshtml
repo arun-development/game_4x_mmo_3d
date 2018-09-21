@@ -1,0 +1,25 @@
+﻿@using Server.Infrastructure
+@{
+  
+ 
+    var aMat = LibCollection.CssAngularMaterial;
+    var aFIleInput = LibCollection.CssMalihuCsp;
+}
+
+<link rel="stylesheet"
+      href="@aMat.CdnPathMin"
+      asp-fallback-href="@aMat.LocalPathMin"
+      asp-fallback-test-class="@aMat.FallbackTestClass"
+      asp-fallback-test-property="@aMat.FallbackTestProperty"
+      asp-fallback-test-value="@aMat.FallbackTestValue"
+      integrity="@aMat.IntegrityMin"
+      crossorigin="anonymous" />
+<link rel="stylesheet"
+      href="@aFIleInput.CdnPathMin"
+      asp-fallback-href="@aFIleInput.LocalPathMin"
+      asp-fallback-test-class="@aFIleInput.FallbackTestClass"
+      asp-fallback-test-property="@aFIleInput.FallbackTestProperty"
+      asp-fallback-test-value="@aFIleInput.FallbackTestValue"
+      integrity="@aFIleInput.IntegrityMin"
+      crossorigin="anonymous" />
+ 

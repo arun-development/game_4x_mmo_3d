@@ -1,0 +1,103 @@
+﻿ @{
+     Layout = null;
+ }
+
+<script type="text/ng-template" id="user-chest.tmpl">
+    <md-content id="chest">
+        <md-tabs class="md-accent"
+                 md-no-ink
+                 md-selected="chestCtrl.tabs.selectedIndex"
+                 md-stretch-tabs="'always'"
+                 md-dynamic-height>
+            <md-tab id="chest-bought">
+                <md-tab-label>{{chestCtrl.tabs.inactiveLabelName}}</md-tab-label>
+                <md-tab-body>
+                    <div class="md-padding"
+                         ng-attr-id="{{'product-item-chest-id-'+chestItem.Id}}"
+                         ng-repeat="chestItem in chestCtrl.chestData.NoActivate track by chestItem.Id">
+                        <div class="item" ng-style="{'background-image':'url('+chestItem.ProductItemProperty.ImgCollectionImg.Chest+')'}">
+                            <div class="info" flex layout="column">
+                                <h4 class="md-padding" ng-bind="chestItem.ProductItemProperty.TranslateText[chestCtrl.LangKey].Name"></h4>
+                                <div flex></div>
+                                <div layout="row" layout-align="space-between center">
+                                    <md-button md-no-ink class="md-primary"
+                                               ng-disabled="chestCtrl.getInfoDisabled"
+                                               ng-click="chestCtrl.getChestItemInfo($event,chestItem)">Info</md-button>
+                                    <md-button md-no-ink class="md-primary"
+                                               ng-disabled="chestCtrl.activateChestItemDisabled"
+                                               ng-click="chestCtrl.activateChestItem($event,chestItem)">Activate</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+            <md-tab id="chest-activated" ng-disabled="false">
+                <md-tab-label>{{chestCtrl.tabs.activatedLabelName}}</md-tab-label>
+                <md-tab-body>
+                    <div class="md-padding"
+                         ng-repeat="chestItem in chestCtrl.chestData.ActivatedItemsView">
+                        <div class="item" ng-style="{'background-image':'url('+chestItem.ProductItemProperty.ImgCollectionImg.Chest+')'}">
+                            <div class="info" flex layout="column">
+                                <h4 class="md-padding" ng-bind="chestItem.ProductItemProperty.TranslateText[chestCtrl.LangKey].Name"></h4>
+                                <div flex>
+                                    <div class="time-contiol" ng-if="false">
+                                        <span itemscope itemid="timer" data-duration="" data-end-time="" data-progress=""></span>
+                                    </div>
+                                </div>
+                                <div layout="row" layout-align="start center">
+                                    <md-button md-no-ink
+                                               class="md-primary"
+                                               ng-disabled="chestCtrl.getInfoDisabled"
+                                               ng-click="chestCtrl.getChestItemInfo($event,chestItem)">Info</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+
+</script>
+
+<script type="text/ng-template" id="dialog-chest-item-info.tmpl">
+    <md-dialog aria-label="Chest item info" class="chest-item-info-dialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-bind="dchiCtrl.itemText.Name"></h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="dchiCtrl.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout="column">
+                    <div layout="row">
+                        <div ng-style="dchiCtrl.itemImageStyle" class="bg-image-contain"></div>
+                    </div>
+                    <div layout="row" layout-align="space-between center" layout-wrap>
+                        <div class="chest-item-info-dialog-prop-item"
+                             layout="row"
+                             ng-repeat="prop in dchiCtrl.itemProperties">
+                            <span class="prop-key" ng-bind="prop.Key" layout-padding></span>
+                            <span class="prop-val" ng-bind="prop.Val" layout-padding></span>
+                        </div>
+                    </div>
+
+                    <div layout="row" class="product-description">
+                        <p ng-bind="dchiCtrl.itemText.Description"></p>
+                    </div>
+
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="dchiCtrl.cancel()" aria-label="close">Close</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</script>
+

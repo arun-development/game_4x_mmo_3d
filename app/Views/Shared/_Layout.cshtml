@@ -1,0 +1,135 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@using Microsoft.ApplicationInsights.AspNetCore.Extensions
+@using Server.Extensions
+@using Server.Infrastructure
+@using Server.Modules.Localize
+ 
+@{
+
+    var lang = new L10N().CurrentCulture;
+    var uri = Context.Request.GetUri();
+    var pageCssClass = ViewData._getPageCssClass();
+
+    string angularApp = null;
+    string appVars = null;
+    var isAngular = ViewData._isAngularApp();
+    if (isAngular)
+    {
+        angularApp = ViewData._getAngularAppKey();
+        appVars = ViewData._getAppVars();
+    }
+
+    var mzr = LibCollection.JsModernizr;
+    var jq = LibCollection.JsJquery;
+    var lodash = LibCollection.JsLodash;
+    var jqv = LibCollection.JsJqValidate;
+    var jqvu = LibCollection.JsJqValidateUnobtrusive;
+    var jqCookie = LibCollection.JsJqCookie;
+    var jsCommon = LibCollection.JsCommon;
+    var jsThirdParty = LibCollection.JsThirdParty;
+
+
+}
+
+
+@*https://docs.microsoft.com/ru-ru/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper*@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="@lang" xml:lang="@lang" ng-app="@angularApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData._getTitle()</title>
+    <meta name="description" content="@ViewData._getMetaDescription()" />
+    <meta name="google-site-verification" content="13rIcKPVU2Wta8ixORM9mku3uEhWQX3DVy9q6P2HLxc" />
+    @Html.GenerateHrefLangs(uri)
+
+    @if (isAngular)
+    {
+        @await Html.PartialAsync("_angularMaterialBaseCss")
+        @RenderSection("stylesAngular", required: false)
+    }
+    @RenderSection("styles", required: false)
+
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    <cache expires-on="@DateTime.Now.AddDays(30)">
+        <script src="@mzr.CdnPathMin"
+                asp-fallback-src="@mzr.LocalPathMin"
+                asp-fallback-test="@mzr.FallbackTest"
+                integrity="@mzr.IntegrityMin"
+                crossorigin="anonymous"></script>
+        <script src="@jq.CdnPathMin"
+                asp-fallback-src="@jq.LocalPathMin"
+                asp-fallback-test="@jq.FallbackTest"
+                integrity="@jq.IntegrityMin"
+                crossorigin="anonymous"></script>
+        <script src="@lodash.CdnPathMin"
+                asp-fallback-src="@lodash.LocalPathMin"
+                asp-fallback-test="@lodash.FallbackTest"
+                integrity="@lodash.IntegrityMin"
+                crossorigin="anonymous"></script>
+    </cache>
+
+    @RenderSection("headScripts", required: false)
+    
+
+</head>
+<body class="@pageCssClass" data-page-name="@pageCssClass">
+    @Html.AntiForgeryToken()
+    @if (!string.IsNullOrWhiteSpace(appVars))
+    {
+        <input type="hidden" app-vars="@appVars" />
+    }
+
+    @RenderSection("headerTemplates", false)
+ 
+
+    @RenderBody()
+    @RenderSection("footerHtmlAndTemplates", false)
+    <div id="scripts" hidden="hidden">
+        <script src="@jqCookie.CdnPathMin"
+                asp-fallback-src="@jqCookie.LocalPathMin"
+                asp-fallback-test="@jqCookie.FallbackTest"
+                integrity="@jqCookie.IntegrityMin"
+                crossorigin="anonymous"></script>
+        <script src="@jqv.CdnPathMin"
+                asp-fallback-src="@jqv.LocalPathMin"
+                asp-fallback-test="@jqv.FallbackTest"
+                integrity="@jqv.IntegrityMin"
+                crossorigin="anonymous"></script>
+        <script src="@jqvu.CdnPathMin"
+                asp-fallback-src="@jqvu.LocalPathMin"
+                asp-fallback-test="@jqvu.FallbackTest"
+                integrity="@jqvu.IntegrityMin"
+                crossorigin="anonymous"></script>
+
+
+        @RenderSection("footerScriptsLib", false)
+        <environment include="Development">
+            @* environment переменные среды имеют слудующие возможные значения (не чувствительны к регистру)
+                Development - для разработки
+                Staging - пред релиз, тестирование в рабочей конфигурации
+                Production - Для удаленного сервера. конечная конфигурация;
+                tag environment include  -  доабавляет содержимое для переменной среды
+                tag environment exclude применяет содержимое ко всем средам кроме указанной*@
+
+
+            <script src="@jsCommon.LocalPath" asp-append-version="@jsCommon.AppendVersion"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="@jsCommon.LocalPathMin" asp-append-version="@jsCommon.AppendVersion"></script>
+        </environment>
+        @if (isAngular)
+        {
+            @await Html.PartialAsync("_angularMaterialBaseScripts")
+
+        }
+        <!--footerScriptsAngular-->
+        @RenderSection("footerScriptsAngular", required: false)
+        <!--footerFinalizeScripts-->
+        @RenderSection("footerFinalizeScripts", false)
+        <!--jsThirdParty-->
+        <script src="@jsThirdParty.LocalPathMin" asp-append-version="@jsThirdParty.AppendVersion"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "es5"
+  },
+  "include": [
+    "ClientApp/js"
+  ],
+  "exclude": [
+    "node_modules",
+    "bower_components",
+    "wwwroot",
+    "ClientApp/js/Utils/dist"
+    //"_dist-js",
+    //"_js/babylon.custom.js",
+    //"Scripts"
+
+  ]
+}

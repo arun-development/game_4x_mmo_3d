@@ -1,0 +1,39 @@
+﻿@using Server.Core.StaticData
+ 
+@{
+    Layout = null;
+    string code = Server.Modules.Localize.Site.Home.Resource.YoutubeVideoUniverseOfSkagryTrailer;
+    var  videoUrl = $@"//www.youtube.com/embed/{code}?autoplay=0";
+    //    var  videoMp4Url = "https://eternplaypublic.blob.core.windows.net/skagry/" + Translate.Site.Home.Resource.VideoUniverseOfSkagryTrailer + ".mp4";
+    //    var  videoWebmUrl = "https://eternplaypublic.blob.core.windows.net/skagry/" + Translate.Site.Home.Resource.VideoUniverseOfSkagryTrailer + ".webm";
+    //    var  videoOggUrl = "https://eternplaypublic.blob.core.windows.net/skagry/" + Translate.Site.Home.Resource.VideoUniverseOfSkagryTrailer + ".ogv";
+
+    const string home = Directories.Home;
+    const string ext = Directories.Ext;
+    const string videoControlTemplate = home + "videoControlTemplate" + ext;
+}
+
+<div class="container" id="videoStory">
+    <div class="relative article clearfix ">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" class="clearfix">
+            <line class="top" x1="-45%" y1="0" x2="5%" y2="0"></line>
+            <line class="left" x1="0" y1="-40%" x2="0" y2="10%"></line>
+            <line class="right" x1="100%" y1="90%" x2="100%" y2="140%"></line>
+            <line class="bottom" x1="95%" y1="100%" x2="145%" y2="100%"></line>
+        </svg>
+        @*https://www.youtube.com/watch?v=DphbR4Y8HGo*@
+
+        <iframe id="ytplayer" type="text/html" width="720" height="405"
+                src="@videoUrl"
+                frameborder="0" allowfullscreen></iframe>
+
+        @*<iframe src="@videoUrl" frameborder="0" name="videoStory" allowfullscreen></iframe>*@
+
+@*        <video class="video-control" controls="false">*@
+@*            <source src="@videoMp4Url" type="video/mp4"/>*@
+@*            <source src="@videoWebmUrl" type="video/webm" />*@
+@*            <source src="@videoOggUrl" type="video/ogg" />*@
+@*        </video>*@
+    </div>
+</div>
+@await Html.PartialAsync(videoControlTemplate)

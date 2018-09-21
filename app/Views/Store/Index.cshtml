@@ -1,0 +1,88 @@
+﻿@using Server.Core.СompexPrimitive.Products
+@using Server.Extensions
+@{
+    Layout = "/Views/Shared/_SiteLayout.cshtml";
+    var serealizedData = ViewData[StoreView.ViewKey].ToSerealizeString();
+}
+
+
+<div ng-controller="storeCtrl as storeCtrl" layout="column" ng-cloak>
+    <input id="store-init-data" type="hidden" json-combiner="@serealizedData" save-data="storeCtrl.saveInitData" />
+    <md-content ng-if="storeCtrl.showContent">
+        <md-tabs class="md-accent "
+                 md-no-ink
+                 md-selected="storeCtrl.tabs.selectedIndex"
+                 md-stretch-tabs="'never'"
+                 md-dynamic-height>
+            <md-tab ng-attr-id="{{tab.TabId}}" ng-repeat="tab in storeCtrl.tabs.data track by tab.TabId">
+                <md-tab-label>{{tab.LabelData.TranslateText[storeCtrl.langKey].Name}}</md-tab-label>
+                <md-tab-body>
+                    <div class="md-padding tab-product-container" flex layout-wrap layout-align="center start">
+                        <div class="product-item"
+                             ng-repeat="product in tab.BodyData"
+                             ng-style="{'background-image':'url('+product.ProductItemProperty.ImgCollectionImg.Store+')'}">
+                            <h4 class="product-type-name" ng-bind="product.TypeText[storeCtrl.langKey].Name"></h4>
+                            <div class="product-inner-container" ng-click="storeCtrl.buyProduct($event,product)">
+                                <h4 ng-bind="product.ProductItemProperty.TranslateText[storeCtrl.langKey].Name"></h4>
+                                <p class="product-description" ng-bind="product.ProductItemProperty.TranslateText[storeCtrl.langKey].Description"></p>
+                                <div class="product-item-footer" flex="">
+                                    <span class="md-margin">Price</span>
+                                    <span class="price">
+                                        <span ng-bind="product.ProductCost"></span>
+                                        <span class="md-margin" ng-bind="product.ProductCurrencyCode"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>
+
+
+@section footerHtmlAndTemplates{
+
+<cache expires-on="@DateTime.Now.AddDays(30)">
+    @await Html.PartialAsync("footer/footer")
+</cache>
+
+ 
+    <script type="text/ng-template" id="buy-product-for-cc-dialog.tmpl">
+        <md-dialog aria-label="head">
+            <form ng-cloak name="form">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>BuyProduct item</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+
+                <md-dialog-content>
+                    <div class="md-dialog-content">
+
+                        <div flex="100" layout="row" layout-align="center center">
+                            hi  buy dialog content
+                        </div>
+
+                    </div>
+                </md-dialog-content>
+
+                <md-dialog-actions layout="row">     
+                    <md-button ng-click="ctrl.cancel()" aria-label="close">close</md-button>
+                    <span flex></span>
+                    <md-button ng-click="ctrl.send('update-avatar')" aria-label="upload">Update</md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </script>
+
+}
+
+
+

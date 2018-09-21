@@ -1,0 +1,14 @@
+﻿<div ng-repeat="group in ctrl.data">
+    <div drop-item
+         cont-data="group.model">
+        <div>
+            <h1 ng-bind="group.model.title"></h1>
+        </div>
+        <div class="relative overflow-hidden" style="height: 0" id="{{group.model.conteinerId}}">
+            <div class="absolute" id="{{group.model.dropItemId}}">
+                <h1 ng-bind="group.model.content"></h1>
+            </div>
+        </div>
+
+    </div>
+</div>

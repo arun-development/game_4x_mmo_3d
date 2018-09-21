@@ -1,0 +1,49 @@
+@import "../../mixins";
+
+.community {
+    margin-top: 5%;
+    @include flex-Jsa();
+}
+
+.community > li {
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.community > li > a {
+    display: block;
+    @include size-full-size();
+}
+
+
+
+.community > li > a > img {
+    width: 600px;
+    height: 350px;
+}
+
+.community > li > a:hover img {
+    -webkit-filter: sepia(70%);
+    filter: sepia(70%);
+}
+
+
+.community > li > a > div {
+    @extend .absoute-TRBL;
+    @include flex-ACsa();
+    @include flex-Jc(false);
+    @include flex-flow-wrap(false);
+}
+
+.community > li > a > div > h2 {
+    @include flex-Je();
+    width: 100%;
+    font-size: 5em;
+    padding-right: 5%;
+}
+
+.community > li > a > div > p {
+    width: 100%;
+    margin: 25px;
+    font-size: 2em;
+}

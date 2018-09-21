@@ -1,0 +1,36 @@
+﻿@import "suples";
+#nav-menu-left-mid {
+    /*display: inline-block;*/
+    top: 185px;
+    position: absolute;
+    left: 1%;
+
+    @include flex-column();
+
+    md-icon {
+        width: 60px;
+        padding: 5px;
+        height: auto;
+        @include transition-transform($animation-short);
+
+        &:hover {
+            transform: scale(1.2);
+            @include filter(saturate,2);
+        }
+        &:focus{border:none;outline:none}
+    }
+
+    & .parralax-button {
+        margin-bottom: 25px;
+        width: 50px;
+        height: 50px;
+
+        & a {
+            display: block;
+            position: relative;
+            /*@extend .min-full-size;*/
+            z-index: 10;
+        }
+    }
+    //  @include parralax-button-size()
+}

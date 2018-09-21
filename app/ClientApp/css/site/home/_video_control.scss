@@ -1,0 +1,151 @@
+@import "../../mixins";
+
+.video-control-inner {
+    //position: absolute;
+    //top: 0;
+    //right: 0;
+    //bottom: 0;
+    //left: 0;
+    min-width: 300px;
+    min-height: 200px;
+    $video: ".video";
+    $v-contols: #{$video}-controls;
+    $v-menu: #{$v-contols}-menu;
+    $volume: ".volume";
+
+    & #{$video}-iframe {
+        width: 100%;
+        height: 100%;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+
+
+    & #{$v-contols} {
+        position: absolute;
+        @include size-TRBL();
+
+        &:hover #{$v-menu} {
+            opacity: 1;
+            @extend %opacity-animation;
+        }
+    }
+
+    & #{$v-menu} {
+        $margin: 10px;
+        position: absolute;
+        right: $margin;
+        bottom: 0;
+        left: $margin;
+        height: 46px;
+        opacity: 0;
+        @extend %opacity-animation;
+    }
+
+    & .time-line {
+        position: relative;
+        height: 5px;
+        margin-bottom: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        @extend %control-active;
+    }
+
+    & .time-line-buffer {
+        position: absolute;
+        width: 0;
+        height: 100%;
+        background: #ccc;
+    }
+
+    & .time-line-progress {
+        position: absolute;
+        width: 0;
+        height: 100%;
+        background: #f00;
+    }
+
+    $button-size: 32px;
+
+    & .menu-bar {
+        position: relative;
+        height: $button-size;
+        @include clearfix();
+        & .button {
+            width: $button-size;
+            height: $button-size;
+            border: none;
+            outline: none;
+            background: none;
+            color: #fff;
+            @extend %control-active;
+
+            &.button-play {
+                float: left;
+            }
+
+            &.button-full-screen {
+                float: right;
+            }
+        }
+    }
+
+    & #{$volume} {
+        float: left;
+        padding-left: $button-size;
+        @include clearfix();
+    }
+
+    & #{$volume}-min-icon,
+    & #{$volume}-max-icon {
+        display: inline-block;
+        line-height: $button-size;
+        color: #fff;
+    }
+
+    & #{$volume}-max-icon {
+        padding-left: 5px;
+    }
+
+    & #{$volume}-control {
+        position: relative;
+        top: -7px;
+        display: inline-block;
+        width: 100px;
+        height: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: #ccc;
+        @extend %control-active;
+
+        &#{$volume}-control-level {
+            width: 0;
+            height: 100%;
+            background: #f00;
+        }
+    }
+
+    & #{$v-contols}-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 68px;
+        height: 48px;
+        margin: -24px 0 0 -34px;
+        @extend %control-active;
+
+        svg {
+            border: none;
+        }
+    }
+}
+
+%control-active {
+    cursor: pointer;
+}
+
+%opacity-animation {
+    @include transition(opacity 1s ease-out);
+}

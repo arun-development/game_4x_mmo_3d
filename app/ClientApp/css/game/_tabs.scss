@@ -1,0 +1,29 @@
+﻿/*standart tabs=============================================================================================*/
+@import "suples";
+
+.tab_content {
+    @include planshet-content();
+    width: calc(50% - 35px);
+}
+
+.tab_content_item {
+    width: 100%;
+    display: block;
+}
+
+.content_wraper {
+    top: 0;
+    z-index: 1;
+    position: relative;
+ @include size-full-size();
+}
+
+.content_scroller {
+    height: 100%;
+    overflow-y: scroll;
+    width: calc((100% + 8.5px) * 2);
+}
+.planshet-no-tabs{
+padding:5px 11px 5px 7px;
+}
+

@@ -1,0 +1,183 @@
+﻿@import "bootstrap-core";
+@import "_main-colors";
+$fs-12: 12px;
+$fs-14: 14px;
+$fs-18: 18px;
+$fs-20: 20px;
+$fs-24: 24px;
+$fs-30: 30px;
+$fs-36: 36px;
+$ff-play: "Play";
+$text-shadow-font-color: rgba(255, 255, 224, 0.85);
+$text-shadow-text-name-default: -1px 1px 8px $black, 1px -1px 8px $black, -1px -1px 8px $black, 1px 1px 8px $black, 0 0 1px rgba(0, 0, 100, 1) !global;
+
+@mixin getFont($color: false,$fontSize: false, $isbold: false, $font-family: false) {
+    color: $blue;
+    background-size: $fs-30;
+
+    @if($color) {
+        color: $color;
+    }
+
+    @if($fontSize) {
+        background-size: $fontSize;
+    }
+
+    @if($isbold) {
+        font-weight: bold;
+    }
+
+    @if($font-family != false) {
+        font-family: $font-family;
+    }
+}
+
+
+@mixin create-fonts($base-prefix: f_size_, $unit: px, $outSizes: false) {
+
+    $sizes: 12,14,18,20,24,30,36;
+
+    @if($outSizes != false) {
+        $sizes: $outSizes;
+    }
+
+    @each $i in $sizes {
+        .#{$base-prefix +$i+$unit} {
+            font-size: $i+$unit;
+        }
+    }
+}
+
+@mixin create-font-colors($color-prefix: "color_",$color-keys: false,$colorValues: false) {
+    $postfixes: white,blue,dark_blue,yellow,green,black,creme_haki;
+    $color-values: $white,$blue,$dark-blue,$yellow,$green,$black,$creme-haki-color;
+
+    @if($color-keys != false) {
+        $postfixes: $color-keys;
+    }
+
+    @if ($colorValues != false) {
+        $color-values: $colorValues;
+    }
+
+    $cvlength: length($colorValues);
+    $plength: length($postfixes);
+
+    @if($cvlength == $plength or $plength>=$cvlength) {
+        @each $i in $postfixes {
+            .#{$color-prefix+$i} {
+                color: nth($color-values,index($postfixes, $i));
+                @content;
+            }
+        }
+    }
+}
+
+@mixin apply-standart-text($selector) {
+    #{$selector} {
+        $font-family-base: $ff-play;
+        @include reset-text();
+
+        & > * {
+            @include reset-text();
+        }
+
+        & h1 {
+            @extend .f_size_36px;
+        }
+
+        & h2 {
+            @extend .f_size_30px;
+        }
+
+        & h3 {
+            @extend .f_size_24px;
+        }
+
+        & h4 {
+            @extend .f_size_20px;
+        }
+
+        & h5 {
+            @extend .f_size_18px;
+        }
+
+        & h6 {
+            @extend .f_size_14px;
+        }
+
+
+        & ol {
+            display: block;
+            list-style-type: decimal;
+        }
+
+        ul {
+            display: block;
+            list-style-type: disc;
+        }
+
+        li {
+            display: list-item;
+        }
+
+        ul, li {
+            padding: 10px 15px;
+        }
+
+        @content;
+    }
+}
+
+@mixin unique-name($f-size: 1.2em, $color: rgba($unique-name-color,1), $margin: 5px, $f-style: italic) {
+    font-size: $f-size;
+    color: $color;
+    margin: $margin;
+    font-style: $f-style;
+    @content;
+}
+
+@mixin unique-name-standart() {
+    color: $unique-name-color;
+    text-shadow: $text-shadow-text-name-default;
+}
+
+
+@function create-text-shadow-color3($x,$y,$blur,$color1,$color2,$color3) {
+    $result: 0 0 $blur $color1, 0 -$y 1px $color2, 0 $y 1px $color2, -$x 0 1px $color2, $x 0 1px $color2, -$x -$y 1px $color2, $x -$y 1px $color2, -$x $y 1px $color2, $x $y 1px $color2, 0 0 1px $color3;
+    @return $result;
+}
+
+@mixin text-shadow-color3($x: 1px,$y: 1px,$main-blur: false,$font-color: false, $color1: false,$color2: false,$color3: false) {
+    @if($x== false) {
+        $x: 1px;
+    }
+
+    @if($y== false) {
+        $y: 1px;
+    }
+
+    @if($main-blur== false) {
+        $main-blur: 1px;
+    }
+
+    @if($font-color== false) {
+        $font-color: $text-shadow-font-color;
+    }
+
+    @if($color1== false) {
+        $color1: $blue;
+    }
+
+    @if($color2== false) {
+        $color2: $dark-blu-shadow;
+    }
+
+    @if($color3== false) {
+        $color3: $red;
+    }
+
+    color: $font-color;
+    text-shadow: #{create-text-shadow-color3($x,$y,$main-blur,$color1,$color2,$color3)};
+    @content;
+}

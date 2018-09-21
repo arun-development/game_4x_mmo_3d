@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileBuilder", "FileBuilder\FileBuilder.csproj", "{D3106FE9-B65F-47ED-88CB-B9950A6D4C62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "app", "app\app.csproj", "{329C579A-8D09-4F50-835D-7C9EB21EC0BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA2AB719-C8CB-41A1-B6D1-0660895DFF1B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+		Полезные ссылки и команды.json = Полезные ссылки и команды.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{B584C8F6-AC6C-42CE-B2A4-D4B80182A9E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAny", "TestAny\TestAny.csproj", "{BD5C47D0-B454-4CE1-A8C3-CF32678AF63B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{69A8544E-0B5F-481A-A916-AAAEF6A82224}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDbNoDepenceApp", "TestDbNoDepenceApp\TestDbNoDepenceApp.csproj", "{686EBEB5-6758-44CC-A8C4-F292C8BCA9FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushJob", "PushJob\PushJob.csproj", "{0E6D596F-CBFE-426C-B019-1C6EA41CEDA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "game_screenshots", "game_screenshots", "{F2ADD4A6-C353-4208-9081-3343481B9532}"
+	ProjectSection(SolutionItems) = preProject
+		game_screenshots\base_1.png = game_screenshots\base_1.png
+		game_screenshots\base_2.png = game_screenshots\base_2.png
+		game_screenshots\galaxy.png = game_screenshots\galaxy.png
+		game_screenshots\mother_1.png = game_screenshots\mother_1.png
+		game_screenshots\mother_2.png = game_screenshots\mother_2.png
+		game_screenshots\saturn_ring.png = game_screenshots\saturn_ring.png
+		game_screenshots\start_2.png = game_screenshots\start_2.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3106FE9-B65F-47ED-88CB-B9950A6D4C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3106FE9-B65F-47ED-88CB-B9950A6D4C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3106FE9-B65F-47ED-88CB-B9950A6D4C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3106FE9-B65F-47ED-88CB-B9950A6D4C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329C579A-8D09-4F50-835D-7C9EB21EC0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329C579A-8D09-4F50-835D-7C9EB21EC0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329C579A-8D09-4F50-835D-7C9EB21EC0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329C579A-8D09-4F50-835D-7C9EB21EC0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B584C8F6-AC6C-42CE-B2A4-D4B80182A9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B584C8F6-AC6C-42CE-B2A4-D4B80182A9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B584C8F6-AC6C-42CE-B2A4-D4B80182A9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B584C8F6-AC6C-42CE-B2A4-D4B80182A9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5C47D0-B454-4CE1-A8C3-CF32678AF63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD5C47D0-B454-4CE1-A8C3-CF32678AF63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD5C47D0-B454-4CE1-A8C3-CF32678AF63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD5C47D0-B454-4CE1-A8C3-CF32678AF63B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A8544E-0B5F-481A-A916-AAAEF6A82224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A8544E-0B5F-481A-A916-AAAEF6A82224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A8544E-0B5F-481A-A916-AAAEF6A82224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A8544E-0B5F-481A-A916-AAAEF6A82224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{686EBEB5-6758-44CC-A8C4-F292C8BCA9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686EBEB5-6758-44CC-A8C4-F292C8BCA9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686EBEB5-6758-44CC-A8C4-F292C8BCA9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686EBEB5-6758-44CC-A8C4-F292C8BCA9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6D596F-CBFE-426C-B019-1C6EA41CEDA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6D596F-CBFE-426C-B019-1C6EA41CEDA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6D596F-CBFE-426C-B019-1C6EA41CEDA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6D596F-CBFE-426C-B019-1C6EA41CEDA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2ADD4A6-C353-4208-9081-3343481B9532} = {CA2AB719-C8CB-41A1-B6D1-0660895DFF1B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {131745EA-68B5-4FD4-942C-1B8CDDEF99E9}
+	EndGlobalSection
+EndGlobal

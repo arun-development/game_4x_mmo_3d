@@ -1,0 +1,11 @@
+﻿@import "alliance-member-mixin";
+@import "alliance-create-form-mixin";
+@import "alliance-tech";
+@include alliance-members();
+@include alliance-create-form-mixin();
+@include alliance-tech();
+
+.alliance-change-label {
+    @extend .profile-change-avatar;
+}
+.alliance-role-description{};

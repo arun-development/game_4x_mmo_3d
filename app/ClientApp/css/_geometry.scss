@@ -1,0 +1,31 @@
+﻿@import "sizes-mixin";
+
+.w_100pr {
+    @include size-width-100();
+}
+
+.w_80pr {
+ width:80%;
+}
+
+.w_50pr {
+    @include size-width-50();
+}
+
+.w_20pr {
+    @include size-width-20();
+}
+
+.h_100pr {
+    @include size-height-100();
+}
+
+.h_50pr {
+    @include size-height-50();
+}
+.full-size{
+    @include size-full-size();
+}
+
+@include margin-part-mixin();
+

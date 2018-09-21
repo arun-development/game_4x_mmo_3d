@@ -1,0 +1,185 @@
+﻿<script type="text/ng-template" id="channel-root.tmpl">
+    <planshet-body-tabs tabs="planshetModel" ng-controller="userChannelsCtrl as uchCtrl"></planshet-body-tabs>
+</script>
+<script type="text/ng-template" id="channel-control-menu.tmpl">
+    <div class="channel-control-menu slim" layout="row">
+        <div ng-repeat="button in channelControls.buttons" class="channel-control-menu-button " ng-class="{{button.align}}">
+            @*btn-group-sb*@
+            <paralax-button button="button"></paralax-button>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="channel-tab-private.tmpl">
+    <div ng-attr-id="{{body.BodyId}}" scroller ng-controller="userChannelsPrivateCtrl as privateCtrl">
+        <channel-control-menu channel-controls="privateCtrl.channelControls"></channel-control-menu>
+        <channel-item ng-if="channel" channel="channel" current-user-info="currentUserInfo" ng-repeat="channel in privateCtrl.Collection"></channel-item>
+    </div>
+</script>
+
+<script type="text/ng-template" id="channel-tab-group.tmpl">
+    <div ng-attr-id="{{body.BodyId}}" scroller ng-controller="userChannelsGroupCtrl as groupCtrl">
+        <channel-control-menu channel-controls="groupCtrl.channelControls"></channel-control-menu>
+        <channel-item ng-if="channel" channel="channel" current-user-info="currentUserInfo" ng-repeat="channel in groupCtrl.Collection"></channel-item>
+    </div>
+</script>
+
+<script type="text/ng-template" id="channel-tab-alliance.tmpl">
+    <div ng-attr-id="{{body.BodyId}}" scroller ng-controller="userChannelsAllianceCtrl as allianceCtrl">
+        <channel-item ng-if="allianceCtrl.channel" current-user-info="currentUserInfo" channel="allianceCtrl.channel"></channel-item>
+    </div>
+</script>
+
+
+
+<script type="text/ng-template" id="channel-item.tmpl">
+    <div class="dropable channel"
+         drop-element
+         data-is-group="true"
+         skip-parent="1"
+         data-drop-element-freeze="{{channel.dropElementFreeze}}">
+        <div>
+            <complex-button complex-button="channel.ComplexButtonView"></complex-button>
+        </div>
+
+        <div class="drop-container" ng-class="channel.dropElementFreeze?'active':''">
+            <div ng-if="channelCtrl.btnIds.MessagesId" class="drop-item" ng-class="channel.dropElementFreeze?'active relative-important':''" data-target="{{channelCtrl.btnIds.MessagesId}}">
+                <div class="message-wraper">
+                    <div infinite-scroll-listen-for-event="{{channelCtrl.scrollEventName}}"
+                         infinite-scroll-parent="true"
+                         infinite-scroll="channelCtrl.loadNextPage($event)"
+                         infinite-scroll-distance="0.5">
+                        <channel-message-item message="message" ng-repeat="message in channelCtrl.messages track by message.Id"></channel-message-item>
+                    </div>
+                </div>
+                <channel-message-form ng-if="channel.MessageSend" btn-send-message="channel.BtnSendMessage"></channel-message-form>
+            </div>
+
+            <div ng-if="channelCtrl.btnIds.SettingId" class="drop-item" data-target="{{channelCtrl.btnIds.SettingId}}">
+                <channel-group-setting ng-if="channel.CanManage && channel.ChannelType==channelCtrl.channelTypes.Group" channel="channel"></channel-group-setting>
+            </div>
+            <div ng-if="channelCtrl.btnIds.DeleteId" class="drop-item" data-target="{{channelCtrl.btnIds.DeleteId}}"></div>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="channel-group-setting.tmpl">
+    <div layout="column" class="channel-user-setting"> 
+        <div layout="row">
+            <div class="channel-user-setting-wraper" ng-if="settingCtrl.hasUsers">
+                <div class="channel-user-setting-container"
+                     layout="column"
+                     infinite-scroll-parent="true"
+                     infinite-scroll="settingCtrl.loadNextPage()"
+                     infinite-scroll-distance="0.5">
+                    <div class="channel-user-setting-item" flex="95" layout="row" ng-repeat="user in settingCtrl.users track by user.Id" layout-align="space-around center">
+                        <div layout="row"
+                             class="cell unique-name"
+                             layout-align="start center"
+                             flex="30">
+                            <span flex-offset="10" ng-bind="user.UserName" class=""></span>
+                        </div>
+                        <div layout="row"
+                             class="cell"
+                             layout-align="center center"
+                             flex="15"
+                             ng-class="user.MessageRead?'':'inactive'">
+                            <i class="fa fa-3x" ng-class="user.MessageRead?settingCtrl.css.read:settingCtrl.css.notRead"></i>
+                        </div>
+                        <div layout="row"
+                             class="cell"
+                             layout-align="center center"
+                             flex="15"
+                             ng-class="user.MessageSend?'':'inactive'">
+                            <i class="fa fa-3x" ng-class="settingCtrl.css.write"></i>
+                        </div>
+                        <div layout="row"
+                             class="cell"
+                             layout-align="center center"
+                             flex="15"
+                             ng-class="user.HasCorrectPassword?'':'inactive'">
+                            <i class="fa fa-3x" ng-class="settingCtrl.css.password"></i>
+                        </div>
+                        <div md-ink-ripple="#b76e10"
+                             layout="row"
+                             class="cell"
+                             layout-align="center center"
+                             flex="15"
+                             ng-click="settingCtrl.updateUser(user,$index,$event)">
+                            <i class="fa fa-3x fa-refresh" aria-hidden="false"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!settingCtrl.hasUsers">
+                В вашем канале нет  подключенных пользователей кроме вас
+            </div>
+
+        </div>
+        <div layout="row" class="btn-group-sa slim">
+            <paralax-button button="settingCtrl.Buttons.deleteChannel"></paralax-button>
+            <paralax-button button="settingCtrl.Buttons.updateIcon"></paralax-button>
+            <paralax-button button="settingCtrl.Buttons.updatePassword"></paralax-button>
+        </div>
+    </div>
+</script>
+
+ 
+
+
+
+<script type="text/ng-template" id="channel-message-form.tmpl">
+    <div class="message-sender">
+        <div class="message-sender-text">
+            <md-input-container class="w_100pr" md-no-float>
+                <label>Create message</label>
+                <textarea ng-model="mFormCtrl.mesageModel.text"
+                          ng-change="mFormCtrl.onChange(mFormCtrl.mesageModel)"
+                          required
+                          md-maxlength="{{mFormCtrl.mesageModel.maxLength}}"></textarea>
+                <div class="btn-group-sa">
+                    <paralax-button button="btnSendMessage"></paralax-button>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="channel-message-item.tmpl">
+    <div class="message">
+        <div class="message-content">
+            <div class="message-content-info">
+                <div ng-if="message.$isCurrentUser" class="message-content-info-creator unique-name">
+                    <span ng-bind="message.UserName"></span>
+                </div>
+                <div ng-if="!message.$isCurrentUser" class="message-content-info-creator unique-name link-to-target active" ng-click="chmiCtrl.getUserInfo()">
+                    <span ng-bind="message.UserName"></span>
+                </div>
+                <div class="message-content-info-date">
+                    <span ng-bind="message.$dateCreate"></span>
+                </div>
+            </div>
+            <img ng-src="{{message.UserIcon}}"
+                 class="message-avatar"
+                 ng-class="message.$avatarCss"
+                 alt="Avatar"
+                 title="{{message.UserName}}">
+            <div class="message-content-text" ng-bind="chmiCtrl.messageText"></div>
+            <div layout="row" class="relative message-setting">
+                <div class="message-setting-content" ng-class="chmiCtrl.setting.show?'show':'close'">
+                    <translate-autocomplete ng-if="chmiCtrl.setting.show"
+                                            native-text="message.Message"
+                                            set-text="chmiCtrl.setTranslate"
+                                            label="Translate To:">
+                    </translate-autocomplete>
+                </div>
+                <md-button aria-label="' '" class="message-setting-control" ng-click="chmiCtrl.setting.toggle(chmiCtrl.setting.show)">
+                    <i class="fa" ng-class="chmiCtrl.setting.btnCss"></i>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</script>
+
+ 

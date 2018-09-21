@@ -1,0 +1,381 @@
+﻿[
+  // libs
+  {
+    "outputFileName": "wwwroot/lib/modernizr.js",
+    "inputFiles": [
+      "wwwroot/lib/modernizr/modernizr.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/svg-assets-cache.js",
+    "inputFiles": [
+      "ClientApp/js/angular/svg-assets-cache.js"
+    ]
+  },
+  //ng-file-upload
+  {
+    "outputFileName": "wwwroot/lib/ng-file-upload.js",
+    "inputFiles": [
+      "node_modules/ng-file-upload/dist/ng-file-upload-all.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/ng-file-upload.min.js",
+    "inputFiles": [
+      "node_modules/ng-file-upload/dist/ng-file-upload-all.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  //medium-editor
+  {
+    "outputFileName": "wwwroot/lib/medium-editor.js",
+    "inputFiles": [
+      "node_modules/medium-editor/dist/js/medium-editor.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/medium-editor.min.js",
+    "inputFiles": [
+      "node_modules/medium-editor/dist/js/medium-editor.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/medium-editor.css",
+    "inputFiles": [
+      "node_modules/medium-editor/dist/css/medium-editor.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/medium-editor.min.css",
+    "inputFiles": [
+      "node_modules/medium-editor/dist/css/medium-editor.min.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+
+  //selet2
+  {
+    "outputFileName": "wwwroot/lib/select2.js",
+    "inputFiles": [
+      "node_modules/select2/dist/js/select2.full.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/select2.min.js",
+    "inputFiles": [
+      "node_modules/select2/dist/js/select2.full.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/select2.css",
+    "inputFiles": [
+      "node_modules/select2/dist/css/select2.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/lib/select2.min.css",
+    "inputFiles": [
+      "node_modules/select2/dist/css/select2.min.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+
+  //code
+  {
+    "outputFileName": "wwwroot/lib/signalr.js",
+    "inputFiles": [
+      "node_modules/@aspnet/signalr/dist/browser/signalr.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/test-signal-app.js",
+    "inputFiles": [
+      "../Server/EndPoints/Hubs/client-dist/mytesthub.js",
+      "ClientApp/js/test-signal-app/test-signal-app.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "ClientApp/js/utils/dist/full.js",
+    "inputFiles": [
+      "ClientApp/js/utils/util._00_Core.js",
+      "ClientApp/js/utils/util._00_RepoKeys.js",
+      "ClientApp/js/utils/util._01_Required.js",
+      "ClientApp/js/utils/util._01_Required.Time.js",
+      "ClientApp/js/utils/util._01_Required.Timer.js",
+      "ClientApp/js/utils/util._02_Response.js",
+      "ClientApp/js/utils/util._02_Yandex.js",
+      "ClientApp/js/utils/util._03_ModelFactory.js",
+      "ClientApp/js/utils/util._03_SiteModelFactory.js",
+      "ClientApp/js/utils/util._04_AngularHelpers.js",
+      "ClientApp/js/utils/util._04_BabylonHelpers.js",
+      "ClientApp/js/utils/util._05_cdnManager.js",
+      "ClientApp/js/utils/util._XX_DatGuid.js",
+      "ClientApp/js/utils/util._XX_Test.js"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/lib/babylon.custom.js",
+    "inputFiles": [
+      "ClientApp/js/babylon-custom/babylon.custom.js",
+      "ClientApp/js/babylon-custom/dat.GUID.js",
+      "ClientApp/js/babylon-custom/babilon-fixes.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/babylon.inspector.bundle.js",
+    "inputFiles": [
+      "ClientApp/js/babylon-custom/babylon.inspector.bundle.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/game.js",
+    "inputFiles": [
+      "../Server/EndPoints/Hubs/client-dist/maingamehub.js",
+      "ClientApp/js/game/estate/EstateInit.js",
+      "ClientApp/js/game/SpriteManager.js",
+      "ClientApp/js/game/Audio.js",
+      "ClientApp/js/game/Particle.js",
+      "ClientApp/js/game/AssetRepository.js",
+      "ClientApp/js/game/VideoTextures.js",
+      "ClientApp/js/game/gameCamera.js",
+      "ClientApp/js/game/map/MapData.js",
+      "ClientApp/js/game/map/MapGeometry.js",
+      "ClientApp/js/game/map/MapBuilder.js",
+      "ClientApp/js/game/map/MapAnimation.js",
+      "ClientApp/js/game/map/events/SpacePosition.js",
+      "ClientApp/js/game/map/events/MapEvent.js",
+      "ClientApp/js/game/estate/EstateGeometry.js",
+      "ClientApp/js/game/estate/EstateEvents.js",
+      "ClientApp/js/game/estate/EstateData.js",
+      "ClientApp/js/game/Loader.js"
+
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/common.js",
+    "inputFiles": [
+      "ClientApp/js/errors/Errors.js",
+      "ClientApp/js/cookie/ClientLocalize.js",
+      "ClientApp/js/utils/dist/full.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.js",
+    "inputFiles": [
+      "ClientApp/js/home/footer.js",
+      "ClientApp/js/home/youtube_control.js",
+      "ClientApp/js/home/scroller.js",
+      "ClientApp/js/home/resizer.js",
+      "ClientApp/js/home/carusel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/game-angular.js",
+    "inputFiles": [
+      "ClientApp/js/angular/AppCommon/angularAppCommon.js",
+      "ClientApp/js/angular/MediumEditor/medium-editor.js",
+      "ClientApp/js/angular/game/gameAppExtensions.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubAllianceExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubBookmarkExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubBuildExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubConfederationExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubEstateExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubJournalExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubUserChannelsExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubPersonalInfoExtension.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubWorldExtension.js",
+      "ClientApp/js/angular/game/Service/UserChannels/UserChannelsServiceAllianceExtension.js",
+      "ClientApp/js/angular/game/Service/UserChannels/UserChannelsServiceGroupExtension.js",
+      "ClientApp/js/angular/game/Service/UserChannels/UserChannelsServicePrivateExtension.js",
+      "ClientApp/js/angular/game/Service/Confederation/ConfederationServiceOfficersExtension.js",
+      "ClientApp/js/angular/game/Service/Confederation/ConfederationServiceRatingExtension.js",
+      "ClientApp/js/angular/game/Service/Confederation/ConfederationServiceElectionExtension.js",
+      "ClientApp/js/angular/game/gameApp.js",
+      "ClientApp/js/angular/game/Controller/UserChannelsCtrl.js",
+      "ClientApp/js/angular/game/Controller/AchievementCtrl.js",
+      "ClientApp/js/angular/game/Controller/AllianceCtrl.js",
+      "ClientApp/js/angular/game/Controller/AutocompleteCtrls.js",
+      "ClientApp/js/angular/game/Controller/BookmarkCtrl.js",
+      "ClientApp/js/angular/game/Controller/BuildCtrl.js",
+      "ClientApp/js/angular/game/Controller/ConfederationCtrl.js",
+      "ClientApp/js/angular/game/Controller/gameCtrl.js",
+      "ClientApp/js/angular/game/Controller/JournalCtrl.js",
+      "ClientApp/js/angular/game/Controller/MapInfoCtrl.js",
+      "ClientApp/js/angular/game/Controller/ProfileCtrl.js",
+      "ClientApp/js/angular/game/Controller/TechTreeDialogCtrl.js",
+      "ClientApp/js/angular/game/Controller/UnitDetailDialogCtrl.js",
+      "ClientApp/js/angular/game/Controller/UploadImageCtrl.js",
+      "ClientApp/js/angular/game/Helper/BaseDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/BookmarkDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/ConfederationDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/AllianceDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/JournalDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/JournalMotherJumpDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/UserChannelsDialogHelper.js",
+      "ClientApp/js/angular/game/Helper/PlanshetHelper.js",
+      "ClientApp/js/angular/game/Helper/JournalHelper.js",
+      "ClientApp/js/angular/game/Helper/MainHelper.js",
+      "ClientApp/js/angular/game/Helper/MapControlHelper.js",
+      "ClientApp/js/angular/game/Helper/MapInfoHelper.js",
+      "ClientApp/js/angular/game/Helper/NpcHelper.js",
+      "ClientApp/js/angular/game/Helper/ParalaxButtonHelper.js",
+      "ClientApp/js/angular/game/Helper/ScrollerHelper.js",
+      "ClientApp/js/angular/game/Helper/StatisticHelper.js",
+      "ClientApp/js/angular/game/Helper/TimerHelper.js",
+      "ClientApp/js/angular/game/Helper/ControlDiskHelper.js",
+      "ClientApp/js/angular/game/Helper/ControlPanelSwicherHelper.js",
+      "ClientApp/js/angular/game/Helper/DropableElementHelper.js",
+      "ClientApp/js/angular/game/Helper/UploadHelper.js",
+      "ClientApp/js/angular/game/Hub/HubFactory.js",
+      "ClientApp/js/angular/game/Hub/MaingameHubService.js",
+      "ClientApp/js/angular/game/Service/TranslateService.js",
+      "ClientApp/js/angular/game/Service/HangarService.js",
+      "ClientApp/js/angular/game/Service/JournalService.js",
+      "ClientApp/js/angular/game/Service/PlanshetService.js",
+      "ClientApp/js/angular/game/Service/ProfileService.js",
+      "ClientApp/js/angular/game/Service/TabService.js",
+      "ClientApp/js/angular/game/Service/AllianceService.js",
+      "ClientApp/js/angular/game/Service/BookmarkService.js",
+      "ClientApp/js/angular/game/Service/MapInfoService.js",
+      "ClientApp/js/angular/game/Service/Confederation/ConfederationCoreService.js",
+      "ClientApp/js/angular/game/Service/EstateService.js",
+      "ClientApp/js/angular/game/Service/gameChestService.js",
+      "ClientApp/js/angular/game/Service/ResourceService.js",
+      "ClientApp/js/angular/game/Service/BuildService/BuildReqHelper.js",
+      "ClientApp/js/angular/game/Service/BuildService/BuildService.js",
+      "ClientApp/js/angular/game/Service/BuildService/CommandCenterService.js",
+      "ClientApp/js/angular/game/Service/BuildService/IndustrialComplexService.js",
+      "ClientApp/js/angular/game/Service/BuildService/LaboratoryService.js",
+      "ClientApp/js/angular/game/Service/BuildService/SpaceShipyardService.js",
+      "ClientApp/js/angular/game/Service/UserChannels/UserChannelsCoreService.js",
+      "ClientApp/js/angular/game/Service/UserNameSercherService.js",
+      "ClientApp/js/angular/game/Directive/Helper/TimerProgressDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/ParalaxButtonDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/ComplexButtonDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/EstateListDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/EstateResourceDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/BorderAnimationItemDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/UserAvatarDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/TranslateAutocompleteDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/ScrollerDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/StatisticDirective.js",
+      "ClientApp/js/angular/game/Directive/Helper/DropeElementDirective.js",
+      "ClientApp/js/angular/game/Directive/Alliance/AllianceRatingCentrDirective.js",
+      "ClientApp/js/angular/game/Directive/Alliance/AllianceItemDirective.js",
+      "ClientApp/js/angular/game/Directive/Alliance/AllianceItemSearchDirective.js",
+      "ClientApp/js/angular/game/Directive/Alliance/AllianceRequestMessageDirective.js",
+      "ClientApp/js/angular/game/Directive/Alliance/AllianceChangeLabelDirective.js",
+      "ClientApp/js/angular/game/Directive/ControlPanel/ControlPanelDirective.js",
+      "ClientApp/js/angular/game/Directive/BuildDirective/BuildProgressDirective.js",
+      "ClientApp/js/angular/game/Directive/BuildDirective/PlanshetUnitItem.js",
+      "ClientApp/js/angular/game/Directive/BuildDirective/ResourceItemDirective.js",
+      "ClientApp/js/angular/game/Directive/BuildDirective/ResourceTransferListDirective.js",
+      "ClientApp/js/angular/game/Directive/BuildDirective/BiuldSliderDirective.js",
+      "ClientApp/js/angular/game/Directive/Confederation/FolatVoteDirective.js",
+      "ClientApp/js/angular/game/Directive/Confederation/UserElectionItemDirective.js",
+      "ClientApp/js/angular/game/Directive/Confederation/UserRatingItemDirective.js",
+      "ClientApp/js/angular/game/Directive/Journal/TaskUnitDirective.js",
+      "ClientApp/js/angular/game/Directive/Journal/ReportUnitDirective.js",
+      "ClientApp/js/angular/game/Directive/Journal/ReportInfoDirective.js",
+      "ClientApp/js/angular/game/Directive/LeftNav/LeftNavDirective.js",
+      "ClientApp/js/angular/game/Directive/Map/MapControlNavigatorDirective.js",
+      "ClientApp/js/angular/game/Directive/Map/MapInfoDirective.js",
+      "ClientApp/js/angular/game/Directive/UserChannels/UserChannelsDirectives.js",
+      "ClientApp/js/angular/game/Directive/Planshet/PlanshetDirective.js",
+      "ClientApp/js/angular/game/Directive/Planshet/PlanshetBodyTabsDirective.js",
+      "ClientApp/js/angular/game/Directive/Profile/ProfileSectionDirective.js",
+      "ClientApp/js/angular/game/Directive/Profile/ProfileChangeAvatarDirective.js",
+      "ClientApp/js/angular/game/Directive/Validators/VerifyToDirective.js",
+      "ClientApp/js/angular/game/Directive/Validators/IsAvailableNameHubDirective.js",
+      "ClientApp/js/angular/game/Directive/SkagryDirective.js",
+      "ClientApp/js/angular/game/Directive/UserCounterDirective.js",
+      "ClientApp/js/angular/game/Filter/AllianceFilter.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site-angular.js",
+    "inputFiles": [
+      "ClientApp/js/Angular/AppCommon/angularAppCommon.js",
+      "ClientApp/js/Angular/appSite.js",
+      "ClientApp/js/Angular/Store/store.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin-angular-core.js",
+    "inputFiles": [
+      "ClientApp/js/Angular/AppCommon/angularAppCommon.js",
+      "ClientApp/js/Angular/Admin/adminApp.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin-angular-store.js",
+    "inputFiles": [
+      "ClientApp/js/Angular/Admin/store.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin-angular-space.js",
+    "inputFiles": [
+      "ClientApp/js/Angular/Admin/space.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin-angular-initialize.js",
+    "inputFiles": [
+      "ClientApp/js/Angular/Admin/initialize.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/third-party.js",
+    "inputFiles": [
+      "ClientApp/js/thirdParty/*"
+    ]
+  }
+]

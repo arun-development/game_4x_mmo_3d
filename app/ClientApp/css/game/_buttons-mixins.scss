@@ -1,0 +1,54 @@
+﻿@import "suples";
+
+@mixin static-content1() {
+    @extend .min-full-size;
+}
+
+@mixin static-content2() {
+    margin: 0 20px;
+    width: calc(100% - 40px);
+    @include flex-JsbAc();
+    @extend .f_size_24px;
+}
+
+@mixin static-content3() {
+    @extend .f_size_18px;
+    @include flex-JsaAc();
+}
+
+@mixin static-content4() {
+    @extend .f_size_24px;
+    @include flex-JcAc();
+}
+
+@mixin text-label($selector: ".text-label",$f-size: $fs-12,$color: $creme-haki-color,$f-fam: sans-serif) {
+    #{$selector} {
+        font-size: $fs-12;
+        font-family: $f-fam;
+        color: $color;
+        @content;
+    }
+}
+
+
+@mixin parralax-button-size($size-btn,$selector) {
+    .parralax-button {
+        &.#{$selector}:before {
+            left: -$size-btn;
+            top: $size-btn;
+        }
+
+        &.#{$selector} .parralax-button-content {
+            left: $size-btn;
+            top: -$size-btn;
+        }
+
+        &.#{$selector}.active .parralax-button-content,
+        &.#{$selector}.active:before,
+        &.#{$selector}:hover .parralax-button-content,
+        &.#{$selector}:hover:before {
+            left: 0;
+            top: 0;
+        }
+    }
+}

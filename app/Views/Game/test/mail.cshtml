@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}
+
+@using Microsoft.AspNet.Identity
+@*<!--Обычные вкладки 3 штуки-->*@
+<div class="standart_tabs">
+    <ul class="tab_ul_cont flex JsbAc">
+        <li class="sprite_atlas">
+            <a href="#personal_mail">Personal</a>
+        </li>
+        <li class="sprite_atlas">
+            <a href="#group_channel">Group</a>
+        </li>
+        <li class="sprite_atlas">
+            <a href="#alliance_channel">Alliance</a>
+        </li>
+    </ul>
+    <div class="content_wraper content_wraper_border">
+        <div class="tabs_content_scroller">
+            <div class="tab_content">
+                @*                <!--personal-->*@
+                <div data-tab="personal_mail">
+                    <div class="tab_content_item">
+                        <div class="form_1">
+
+                            @*                                            <!--left-->*@
+                            <div class="img_small_border_left">
+                                <div class="img_user_img img_container_left"></div>
+                            </div>
+                            @*                                            <!--/left-->*@
+                            @*                                            <!--centre-->*@
+                            <div class="btn_big_centre border-standard bs_blue JsbAc f_size_18px"
+                                 title="if{status=new_message} bs_blue  заменить на bs_yellow">
+                                <div class="JsbAs">
+                                    <p>user_name</p>
+
+                                    <p>alliance_name</p>
+                                </div>
+                                <div class="JcAc"
+                                     title="if{status=new_message} style=visibility: hidden заменить на visible"
+                                     style="visibility: hidden">
+                                    NEW MESSAGE
+                                </div>
+                                <div class="JsbAe">
+                                    <p title="date">12.05.15</p>
+
+                                    <p title="time">00:25:59</p>
+                                </div>
+                            </div>
+                            @*                                            <!--/centre-->*@
+                            @*                                            <!--right-->*@
+                            <div class="img_small_border">
+                                <div class="img_btn_small_red">
+                                    <div class="img_icon_trash"></div>
+                                </div>
+                            </div>
+                            @*                                            <!--right-->*@
+                        </div>
+                        <div class="form_1">
+
+                            @*                                            <!--left-->*@
+                            <div class="img_small_border_left">
+                                <div class="img_user_img img_container_left"></div>
+                            </div>
+                            @*                                            <!--/left-->*@
+                            @*                                            <!--centre-->*@
+                            <div class="btn_big_centre border-standard bs_yellow JsbAc f_size_18px"
+                                 title="if{status=new_message} bs_blue  заменить на bs_yellow">
+                                <div class="JsbAs">
+                                    @*                                                    <p>user_name</p>*@
+                                    <p>@User.Identity.GetUserName()</p>
+
+                                    <p>alliance_name</p>
+                                </div>
+                                <div class="JcAc"
+                                     title="if{status=new_message} style=visibility: hidden заменить на visible"
+                                     style="visibility: visible">
+                                    NEW MESSAGE
+                                </div>
+                                <div class="JsbAe">
+                                    <p title="date">12.05.15</p>
+
+                                    <p title="time">00:25:59</p>
+                                </div>
+                            </div>
+                            @*                                            <!--/centre-->*@
+                            @*                                            <!--right-->*@
+                            <div class="img_small_border">
+                                <div class="img_btn_small_red">
+                                    <div class="img_icon_trash"></div>
+                                </div>
+                            </div>
+                            @*                                            <!--right-->*@
+                        </div>
+                    </div>
+                </div>
+                @*                <!--/personal-->*@
+                @*                <!--Group-->*@
+                <div data-tab="group_channel">
+                    <div class="tab_content_item">
+                        <div class="form_2">
+                            @*                            <!--personal-->*@
+                            @*                            <!--left-->*@
+                            <div class="img_small_border_left">
+                                <div class="img_btn_small_blue_left ">
+                                    <div class="img_icon_setting"></div>
+                                </div>
+                            </div>
+                            @*                            <!--/left-->*@
+                            @*                            <!--centre-->*@
+                            <div class="btn_big_centre border-standard bs_blue JcAc f_size_18px"
+                                 title="if{status=new_message} bs_blue  заменить на bs_yellow">
+                                <div class="JcAc">
+                                    group_channel_name
+                                </div>
+                            </div>
+                            @*                            <!--/centre-->*@
+                            @*                            <!--right-->*@
+                            <div class="img_small_border">
+                                <div class="img_btn_small_red">
+                                    <div class="img_icon_trash"></div>
+                                </div>
+                            </div>
+                            @*                            <!--right-->*@
+                            @*                            <!--/personal-->*@
+                        </div>
+                    </div>
+                </div>
+                @*                <!--/Group-->*@
+                @*                <!--alliance-->*@
+                <div data-tab="alliance_channel">
+                    <div class="tab_content_item">
+                        <div class="form_1">
+                            @*                            <!--personal-->*@
+                            @*                            <!--left-->*@
+                            <div class="img_small_border_left">
+                                <div class="img_alliance-defaultIcon img_container_left"></div>
+                            </div>
+                            @*                            <!--/left-->*@
+                            @*                            <!--centre-->*@
+                            <div class="btn_big_centre border-standard bs_blue JsbAc f_size_18px"
+                                 title="if{status=new_message} bs_blue  заменить на bs_yellow">
+                                <div class="JsbAs">
+                                    <p>user_name</p>
+
+                                    <p>alliance_name</p>
+                                </div>
+                                <div class="JcAc"
+                                     title="if{status=new_message} style=visibility: hidden заменить на visible"
+                                     style="visibility: hidden">
+                                    NEW MESSAGE
+                                </div>
+                                <div class="JsbAe">
+                                    <p title="date">12.05.2015</p>
+
+                                    <p title="time">00:25:59</p>
+                                </div>
+                            </div>
+                            @*                            <!--/centre-->*@
+                            @*                            <!--right-->*@
+                            <div class="img_small_border">
+                                <div class="img_user_img img_container_rihgt"></div>
+                            </div>
+                            @*                            <!--right-->*@
+                            @*                            <!--/personal-->*@
+                        </div>
+                    </div>
+                </div>
+                @*                <!--/alliance-->*@
+            </div>
+            @*            <!--/ tab_content-->*@
+        </div>
+        @*        <!--/tabs_content_scroller-->*@
+    </div>
+    @*    <!--/content_wraper-->*@
+</div>
+@*<!--/Обычные вкладки-->*@
+
+
+@*<script>*@
+@*    //Верхние вкладки*@
+@*    $('.standart_tabs').tabs();*@
+@*    //Подвкладки*@
+@*    //Сборс активности вложенности вкладок при переходе по родительским вкладкам*@
+@*    $('.standart_tabs ul:first-child').click(function() {*@
+@*        $('.sub_tabs').find('li.active').removeClass('active');*@
+@*    });*@
+@*</script>*@

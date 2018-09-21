@@ -1,0 +1,75 @@
+﻿@mixin background-size($parameters) {
+    -webkit-background-size: $parameters;
+    -moz-background-size: $parameters;
+    -o-background-size: $parameters;
+    background-size: $parameters;
+}
+
+@mixin prefix-background-clip($parameters) {
+    -webkit-background-clip: $parameters;
+    -moz-background-clip: $parameters;
+    -ms-background-clip: $parameters;
+    background-clip: $parameters;
+}
+
+@mixin translateX($y) {
+    -webkit-transform: translateX($y);
+    -ms-transform: translateX($y); // IE9 only
+    -o-transform: translateX($y);
+    transform: translateX($y);
+}
+
+@mixin translateY($x ) {
+    -webkit-transform: translateY($x);
+    -ms-transform: translateY($x); // IE9 only
+    -o-transform: translateY($x);
+    transform: translateY($x);
+}
+
+@mixin prefix-filter($parameters) {
+    -webkit-filter: $parameters;
+    -moz-filter: $parameters;
+    -ms-filter: $parameters;
+    filter: $parameters;
+}
+
+@mixin prefix-keyframes( $animationName ) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin prefix-placeholder($transition:null) {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+    /*@if($transition !=null) {
+        @include transition($transition);
+    }*/
+
+
+}

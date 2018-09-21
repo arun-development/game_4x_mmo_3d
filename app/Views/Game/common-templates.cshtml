@@ -1,0 +1,451 @@
+﻿<script type="text/ng-template" id="skagry.tmpl">
+    <div id="skagry-container">
+        <div class="" id="nav-menu-left-mid" left-nav>
+
+
+            <md-icon md-svg-icon="interface-icon-{{b.Params.svgName}}"
+                     ng-mouseover="b.Params.onHovered()"
+                     ng-attr-title="{{b.TranslateName}}"
+                     ng-click="b.Method()"
+                     ng-repeat="b in leftNavButtons"></md-icon>
+        </div>
+        <div class="canvasContainer">
+            <div id="estate">
+                <!--canvasHeare-->
+                <div user-avatar></div>
+                <div estate-resource></div>
+
+                <div control-panel></div>
+            </div>
+        </div>
+        <planshet></planshet>
+        <map-control-navigator></map-control-navigator>
+        <!--MapControlNavigatorDirective-->
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="user-counter.tmpl">
+    <div id="user-couner"
+         ng-class="counter.cssLoading"
+         ng-attr-title="{{counter.count}}">
+        <span>online : </span>
+        <span ng-bind="counter.count"></span>
+    </div>
+</script>
+
+<script type="text/ng-template" id="statistic.tmpl">
+    <div class="statistic-container" flex="100" layout="row" layout-wrap layout-align="space-between start">
+        <div flex=55 layout-wrap layout="row">
+            <div class="statistic-stats" flex="100" ng-repeat="stat in statisticModel.stats" layout="row" layout-align="space-between start" ng-class="stat.advancedCss">
+                <div flex ng-class="stat.advancedCssKey"><span ng-bind="stat.key"></span></div>
+
+                <div ng-if="stat.hasOnclick"
+                     flex
+                     layout-align="end"
+                     ng-class="stat.advancedCssVal "
+                     ng-mouseover="stat.onHover($event)"
+                     ng-click="stat.onClick($event)"><span ng-bind="stat.val"></span></div>
+
+                <div ng-if="!stat.hasOnclick"
+                     flex
+                     layout-align="end"
+                     ng-class="stat.advancedCssVal "><span ng-bind="stat.val"></span></div>
+            </div>
+        </div>
+        <div flex="45" layout="row" layout-align="end start">
+            <div ng-if="statisticModel.image.isBgImage"
+                 class="statistic-bg-picture"
+                 ng-class="statisticModel.image.css"
+                 title="{{statisticModel.image.title}}"
+                 ng-style="statisticModel.image.style"
+                 ng-click="statisticModel.image.hasOnclick?statisticModel.image.onClick($event):''">
+                <div class="statistic-bg-picture"
+                     ng-if="statisticModel.image.hasContent"
+                     ng-include="statisticModel.image.templateUrl"></div>
+            </div>
+            <img ng-if=statisticModel.image.isImg
+                 class="statistic-img-picture"
+                 ng-src="statisticModel.image.url"
+                 alt="{{statisticModel.image.alt}}"
+                 title="{{statisticModel.image.title}}"
+                 ng-class="statisticModel.image.css"
+                 ng-style="statisticModel.image.style"
+                 ng-click="statisticModel.image.hasOnclick?statisticModel.image.onClick($event):''" />
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="planshet.tmpl">
+    <div id="planshet" class="planshet">
+        <i id="planshet-toggle"
+           ng-click="planshetToggle.onclick()"
+           ng-class="(planshetToggle.opened)?'active':''"></i>
+        <div id="insert-container">
+            <!--head-->
+            <article class="border-dark-green f_size_36px relative">
+                <div class="display-none load-indicator">
+                    <i class="fa fa-spinner fa-pulse"></i>
+                    <span class="sr-only">...Loading...</span>
+                </div>
+
+                <span class="decor left bord"></span>
+                <span class="decor right bord"></span>
+
+                <span class="decor top left"></span>
+                <span class="decor top right"></span>
+
+                <span class="decor bot right"></span>
+                <span class="decor bot left"></span>
+
+                <div class="absolute planshet-arrows" flex="30" layout="row" layout-align="space-between center">
+                    <md-icon md-svg-icon="planshet-arrow"
+                             aria-label="planshet-arrow" aria-hidden="false"
+                             class="arrow arrow-prev"
+                             ng-class="pagination.hasPrev()?'':'grayScale'"
+                             ng-click="pagination.hasPrev()?pagination.OnPrev():''"></md-icon>
+                    <md-icon md-svg-icon="planshet-arrow" aria-label="planshet-arrow"
+                             aria-hidden="false"
+                             class="arrow arrow-next"
+                             ng-class="pagination.hasNext()?'':'grayScale'" ng-click="pagination.hasNext()?pagination.OnNext():''"></md-icon>
+                </div>
+                <h2 class="text-center text_window_head" ng-attr-id="{{planshetModel.UniqueId}}" ng-bind="planshetModel.HeadTranslateName"></h2>
+
+            </article>
+            <!--body-->
+            <div class="border-dark-green relative">
+                <span class="decor left top item"></span>
+                <span class="decor right top item"></span>
+
+                <span class="decor left bot item"></span>
+                <span class="decor right bot item"></span>
+
+                <span class="decor top left"></span>
+                <span class="decor top right"></span>
+
+                <span class="decor bot right"></span>
+                <span class="decor bot left"></span>
+                <div id="planshet-body" class="planshet-body">
+                    <div ng-if="planshetModel.HasTabs" class="planshet-has-tabs" ng-include="planshetModel.TemplateUrl"></div>
+                    <div ng-if="!planshetModel.HasTabs" class="planshet-no-tabs">
+                        <!--planshet body-->
+                        <div class="content_wraper">
+                            <div class="content_scroller">
+                                <div class="planshet-content" ng-include="planshetModel.TemplateUrl"></div>
+                            </div>
+                        </div>
+                        <!--end planshet body-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="planshet-tabs.tmpl">
+    <section data-type="tabs">
+        <div name="buttons" class="tab-buttons-planshet relative">
+            <paralax-button button="button" ng-repeat="button in planshetModel.Buttons"></paralax-button>
+        </div>
+        <div name="plansetBody" class="planshet-content tabs">
+            <div class="content_wraper">
+                <div class="content_scroller">
+                    <div class="tab_content">
+                        <div ng-repeat="body in planshetModel.Bodys"
+                             ng-show="body.active"
+                             class="tab_content_item"
+                             ng-include="body.TemplateUrl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+
+<script type="text/ng-template" id="complexButton.tmpl">
+    <div class="complexButton" ng-class="complexButton.IsNewItem?'newitem':''">
+        <border-animation-item border="border" ng-repeat="border in complexButton.Collection"> </border-animation-item>
+    </div>
+</script>
+
+<script type="text/ng-template" id="border-animation.tmpl">
+    <div class="border-anim {{border.Size}}">
+        <div class="top-left"></div>
+        <div class="static-content">
+            <div ng-if="border.Data && border.Data.IsImage">
+                <!--icon img-->
+                <img ng-src="{{border.Data.ImagePathOrCss}}"
+                     ng-attr-title="{{border.Data.Title}}"
+                     ng-attr-alt="{{border.Data.Alt}}"
+                     class="img img-label" />
+            </div>
+
+            <div ng-if="border.IsPath  && border.Size !='center'  && !border.Data.IsImage" ng-include="border.Path"></div>
+            <div ng-if="!border.IsPath && border.Size !='center' && !border.Data.IsImage">
+                <!--icon css-->
+                <div ng-class="border.Data.ImagePathOrCss" ng-attr-title="{{border.Data.Title}}"></div>
+            </div>
+            <div ng-if="border.IsSimpleCentr" class="head" ng-bind-html="border.Data.Head"></div>
+            <div ng-if="border.Size =='center' && !border.IsSimpleCentr" ng-include="border.Path"></div>
+        </div>
+        <div class="bot-right"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="parralax-button.tmpl">
+    <div class="parralax-button {{button.CssClass}}"
+         ng-hide="button.Hide"
+         ng-attr-title="{{button.TranslateName}}"
+         ng-attr-id="{{button.ButtonId}}">
+        <div class="parralax-button-content">
+            <div ng-if="button.IsCssImage && !button.ConteinPartial" ng-class="button.CssImage"></div>
+            <a ng-if="button.ShowName && !button.ConteinPartial " ng-class="(button.Params.hasNewEvent)?button.Params.newEventCss:''" ng-bind="button.TranslateName"></a>
+            <div ng-if="button.ConteinPartial" ng-include="button.PartialView.PartialPath"></div>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="control-panel.tmpl">
+    <div id="control-panel">
+        <div class="hangartoggle controll-button">
+            <md-icon md-svg-icon="interface-icon-{{cpToggleBtn.Params.svgName}}"
+                     ng-mouseover="cpToggleBtn.Params.onHovered()"
+                     ng-attr-title="{{cpToggleBtn.TranslateName}}"
+                     ng-click="cpToggleBtn.Method()"></md-icon>
+        </div>
+
+        @*<paralax-button button="cpToggleBtn"></paralax-button>*@
+        <div class="control-items" ng-class="cpAnimateCss">
+            <div id="hangar" ng-show="cpShowHangar">
+                <paralax-button button="button" ng-repeat="button in cpHangarEstateItems"></paralax-button>
+            </div>
+
+            <div id="map-control" flex ng-class="cpMapAnimateCss">
+                <div class="controll-button" ng-hide="b.Hide" ng-repeat="b in cpMapControlBtns">
+                    <md-icon md-svg-icon="interface-icon-{{b.Params.svgName}}"
+                             ng-mouseover="b.Params.onHovered()"
+                             ng-attr-title="{{b.TranslateName}}"
+                             ng-click="b.Method(b.Params,$event)"></md-icon>
+                </div>
+                @*<paralax-button button="button" ng-repeat="button in cpMapControlBtns"></paralax-button>*@
+            </div>
+        </div>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="timer-progress.tmpl">
+    <div class="timer-progress">
+        <div ng-if="timerType==='buildTimer' || timerType==='simpleTimer'"
+             class="time-contiol"
+             ng-class="timerData.$hasTimer?'opacityPlus':''">
+            <span class="time-data" ng-bind-html="timerData.$timerHtmlData"></span>
+            <div class="item-indicator-progress" ng-class="timerData.$orientation" ng-style="timerData.$indicator"></div>
+        </div>
+
+        <div ng-if="timerData.$noTimer && timerType ==='noTimerRight'"
+             class="time-contiol opacityPlus">
+            <span class="time-data" ng-bind-html="timerData.$noTimer.$timerHtmlData"></span>
+            <div class="item-indicator-progress"
+                 ng-class="timerData.$noTimer.$orientation"
+                 ng-style="timerData.$noTimer.$indicator"></div>
+        </div>
+    </div>
+
+
+</script>
+
+
+
+<script type="text/ng-template" id="estate-resource.tmpl--old">
+
+    <div id="current-resources" class="estate-resource res">
+        <div class="containerUp">
+            <div class="container">
+                <div class="item" ng-attr-title="{{estateResource[0].TranslateName}}">
+                    <span class="e resource sx sprite_atlas"></span>
+                    <div class="resource-item">
+                        <p ng-bind="estateResource[0].Current"></p>
+                        <div class="stor_value scale_e"
+                             ng-attr-title="max  {{estateResource[0].Max}}  {{estateResource[0].TranslateName}}"
+                             ng-attr-style="width: {{estateResource[0].Percent}}%"></div>
+                    </div>
+                </div>
+                <div class="item" ng-attr-title="{{estateResource[1].TranslateName}}">
+                    <span class="ir resource sx sprite_atlas"></span>
+                    <div class="resource-item">
+                        <p ng-bind="estateResource[1].Current"></p>
+                        <div class="stor_value scale_ir"
+                             ng-attr-title="max  {{estateResource[1].Max}}  {{estateResource[1].TranslateName}}"
+                             ng-attr-style="width: {{estateResource[1].Percent}}%"></div>
+                    </div>
+                </div>
+                <div class="item res-angle" ng-attr-title="{{estateResource[2].TranslateName}}">
+                    <span class="dm resource sx sprite_atlas"></span>
+                    <div class="resource-item border-standard">
+                        <p ng-bind="estateResource[2].Current"></p>
+                        <div class="stor_value scale_dm"
+                             ng-attr-title="max  {{estateResource[2].Max}}  {{estateResource[2].TranslateName}}"
+                             ng-attr-style="width: {{estateResource[2].Percent}}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containerDown">
+            <div class="container">
+                <div class="item res-angle" ng-attr-title="{{estateResource[3].TranslateName}}">
+                    <span class="cc resource sx sprite_atlas"></span>
+                    <p ng-bind="estateResource[3].Current"></p>
+                </div>
+
+
+                <div class="select-container" data-type="estate" id="own-list-container">
+                    <div estate-list></div>
+                    <div class="select-container-cursor">
+                        <div class="normalizeAngle indicator">
+                            <!--http://frontender.info/using-svg/-->
+                            <md-icon md-svg-icon="select-container-cursor"></md-icon>
+                            @*<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <filter id="blur-filter" x="-2" y="-2" width="200" height="200">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+                                    </filter>
+                                    <polygon points="10,0 25,19 45,0"></polygon>
+                                </svg>*@
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="current-resources" class="svg-estate-resource">
+        <div class="containerUp">
+            <div class="container">
+                <div class="item" ng-attr-title="{{estateResource[0].TranslateName}}">
+                    <span class="e resource sx sprite_atlas"></span>
+                    <div class="resource-item">
+                        <p ng-bind="estateResource[0].Current"></p>
+                        <div class="stor_value scale_e"
+                             ng-attr-title="max  {{estateResource[0].Max}}  {{estateResource[0].TranslateName}}"
+                             ng-attr-style="width: {{estateResource[0].Percent}}%"></div>
+                    </div>
+                </div>
+                <div class="item" ng-attr-title="{{estateResource[1].TranslateName}}">
+                    <span class="ir resource sx sprite_atlas"></span>
+                    <div class="resource-item">
+                        <p ng-bind="estateResource[1].Current"></p>
+                        <div class="stor_value scale_ir"
+                             ng-attr-title="max  {{estateResource[1].Max}}  {{estateResource[1].TranslateName}}"
+                             ng-attr-style="width: {{estateResource[1].Percent}}%"></div>
+                    </div>
+                </div>
+                <div class="item res-angle" ng-attr-title="{{estateResource[2].TranslateName}}">
+                    <span class="dm resource sx sprite_atlas"></span>
+                    <div class="resource-item border-standard">
+                        <p ng-bind="estateResource[2].Current"></p>
+                        <div class="stor_value scale_dm"
+                             ng-attr-title="max  {{estateResource[2].Max}}  {{estateResource[2].TranslateName}}"
+                             ng-attr-style="width: {{estateResource[2].Percent}}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containerDown">
+            <div class="container">
+                <div class="item res-angle" ng-attr-title="{{estateResource[3].TranslateName}}">
+                    <span class="cc resource sx sprite_atlas"></span>
+                    <p ng-bind="estateResource[3].Current"></p>
+                </div>
+
+
+                <div class="select-container" data-type="estate" id="own-list-container">
+                    <div estate-list></div>
+                    <div class="select-container-cursor">
+                        <div class="normalizeAngle indicator">
+                            <!--http://frontender.info/using-svg/-->
+                            <md-icon md-svg-icon="select-container-cursor"></md-icon>
+                            @*<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <filter id="blur-filter" x="-2" y="-2" width="200" height="200">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+                                    </filter>
+                                    <polygon points="10,0 25,19 45,0"></polygon>
+                                </svg>*@
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</script>
+
+
+
+<script type="text/ng-template" id="estate-resource.tmpl">
+    <div id="current-resources" class="svg-estate-resource">
+        <ul flex layout="row" class="h_100pr">
+            <li class="resource-item-container" flex layout="column" layout-align="space-between center" ng-attr-title="{{estateResource[3].TranslateName}}">
+                <md-icon md-svg-icon="interface-icon-cc"></md-icon>
+                @*<md-icon md-svg-icon="interface-icon-confederation"></md-icon>*@
+                <input type="text" name="cc" ng-value="estateResource[3].Current" readonly />
+            </li>
+            <li class="resource-item-container" flex layout="column" layout-align="space-between center" ng-attr-title="{{estateResource[0].TranslateName}}">
+                <md-icon md-svg-icon="interface-icon-e"   ng-attr-title="{{estateResource[0].Current}}/{{estateResource[0].Max}}  {{estateResource[0].TranslateName}}"></md-icon>
+                <input type="text" name="e"  ng-value="estateResource[0].Current" readonly />
+            </li>
+            <li class="resource-item-container" flex layout="column" layout-align="space-between center" ng-attr-title="{{estateResource[1].TranslateName}}">
+                <md-icon md-svg-icon="interface-icon-ir"   ng-attr-title="{{estateResource[1].Current}}/{{estateResource[1].Max}}  {{estateResource[1].TranslateName}}"></md-icon>
+                <input type="text" name="ir"  ng-value="estateResource[1].Current" readonly />
+            </li>
+            <li class="resource-item-container" flex layout="column" layout-align="space-between center" ng-attr-title="{{estateResource[2].TranslateName}}">
+                <md-icon md-svg-icon="interface-icon-dm"   ng-attr-title="{{estateResource[2].Current}}/{{estateResource[2].Max}}  {{estateResource[2].TranslateName}}"></md-icon>
+                <input type="text" name="dm"  ng-value="estateResource[2].Current" readonly />
+            </li>
+
+            <li class="relative"  >
+                <div class="select-container" data-type="estate" id="own-list-container" flex>
+                    <div estate-list></div>
+                    <div class="select-container-cursor">
+                        <div class="indicator">
+                            <md-icon md-svg-icon="select-container-cursor"></md-icon>
+                        </div>
+                    </div>
+                </div>
+ 
+            </li>
+        </ul>
+
+
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="icon-hangar-unit-item.tmpl">
+    <div class="{{button.PartialView.Data.SpriteImages.Medium}}">
+        <div class="time-contiol opacityPlus">
+            <span class="time-data">
+                {{(button.PartialView.Data.Count>0)?button.PartialView.Data.Count:''}}
+            </span>
+            <div class="item-indicator-progress vertical"
+                 ng-style="((button.PartialView.Data.Progress)
+              && button.PartialView.Data.Progress.IsProgress)?button.PartialView.Data.Progress.verticalIndicator:''"></div>
+        </div>
+    </div>
+</script>
+
+
+
+
+
+
+

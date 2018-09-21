@@ -1,0 +1,31 @@
+﻿@import "../suples";
+
+#hangar {
+    /*top: 20px;*/
+    top: 10px;
+    display: inline-block;
+
+    & .unit {
+        float: left;
+
+        & .time-contiol {
+            display: table;
+            position: static;
+            border: none;
+            @include size-full-size();
+        }
+
+        & .time-data {
+            padding: 0;
+            position: relative;
+            bottom: 0;
+            text-align: center;
+            display: table-cell;
+            vertical-align: bottom;
+            font-weight: bold;
+            @extend .f_size_20px;
+        }
+    }
+
+}
+

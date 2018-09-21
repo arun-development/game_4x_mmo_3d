@@ -1,0 +1,78 @@
+﻿@using Translate.Site.Store
+@{
+    Layout = null;
+}
+@{
+    <!-- Modal -->
+    <div class="modal fade" id="paymentForm" role="dialog">
+
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h4 class="modal-title">@Resource.Payment</h4>
+
+                </div>
+
+                <div class="modal-body">
+                    @Html.Partial("_paymentCcForm")
+                    @Html.Partial("_paymentMoneyForm")
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+
+                        <div class="col-md-12 ">
+
+                            <div class="col-md-6 error">
+
+                                @{
+                                    if (!Request.IsAuthenticated)
+                                    {
+                                        <span class="display-none" id="user_not_auth_indicator"></span>
+                                        <p>
+
+                                            Вы не авторизированны <a href="#" data-toggle="modal" data-target="#loginFormDialog">@Resource.Login</a>
+
+                                        </p>
+                                    }
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-ms-12" id="payment_form_information">
+
+                        <div class="error">
+
+                            <p id="payment_form_information_error">Error</p>
+
+                        </div>
+
+                        <div id="payment_form_information_sucsess">Success</div>
+
+                    </div>
+
+                    <div class="col-ms-5">
+
+                        <h6> *Обращаем ваше внимание на то что платежная система может взымать дополнительную коммисию при платеже</h6>
+
+                    </div>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@Resource.Close</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+}

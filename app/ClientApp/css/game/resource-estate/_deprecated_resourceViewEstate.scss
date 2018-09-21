@@ -1,0 +1,165 @@
+﻿@import "../suples";
+@import "variables";
+//$resViewFill: opacify(#353030, 0.3);
+
+
+
+/*%sprite-icons-svg {
+    background-image: url("/_svg/sprite.svg");
+    background-repeat: no-repeat;
+}*/
+
+
+
+.estate-resource {
+    top: $resource-init-top;
+    position: absolute;
+    z-index: 1;
+    left: calc(110px + 1%);
+    width: 735px;
+    height: 108px;
+
+    @include vendor-prefix(text-shadow,0 0 3px black );
+    @include getFont(#fff);
+    @include clearfix;
+}
+
+.estate-resource *:focus {
+    outline: none !important;
+}
+
+.estate-resource .containerUp,
+.estate-resource .containerDown {
+    height: 50%;
+    position: relative;
+}
+
+
+.estate-resource .containerUp .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.estate-resource .containerDown .container {
+    position: relative;
+}
+
+.estate-resource .container {
+    width: 100%;
+}
+
+.estate-resource .item {
+    width: $resource-item-width;
+    @include flex-JsAc();
+    vertical-align: middle;
+    padding: 0 5px;
+    @include resource-border(true,true,false,true);
+}
+
+.estate-resource .item:first-child {
+    border-left: 1px solid $color-dark-green;
+}
+
+.estate-resource .item, .container {
+    position: relative;
+    float: left;
+    height: 100%;
+}
+
+.containerUp .item:first-child {
+    border-bottom: none !important;
+}
+
+.estate-resource .containerUp .item {
+    background-color: $resViewFill;
+}
+
+
+
+.estate-resource .containerDown .item {
+    border-top: none;
+}
+
+.estate-resource .containerDown .item:first-child {
+    width: 166px;
+    margin-top: -2px;
+    background-color: $resViewFill;
+}
+
+.estate-resource .containerDown .item:last-child {
+    border-bottom: none;
+    margin-left: 50px;
+}
+
+.estate-resource .item > span {
+    min-width: $sx-size-resource-container#{px};
+}
+
+.estate-resource .item > .resource-item {
+    z-index: 10;
+    $resource-item-color: rgba(255, 235, 234, 0.3);
+    $resource-item-shadow: inset 0 0 30px 3px $resource-item-color, 0 0 18px 4px $resource-item-color;
+    @extend .inline-centr-centr;
+    min-width: calc(100% - 49px);
+    @include resource-border(false);
+    /*box-shadow: $resource-item-shadow;*/
+    & p {
+        display: inline-block;
+    }
+
+    & div {
+        z-index: -1;
+        min-height: 100%;
+        position: absolute;
+        top: 0;
+    }
+}
+
+
+
+.estate-resource .containerDown {
+    width: 560px;
+    position: relative;
+}
+
+
+.estate-resource .res-angle:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    min-height: calc(100% + 1px);
+    width: 54px;
+    @include resource-border(true,false,true,true);
+    @include vendor-prefix(transform, skewX(-$border-angle));
+}
+
+
+.estate-resource .containerUp .res-angle:after {
+    top: -1px;
+    right: -27px;
+    @include resource-border(true,true);
+    border-bottom: none;
+    background-color: $resViewFill;
+    z-index: -1;
+}
+
+.estate-resource .containerDown .res-angle:after {
+    right: -28px;
+    top: 3px;
+    background-color: $resViewFill;
+    z-index: -1;
+    bottom: 19px;
+    min-height: calc(100% - 3px);
+}
+
+.estate-resource .normalizeAngle {
+
+    @include vendor-prefix(transform, skewX($border-angle));
+}
+
+.estate-resource .indicator {
+    position: relative;
+    left: -3px;
+    top: 10px;
+}

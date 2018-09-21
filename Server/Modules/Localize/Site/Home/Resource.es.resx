@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Features" xml:space="preserve">
+    <value>Características</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_freedomOfActionBody" xml:space="preserve">
+    <value>Es un mundo abierto con miles de sistemas solares. Puede hacer lo que quiera. Explorar el Universo, colonizar planetas, extraer recursos, crear ejercitos, mejorar las tecnologías,  luchar por la soberanía y el poder en el Universo, junto con miles de otros jugadores.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_freedomOfActionHead" xml:space="preserve">
+    <value>Sandbox</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="f_presidentElectionsBody" xml:space="preserve">
+    <value>La peculiaridad de juego, gracias a la cual cada jugador tendrá oportunidad ser un buen  líder de la raza humana en la lucha contra Skagry, obteniendo una ventaja significativa en el desarrollo y poder militar para sí mismo y todos sus seguidores.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_presidentElectionsHead" xml:space="preserve">
+    <value>Elecciones del Gobierno</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="f_systemPvpNolimitsBody" xml:space="preserve">
+    <value>Usted será capaz de atacar a cualquier jugador independientemente de su nivel de desarrollo y de tamaño de su ejército. En cualquier momento y en cualquier lugar. Por derrotar a otros jugadores, va a recibir puntos PVP, necesarios para avanzar de rango y luchar por la Presidencia de la Confederación.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_systemPvpNolimitsHead" xml:space="preserve">
+    <value>PVP Hardcore</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="f_systemUpgradeNoLimitsBody" xml:space="preserve">
+    <value>El juego no tiene restricciones en el nivel de desarrollo de las colonias y tecnologías. Puede mejorar cualquier edificio o tecnología hasta nivel que desea. Que le permite planificar su desarrollo más detalladamente y hacer hincapié en el aspecto de  juego que le interese más.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_systemUpgradeNoLimitsHead" xml:space="preserve">
+    <value>No hay restricciones de nivel</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="g_gamePlay" xml:space="preserve">
+    <value>Usted es el comandante de la flota de la Confederación. A su disposición está su propia nave nodriza la cual nunca va a perder. Usted no está vinculado con localización concreta y puede moverse libremente a través del universo que cuenta con miles sistemas solares con un montón de planetas para la colonización y el desarrollo. Teniendo suficientes colonias usted podrá convertirse en una figura importante en la Confederación y será capaz de establecer un poderoso imperio bajo su mando para influir en el curso de los acontecimientos en el universo. Por supuesto, usted tendrá dificultades realizarlo por sí solo, así que intente conseguir tantos seguidores como sea posible, ya que esto aumentará considerablemente sus posibilidades de tener éxito, si usted también va a ejecutar para el Presidente de la Confederación. La agudeza está dada por un sinfín de ataques de Skagry y la creciente competencia entre los miles de jugadores en todo el mundo. El universo Skagry es un lugar cruel. ¿Podrá sobrevivir?</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_gamePlayHead" xml:space="preserve">
+    <value>Gameplay</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="r_Confederation" xml:space="preserve">
+    <value>Confederación</value>
+    <comment>race  Head</comment>
+  </data>
+  <data name="r_ConfederationDescription" xml:space="preserve">
+    <value>Fuerzas unidas de la humanidad en la lucha contra Skagry. El gobierno unido encabezado por el Presidente y los Ministros. El Presidente y cinco Ministros son elegidos por el pueblo, y los otros cinco son nombrados por el Presidente. El símbolo de la Confederación refleja su estructura. El presidente está marcado con una gran estrella en el centro. Las estrellas en la parte izquierda representan  los Ministros elegidos por el pueblo, que a menudo no comparten el punto de vista  del Presidente, y pasan a la oposición. Las estrellas en el lado derecho representan confidentes del Presidente, a los que nombra personalmente. Pero de alguna manera, todos ellos son una parte de un todo, de la Confederación.</value>
+    <comment>race</comment>
+  </data>
+  <data name="r_RaceSkagry" xml:space="preserve">
+    <value>Skagry - NPC</value>
+    <comment>race  Head</comment>
+  </data>
+  <data name="r_RaceSkagryDescription" xml:space="preserve">
+    <value>Una especie alienígena con regeneración acelerada y funcíon reproductiva. Obedece a la mente colectiva y actúa según el principio de Roy, cuyo objetivo es absorber todas las formas de vida encontradas en el camino, y la creación de colonias en todos los territorios posibles. Skagry se adapta instantáneamente a las condiciones atmosféricas y del terreno de cualquier planeta, lo que le permite llevar a cabo la batalla como si estuviera en su casa, complicando considerablemente  la tarea para las fuerzas de la Confederación. Skagry es implacable y no conoce el miedo. Sin exagerar, es una de las bestias más peligrosas en todo el Universo.</value>
+    <comment>race</comment>
+  </data>
+  <data name="screenshots" xml:space="preserve">
+    <value>Capturas de pantalla</value>
+  </data>
+  <data name="story" xml:space="preserve">
+    <value>Historia</value>
+    <comment>story Head</comment>
+  </data>
+  <data name="storyDescription" xml:space="preserve">
+    <value>En el futuro, cuando el espacio ya había dejado de ser un misterio para los seres humanos,  y la conquista de nuevos mundos se convirtió en un lugar común, los humanos descubrieron criaturas con una increíble capacidad de regenerarse, llamado Skagry. Más tarde, en su genoma fue descubierta la información que  ayudó a la humanidad obtener una vida eterna. Sin embargo, este descubrimiento  resultó a los seres humanos insuficiente y ellos empezaron a cultivar Skagry y hacer experimentos genéticos. En algún momento, la situación se salió de control y Skagry se liberaron de sus limitaciones. Impulsados por una mente colectiva, van absorbiendo planeta por planeta  y pronto llenarán la Galaxia. Para confrontarse con Skagry, la humanidad se une  en la Confederación que tiene que ocuparse de corregir los errores del pasado y devolver a la humanidad el dominio sobre el Universo.</value>
+    <comment>story</comment>
+  </data>
+  <data name="theGame" xml:space="preserve">
+    <value>El juego</value>
+  </data>
+  <data name="TheUniverse" xml:space="preserve">
+    <value>ES</value>
+  </data>
+  <data name="g_alliance" xml:space="preserve">
+    <value>Cree una alianza poderosa que sea capaz de conquistar el universo o únase a ella. Colonice planetas y defiéndalos de los ataques de Skagry y de otros jugadores. Recuerde, que la soberanía es la clave para el dominio sobre el universo.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_allianceHead" xml:space="preserve">
+    <value>Alianza y soberanía</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_Politics" xml:space="preserve">
+    <value>Conviértase en el Presidente de la Confederación habiendo tomado un mayor número de votos en las elecciones semanales o apoye al candidato que desee. Gane la confianza de los votantes o encuentre otra manera casi legal para ganar las elecciones.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_PoliticsHead" xml:space="preserve">
+    <value>Política y la diplomacia</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_Production" xml:space="preserve">
+    <value>Cree tropas en sus bases coloniales, aumente la capacidad de combate de su ejército o desarrolle la defensa de sus colonias para convertirlas en fortalezas impenetrables. Elija su camino único para el desarrollo de tecnologías para conquistar el universo.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_ProductionHead" xml:space="preserve">
+    <value>Producción y tecnología</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_Regions" xml:space="preserve">
+    <value>Cada región tiene sus propias características y diferentes concentraciones de Skagry. Cada sistema solar es único, y nunca se encuentran dos sistemas solares idénticos. Los planetas también se diferencian en cuanto a los recursos disponibles y las ventajas de la propiedad.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_RegionsHead" xml:space="preserve">
+    <value>Regiones y sistemas</value>
+    <comment>the game Head</comment>
+  </data>
+</root>

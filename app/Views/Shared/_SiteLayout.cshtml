@@ -1,0 +1,109 @@
+﻿@using Server.Extensions
+@using Server.Infrastructure
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    var faCss = LibCollection.CssFontAwesome;
+
+    var bJs = LibCollection.JsBootstrapFull;
+    var bCss = LibCollection.CssBootstrapFull;
+
+
+    var jsSite = LibCollection.JsSite;
+    var cssSite = LibCollection.CssSite;
+    var isAngular = ViewData._isAngularApp();
+    var jsSiteAng = LibCollection.JsSiteAngular;
+    var showHeader = ViewData._showHeader();
+
+}
+@section styles{
+    <link rel="stylesheet"
+          href="@bCss.CdnPathMin"
+          asp-fallback-href="@bCss.LocalPathMin"
+          asp-fallback-test-class="@bCss.FallbackTestClass"
+          asp-fallback-test-property="@bCss.FallbackTestProperty"
+          asp-fallback-test-value="@bCss.FallbackTestValue"
+          integrity="@bCss.IntegrityMin"
+          crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="@faCss.CdnPathMin"
+          asp-fallback-href="@faCss.LocalPathMin"
+          asp-fallback-test-class="@faCss.FallbackTestClass"
+          asp-fallback-test-property="@faCss.FallbackTestProperty"
+          asp-fallback-test-value="@faCss.FallbackTestValue"
+          integrity="@faCss.IntegrityMin"
+          crossorigin="anonymous" />
+
+    @RenderSection("styles", false)
+
+
+    <environment include="Development">
+        <link rel="stylesheet"
+              href="@cssSite.LocalPath"
+              asp-append-version="@cssSite.AppendVersion" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet"
+              href="@cssSite.LocalPathMin"
+              asp-append-version="@cssSite.AppendVersion" />
+    </environment>
+
+}
+
+@if (@showHeader)
+{
+    @Html.Partial("~/Views/Shared/_site-header.cshtml")
+    <div id="menu-personal"></div>
+}
+@RenderSection("headerTemplates", false)
+<div id="main-container">
+    @RenderBody()
+</div>
+@section footerHtmlAndTemplates{
+    <footer id="site-footer" class="clearfix">
+        @if (isAngular)
+        {
+             @Html.Partial("~/Views/Shared/tmpl/_user-chest.cshtml")
+        }
+        @RenderSection("footerHtmlAndTemplates",false)
+    </footer>
+}
+
+@section footerScriptsLib{
+
+    <script src="@bJs.CdnPathMin"
+            asp-fallback-src="@bJs.LocalPathMin"
+            asp-fallback-test="@bJs.FallbackTest"
+            integrity="@bJs.IntegrityMin"
+            crossorigin="anonymous"></script>
+    @RenderSection("footerScriptsLib", false)
+
+}
+@if (isAngular)
+{
+    @section footerScriptsAngular{
+
+        @RenderSection("footerScriptsAngular", false)
+    }
+}
+@section footerFinalizeScripts{
+
+    <environment include="Development">
+        @if (isAngular)
+        {
+            <script src="@jsSiteAng.LocalPath" asp-append-version="@jsSite.AppendVersion"></script>
+        }
+        <script src="@jsSite.LocalPath" asp-append-version="@jsSite.AppendVersion"></script>
+    </environment>
+    <environment exclude="Development">
+        @if (isAngular)
+        {
+            <script src="@jsSiteAng.LocalPathMin" asp-append-version="@jsSite.AppendVersion"></script>
+        }
+
+        <script src="@jsSite.LocalPathMin" asp-append-version="@jsSite.AppendVersion"></script>
+    </environment>
+    @RenderSection("footerFinalizeScripts", false)
+}
+
+

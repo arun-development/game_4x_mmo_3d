@@ -1,0 +1,154 @@
+﻿@using Server.Infrastructure
+@{
+    Layout = "/Views/Shared/_SiteLayout.cshtml";
+    var admCore = LibCollection.JsAdminAngularCore;
+    var admInitialize = LibCollection.JsAdminAngularInitialize;
+}
+
+<div ng-controller="adminInitializeCtrl as aiCtl" layout="column" ng-cloak>
+
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4">
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Action History</h1>
+            </md-toolbar>
+
+            <md-content class="history-container" layout-margin>
+                <p class="item-border md-padding" layout="column" ng-repeat="h in aiCtl.actionHistory"
+                   ng-style="{'border-color':h.sucsess?'':'red'}">
+                    <span>Action name: {{h.name}}</span>
+                    <span>Time Activated: {{h.time | date:'HH:mm:ss Z'}}</span>
+                    <span>RequestDelay (ms): {{h.delay}}</span>
+                    <span>Sucsess: {{h.sucsess}}</span>
+                    <span ng-if="!h.sucsess">
+                        see console.log <br> time id: {{h.time}}
+                    </span>
+                </p>
+            </md-content>
+        </md-sidenav>
+
+
+
+        <md-content flex layout="column" layout-padding>
+
+            <input type="hidden" ng-model="aiCtl.readMe" ng-init="aiCtl.readMe = false" />
+            <input type="hidden" ng-model="aiCtl.showVars" ng-init="aiCtl.showVars = true" />
+            <input type="hidden" ng-model="aiCtl.showControls" ng-init="aiCtl.showControls = true" />
+
+            <div layout="row" layout-wrap>
+                <md-button class="md-raised md-primary" ng-click="aiCtl.readMe= !aiCtl.readMe">Readme</md-button>
+                <md-button class="md-raised md-primary" ng-click="aiCtl.showVars= !aiCtl.showVars">App vars</md-button>
+                <md-button class="md-raised md-primary" ng-click="aiCtl.showControls= !aiCtl.showControls">Controls</md-button>
+                <md-button class="md-raised md-primary" ng-click="aiCtl.goToGame()">Open Game</md-button>
+            </div>
+
+            <div class="readme" ng-show="aiCtl.readMe">
+                <h4 class="warn"><b>Внимание!</b></h4>
+                <div>
+                    <div>
+                        <b class="warn"> Ни какие бек апы перед выполнением команды не делаются.</b>
+                        Основное назначение этих методов создание первичного окружения - мира, а так же создание фейк данных для тестирования.
+                        <b class="warn"> НИКОГДА не запускаете эти методы на работчем сервере, только на локальной копии. И только после полной проверки делайте синхронизацию с рабочим сервером.</b>
+                        В любом случае служба настроена на проверку домена. и не запустится на домене отличнм от <b>localhost</b>
+                    </div> 
+                </div>
+            </div>
+
+
+            <div ng-show="aiCtl.showVars">
+                <div ng-repeat="v in aiCtl.vars">
+                    <span ng-bind="v.Key"></span>
+                    <span ng-bind="v.Val" ng-class="v.Val?'green-text':'warn'"></span>
+                </div>
+
+                <md-button ng-click="aiCtl.refresh()"
+                           ng-disabled="aiCtl.activateInProgress"
+                           class="md-raised md-primary">Refresh</md-button>
+            </div>
+
+
+            <div ng-show="aiCtl.showControls">
+                <md-tabs class="md-accent"
+                         md-no-ink
+                         md-selected="aiCtl.tabs.selectedIndex"
+                         md-stretch-tabs="'never'"
+                         md-dynamic-height>
+                    <md-tab ng-attr-id="{{tab.TabId}}" ng-repeat="tab in aiCtl.tabs.data track by tab.TabId">
+                        <md-tab-label>{{tab.LabelData.Name}}</md-tab-label>
+                        <md-tab-body>
+                            <p class="md-padding" ng-if="tab.HasTabDescription" ng-bind-html="tab.TabDescription"></p>
+                            <div flex layout="row" layout-wrap layout-align="start stretch">
+                                <div class="item-border md-margin" layout="column" flex="45" ng-repeat="item in tab.BodyData" md-whiteframe="4">
+                                    <div class="md-margin">
+                                        <h4>
+                                            <b> Controller name :</b> <i>{{item.ControllerName}}</i>
+                                        </h4>
+                                        <h4>
+                                            <b> Action name :</b> <i>{{item.Name}}</i>
+                                        </h4>
+                                        <p>
+                                            <b>Action description :</b>
+                                            <i ng-bind-html="item.Description"></i>
+                                        </p>
+                                    </div>
+                                    <span flex></span>
+                                    <md-button class="md-raised md-primary"
+                                               ng-disabled="aiCtl.activateInProgress"
+                                               ng-click="aiCtl.activate($event,item)">Run ({{item.ViewName}})</md-button>
+
+                                </div>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+            </div>
+        </md-content>
+
+
+
+    </section>
+
+
+
+</div>
+
+@section styles {
+    <style>
+        .readme {
+            font-size: 14px;
+        }
+
+        md-sidenav {
+            min-height: 100vh;
+        }
+
+        .item-border {
+            border: 1px solid green;
+        }
+
+        .history-container {
+            font-size: 14px;
+            overflow: auto;
+            color: azure;
+        }
+
+        .green-text {
+            color: green;
+        }
+
+        .warn {
+            color: red;
+        }
+    </style>
+}
+
+
+
+
+@section footerScriptsAngular {
+    <script src="@admCore.LocalPath" asp-append-version="true"></script>
+    <script src="@admInitialize.LocalPath" asp-append-version="true"></script>
+}
+
+
+

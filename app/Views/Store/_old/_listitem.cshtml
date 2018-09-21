@@ -1,0 +1,34 @@
+﻿@model DomainModels.СompexPrimitive.Products.StoreViewItem
+@{
+    Layout = null;
+    var i = Model;
+    var prop = @i.ProductItemProperty;
+
+    var typeTranslateName = @i.TypeText.GetTranslateName();
+    var productTranslateName = @prop.TranslateText.GetTranslateName();
+    var paymentForm = (i.ProductCurrencyCode == "CC") ? "#paymentForm" : "#payment_money_form";
+}
+
+<li class="product-item" style="background-image:url(@prop.ImgCollectionImg.Store)" >
+        <h4 class="product-type-name">@typeTranslateName</h4>
+    <div class="product-inner-container"
+             data-toggle="modal" onclick="Store.BuyItem(this)"
+             data-backdrop="0"
+             data-target="@paymentForm"
+             data-store-product-id="@i.ProductStoreId"
+             data-product-native-name="@prop.TranslateText.En.Name"
+             data-product-translate-name="@productTranslateName"
+             data-product-cost="@i.ProductCost"
+             data-product-currency-code="@i.ProductCurrencyCode"
+             data-product-type-id="@i.ProductTypeId"
+             data-product-type-native-name="@i.TypeText.En.Name"
+             data-product-type-translate-name="@typeTranslateName">
+            <h4>@productTranslateName</h4>
+            <p class="product-description">@prop.TranslateText.GetTranslateDescription()</p>
+            <div class="product-item-footer">
+                <span>Price</span>
+                <span class="price">@i.ProductCost <i>@i.ProductCurrencyCode</i>
+                </span>
+            </div>
+        </div>
+    </li>

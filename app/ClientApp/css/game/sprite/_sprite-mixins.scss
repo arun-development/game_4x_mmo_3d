@@ -1,0 +1,219 @@
+﻿@import "sprite-vars";
+//abstract-sprite-miixin
+@mixin sprite-generator($document-x,$base-elem-size,$base-line-y, $result-size, $size-selector,$sprite-selector, $group-selector, $elems-list-classes, $margin: false) {
+    $bagr-size: ($result-size*$document-x)/$base-elem-size;
+
+    .#{$group-selector}.#{$size-selector}.#{$sprite-selector} {
+        width: $result-size#{px};
+        height: $result-size#{px};
+    }
+
+    .#{$group-selector}.#{$size-selector} {
+        background-size: $bagr-size#{px} auto;
+
+        @if $margin!=false {
+            margin: #{$margin};
+        }
+    }
+
+    $new-line-y: ($bagr-size/ $document-x)*$base-line-y;
+    $j: 0;
+    $offsetX: ($bagr-size*$base-elem-size)/$document-x;
+
+
+    @each $i in $elems-list-classes {
+        .#{$group-selector}.#{$size-selector}.#{$i} {
+            background-position: -$j*$offsetX#{px} -$new-line-y#{px};
+        }
+
+        $j: $j+1;
+    }
+}
+
+
+//for builds
+@mixin build-sprite-container-size($result-size,$size-selector,$isMother: false) {
+    //$base-line-y
+    @if($isMother) {
+        @include sprite-generator($sprite-atlas-width,$unit-base-size,$builds-mother-base-line-y, $result-size,$size-selector,$sprite-atlas-selector,$build-icon-selector,$builds-mother-list-selectors);
+    }
+    @else {
+        @include sprite-generator($sprite-atlas-width,$unit-base-size,$builds-base-line-y, $result-size,$size-selector,$sprite-atlas-selector,$build-icon-selector,$builds-list-selectors);
+    }
+}
+
+// for sprite hangar
+@mixin hangar-sprite-container-size($result-size, $size-selector) {
+    $unit: unit;
+
+    @include sprite-generator($sprite-atlas-width,$unit-base-size,$unit-base-line-y,$result-size,$size-selector,$sprite-atlas-selector,$unit,$unit-list-selectors);
+}
+
+//fot user tech
+@mixin user-tech-sprite($result-size, $size-selector) {
+    $user-tech: user-tech;
+      @include sprite-generator($sprite-atlas-width,$tech-base-size,$tech-user-base-line-y,$result-size,$size-selector,$sprite-atlas-selector, $user-tech,$tech-list-selectors);
+}
+
+//for alliance tech
+@mixin alliance-tech-sprite($result-size, $size-selector) {
+    $user-tech: alliance-tech;
+      @include sprite-generator($sprite-atlas-width,$tech-base-size,$tech-alliance-base-line-y,$result-size,$size-selector,$sprite-atlas-selector,$user-tech,$tech-list-selectors);
+
+}
+
+// for sprite map-control-icon
+@mixin map-control-sprite-container-size($map-control-item-selectors,$result-size,$size-selector, $isInfo: false) {
+    $map-object: $sprite-map-object-selector;
+    $size: 2000;
+
+    @if($isInfo) {
+        @include sprite-generator($size,$map-control-icon-base-size,$map-control-icon-line-y-info,$result-size, $size-selector,$sprite-cintrol-icons,$map-object,$map-control-item-selectors);
+    }
+    @else {
+        @include sprite-generator($size,$map-control-icon-base-size,$map-control-icon-line-y-jump,$result-size, $size-selector,$sprite-cintrol-icons,$map-object,$map-control-item-selectors);
+    }
+}
+
+//for menu-base-icons (left control + complex-btn-icons)
+@mixin menu-base-icons-sprite($result-size,$size-selector, $line-y: $menu-base-icons-base-line-y,$set-group: true) {
+    $size: 2000;
+
+    @if($line-y == $menu-base-icons-base-line-y) {
+        @include sprite-generator($size,$menu-base-icons-base-size,$menu-base-icons-base-line-y,$result-size,$size-selector,$sprite-cintrol-icons,$menu-base-icons-icon-selector,$menu-base-icons-list-selectors);
+    }
+    @else {
+        @include sprite-generator($size,$menu-base-icons-base-size,$line-y,$result-size,$size-selector,$sprite-cintrol-icons,$menu-base-icons-icon-selector,$menu-base-icons-list-selectors);
+    }
+}
+
+//resource
+@mixin reource-sprite-container-size($result-size, $size-selector) {
+    $resource: resource;
+    @include sprite-generator($sprite-atlas-width,$resource-base-size,$resource-line-y,$result-size,$size-selector, $sprite-atlas-selector,$resource,$resource-list-selectors, $base-resource-icon-margin);
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+++++++++++++++++++++++++++++++++++++++++++map object sptites++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+@mixin map-sprite-url($map-section, $map-material-catalog: $LOCAL_GAME_ASSET_CATALOG_URL,$map-material-sprite-name: "sprite.png") {
+    $map-material-sprite-path: $map-material-catalog+$map-section+$map-material-sprite-name;
+    background-image: url($map-material-sprite-path);
+}
+
+
+@mixin map-sprite-all-sizes($base-sprite-name,$base-line,$selectors,$map-type) {
+    $sprite-size: 2080;
+    $xl-map-size: $xlSize;
+    $m-map-size: $mSize;
+    $s-map-size: $msSize;
+    $base-icon-size: $xlSize;
+
+    @include sprite-generator($sprite-size,$base-icon-size,$base-line,$xl-map-size,$xl-size-sprite-selector,$base-sprite-name,$map-type, $selectors);
+    @include sprite-generator($sprite-size,$base-icon-size,$base-line,$m-map-size,$m-size-sprite-selector,$base-sprite-name,$map-type, $selectors);
+    @include sprite-generator($sprite-size,$base-icon-size,$base-line,$s-map-size,$s-size-sprite-selector,$base-sprite-name,$map-type, $selectors);
+}
+
+@mixin cdn-map-sprite-url($mapSpaceTypeName) {
+    // @include map-sprite-url($mapSpaceTypeName +"/",$CDN_GAME_ASSET_CATALOG_URL);
+    @include map-sprite-url($mapSpaceTypeName +"/",$LOCAL_GAME_ASSET_CATALOG_URL);
+}
+
+
+@mixin map-sprite-base-initialize() {
+    $sprite-prefix: sprite_map_;
+    $t: texture_;
+    $galaxy: galaxy;
+    $sector: sector;
+    $star: star;
+    $planet_earth: planet_earth;
+    $planet_gas: planet_gas;
+    $planet_icegas: planet_icegas;
+    $moon: moon;
+
+
+    $galaxy-sprite: $sprite-prefix+galaxy;
+    $sector-sprite: $sprite-prefix+sector;
+    $star-sprite: $sprite-prefix+star;
+    $earth-sprite: $sprite-prefix+planet_earth;
+    $gas-sprite: $sprite-prefix+planet_gas;
+    $icegas-sprite: $sprite-prefix+planet_icegas;
+    $moon-sprite: $sprite-prefix+moon;
+
+
+
+
+    /*========galaxy==============*/
+    .#{$galaxy-sprite} {
+        @include cdn-map-sprite-url("galaxy");
+    }
+
+    $base-line: 0;
+    $texture-ids: $t+1;
+    @include map-sprite-all-sizes($galaxy-sprite,$base-line,$texture-ids,$galaxy);
+    /*========end galaxy==========*/
+    /*============================*/
+    /*========sector==============*/
+    .#{$sector-sprite} {
+        @include cdn-map-sprite-url("sector");
+    }
+
+    $base-line: 0;
+    $texture-ids: $t+201;
+    @include map-sprite-all-sizes($sector-sprite,$base-line,$texture-ids,$sector);
+    /*========end sector==========*/
+    /*============================*/
+    /*========star==============*/
+    .#{$star-sprite} {
+        @include cdn-map-sprite-url("star");
+    }
+
+    $base-line: 0;
+    $texture-ids: $t+301,$t+302,$t+303,$t+304,$t+305,$t+306,$t+307,$t+308;
+
+    @include map-sprite-all-sizes($star-sprite,$base-line,$texture-ids,$star);
+    /*========end star==========*/
+    /*============================*/
+    /*========earth==============*/
+    .#{$earth-sprite} {
+        @include cdn-map-sprite-url("planet");
+    }
+
+    $base-line: 0;
+    $texture-ids: $t+401,$t+402,$t+403,$t+404,$t+405,$t+406;
+
+    @include map-sprite-all-sizes($earth-sprite,$base-line,$texture-ids,$planet_earth);
+    /*========end earth==============*/
+    /*============================*/
+    /*========gas==============*/
+    .#{$gas-sprite} {
+        @include cdn-map-sprite-url("planet");
+    }
+
+    $base-line: 780;
+    $texture-ids: $t+501,$t+502,$t+503,$t+504,$t+505;
+    @include map-sprite-all-sizes($gas-sprite,$base-line,$texture-ids,$planet_gas);
+    /*========end gas==============*/
+    /*============================*/
+    /*========icegas==============*/
+    .#{$icegas-sprite} {
+        @include cdn-map-sprite-url("planet");
+        //  @include map-sprite-url("planetoid/planet/icegas/");
+    }
+
+    $base-line: 1560;
+    $texture-ids: $t+601,$t+602;
+    @include map-sprite-all-sizes($icegas-sprite,$base-line,$texture-ids,$planet_icegas);
+    /*========end icegas==============*/
+    /*============================*/
+    /*========moon==============*/
+    .#{$moon-sprite} {
+        @include cdn-map-sprite-url("moon");
+    }
+
+    $base-line: 0;
+    $texture-ids: $t+901,$t+902,$t+903,$t+904,$t+905,$t+906;
+    @include map-sprite-all-sizes($moon-sprite,$base-line,$texture-ids,$moon);
+    /*========end moon==============*/
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/

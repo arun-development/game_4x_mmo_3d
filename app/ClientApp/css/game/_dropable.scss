@@ -1,0 +1,61 @@
+﻿@import "suples";
+
+.dropable .drop-container.active
+/*#bookmark-planet .drop-container.active*/ {
+    height: 100%;
+}
+
+.dropable .drop-item {
+    width: calc(100% - 2em);
+    position: absolute;
+    bottom: 0;
+    margin: 0 1em;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+.dropable .drop-item > *:first-child {
+    padding-top: 1em;
+}
+
+.dropable .drop-item > *:last-child {
+    padding-bottom: 1em;
+}
+
+
+//complex button extantion
+.dropable .drop-container {
+    @extend.box-shadow-section;
+    @extend .text_name;
+    margin: 3px 0;
+    position: relative;
+    overflow: hidden;
+    @include transition(height $animation-short);
+    /*left: 1px;*/
+    height: 0;
+}
+
+.drop-item {
+    $statistic-container-marg: 1em;
+    word-wrap: break-word;
+
+    & .text-end {
+        padding-top: 20px;
+    }
+
+    & .statistic-container {
+        @include flex-Jsb();
+        margin: 0 0 $statistic-container-marg 0;
+    }
+
+    & .statistic {
+        max-width: calc(100% - 260px - #{$statistic-container-marg});
+    }
+    & article{
+        text-align: justify;
+        font-size:$fs-18;
+    }
+}

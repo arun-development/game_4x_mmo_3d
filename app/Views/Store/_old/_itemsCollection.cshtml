@@ -1,0 +1,10 @@
+﻿@model IList<DomainModels.СompexPrimitive.Products.StoreViewItem>
+@{
+    Layout = null;
+    foreach (var t in Model)
+    {
+        @Html.Partial("_listitem", t);
+    }
+
+}
+ 

@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+@model Services.HtmlHelpers.ButtonsView
+
+@{
+    var name = " ";
+    if (Model.ShowName)
+    {
+        name = Model.TranslateName;
+    }
+
+    @*@Ajax.ActionLink(
+        name,
+        Model.Action,
+        Model.Controller,
+        new {},
+        Model.Callbacks,
+        Model.Atributes)*@
+}

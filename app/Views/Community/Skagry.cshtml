@@ -1,0 +1,1355 @@
+﻿@{
+    Layout = "/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using Server.Modules.Localize.Site.Community
+@{
+    var title = Resource.Community + "-Skagry";
+    ViewBag.Title = title;
+
+}
+
+@*@Styles.Render("~/bundles/css/site")*@
+
+
+<div class="forum_skagry">
+    <div class="serch">
+        <form method="get">
+            <input type="text" name="q">
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Альянсы</option>
+                <option value="">Мои каналы</option>
+            </select>
+
+            <div><i class="glyphicon glyphicon-search" aria-hidden="false"></i></div>
+
+        </form>
+        <div id="block-search-result">
+
+            <ul id="list-search-result"></ul>
+
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="category_title">
+            <div data-toggle="collapse" href="#collapse1">
+                <img src="" alt="">
+
+                <div class="left">
+                    <a class="name">Category name</a>
+
+                    <div class="hot">
+                        <span> Most active chennels:</span>
+                        <span><a href="">Chennel 1</a><img src="" alt=""></span>
+
+
+                        <span><a href="">Chennel 2</a><img src="" alt=""></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>Chennels_count: <b>24</b></p>
+                    <button type="button" class="btn btn-primary">
+                        add to Favorite
+                        <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category_content collapse" id="collapse1">
+            <ul class="">
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+
+
+                <li class="pagination_list">
+                    <div>
+                        <a class="prev" href="">Предыдущая</a>
+
+                        <div>
+                            <a href="">1</a>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                        </div>
+
+                        <a class="prev" href="">Следующая</a>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="item">
+        <div class="category_title">
+            <div data-toggle="collapse" href="#collapse2">
+                <img src="" alt="">
+
+                <div class="left">
+                    <a class="name">Category name</a>
+
+                    <div class="hot">
+                        <span> Most active chennels:</span>
+                        <span><a href="">Chennel 1</a><img src="" alt=""></span>
+
+
+                        <span><a href="">Chennel 2</a><img src="" alt=""></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>Chennels_count: <b>24</b></p>
+                    <button type="button" class="btn btn-primary">
+                        add to Favorite
+                        <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category_content collapse" id="collapse2">
+            <ul class="">
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+
+
+                <li class="pagination_list">
+                    <div>
+                        <a class="prev" href="">Предыдущая</a>
+
+                        <div>
+                            <a href="">1</a>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                        </div>
+
+                        <a class="prev" href="">Следующая</a>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="item">
+        <div class="category_title">
+            <div data-toggle="collapse" href="#collapse3">
+                <img src="" alt="">
+
+                <div class="left">
+                    <a class="name">Category name</a>
+
+                    <div class="hot">
+                        <span> Most active chennels:</span>
+                        <span><a href="">Chennel 1</a><img src="" alt=""></span>
+
+
+                        <span><a href="">Chennel 2</a><img src="" alt=""></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>Chennels_count: <b>24</b></p>
+                    <button type="button" class="btn btn-primary">
+                        add to Favorite
+                        <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category_content collapse" id="collapse3">
+            <ul class="">
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+
+
+                <li class="pagination_list">
+                    <div>
+                        <a class="prev" href="">Предыдущая</a>
+
+                        <div>
+                            <a href="">1</a>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                        </div>
+
+                        <a class="prev" href="">Следующая</a>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="item">
+        <div class="category_title">
+            <div data-toggle="collapse" href="#collapse4">
+                <img src="" alt="">
+
+                <div class="left">
+                    <a class="name">Category name</a>
+
+                    <div class="hot">
+                        <span> Most active chennels:</span>
+                        <span><a href="">Chennel 1</a><img src="" alt=""></span>
+
+
+                        <span><a href="">Chennel 2</a><img src="" alt=""></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>Chennels_count: <b>24</b></p>
+                    <button type="button" class="btn btn-primary">
+                        add to Favorite
+                        <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category_content collapse" id="collapse4">
+            <ul class="">
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+
+
+                <li class="pagination_list">
+                    <div>
+                        <a class="prev" href="">Предыдущая</a>
+
+                        <div>
+                            <a href="">1</a>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                        </div>
+
+                        <a class="prev" href="">Следующая</a>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="category_title">
+            <div data-toggle="collapse" href="#collapse6">
+                <img src="" alt="">
+
+                <div class="left">
+                    <a class="name">Category name</a>
+
+                    <div class="hot">
+                        <span> Most active chennels:</span>
+                        <span><a href="">Chennel 1</a><img src="" alt=""></span>
+
+
+                        <span><a href="">Chennel 2</a><img src="" alt=""></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>Chennels_count: <b>24</b></p>
+                    <button type="button" class="btn btn-primary">
+                        add to Favorite
+                        <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="category_content collapse" id="collapse6">
+            <ul class="">
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+                <li class="">
+                    <img src="" alt="">
+
+                    <div class="left">
+                        <div class="chennel_info">
+                            <div class="chennel_data">
+                                <div>Chennel Name</div>
+
+                                <div class="localize_info">
+                                    <span>RU</span>
+                                    <span>EN</span>
+                                    <span>DE</span>
+                                </div>
+                            </div>
+                            <span class="creeter_info">
+                                <span>
+                                    Creeter:
+                                    <a href="">user 1 (detail userinfo)</a>
+                                    <img src="" alt="">
+                                </span>
+                            </span>
+                        </div>
+
+
+                        <div class="hot">
+                            <span> Most active users:</span>
+                            <span><a href="">user 1 (detail user info)</a></span>
+                            <span><a href="">user 2 (detail user info)</a></span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p>messages count:<b>687</b></p>
+
+                        <p>last active:<b>19/01/2016</b></p>
+
+                        <p>Time:<b>16:24</b></p>
+                        <button type="button" class="btn btn-primary">
+                            add to Favorite
+                            <span class="glyphicon glyphicon-ok" aria-hidden="false"></span>
+                        </button>
+                    </div>
+                </li>
+
+
+                <li class="pagination_list">
+                    <div>
+                        <a class="prev" href="">Предыдущая</a>
+
+                        <div>
+                            <a href="">1</a>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                        </div>
+
+                        <a class="prev" href="">Следующая</a>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

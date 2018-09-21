@@ -1,0 +1,185 @@
+﻿@import "../../mixins";
+
+.navbar .line,
+#main-container .line {
+    background-color: $color-main-1;
+}
+
+.margin-bottom-l {
+    margin-bottom: 30px;
+}
+
+#home_page {
+    height: 100vh;
+    overflow-x: hidden !important;
+}
+
+#home_page .img_layer2 {
+    /*background-image: url('https://webapp.azureedge.net/Content/images/home/cell.png');*/
+    background-image: url('/Content/images/home/cell.png');
+    background-repeat: repeat;
+    background-position: -6.6vw;
+
+    @include background-size(6% auto);
+    @include vendor-prefix(box-shadow,#{inset 0 0 200px #000, 0 0 100px #000});
+    background-color: rgba(0, 0, 0, .7);
+    opacity: 0;
+    @include transition(opacity 1s ease-in-out);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /*margin-top: -100vh;*/
+    /*height: calc(100% + 100vh);*/
+}
+
+#home_scroller {
+    width: 100%;
+    min-width: 320px;
+}
+
+// отключаем свойства для плавной прокрутки
+//.touch #home_scroller,
+.ie #home_scroller {
+    height: auto;
+}
+
+@include custom-webkit-skroller();
+
+#home_scroller .img_layer1 {
+    /*background-image: url('https://webapp.azureedge.net/Content/images/home/background1.png');*/
+    background-image: url('/Content/images/home/background1.png');
+    background-repeat: repeat-y;
+    @include background-size(100% auto);
+}
+
+#home_scroller .img_layer2 {
+    /*background-image: url('https://webapp.azureedge.net/Content/images/home/cell.png');*/
+    background-image: url('/Content/images/home/cell.png');
+    background-repeat: repeat;
+    background-position: -6.6vw;
+
+    @include background-size(6% auto);
+    @include vendor-prefix(box-shadow,#{inset 0 0 200px #000, 0 0 100px #000});
+    background-color: rgba(0, 0, 0, .7);
+    opacity: 0;
+    @include transition(opacity 1s ease-in-out);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /*margin-top: -100vh;*/
+    /*height: calc(100% + 100vh);*/
+}
+
+#home_scroller > section {
+    padding-top: 55px;
+}
+
+
+
+#home_scroller .jumbotron {
+    /*background-color: #000;*/
+    background-color: transparent;
+}
+
+#home_scroller h1,
+#home_scroller h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-main-1;
+}
+
+#home_scroller h1 {
+    font-size: 2.3em;
+}
+
+
+
+.text-shadow-default,
+#home_scroller h1,
+#home_scroller h2,
+#home_scroller p {
+    position: relative;
+    text-shadow: 0 0 1px hsla(180, 100%, 57.1%, 0.16), 1px 1px 2px rgba(36, 255, 255, .16), -2px -2px 2px rgba(36, 255, 255, .16), 2px -2px 2px rgba(36, 255, 255, .16), -2px 2px 2px rgba(36, 255, 255, .16);
+}
+
+#home_scroller .container p {
+    text-align: initial;
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+
+.category {
+    width: 100%;
+    margin: 2em 0 1em 0;
+}
+
+
+.category .articleHead h1 {
+    margin: 0;
+    line-height: 1;
+    /*padding: 0.3em 0;*/
+}
+
+.category .articleHead:hover {
+    cursor: context-menu;
+}
+
+.border-shadow-default {
+    box-shadow: inset 0 0 29px rgba(24, 235, 234, 0.30), 0 0 5px rgba(24, 235, 234, .5);
+}
+
+.colorLight,
+#home_scroller p {
+    color: $color-main-1-light;
+}
+
+
+
+
+.bilboard .col-lg-12,
+.bilboard .col-lg-12 {
+    margin: 15px 0;
+    min-height: 270px;
+}
+
+.bilboard.row {
+    margin-top: -15px;
+    margin-bottom: -15px;
+}
+
+/*.bilboard .col-lg-12:hover { box-shadow: 0 0 15px rgba(24, 235, 234, 1); }*/
+
+@include respond-to(0,1) {
+    #main-container {
+        padding-top: 0;
+    }
+}
+
+@include respond-to(1) {
+    #main-container {
+        overflow-x: hidden;
+    }
+
+    #home_scroller h1,
+    #home_scroller h2 {
+        font-size: 100%;
+    }
+
+    .carousel-caption p {
+        display: none;
+    }
+}
+
+@include respond-to(2,3) {
+    #home_scroller {
+        background-color: transparent;
+        /*top: 100vh;*/
+        top: 0;
+        /*padding-top: 100vh;*/
+    }
+
+    #home_scroller .container p {
+        text-align: justify;
+    }
+}

@@ -1,0 +1,70 @@
+﻿@import "../../suples";
+@import "../../../flex-mixin";
+
+#buildContainer .select2.select2-container {
+    width: 85% !important;
+    height: 70px;
+    float: left;
+    /*select2 select2-container*/
+    & .select2-container-transfer {
+        /*color: $blue !important;*/
+        height: 100%;
+        /*background-color: transparent;*/
+        @extend.box-shadow-section;
+        border: 1px solid $color-main-1;
+        border-radius: 0;
+        @include flex-JcAc();
+    }
+
+    & #select2-target-transfer-own-list-container {
+        color: #7f0909 !important;
+        @extend .f_size_30px;
+        padding: 10px;
+    }
+
+    & .select2-selection__arrow b {
+        border-color: #000000 transparent transparent transparent;
+    }
+
+    & .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    }
+
+    & .select2-results__options {
+        max-height: 160px;
+    }
+}
+
+.select2-dropdown-container-transfer {
+    $bs: "box-shadow";
+    $color: rgba(255, 235, 234, 0.3);
+    $select-shadow-color: inset 0 0 30px 10px $color, 0 0 20px $color;
+    color: #7f0909 !important;
+    font-weight: bold;
+    border: 1px solid $color-main-1;
+    border-radius: 0;
+    @extend.box-shadow-section;
+    text-transform: uppercase;
+
+    & .select2-results__option {
+        @include transition(#{background-color $animation-short-linear,color $animation-short});
+    }
+
+    & .select2-search {
+        & input {
+            @include input-big-centr();
+            border: 1px solid $color-main-1;
+            min-width: 98.5%;
+        }
+    }
+
+    & .select2-results__option[aria-selected=true] {
+        background-color: $color-dark-green2;
+        box-shadow: $box-shadow-section;
+        @extend .text_p_standart;
+    }
+
+    & .select2-results__option--highlighted[aria-selected] {
+        background-color: transparent;
+        @include vendor-prefix($bs, $select-shadow-color);
+    }
+}

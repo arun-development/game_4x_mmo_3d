@@ -1,0 +1,140 @@
+﻿@using Server.Core
+@using Microsoft.ApplicationInsights.AspNetCore.Extensions
+@using Microsoft.AspNetCore.Http.Extensions
+@using Server.Modules.Localize
+@using Server.Modules.Localize.Site.Home
+@inject ILocalizerService Ls;
+ 
+@{
+    Layout = null;
+    var returnPath = Ls.GetReturnPathView(Context);
+
+}
+<header class="main-menu" ng-controller="siteMenuCtrl as mCtrl" id="main-menu">
+    <nav>
+        <div class="navbar navbar-inverse navbar-fixed-top" id="header">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="indicator-nav navbar-collapse collapse" itemscope itemtype="https://schema.org/SiteNavigationElement">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                                <a itemprop="url" 
+                                   asp-controller="Home"
+                                   asp-action="Index"
+                                   asp-fragment="feature"
+                                   title="@Resource.Features">@Resource.Features</a>
+                                <div class="line"></div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                   
+                                <a itemprop="url" 
+                                   asp-controller="Home"
+                                   asp-action="Index"
+                                   asp-fragment="story"
+                                   title="@Resource.story">@Resource.story</a>
+                        
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                                <a itemprop="url" 
+                                   asp-controller="Home"
+                                   asp-action="Index"
+                                   asp-fragment="theGame"
+                                   title="@Resource.theGame">@Resource.theGame</a>
+                    
+
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                                <a itemprop="url" 
+                                   asp-controller="Home"
+                                   asp-action="Index"
+                                   asp-fragment="media"
+                                   title="@Resource.screenshots">@Resource.screenshots</a>
+
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        <li id="link-to-game" class="display-none">
+                            <div class="underlay_animate navbar-brand">
+                                <a itemprop="url" 
+                                   asp-controller="Game"
+                                   asp-action="Index">Game</a>
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav lang_menu">
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                                <a  asp-controller="TranslateApi" asp-action="ChangeCulture"
+                                    asp-route-culture="@LangKeys.En.ToInvariant()" 
+                                    asp-route-returnPath="@returnPath">EN</a>
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                                <a  asp-controller="TranslateApi" asp-action="ChangeCulture"
+                                    asp-route-culture="@LangKeys.Ru.ToInvariant()" 
+                                   asp-route-returnPath="@returnPath">RU</a>
+                         
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="underlay_animate navbar-brand">
+                                <a asp-controller="TranslateApi" asp-action="ChangeCulture"
+                                   asp-route-culture="@LangKeys.Es.ToInvariant()"
+                                   asp-route-returnPath="@returnPath">ES</a>
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        @*место вставки логин меню*@
+                        <li class="login login-dynamic" ng-if="!mCtrl.showPersonalLogin">
+                            <div class="underlay_animate navbar-brand">
+                                <a ng-href="{{mCtrl.logInData.href}}" ng-bind="mCtrl.logInData.text"></a>
+                                <div class="line"></div>
+                            </div>
+                            <div></div>
+                        </li>
+                        <li class="login login-dynamic" ng-if="mCtrl.showPersonalLogin">
+                            <div class="underlay_animate navbar-brand">
+                                <a href="#" ng-click="mCtrl.onUserNameClick()" ng-bind="mCtrl.userData.userName"></a>
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                        <li class="login-dynamic" ng-if="mCtrl.showPersonalLogin">
+                            <div class="underlay_animate navbar-brand color-decor1">
+                                <span class="sg_icon sprite_interfase glyphicon glyphicon-eur color-decor1" title="ImgCC"></span>
+                                <a href="#" title="{{mCtrl.userData.balanceCc}}"
+                                   class="color-decor1"
+                                   id="user_cc_balance">
+                                    <span ng-bind="mCtrl.userData.balanceCc"></span>
+                                    <div class="line"></div>
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>  
+

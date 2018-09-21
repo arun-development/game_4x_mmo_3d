@@ -1,0 +1,147 @@
+@import "../../mixins";
+$site-header-h: 61px !global;
+
+@mixin header-nixin($headerId: "header") {
+    $s: '#'+$headerId;
+    $bg-color: transparentize($body-main-bg-color,0.25);
+
+    #{$s} {
+        background-color: transparent;
+        border-color: transparent;
+
+        @include transition(background-color 1s ease-in-out);
+        border: 0;
+
+        @include respond-to(1) {
+            body {
+                background: transparent;
+            }
+        }
+
+        @include respond-to(2,3) {
+            &.black, & .container {
+                background-color: $bg-color;
+            }
+        }
+    }
+
+    #{$s} .navbar-brand {
+        height: auto;
+        padding: 20px 15px;
+        z-index: 100;
+    }
+
+    #{$s} * {
+        font-size: $fs-14;
+    }
+
+    #{$s} a {
+        color: #fafafa;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    /*.lang_menu,
+        .lang_menu.nav.navbar-nav {
+            display: none;
+        }*/
+    #{$s} .container {
+        background-color: transparent;
+
+        & .navbar-header {
+            float: right;
+
+            & .navbar-toggle {
+                @include respond-to(0,1,2) {
+                    display: block !important;
+                    position: absolute;
+                    right: 0;
+                    z-index: 1;
+                }
+            }
+        }
+
+        & .navbar-collapse {
+            @include respond-to(0,1) {
+                min-height: 61px;
+            }
+
+            @include respond-to(2,3) {
+                min-height: 61px;
+            }
+
+            &.collapse.in {
+                @include respond-to(0,1) {
+                    background-color: $bg-color;
+                }
+            }
+
+            &.collapse.in, &.collapsing {
+                @include respond-to(0,1) {
+                    display: block !important;
+                    max-height: 80vh;
+
+                    & ul {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+
+                @include respond-to(2) {
+                    & ul:last-child {
+                        width: 100%;
+                        display: block;
+                    }
+                }
+            }
+
+            &.collapse {
+                @include transition(background-color .3s ease-in-out);
+
+                @include respond-to(0,1) {
+                    display: none !important;
+                }
+
+
+                @include respond-to(2,3) {
+                    display: block !important;
+                    @include clearfix();
+                }
+
+                @include respond-to(2) {
+                    & ul:last-child {
+                        display: none;
+                    }
+                }
+
+                @include respond-to(3) {
+                    & ul:last-child {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    .underlay_animate .line {
+        width: 0;
+        height: 1px;
+        left: 16px;
+        @include transition(width .15s ease-in-out);
+        bottom: -4px;
+    }
+
+    #{$s} .underlay_animate .line.active,
+    #{$s} ul > li:hover > .underlay_animate .line,
+    #{$s} .underlay_animate:hover .line {
+        width: 100%;
+    }
+
+
+    #{$s} .login a {
+        font-weight: bold;
+        color: #ff6801;
+    }
+}

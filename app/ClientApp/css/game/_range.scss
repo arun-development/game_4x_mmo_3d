@@ -1,0 +1,5 @@
+﻿@import "suples";
+$big-slide-margin: 0 8px;
+$big-slide-margin-unit-form: 0 0px 20px 8px ;
+@include change-slider-size("#resource-exchange-form", $big-slide-margin);
+@include change-slider-size(".unit-form", $big-slide-margin-unit-form);

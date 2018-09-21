@@ -1,0 +1,116 @@
+﻿@using Server.Infrastructure
+ 
+@{
+    Layout = "/Views/Shared/_SiteLayout.cshtml";
+    var admCore = LibCollection.JsAdminAngularCore;
+    var admSpace = LibCollection.JsAdminAngularSpace;
+}
+
+
+<div ng-controller="spaceCtrl as spaceCtrl" class="md-padding" layout="column" ng-cloak>
+    <div layout="row">
+        <md-input-container class="md-block" flex="100">
+            <label>Space Type</label>
+            <md-select ng-disabled="spaceCtrl.typeSelectDisabled"
+                       ng-model="spaceCtrl.$selectedType"
+                       ng-change="spaceCtrl.onSpaceTypeSelected(spaceCtrl.$selectedType)">
+                <md-option ng-repeat="spaceType in spaceCtrl.spaceTypes"
+                           ng-value="spaceType"
+                           ng-bind="spaceType.Name"></md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div class="space-item" layout="column" ng-if="spaceCtrl.showContentData">
+        <md-input-container class="md-block" flex="100">
+            <label>Filter by {{spaceCtrl.$selectedType.Name}} name</label>
+            <input ng-model="spaceCtrl.filterName">
+        </md-input-container>
+
+        <div layout="row" layout-wrap layout-align="start start">
+            <div class="space-item-border md-margin" flex="15" ng-repeat="colItem in spaceCtrl.contendData | filter:spaceCtrl.filterName">
+                <div class="md-padding" layout="column">
+                    <h4 class="md-padding">Id : {{colItem.Id}}</h4>
+                    <h4 class="md-padding">NativeName : {{colItem.NativeName}}</h4>
+                    <md-button class="md-raised md-primary"
+                               ng-disabled="spaceCtrl.updateItemDisabled"
+                               ng-click="spaceCtrl.updateItem($event,colItem,spaceCtrl.$selectedType)">Update Description</md-button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+@section styles {
+    <style>
+        .space-item {
+            color: wheat;
+        }
+
+        .space-item-border {
+            border: 1px solid red;
+        }
+    </style>
+}
+
+@section footerScriptsAngular {
+    <script src="@admCore.LocalPath" asp-append-version="true"></script>
+    <script src="@admSpace.LocalPath" asp-append-version="true"></script>
+}
+
+ 
+@section footerHtmlAndTemplates {
+
+    <script type="text/ng-template" id="update-space-item-dialog.tmpl">
+        <md-dialog aria-label="update-space-item">
+            <form name="form" ng-cloak>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Update {{ctrl.spaceItem.MapTypeName}} Item</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+                    <div class="md-dialog-content">
+                        <div layout="column">
+                            <div layout="column">
+                                <h4 class="md-padding">Description Translate</h4>
+                                <md-input-container>
+                                    <label>EN: </label>
+                                    <textarea md-maxlength="{{ctrl.maxlength}}"
+                                              required
+                                              ng-model="ctrl.model.En.Description" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>ES: </label>
+                                    <textarea md-maxlength="{{ctrl.maxlength}}"
+                                              required
+                                              ng-model="ctrl.model.Es.Description" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>RU: </label>
+                                    <textarea md-maxlength="{{ctrl.maxlength}}"
+                                              required
+                                              ng-model="ctrl.model.Ru.Description" />
+                                </md-input-container>
+
+                            </div>
+                        </div>
+                    </div>
+                </md-dialog-content>
+
+                <md-dialog-actions layout="row">
+                    <md-button ng-click="ctrl.cancel()">Cancel</md-button>
+                    <span flex></span>
+                    <md-button type="submit" ng-disabled="!form.$valid && ctrl.sendIsDisabled"
+                               ng-click="ctrl.send()">Update</md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </script>
+}

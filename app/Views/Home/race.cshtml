@@ -1,0 +1,34 @@
+﻿@using Server.Modules.Localize.Site.Home
+@{
+    Layout = null;
+    var confHead =Resource.r_Confederation;
+    var confDesr = Resource.r_ConfederationDescription;
+    var raceScagry = Resource.r_RaceSkagry;
+    var raceScagryDesr = Resource.r_RaceSkagryDescription;
+}
+<div class="container bilboard" id="race">
+    <div class="row">
+        <div class="col-lg-6">
+
+            @*                <label class="glyphicon glyphicon-certificate"></label>*@
+            <div class="text-center" itemscope itemtype="//schema.org/ImageObject">
+@*                <img src="~/Content/images/home/theGame/confederation.svg" title="@Resource.r_Confederation"/>*@
+                <img itemprop="image" src="/Content/images/home/theGame/confederation.svg" title="@confHead" alt=""/>
+                @*<img itemprop="image" src="//webapp.azureedge.net/Content/images/home/theGame/confederation.svg" title="@Resource.r_Confederation" alt=""/>*@
+            </div>
+
+            @await Html.PartialAsync("article/article", new Dictionary<string, string> {{"Head", confHead }, {"Description", @confDesr } })
+
+        </div>
+   
+        <div class="col-lg-6">
+            <div class="text-center" itemscope itemtype="https://schema.org/ImageObject">
+                @*<img itemprop="image" src="//webapp.azureedge.net/Content/images/home/theGame/skagry.svg" title="Skagry" alt=""/>*@
+                                <img src="~/Content/images/home/theGame/skagry.svg" title="Skagry"/>
+            </div>
+
+
+            @await Html.PartialAsync("article/article", new Dictionary<string, string> {{"Head", raceScagry }, {"Description", raceScagryDesr } })
+        </div>
+    </div>
+</div>

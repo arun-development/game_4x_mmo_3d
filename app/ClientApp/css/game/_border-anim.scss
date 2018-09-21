@@ -1,0 +1,161 @@
+﻿@import "suples";
+/*.border-standard { border: 1px solid #1affff; }*/
+.border-anim {
+    position: relative;
+    float: left;
+    z-index: 1;
+    padding: 2px;
+    outline: 1px solid $color-dark-green;
+    transition: box-shadow $animation-standart, color $animation-standart;
+    @include vendor-prefix(flex-shrink,0);
+    @include vendor-prefix(flex-grow,0);
+
+    &:hover {
+        box-shadow: $dark-green-border-hover;
+    }
+
+    & .static-content {
+        @extend .text_name;
+
+        & > *, > * > * {
+            @include size-full-size();
+        }
+
+        & h3 {
+            @extend .f_size_24px;
+        }
+    }
+}
+
+.border-anim.ms {
+    @include complex-button($msSize#{px})
+}
+.border-anim.m {
+    @include complex-button($mSize#{px},$mSize#{px})
+}
+
+.border-anim.center {
+    @include complex-button($centerSizeWidth);
+}
+
+.border-anim.center > * {
+    /*max-height: 100%;*/
+}
+
+.border-anim .fa {
+    $icon-color: $font-icon-color-1;
+    @include flex-JcAc();
+    @include transition(color $animation-short-linear, transform $animation-short-linear);
+    color: $icon-color;
+    @include scale(1);
+
+    &:before {
+        font-size: 70px;
+    }
+
+    &:hover {
+        color: lighten($icon-color,15%);
+    }
+
+    &:active {
+        @include scale(0.8);
+        color: darken($icon-color,10);
+    }
+}
+
+.border-anim .top-left,
+.border-anim .bot-right {
+    overflow: hidden;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.border-anim .static-content {
+    @extend .box-shadow-section;
+    @include size-full-size();
+}
+
+
+.border-anim .top-left:before {
+    height: 100%;
+    top: -75%;
+}
+
+.border-anim .top-left:after {
+    width: 100%;
+    left: -75%;
+}
+
+.border-anim .bot-right:before {
+    height: 25%;
+    top: calc(75% - 4px);
+    right: 2px;
+}
+
+.border-anim .bot-right:after {
+    width: 25%;
+    left: calc(75% - 4px);
+    bottom: 2px;
+}
+
+
+.border-anim .top-left:before,
+.border-anim .top-left:after,
+.border-anim .bot-right:before,
+.border-anim .bot-right:after {
+    background-color: $color-main-1;
+    content: "";
+    padding: 1px;
+    position: absolute;
+}
+
+.border-anim.active .top-left:before,
+.border-anim:hover .top-left:before {
+    height: 25%;
+    top: calc(75% - 4px);
+}
+
+.border-anim.active .top-left:after .border-anim:hover .top-left:after {
+    width: 25%;
+}
+
+
+.border-anim.active .top-left:after,
+.border-anim:hover .top-left:after {
+    left: calc(75% - 4px);
+    width: 25%;
+}
+
+.border-anim.active .bot-right:before,
+.border-anim:hover .bot-right:before {
+    height: 100%;
+    top: -75%;
+}
+
+.border-anim.active .bot-right:after,
+.border-anim:hover .bot-right:after {
+    width: 100%;
+    left: -75%;
+}
+
+
+.border-anim .top-left:before,
+.border-anim .top-left:after,
+.border-anim .bot-right:before,
+.border-anim .bot-right:after {
+    @extend .border-item-animation;
+}
+
+
+/*=================================================================*/
+
+
+#hangar .units > .mask,
+.border-dark-green {
+    box-shadow: 0 0 10px #0c3e3f, inset 0 0 20px #0c3e3f;
+    background-color: transparent;
+}

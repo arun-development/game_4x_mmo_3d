@@ -1,0 +1,938 @@
+﻿<script type="text/ng-template" id="dialog-upload-user-image.tmpl">
+    <md-dialog aria-label="head" class="fullscreen-dialog upload-image-dialog" ng-class="cssDialogContainer">
+        <form ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Upload Image</h2>
+                    <span flex></span>
+                    
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button> 
+                </div>
+
+            </md-toolbar>
+
+            <md-dialog-content>
+                <div class="md-dialog-content" ng-class="(corpLocalLoaded==true)?'active':''">
+                    <div ngf-drop
+                         ngf-select
+                         ng-model="file"
+                         class="drop-box"
+                         ngf-multiple="false"
+                         ngf-allow-dir="false"
+                         ngf-max-size="10MB">
+                    </div>
+
+                    <div flex="100" layout="row" layout-align="center center">
+                        <div class="crop-container" ng-if="corpLocalLoaded" layout="row" layout-align="space-around center" layout-align-xs="start start">
+                            <ui-cropper class="cropArea"
+                                        image="corpImg"
+                                        area-type="rectangle"
+                                        aspect-ratio="1"
+                                        on-load-done="corpedOnLoadDone()"
+                                        result-image="corpedImg"
+                                        result-image-size="imageSize"
+                                        result-image-format="image/jpg">
+                            </ui-cropper>
+                            <img class="corped-image" ng-src="{{corpImgBlob}}" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row" layout-align="space-between center">
+                <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+                    More on Wikipedia
+                </md-button>-->        
+                <md-button ng-click="cancel()" aria-label="close">Close</md-button>
+                <span flex></span>
+                <md-button ng-click="upload('update-avatar')" aria-label="upload">Upload</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="dialog-alliance-send-msg.tmpl">
+    <md-dialog aria-label="amsmCtrl.title" class="alliance-send-message-dialog">
+        <form name="sendChannelTo" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="arsmCtrl.title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="arsmCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>
+                </div>
+
+            </md-toolbar>
+
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <div layout="column">
+                        <div layout="row" layout-align="space-between  center">
+                            <md-input-container layout="row" flex="40">
+                                <label>From: </label>
+                                <input ng-model="arsmCtrl.from" disabled class="test-shadow-none" />
+                            </md-input-container>
+                            <md-input-container layout="row" flex="40">
+                                <label>To: </label>
+                                <input ng-model="arsmCtrl.to" disabled class="test-shadow-none" />
+                            </md-input-container>
+                        </div>
+
+                        <div>
+                            <md-input-container class="display-block message">
+                                <label>Message</label>
+                                <textarea class="test-shadow-none"
+                                          ng-model="arsmCtrl.message"
+                                          name="msgTo"
+                                          required
+                                          md-maxlength="{{arsmCtrl.messageMaxLength}}"></textarea>
+
+                                <div ng-messages="sendChannelTo.msgTo.$error" class="error">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="md-maxlength">The description must be less than 1000 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="arsmCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!sendChannelTo.$valid"
+                           ng-click="arsmCtrl.send()">Send</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+@*channel dialogs begin*@
+
+<script type="text/ng-template" id="dialog-channel-private-create-channel.tmpl">
+    <md-dialog aria-label="dcpmCtrl.model.title" class="user-channels-dialog">
+        <form name="dcpmCtrl.form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="dcpmCtrl.model.$title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="dcpmCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>
+                </div>
+
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content" layout-gt-sm="column">
+                    <div layout="row" layout-align="space-between  center">
+                        <md-input-container layout="row" flex="40">
+                            <label>From: </label>
+                            <input ng-model="dcpmCtrl.model.UserName" disabled class="test-shadow-none" />
+                        </md-input-container>
+                        <md-autocomplete class="dialog-create-channel"
+                                         ng-disabled="dcpmCtrl.serchInLock"
+                                         layout="row" flex="40"
+                                         md-input-name="toName"
+                                         md-input-id="{{dcpmCtrl.serchInputId}}"
+                                         md-items="user in dcpmCtrl.querySearch(dcpmCtrl.searchText)"
+                                         md-item-text="user.Name"
+                                         md-match-case-insensitive="true"
+                                         md-selected-item="dcpmCtrl.model.To"
+                                         md-search-text="dcpmCtrl.searchText"
+                                         md-search-text-change="dcpmCtrl.onTextChange(dcpmCtrl.searchText)"
+                                         md-delay="300"
+                                         md-autofocus="true"
+                                         md-floating-label="To :"
+                                         md-dropdown-items="30"
+                                         md-menu-class="custom-autocomplete-drop-1"
+                                         required
+                                         md-require-match="true"
+                                         md-min-length="3"
+                                         md-input-maxlength="{{dcpmCtrl.model.$userNameMaxLenght}}">
+                            <md-item-template>
+                                <span md-highlight-text="dcpmCtrl.searchText" md-highlight-flags="^i">{{user.Name}}</span>
+                            </md-item-template>
+
+                            <div ng-messages="dcpmCtrl.form.toName.$error" class="error">
+                                <div ng-message="md-require-match" ng-bind="dcpmCtrl.messages.serchRequireMmatch"></div>
+                                <div ng-message="required" ng-bind="dcpmCtrl.messages.required"></div>
+                                <div ng-message="md-maxlength" ng-bind-html="dcpmCtrl.messages.serchMaxlength"></div>
+                            </div>
+                            <md-not-found ng-bind="dcpmCtrl.messages.serchNotFounded"></md-not-found>
+                        </md-autocomplete>
+
+                    </div>
+                    <md-input-container class="display-block message">
+                        <label>Create message</label>
+                        <textarea class="test-shadow-none"
+                                  ng-model="dcpmCtrl.model.Message"
+                                  name="messageTo"
+                                  required
+                                  md-maxlength="{{dcpmCtrl.model.$messageMaxLenght}}"></textarea>
+
+                        <div ng-messages="dcpmCtrl.form.messageTo.$error" class="error">
+                            <div ng-message="required" ng-bind="dcpmCtrl.messages.required">This is required.</div>
+                            <div ng-message="md-maxlength" ng-bind="dcpmCtrl.messages.messageMaxlength">The description must be less than 3000 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="dcpmCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!dcpmCtrl.form.$valid"
+                           ng-click="dcpmCtrl.send()">Send</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="dialog-channels-group-create-channel.tmpl">
+    <md-dialog aria-label="dcgmCtrl.model.$title" class="user-channels-dialog group">
+        <form name="dcgmCtrl.form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="dcgmCtrl.model.$title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="dcgmCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" title="close" aria-label="Close"></md-icon>
+                    </md-button>           
+                </div>
+ 
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content" layout-gt-sm="column">
+                    <md-input-container class="md-block active">
+                        <label ng-bind="dcgmCtrl.model.$enterChannelNameLabel"></label>
+                        <input name="channelName"
+                               type="text"
+                               autocomplete="off"
+                               ng-change="dcgmCtrl.onChannelNameChange($event)"
+                               ng-model="dcgmCtrl.model.channelName"
+                               required="{{dcgmCtrl.model.channelName}}"
+                               ng-minlength="dcgmCtrl.model.$channelNameMinLenght"
+                               ng-maxlength="dcgmCtrl.model.$channelNameMaxLenght"
+                               ng-pattern="dcgmCtrl.channelNamePattern"
+                               ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}"
+                               is-available-name-hub="userChannelsIsAvailableChannelName"
+                               on-name-validate="dcgmCtrl.onNameValidate"
+                               on-name-invalidate="dcgmCtrl.onNameInvalidate">
+                        <md-button disabled class="md-icon-button" aria-label="checkUniqe">
+                            <i class="fa" aria-hidden="false" ng-class="dcgmCtrl.cssIconChannelName"></i>
+                        </md-button>
+                        <div ng-messages="dcgmCtrl.form.channelName.$error" class="error" ng-messages-multiple>
+                            <div ng-message="required" ng-bind="dcgmCtrl.messages.required"></div>
+                            <div ng-message="minlength" ng-bind-html="dcgmCtrl.messages.nameMinLength"></div>
+                            <div ng-message="maxlength" ng-bind-html="dcgmCtrl.messages.nameMaxLength"></div>
+                            <div ng-message="pattern" ng-bind-html="dcgmCtrl.messages.namePattern"></div>
+                            <div ng-message="isAvailableName" ng-bind-html="dcgmCtrl.messages.isAvailableName"></div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <div ng-click="dcgmCtrl.toggleLock()">
+                            <input type="text"
+                                   readonly
+                                   name="isLocked"
+                                   ng-value="dcgmCtrl.model.$lockedLabel"
+                                   aria-label="switch" />
+                            <md-button class="md-icon-button" aria-label="switch">
+                                <i class="fa" aria-hidden="false" ng-class="dcgmCtrl.cssIconLock"></i>
+                            </md-button>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container ng-class="dcgmCtrl.model.isLocked?'active':''">
+                        <label>Channel password</label>
+                        <input name="password"
+                               autocomplete="off"
+                               type="{{dcgmCtrl.model.inputPsswordType}}"
+                               ng-model="dcgmCtrl.model.password"
+                               ng-required="dcgmCtrl.model.isLocked"
+                               ng-minlength="dcgmCtrl.model.$passwordMinLenght"
+                               ng-maxlength="dcgmCtrl.model.$passwordMaxLenght"
+                               ng-disabled="!dcgmCtrl.model.isLocked"
+                               ng-pattern="dcgmCtrl.passwordPattern">
+                        <md-button class="md-icon-button" aria-label="show password"
+                                   ng-click="dcgmCtrl.showPasswordToggle()"
+                                   ng-disabled="!dcgmCtrl.model.isLocked">
+                            <i class="fa" aria-hidden="false" ng-class="dcgmCtrl.cssIconShowPassword"></i>
+                        </md-button>
+                        <div ng-messages="dcgmCtrl.form.password.$error" class="error" ng-messages-multiple>
+                            <div ng-message="required" ng-bind="dcgmCtrl.messages.required"></div>
+                            <div ng-message="minlength" ng-bind-html=dcgmCtrl.messages.passwodMinLength></div>
+                            <div ng-message="maxlength" ng-bind-html=dcgmCtrl.messages.passwodMaxLength></div>
+                            <div ng-message="pattern" ng-bind-html="dcgmCtrl.messages.passwordPattern"></div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container ng-class="dcgmCtrl.model.isLocked?'active':''">
+                        <label>Confirm password</label>
+                        <input name="repetePassword"
+                               autocomplete="off"
+                               type="{{dcgmCtrl.model.inputPsswordType}}"
+                               ng-pattern="dcgmCtrl.passwordPattern"
+                               ng-required="dcgmCtrl.model.isLocked"
+                               verify-to="dcgmCtrl.model.password"
+                               ng-model="dcgmCtrl.model.confirmPassword"
+                               ng-disabled="!dcgmCtrl.model.isLocked">
+                        <md-button class="md-icon-button" aria-label="show confirm password"
+                                   ng-click="dcgmCtrl.showPasswordToggle()"
+                                   ng-disabled="!dcgmCtrl.model.isLocked">
+                            <i class="fa" aria-hidden="false" ng-class="dcgmCtrl.cssIconShowPassword"></i>
+                        </md-button>
+                        <div ng-messages="dcgmCtrl.form.repetePassword.$error" class="error" ng-messages-multiple>
+                            <div ng-message="required" ng-bind="dcgmCtrl.messages.required"></div>
+                            <div ng-message="verifyTo" ng-bind="dcgmCtrl.messages.noMatch"></div>
+                            <div ng-message="pattern" ng-bind-html="dcgmCtrl.messages.passwordPattern"></div>
+                        </div>
+                    </md-input-container>
+
+
+                    <div ng-messages="dcgmCtrl.form.$error" class="error">
+                        <div ng-message="maxChannelsLimit" ng-bind-html="dcgmCtrl.messages.maxChannelsLimit"></div>
+                    </div>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="dcgmCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!dcgmCtrl.form.$valid"
+                           ng-click="dcgmCtrl.send()">Create</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="dialog-channels-group-update-password.tmpl">
+
+    <md-dialog aria-label="pCtrl.model.$title" class="user-channels-dialog group">
+        <form name="pCtrl.form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="pCtrl.model.$title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="pCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" title="close" aria-label="Close"></md-icon>
+                    </md-button>                  
+                </div>
+    
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content" layout-gt-sm="column">
+                    <div style="max-width:300px">
+                        Внимание! :  При установке пароля все активные пользователи потеряют доступ к каналу до ввода нового пароля.
+
+                    </div>
+
+                    <md-input-container class="md-block">
+                        <div ng-click="pCtrl.toggleLock()">
+                            <input type="text"
+                                   readonly
+                                   name="isLocked"
+                                   ng-value="pCtrl.model.$lockedLabel"
+                                   aria-label="switch" />
+                            <md-button class="md-icon-button" aria-label="switch">
+                                <i class="fa" aria-hidden="false" ng-class="pCtrl.cssIconLock"></i>
+                            </md-button>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container ng-class="pCtrl.model.isLocked?'active':''">
+                        <label>Channel password</label>
+                        <input name="password"
+                               autocomplete="off"
+                               type="{{pCtrl.model.inputPsswordType}}"
+                               ng-model="pCtrl.model.password"
+                               ng-required="pCtrl.model.isLocked"
+                               ng-minlength="pCtrl.model.$passwordMinLenght"
+                               ng-maxlength="pCtrl.model.$passwordMaxLenght"
+                               ng-disabled="!pCtrl.model.isLocked"
+                               ng-pattern="pCtrl.passwordPattern">
+                        <md-button class="md-icon-button" aria-label="show password"
+                                   ng-click="pCtrl.showPasswordToggle()"
+                                   ng-disabled="!pCtrl.model.isLocked">
+                            <i class="fa" aria-hidden="false" ng-class="pCtrl.cssIconShowPassword"></i>
+                        </md-button>
+                        <div ng-messages="pCtrl.form.password.$error" class="error" ng-messages-multiple>
+                            <div ng-message="required" ng-bind="pCtrl.messages.required"></div>
+                            <div ng-message="minlength" ng-bind-html=pCtrl.messages.passwodMinLength></div>
+                            <div ng-message="maxlength" ng-bind-html=pCtrl.messages.passwodMaxLength></div>
+                            <div ng-message="pattern" ng-bind-html="pCtrl.messages.passwordPattern"></div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container ng-class="pCtrl.model.isLocked?'active':''">
+                        <label>Confirm password</label>
+                        <input name="repetePassword"
+                               autocomplete="off"
+                               type="{{pCtrl.model.inputPsswordType}}"
+                               ng-pattern="pCtrl.passwordPattern"
+                               ng-required="pCtrl.model.isLocked"
+                               verify-to="pCtrl.model.password"
+                               ng-model="pCtrl.model.confirmPassword"
+                               ng-disabled="!pCtrl.model.isLocked">
+                        <md-button class="md-icon-button" aria-label="show confirm password"
+                                   ng-click="pCtrl.showPasswordToggle()"
+                                   ng-disabled="!pCtrl.model.isLocked">
+                            <i class="fa" aria-hidden="false" ng-class="pCtrl.cssIconShowPassword"></i>
+                        </md-button>
+                        <div ng-messages="pCtrl.form.repetePassword.$error" class="error" ng-messages-multiple>
+                            <div ng-message="required" ng-bind="pCtrl.messages.required"></div>
+                            <div ng-message="verifyTo" ng-bind="pCtrl.messages.noMatch"></div>
+                            <div ng-message="pattern" ng-bind-html="pCtrl.messages.passwordPattern"></div>
+
+                        </div>
+                    </md-input-container>
+
+
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="pCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!pCtrl.form.$valid"
+                           ng-click="pCtrl.send()">Update</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+
+
+</script>
+
+<script type="text/ng-template" id="dialog-channels-group-join.tmpl">
+    <md-dialog aria-label="jCtrl.model.title" class="user-channels-dialog group-join">
+        <form name="jCtrl.form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="jCtrl.model.$title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="jCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>                   
+                </div>
+      
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content" layout-gt-sm="column">
+                    <md-input-container>
+                        <h4>Search Type</h4>
+                        <md-select ng-model="jCtrl.model.selecctedSerchTypeView"
+                                   aria-label="Search Type"
+                                   md-container-class="channels-group-serch-type">
+                            <md-option ng-value="serchType" ng-repeat="serchType in  jCtrl.model.serchTypesView" ng-bind="serchType.Name"></md-option>
+                        </md-select>
+                        <md-button disabled class="md-icon-button"
+                                   style="top: 37px; right: 1px;" aria-label="filter">
+                            <i class="fa fa-filter" aria-hidden="false"></i>
+                        </md-button>
+
+
+                    </md-input-container>
+                    <md-autocomplete class="dialog-create-channel"
+                                     layout="row"
+                                     ng-disabled="jCtrl.serchInLock"
+                                     md-no-asterisk
+                                     md-no-cache="true"
+                                     md-input-name="toName"
+                                     md-input-id="{{jCtrl.serchInputId}}"
+                                     md-items="sChannelItem in jCtrl.querySearch(jCtrl.searchText)"
+                                     md-item-text="sChannelItem.Name"
+                                     md-selected-item-change="jCtrl.onSlectedChannelChanged(sChannelItem)"
+                                     md-match-case-insensitive="true"
+                                     md-selected-item="jCtrl.model.To"
+                                     md-search-text="jCtrl.searchText"
+                                     md-search-text-change="jCtrl.onTextChange(jCtrl.searchText)"
+                                     md-delay="300"
+                                     md-autofocus="true"
+                                     md-floating-label="Channel name"
+                                     md-dropdown-items="30"
+                                     md-menu-class="custom-autocomplete-drop-1"
+                                     required
+                                     md-require-match="true"
+                                     md-min-length="jCtrl.model.$minSerchChannelName"
+                                     md-input-maxlength="jCtrl.model.$channelNameMaxLenght">
+                        <md-button disabled class="md-icon-button" aria-label="serch">
+                            <i class="fa fa-search" aria-hidden="false"></i>
+                        </md-button>
+                        <md-item-template>
+                            <span md-highlight-text="jCtrl.searchText" md-highlight-flags="^i">{{sChannelItem.Name}}</span>
+                        </md-item-template>
+                        <div ng-messages="jCtrl.form.toName.$error" class="error">
+                            <div ng-message="required" ng-bind="jCtrl.messages.required"></div>
+                            <div ng-message="md-maxlength" ng-bind-html="jCtrl.messages.serchMaxlength"></div>
+                            <div ng-message="not-found" ng-bind="jCtrl.messages.serchNotFounded"></div>
+                            <div ng-message="channelExistLocal" ng-bind="jCtrl.messages.channelExistLocal"></div>
+                            <div ng-message="md-require-match" ng-bind="jCtrl.messages.serchRequireMmatch"></div>
+                        </div>
+
+                    </md-autocomplete>
+
+
+                    <md-input-container>
+                        <input type="text"
+                               readonly
+                               name="isLocked"
+                               ng-value="jCtrl.model.$lockedLabel"
+                               aria-label="switch" />
+                        <md-button disabled class="md-icon-button" aria-label="switch">
+                            <i class="fa" aria-hidden="false" ng-class="jCtrl.cssIconLock"></i>
+                        </md-button>
+                    </md-input-container>
+                    <md-input-container aria-hidden="{{jCtrl.model.isLocked?'false':'true'}}" class="password-container">
+                        <label>Channel password</label>
+                        <input name="password"
+                               autocomplete="off"
+                               type="{{jCtrl.model.inputPsswordType}}"
+                               ng-model="jCtrl.model.password"
+                               ng-required="jCtrl.model.isLocked"
+                               ng-minlength="jCtrl.model.$passwordMinLenght"
+                               ng-maxlength="jCtrl.model.$passwordMaxLenght"
+                               ng-disabled="!jCtrl.model.isLocked"
+                               ng-pattern="jCtrl.passwordPattern"
+                               ng-change="jCtrl.onPasswordChanged()">
+                        <md-button class="md-icon-button" aria-label="show password"
+                                   ng-click="jCtrl.showPasswordToggle()"
+                                   ng-disabled="!jCtrl.model.isLocked">
+                            <i class="fa" aria-hidden="false" ng-class="jCtrl.cssIconShowPassword"></i>
+                        </md-button>
+                        <div ng-messages="jCtrl.form.password.$error" class="error" ng-messages-multiple>
+                            <div ng-message="required" ng-bind="jCtrl.messages.required"></div>
+                            <div ng-message="minlength" ng-bind-html=jCtrl.messages.passwodMinLength></div>
+                            <div ng-message="maxlength" ng-bind-html=jCtrl.messages.passwodMaxLength></div>
+                            <div ng-message="pattern" ng-bind-html="jCtrl.messages.passwordPattern"></div>
+                            <div ng-if="!passwordWrongMax" ng-message="passwordWrongCount" ng-bind-html="jCtrl.messages.passwordWrongCount"></div>
+                            <div ng-message="passwordWrongMax" ng-bind-html="jCtrl.messages.passwordWrongMax"></div>
+                            <div ng-message="youAreBlockedInThisChannel" ng-bind-html="jCtrl.messages.youAreBlockedInThisChannel"></div>
+                        </div>
+                    </md-input-container>
+
+                    <div ng-messages="jCtrl.form.$error" class="error">
+                        <div ng-message="youAreBlockedInThisChannel" ng-bind-html="jCtrl.messages.youAreBlockedInThisChannel"></div>
+                        <div ng-message="maxChannelsLimit" ng-bind-html="jCtrl.messages.maxChannelsLimit"></div>
+                    </div>
+                    <div ng-if="jCtrl.showChannelChannelOwnerInfo" class="channel-admin-info">
+                        <span>Channel admin:  </span>
+                        <span class="unique-name" ng-bind="jCtrl.ChannelOwner.Name"></span>
+                    </div>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="jCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!jCtrl.form.$valid" ng-click="jCtrl.send()">Join</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+
+
+</script>
+
+<script type="text/ng-template" id="dialog-channels-group-update-user.tmpl">
+    <md-dialog aria-label="suCtrl.model.title" class="user-channels-dialog group-join">
+        <form name="suCtrl.form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="suCtrl.$title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="suCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>                  
+                </div>
+
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content" layout-gt-sm="column">
+                    <md-input-container class="md-block">
+                        <div ng-click="suCtrl.toggleCanRead()">
+                            <input type="text"
+                                   readonly
+                                   ng-value="suCtrl.labels.read"
+                                   aria-label="{{suCtrl.labels.read}}" />
+                            <md-button class="md-icon-button" aria-label="switch">
+                                <i class="fa" aria-hidden="false" ng-class="suCtrl.model.MessageRead?suCtrl.css.read:suCtrl.css.notRead"></i>
+                            </md-button>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <div ng-disabled="!suCtrl.labels.read" ng-click="suCtrl.toggleCanWrite()">
+                            <input type="text"
+                                   readonly
+                                   ng-value="suCtrl.labels.write"
+                                   aria-label="{{suCtrl.labels.write}}" />
+                            <md-button class="md-icon-button" aria-label="switch">
+                                <i class="fa {{suCtrl.css.write}}" aria-hidden="false"></i>
+                            </md-button>
+                        </div>
+                    </md-input-container>
+                    <md-input-container ng-if="suCtrl.showUpdatePassword" class="md-block">
+                        <div ng-click="suCtrl.toggleUpdatePasswordFromChannel()">
+                            <input type="text"
+                                   readonly
+                                   ng-value="suCtrl.labels.pw"
+                                   aria-label="{{suCtrl.labels.pw}}" />
+                            <md-button class="md-icon-button" aria-label="switch">
+                                <i class="fa {{suCtrl.css.password}}" aria-hidden="false"></i>
+                            </md-button>
+                        </div>
+                    </md-input-container>
+
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="suCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="suCtrl.form.$invalid" ng-click="suCtrl.send()">Update</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+
+
+</script>
+
+@*channel dialogs end*@
+
+@*confederation  dialogs*@
+<script type="text/ng-template" id="dialog-set-officer.tmpl">
+    <md-dialog aria-label="suCtrl.model.title" class="user-channels-dialog group-join">
+        <form name="soCtrl.form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="soCtrl.model.$title"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="soCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>      
+                </div>
+
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content" layout-gt-sm="column">
+
+                    <md-input-container>
+                        <label>Post:</label>
+                        <input type="text"
+                               readonly
+                               disabled
+                               ng-value="soCtrl.model.postName"
+                               aria-label="Post:" />
+
+                    </md-input-container>
+
+                    <md-autocomplete class="dialog-create-channel"
+                                     ng-disabled="soCtrl.serchInLock"
+                                     layout="row" flex="40"
+                                     md-input-name="toName"
+                                     md-input-id="{{soCtrl.serchInputId}}"
+                                     md-items="user in soCtrl.querySearch(soCtrl.searchText)"
+                                     md-item-text="user.Name"
+                                     md-selected-item-change="soCtrl.onSelectedItemChange(user)"
+                                     md-match-case-insensitive="true"
+                                     md-selected-item="soCtrl.model.To"
+                                     md-search-text="soCtrl.searchText"
+                                     md-search-text-change="soCtrl.onTextChange(soCtrl.searchText)"
+                                     md-delay="300"
+                                     md-autofocus="true"
+                                     md-floating-label="Enter user name: "
+                                     md-dropdown-items="30"
+                                     md-menu-class="custom-autocomplete-drop-1"
+                                     required
+                                     md-require-match="true"
+                                     md-min-length="3"
+                                     md-input-maxlength="{{soCtrl.model.$userNameMaxLenght}}">
+                        <md-button class="md-icon-button" aria-label="info" ng-disabled="soCtrl.lockInfo"
+                                   ng-click="soCtrl.getUserInfo()">
+                            <i class="fa fa-info" aria-hidden="false"></i>
+                        </md-button>
+                        <md-item-template>
+                            <span md-highlight-text="soCtrl.searchText" md-highlight-flags="^i">{{user.Name}}</span>
+                        </md-item-template>
+
+                        <div ng-messages="soCtrl.form.toName.$error" class="error">
+                            <div ng-message="md-require-match" ng-bind="soCtrl.messages.serchRequireMmatch"></div>
+                            <div ng-message="required" ng-bind="soCtrl.messages.required"></div>
+                            <div ng-message="md-maxlength" ng-bind-html="soCtrl.messages.serchMaxlength"></div>
+                        </div>
+
+
+
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="soCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="soCtrl.form.$invalid && !this.lockUpdate" ng-click="soCtrl.send()">Set</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+@*unit dialigs*@
+
+<script type="text/ng-template" id="unit-detail-dialog.tmpl">
+    <md-dialog aria-label="uddCtrl.$title" class="unit-detail-dialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-bind="uddCtrl.Title"></h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="uddCtrl.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                </md-button>
+            </div>
+
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" layout-gt-sm="column">
+                <div class="unit-dialog-column"
+                     layout="column" 
+                     layout-gt-sm="row" 
+                     layout-align="start center" 
+                     layout-align-gt-sm="space-between center">
+                    <ul class="unit-detail-dialog-properties">
+                        <li flex  layout-align="space-between  start" ng-repeat="prop in uddCtrl.Atack">
+                            <span ng-bind="prop.Key"></span>
+                            <span ng-bind="prop.Val"></span>                         
+                        </li> 
+                    </ul>
+                    <ul class="unit-detail-dialog-properties">
+                        <li flex layout-align="space-between  start" ng-repeat="prop in uddCtrl.Structure">
+                            <span ng-bind="prop.Key"></span>
+                            <span ng-bind="prop.Val"></span>
+                        </li> 
+                    </ul>
+                    <div class="statistic-bg-picture" ng-class="uddCtrl.Icon"></div>
+                </div>
+                <div class="description" ng-bind="uddCtrl.Description"></div> 
+            </div>
+
+        </md-dialog-content>
+
+
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="unit-buy-dialog.tmpl">
+    <md-dialog aria-label="uddCtrl.$title" class="unit-detail-dialog buy-unit">
+        <md-toolbar>
+            <div class="md-toolbar-tools" flex layout-align="space-between center">
+                <div class="statistic-bg-picture" ng-class="ubdCtrl.Icon"></div>
+                <h2 ng-bind="ubdCtrl.Title"></h2>
+                <md-button class="md-icon-button" ng-click="ubdCtrl.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                </md-button>
+            </div> 
+
+        </md-toolbar>
+        <md-dialog-content>  
+            <div class="md-dialog-content">
+                <unit-price-in-dialog price-item="ubdCtrl"
+                                      can-buy-multiple-items="true"
+                                      on-input-data-change="ubdCtrl.updateUnitInputModel"></unit-price-in-dialog>
+                <unit-errors-buy-in-dialog price-item="ubdCtrl"></unit-errors-buy-in-dialog>
+
+
+
+            </div>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="ubdCtrl.cancel()">Close</md-button>
+            <span flex></span>
+            <md-button ng-click="ubdCtrl.buy($event)" ng-disabled="ubdCtrl.hasError" ng-class="ubdCtrl.hasError?'grayScale':''">Buy</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</script>
+
+
+@*tech dialogs*@
+<script type="text/ng-template" id="dialog-tech-tree.tmpl">
+    <md-dialog aria-label="ttdCtrl.$title" class="tech-tree-dialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-bind="ttdCtrl.$title"></h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="ttdCtrl.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                </md-button>
+
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" layout-gt-sm="column">
+                <tech-tree-row row="ttdCtrl.rows[0]"></tech-tree-row>
+                <tech-tree-row row="ttdCtrl.rows[1]"></tech-tree-row>
+                <tech-tree-row row="ttdCtrl.rows[2]"></tech-tree-row>
+                <tech-tree-row row="ttdCtrl.rows[3]"></tech-tree-row>
+                <tech-tree-row row="ttdCtrl.rows[4]"></tech-tree-row>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="ttdCtrl.cancel()">Close</md-button>
+        </md-dialog-actions>
+
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="tech-detail-dialog.tmpl">
+    <md-dialog aria-label="uddCtrl.$title" class="tech-detail-dialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-bind="tddCtrl.Title"></h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="tddCtrl.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                </md-button>
+            </div>
+
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" layout-gt-sm="column">
+                <div class="unit-dialog-column"
+                     layout="column"
+                     layout-gt-sm="row"
+                     layout-align="start center"
+                     layout-align-gt-sm="space-between start">
+                    <ul class="tech-detail-dialog-properties">
+                        <li flex layout-align="space-between  start" ng-repeat="prop in tddCtrl.Stats">
+                            <span ng-bind="prop.Key"></span>
+                            <span ng-bind="prop.Val"></span>
+                        </li> 
+                        <li class="conditions" ng-if="tddCtrl.HasConditions">
+                            <div class="line"></div>
+                            <h3>Conditions:</h3>
+                            <div flex 
+                                 layout-align="space-between  start" 
+                                 ng-repeat="condition in tddCtrl.Conditions" 
+                                 class="{{condition.$css}}">
+                                <span class="unique-name" ng-bind="condition.Key"></span>
+                                <span ng-bind="condition.Val"></span>
+                            </div>
+                        </li>     
+                    </ul>
+                    <div class="statistic-bg-picture" ng-class="tddCtrl.Icon"></div>
+                </div>
+                <div class="description" ng-bind="tddCtrl.Description"></div>
+            </div>
+
+        </md-dialog-content>
+
+
+    </md-dialog>
+</script>
+
+
+
+<script type="text/ng-template" id="tech-buy-dialog.tmpl">
+    <md-dialog aria-label="tbdCtrl.$title" class="tech-detail-dialog buy-unit">
+        <md-toolbar>
+            <div class="md-toolbar-tools" flex layout-align="space-between center">
+                <div class="statistic-bg-picture" ng-class="tbdCtrl.Icon"></div>
+                <h2 ng-bind="tbdCtrl.Title"></h2>
+                <md-button class="md-icon-button" ng-click="tbdCtrl.cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <unit-price-in-dialog price-item="tbdCtrl"
+                                      can-buy-multiple-items="false"
+                                      on-input-data-change="tbdCtrl.updateTechInputModel"></unit-price-in-dialog>
+                <unit-errors-buy-in-dialog price-item="tbdCtrl"></unit-errors-buy-in-dialog> 
+            </div>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="tbdCtrl.cancel()">Close</md-button>
+            <span flex></span>
+            <md-button ng-click="tbdCtrl.buy($event)" 
+                       ng-disabled="tbdCtrl.hasError" 
+                       ng-class="tbdCtrl.hasError?'grayScale':''">Buy</md-button>
+        </md-dialog-actions>
+
+
+
+    </md-dialog>
+</script>
+
+@*price template*@
+<script type="text/ng-template" id="unit-price-in-dialog.tmpl">
+    <ul class="resource-container">
+        <li flex layout-align="space-between  center">
+            <span class="e resource sx sprite_atlas"></span>
+            <span ng-bind="priceItem.Translate.enegry"></span>
+            <span ng-bind="priceItem.Price.forCc?0:(priceItem.Update.upgradeCount>0?priceItem.Price.E * priceItem.Update.upgradeCount:priceItem.Price.E)"></span>
+        </li>
+        <li flex layout-align="space-between  center">
+            <span class="ir resource sx sprite_atlas"></span>
+            <span ng-bind="priceItem.Translate.iridium"></span>
+            <span ng-bind="priceItem.Price.forCc?0:(priceItem.Update.upgradeCount>0?priceItem.Price.Ir * priceItem.Update.upgradeCount:priceItem.Price.Ir)"></span>
+
+        </li>
+        <li flex layout-align="space-between  center">
+            <span class="dm resource sx sprite_atlas"></span>
+            <span ng-bind="priceItem.Translate.darkMatter"></span>
+            <span ng-bind="priceItem.Price.forCc?0:(priceItem.Update.upgradeCount>0?priceItem.Price.Dm * priceItem.Update.upgradeCount:priceItem.Price.Dm)"></span>
+
+        </li>
+        <li flex layout-align="space-between  center">
+            @*<span class="small time">timeIcon</span>*@
+            <span class="time resource sx sprite_atlas"></span>
+            <span ng-bind="priceItem.Translate.timeProduction"></span>
+            <span ng-bind="priceItem.Price.forCc?0:(priceItem.Update.upgradeCount>0?priceItem.Price.TimeProduction * priceItem.Update.upgradeCount:priceItem.Price.TimeProduction)"></span>
+
+        </li>
+
+        <li flex layout-align="space-between  center">
+            <span class="cc resource sx sprite_atlas"></span>
+            <span ng-bind="priceItem.Translate.cc"></span>
+            <span ng-bind="priceItem.Price.forCc?(priceItem.Update.upgradeCount>0?(priceItem.Price.Cc * priceItem.Update.upgradeCount):priceItem.Price.Cc):0"></span>
+            <input type="checkbox" 
+                    ng-checked="priceItem.Price.forCc" 
+                    ng-model="priceItem.Price.forCc" 
+                    ng-change="onInputDataChange()" />
+        </li>
+        <li flex layout-align="space-between  center" ng-if="canBuyMultipleItems">
+            <span>CountIcon</span>
+            <span>CountTr</span>
+            <input class="input-big-centr" type="text" 
+                   ng-model="priceItem.Update.upgradeCount" 
+                   ng-change="onInputDataChange()"/>
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="unit-errors-buy-in-dialog.tmpl">
+    <ul class="errors">
+
+
+        <li class="error active" ng-if="!!priceItem.errorModels.ProfileTech"
+            ng-bind-html="priceItem.errorModels.ProfileTech.Description">
+        </li>
+        <li class="error active" ng-if="!!priceItem.errorModels.TechWeaponUpgrade"
+            ng-bind-html="priceItem.errorModels.TechWeaponUpgrade.Description">
+        </li>
+        <li class="error active" ng-if="!!priceItem.errorModels.TechDamageControl"
+            ng-bind-html="priceItem.errorModels.TechDamageControl.Description">
+        </li>
+        <li class="error" ng-class="(priceItem.errorModels.count.isError?'active':'')">
+            <span>count error</span>
+        </li>
+        <li class="error" ng-class="(priceItem.errorModels.resource.cc.isError?'active':'')">
+            <span ng-bind="priceItem.errorModels.resource.cc.message"></span>
+        </li>
+        <li class="error" ng-class="(priceItem.errorModels.resource.e.isError?'active':'')">
+            <span ng-bind="priceItem.errorModels.resource.e.message"></span>
+        </li>
+        <li class="error" ng-class="(priceItem.errorModels.resource.ir.isError?'active':'')">
+            <span ng-bind="priceItem.errorModels.resource.ir.message"></span>
+        </li>
+        <li class="error" ng-class="(priceItem.errorModels.resource.dm.isError?'active':'')">
+            <span ng-bind="priceItem.errorModels.resource.dm.message"></span>
+        </li>
+    </ul>
+</script>

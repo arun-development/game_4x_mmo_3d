@@ -1,0 +1,532 @@
+﻿@using Server.Infrastructure
+@{
+    Layout = "/Views/Shared/_SiteLayout.cshtml";
+
+    var minExt = (string)ViewData[PageKeyVal.MinExtKey];
+    var serealizedData = (string)ViewData[PageKeyVal.AdminStoreDataKey];
+    
+    var admCore = LibCollection.JsAdminAngularCore;
+    var admSpace = LibCollection.JsAdminAngularSpace;
+}
+
+<div ng-controller="storeAdminCtrl as storeCtrl" class="admin-store-container">
+    <input id="admin-store-init-data" type="hidden" json-combiner="@serealizedData" save-data="storeCtrl.saveInitData" />
+    <div>
+        <h2>Types (no impl)</h2>
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>NativeName</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h2>Products</h2>
+        <table class="admin-store-items">
+            @*//head*@
+            <tr>
+                <td>
+                    Id
+                </td>
+                <td>
+                    Native Name
+                </td>
+                <td>
+                    ProductType
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    Currency
+                </td>
+                <td>
+                    Product Activated
+                </td>
+                <td>
+                    DateCreate
+                </td>
+                <td>
+                    Duration
+                </td>
+                <td>
+                    Properties
+                </td>
+                <td>
+                    Image src
+                </td>
+                <td>
+                    Actions
+                </td>
+            </tr>
+            <tr ng-repeat="product in storeCtrl.products">
+                <td ng-bind="product.Id"></td>
+                <td ng-bind="product.NativeName"></td>
+                <td ng-bind="product.ProductType.Name"></td>
+                <td ng-bind="product.Price"></td>
+                <td ng-bind="product.Currency.Name"></td>
+                <td>
+                    <md-checkbox name="activated" ng-model="product.Active" ng-disabled="true" aria-label="Product Activated"></md-checkbox>
+                </td>
+                <td ng-bind="product.$dateCreateView"></td>
+                <td ng-bind="product.Duration? product.Duration.Name :''"></td>
+                <td>
+                    <ul class="nav fs-14">
+                        <li ng-repeat="prop in product.$properties">
+                            <span ng-bind="prop.Key +' : ' +prop.Val"></span>
+                        </li>
+                    </ul>
+                    @*ng-bind="product.Duration? product.Duration.Name :'NoProps'"*@
+                </td>
+                <td>
+                    <div ng-if="product.ImagePath" class="image-container"
+                         ng-attr-style="background-image: url('{{product.ImagePath}}');">
+                    </div>
+                    <div ng-if="!product.ImagePath">NoImage</div>
+                </td>
+                <td>
+                    <div flex layout="column" layout-align="space-between  start">
+                        <md-button class="md-raised md-primary"
+                                   ng-click="storeCtrl.updateItem($event,product)"
+                                   aria-label="Update">Update</md-button>
+                        <md-button class="md-raised md-primary"
+                                   ng-click="storeCtrl.deleteItem($event,product)"
+                                   aria-label="Remove">Remove</md-button>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+        <div class="margin-10px">
+            <md-button class="md-raised md-primary"
+                       ng-click="storeCtrl.createItem($event)"
+                       aria-label="Create Item">create Item</md-button>
+        </div>
+    </div>
+
+</div>
+
+@section footerScriptsAngular {
+    <script src="@admCore.LocalPath" asp-append-version="true"></script>
+    <script src="@admSpace.LocalPath"  asp-append-version="true"></script>
+ 
+}
+@section  footerHtmlAndTemplates{
+<script type="text/ng-template" id="create-store-admin-item-dialog.tmpl">
+    <md-dialog aria-label="Create store item">
+        <form name="form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Create store item</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="csCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <div layout="column">
+                        <div layout="row" layout-align="space-between  start">
+                            <md-input-container flex="20">
+                                <label>Product Type</label>
+                                <md-select name="productType"
+                                           ng-model="csCtrl.model.ProductType"
+                                           required
+                                           ng-change="csCtrl.onProductTypeSelected(csCtrl.model.ProductType)" aria-label="productType">
+                                    <md-option ng-value="productType"
+                                               ng-repeat="productType in  csCtrl.model.$productTypeList track by productType.Id"
+                                               ng-bind="productType.Name"></md-option>
+                                </md-select>
+                            </md-input-container>
+                            <span flex="5"></span>
+                            <md-input-container>
+                                <md-checkbox name="activated"
+                                             ng-model="csCtrl.model.Active"
+                                             aria-label="Product Activated">Product Activated</md-checkbox>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Price: </label>
+                                <input name="price"
+                                       required
+                                       type="number"
+                                       min="0"
+                                       ng-model="csCtrl.model.Price" />
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Currency: </label>
+                                <input name="currency"
+                                       required
+                                       readonly
+                                       ng-model="csCtrl.model.Currency"
+                                       ng-value="csCtrl.model.Currency.Name" />
+                            </md-input-container>
+                        </div>
+
+
+                        <md-input-container class="w_80pr" ng-if="csCtrl.model.$showDuration">
+                            <label>Duration activity</label>
+                            <md-select name="duration"
+                                       ng-model="csCtrl.model.Duration"
+                                       required
+                                       aria-label="duration">
+                                <md-option ng-value="duration"
+                                           ng-repeat="duration in  csCtrl.model.$durations track by duration.Id"
+                                           ng-bind="duration.Name"></md-option>
+                            </md-select>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" layout="row">
+                            <lf-ng-md-file-input name="files"
+                                                 lf-placeholder="Image 16/9 (1900px/1068px)"
+                                                 lf-files="csCtrl.files"
+                                                 lf-required
+                                                 lf-maxcount="1"
+                                                 lf-filesize="20MB"
+                                                 lf-totalsize="20MB"
+                                                 lf-mimetype="image/*"
+                                                 preview></lf-ng-md-file-input>
+                        </md-input-container>
+
+
+
+                        <div ng-if="csCtrl.model.ProductType && csCtrl.model.ProductType.Id === 2" layout="column">
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>TimeBuildUpdate : </label>
+                                    <input name="timeBuildUpdate"
+                                           readonly
+                                           ng-model="csCtrl.model.Properties.TimeBuildUpdate" />
+                                </md-input-container>
+
+                                <md-input-container>
+                                    <label>TimeUnitProduction : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="csCtrl.model.Properties.TimeUnitProduction" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>ResourseProduction : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="csCtrl.model.Properties.ResourseProduction" />
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>ResourseMaxStorable : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="csCtrl.model.Properties.ResourseMaxStorable" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>PremiumBookmarkMod : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="csCtrl.model.Properties.PremiumBookmarkMod" />
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div ng-if="csCtrl.model.ProductType && csCtrl.model.ProductType.Id === 3" layout="row">
+                            <md-input-container flex="30">
+                                <label>Attack bonus % : </label>
+                                <input name="boosterAttack"
+                                       required
+                                       type="number"
+                                       min="0" ;
+                                       max="100"
+                                       ng-model="csCtrl.model.Properties.Attack" />
+                            </md-input-container>
+
+                            <md-input-container flex="30">
+                                <label>Hp bonus % : </label>
+                                <input name="boosterHp"
+                                       type="number"
+                                       min="0"
+                                       max="100"
+                                       required
+                                       ng-model="csCtrl.model.Properties.Hp" />
+                            </md-input-container>
+
+                        </div>
+
+
+                        <div layout="column">
+                            <h4>Translate</h4>
+                            <div ng-repeat="langKey in csCtrl.langKeys" layout="row">
+                                <md-input-container flex="15">
+                                    <label>Lang: </label>
+                                    <input readonly ng-value="langKey === 'En'? langKey  + ' (native)' :langKey">
+                                </md-input-container>
+
+                                <md-input-container flex="20">
+                                    <label>
+                                        <span>Translate name</span>
+                                    </label>
+                                    <input ng-attr-name="translate_name_{{langKey}}"
+                                           required ng-model="csCtrl.model.L10N[langKey].Name" />
+                                </md-input-container>
+                                <span flex="5"></span>
+                                <md-input-container flex="55">
+                                    <label>Translate Description </label>
+                                    <textarea ng-attr-name="translate_description_{{langKey}}"
+                                              required
+                                              ng-model="csCtrl.model.L10N[langKey].Description" />
+                                    @*<div ng-messages="form['translate_description_'+langKey].$error" class="error">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>*@
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
+                <md-button ng-click="csCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!form.$valid"
+                           ng-click="csCtrl.send()">Create</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+
+<script type="text/ng-template" id="update-store-admin-item-dialog.tmpl">
+    <md-dialog aria-label="Update Store Item">
+        <form name="form" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-bind="'Update Store Item (id: ' + usCtrl.model.Id +')'"></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="usCtrl.cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <div layout="column">
+                        <div layout="row" layout-align="space-between  start">
+                            <md-input-container flex="20">
+                                <label>Product Type </label>
+                                <md-select name="productType"
+                                           ng-model="usCtrl.model.ProductType"
+                                           required
+                                           disabled
+                                           ng-change="usCtrl.onProductTypeSelected(usCtrl.model.ProductType)" aria-label="productType">
+                                    <md-option ng-value="productType"
+                                               ng-repeat="productType in  usCtrl.model.$productTypeList track by productType.Id"
+                                               ng-bind="productType.Name"></md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <span flex="5"></span>
+                            <md-input-container>
+                                <md-checkbox name="activated"
+                                             ng-model="usCtrl.model.Active"
+                                             aria-label="Product Activated">Product Activated</md-checkbox>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Price: </label>
+                                <input name="price"
+                                       required
+                                       type="number"
+                                       min="0"
+                                       ng-model="usCtrl.model.Price" />
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Currency: </label>
+                                <input name="currency"
+                                       required
+                                       readonly
+                                       ng-model="usCtrl.model.Currency"
+                                       ng-value="usCtrl.model.Currency.Name" />
+                            </md-input-container>
+                        </div>
+                        <div flex="100" layout="row" ng-if="usCtrl.model.$showDuration">
+                            <md-input-container class="w_50pr">
+                                <label>Duration activity</label>
+                                <md-select name="duration"
+                                           ng-model="usCtrl.model.Duration"
+                                           ng-disabled="!usCtrl.updateDuration"
+                                           required
+                                           ng-model-options="{trackBy: '$value.Id'}"
+                                           aria-label="duration">
+                                    <md-option ng-value="duration"
+                                               ng-repeat="duration in  usCtrl.model.$durations track by duration.Id"
+                                               ng-bind="duration.Name"></md-option>
+                                </md-select>
+                            </md-input-container>
+                            <span flex="5"></span>
+                            <md-input-container flex="30" layout="row">
+                                <md-checkbox name="activated"
+                                             ng-model="usCtrl.updateDuration"
+                                             aria-label="Product Activated">Update Duration</md-checkbox>
+                            </md-input-container>
+
+                        </div>
+
+
+                        <div layout="column">
+                            <div layout="row">
+                                <md-input-container flex="50">
+                                    <md-checkbox name="updateImage"
+                                                 ng-model="usCtrl.updateImage"
+                                                 aria-label="Update Image">Update Image</md-checkbox>
+                                </md-input-container>
+                                <md-input-container flex="50">
+                                    <label>Image Url: </label>
+                                    <input name="imageUrl"
+                                           readonly
+                                           ng-value="usCtrl.model.ImagePath" />
+                                </md-input-container>
+                            </div>
+
+
+                            <md-input-container ng-if="usCtrl.updateImage" class="md-block" layout="row">
+                                <lf-ng-md-file-input name="files"
+                                                     lf-placeholder="Image 16/9 (1900px/1068px)"
+                                                     lf-files="usCtrl.files"
+                                                     lf-required
+                                                     lf-maxcount="1"
+                                                     lf-filesize="20MB"
+                                                     lf-totalsize="20MB"
+                                                     lf-mimetype="image/*"
+                                                     preview></lf-ng-md-file-input>
+                            </md-input-container>
+
+                        </div>
+
+
+
+                        <div ng-if="usCtrl.model.ProductType && usCtrl.model.ProductType.Id === 2" layout="column">
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>TimeBuildUpdate : </label>
+                                    <input name="timeBuildUpdate"
+                                           readonly
+                                           ng-model="usCtrl.model.Properties.TimeBuildUpdate" />
+                                </md-input-container>
+
+                                <md-input-container>
+                                    <label>TimeUnitProduction : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="usCtrl.model.Properties.TimeUnitProduction" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>ResourseProduction : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="usCtrl.model.Properties.ResourseProduction" />
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>ResourseMaxStorable : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="usCtrl.model.Properties.ResourseMaxStorable" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>ConvertLoses : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="usCtrl.model.Properties.ConvertLoses" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>PremiumBookmarkMod : </label>
+                                    <input type="number"
+                                           readonly
+                                           ng-model="usCtrl.model.Properties.PremiumBookmarkMod" />
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div ng-if="usCtrl.model.ProductType && usCtrl.model.ProductType.Id === 3" layout="row">
+                            <md-input-container flex="30">
+                                <label>Attack bonus % : </label>
+                                <input name="boosterAttack"
+                                       required
+                                       type="number"
+                                       min="0" ;
+                                       max="100"
+                                       ng-model="usCtrl.$properties.Attack" />
+                            </md-input-container>
+
+                            <md-input-container flex="30">
+                                <label>Hp bonus % : </label>
+                                <input name="boosterHp"
+                                       type="number"
+                                       min="0"
+                                       max="100"
+                                       required
+                                       ng-model="usCtrl.$properties.Hp" />
+                            </md-input-container>
+
+                        </div>
+
+                        <div layout="column">
+                            <h4>Translate</h4>
+                            <div ng-repeat="langKey in usCtrl.langKeys" layout="row">
+                                <md-input-container flex="15">
+                                    <label>Lang: </label>
+                                    <input readonly ng-value="langKey === 'En'? langKey  + ' (native)' :langKey">
+                                </md-input-container>
+
+                                <md-input-container flex="20">
+                                    <label>
+                                        <span>Translate name</span>
+                                    </label>
+                                    <input ng-attr-name="translate_name_{{langKey}}"
+                                           required ng-model="usCtrl.model.L10N[langKey].Name" />
+                                </md-input-container>
+                                <span flex="5"></span>
+                                <md-input-container flex="55">
+                                    <label>Translate Description </label>
+                                    <textarea ng-attr-name="translate_description_{{langKey}}"
+                                              required
+                                              ng-model="usCtrl.model.L10N[langKey].Description" />
+                                    @*<div ng-messages="form['translate_description_'+langKey].$error" class="error">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>*@
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
+                <md-button ng-click="usCtrl.cancel()">Cancel</md-button>
+                <span flex></span>
+                <md-button type="submit" ng-disabled="!form.$valid"
+                           ng-click="usCtrl.send()">Update</md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

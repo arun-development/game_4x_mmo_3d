@@ -1,0 +1,87 @@
+﻿@import "../suples";
+
+@mixin achievement-core() {
+    $b: achievement;
+    $side: 80px;
+    $item-tb-offset: 8px;
+    $row: $side+20px;
+    $row-count: 2;
+
+    .#{$b} {
+        margin: 0;
+        padding: 0;
+        text-align: justify;
+
+        & [aria-hidden="true"] {
+            display: initial;
+        }
+
+        & > md-content {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .#{$b}-image-small {
+        width: $side;
+        height: $side;
+        background-size: contain;
+        float: right;
+        padding: 0;
+    }
+
+    .#{$b}-count {
+        left: 5px;
+        top: -5px;
+        position: relative;
+    }
+
+
+    .#{$b} md-pagination-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .#{$b} md-tabs-canvas {
+        height: $row * $row-count;
+        margin: 0 - $item-tb-offset;
+        padding-bottom: 50px;
+    }
+
+    .#{$b} md-tab-item {
+        padding: $item-tb-offset;
+        min-height: $side + $item-tb-offset*2;
+
+        & svg {
+            @include vendor-prefix(filter,#{contrast(0.8)});
+        }
+
+        &.md-active {
+            /*background-color: red;*/
+            & svg {
+                @include vendor-prefix(filter,#{contrast(1.3) drop-shadow(5px 5px 4px green)});
+            }
+        }
+    }
+
+    .#{$b}-image-detail {
+        width: 260px;
+        height: 260px;
+        background-size: contain;
+        float: right;
+        margin: 0 0 15px 15px;
+
+        & svg {
+            @include vendor-prefix(filter,#{contrast(1.3)});
+        }
+    }
+
+    .#{$b}-head {
+        @extend .text_h_standart;
+        @extend .f_size_36px;
+    }
+
+    .#{$b}-description {
+        @extend .text_p_standart;
+        @extend .f_size_20px;
+    }
+}

@@ -1,0 +1,180 @@
+﻿@import "../suples";
+
+@mixin alliance-members($parent-selector: alliance-members, $member-selector: alliance-member) {
+    $s: $parent-selector;
+    $am: $member-selector;
+    $amr: $am+'-row';
+    $amc: $am+'-cell';
+
+    $amd: $am+'-drop';
+    $amdc: $amd+'-content';
+
+    /*height: 500px;*/
+    $side: 35px;
+    $margin: 5px;
+
+
+    .#{$s} {
+        .#{$am}:first-child {
+            margin: 0;
+        }
+
+        & .online {
+            position: absolute;
+            top: 34px;
+            right: 10px;
+        }
+
+        & .fa-eye:before {
+            @include gradient-radial(#a3ab41,#333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: initial;
+        }
+
+        & .fa-eye-slash,
+        & .fa-eye {
+            text-shadow: initial;
+        }
+
+        & .fa-eye-slash:before {
+            @include gradient-radial(#9f8a8a,#662323);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: initial;
+        }
+
+        & md-virtual-repeat-container {
+            margin-top:10px;
+            height: 440px;
+        }
+
+        @include custom-webkit-skroller(2px,4px,#ffffff);
+ 
+    }
+
+
+    .#{$am} {
+        margin: $margin 0 0 0;
+        font-size: 14px;
+
+        &:first-child {
+            margin-top: 20px;
+        }
+
+        &:last-child {
+            margin-top: 10px;
+        }
+    }
+
+
+
+    .#{$amc} {
+        margin: 0 $margin;
+        width: 100px;
+        height: $side;
+        border: 1px solid $color-dark-green;
+        @include box-shadow(inset 0 0 30px $color-dark-green, 0 0 30px $color-dark-green);
+
+        &:first-child {
+            margin: 0 $margin 0 0;
+        }
+
+        &:last-child {
+            margin: 0 0 0 $margin;
+        }
+
+        $conf-color: $color-main-1-light;
+
+        .fa-cogs:before {
+            @include transition(text-shadow $animation-short-linear, color $animation-short-linear);
+        }
+
+        &:hover .fa-cogs:hover:before {
+            text-shadow: -1px 1px 20px $conf-color;
+        }
+
+        &:active .fa-cogs:active:before {
+            text-shadow: -1px 1px 20px darken($conf-color, 10%);
+            color: darken($conf-color,30%);
+        }
+
+        & .md-virtual-repeat-offsetter {
+            padding: 0;
+        }
+    }
+
+    .#{$amd} {
+        height: 0;
+        overflow: hidden;
+        min-height: 0;
+        @include transition(min-height $animation-short-linear);
+        width: 100%;
+
+        &.active {
+            min-height: 500px;
+        }
+
+        .#{$amdc} {
+            & md-select-value > span {
+                text-align: center;
+                font-size: $fs-24;
+            }
+        }
+    }
+    /*alliance user request*/
+    /*alliance members request*/
+    .#{$s}.alliance-request-members {
+        & md-virtual-repeat-container {
+            min-height: 480px;
+        }
+
+        & .#{$amd} .description {
+            margin: 40px 20px 20px 20px;
+        }
+    }
+
+    #alliance-manage-requests .drop-container.height-initial {
+        height: initial !important;
+    }
+
+    .#{$s}.user-requests-alliance {
+        height: initial;
+        margin: 0;
+        width: 100%;
+
+        &.drop-item.relative {
+            position: relative !important;
+        }
+
+        & .#{$amr} {
+            margin: 0 1em 1em 1em;
+            padding: 20px;
+            border: 1px solid $color-dark-green;
+            @include box-shadow(inset 0 0 30px $color-dark-green, 0 0 30px $color-dark-green);
+
+            & .#{$amd}.active {
+                min-height: 300px;
+                height: initial;
+            }
+
+            &.confirm {
+                @include box-shadow(inset 0 0 30px $alliance-request-confirm-color, 0 0 30px $color-dark-green);
+            }
+
+            &.reject {
+                @include box-shadow(inset 0 0 30px $alliance-request-reject-color, 0 0 30px $color-dark-green);
+            }
+        }
+
+        & .message-avatar {
+            margin-top: 0;
+        }
+
+        & .message:first-child {
+            margin-top: 5px;
+        }
+    }
+}

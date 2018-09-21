@@ -1,0 +1,245 @@
+﻿@mixin flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-inline() {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+@mixin flex-grow($grow,$setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('flex-grow', $grow);
+}
+
+@mixin flex-shrink($shrink,$setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('flex-shrink', $shrink);
+}
+
+@mixin flex-Jc($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('justify-content', 'center');
+}
+
+@mixin flex-Je($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('justify-content', 'flex-end');
+}
+
+@mixin flex-Js($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('justify-content', 'flex-start');
+}
+
+@mixin flex-Ac($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('align-items', 'center');
+}
+
+@mixin flex-As($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('align-items', 'flex-start');
+}
+
+@mixin flex-Ae($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('align-items', 'flex-end');
+}
+
+@mixin flex-ACsa($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('align-content', 'space-around');
+}
+
+@mixin flex-Jsb($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+@mixin flex-Jsa($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('justify-content', 'space-around');
+}
+
+@mixin flex-JcAc($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jc(false);
+    @include flex-Ac(false);
+}
+
+@mixin flex-JcAs($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jc(false);
+    @include flex-As(false);
+}
+
+@mixin flex-JcAe($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jc(false);
+    @include flex-Ae(false);
+}
+
+@mixin flex-JsAc($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Js(false);
+    @include flex-Ac(false);
+}
+
+
+@mixin flex-JsaAc($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jsa(false);
+    @include flex-Ac(false);
+}
+
+@mixin flex-JsbAc($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jsb(false);
+    @include flex-Ac(false);
+}
+
+@mixin flex-JsbAs($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jsb(false);
+    @include flex-As(false);
+}
+
+@mixin flex-JsbAe($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Jsb(false);
+    @include flex-Ae(false);
+}
+
+@mixin flex-JeAs($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Je(false);
+    @include flex-As(false);
+}
+
+@mixin flex-JeAc($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include flex-Je(false);
+    @include flex-Ac(false);
+}
+
+@mixin flex-wrap($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @include vendor-prefix('flex-wrap', 'wrap');
+}
+
+@mixin flex-flow-wrap($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+    @include vendor-prefix('flex-flow', 'row wrap');
+}
+
+@mixin flex-column($setFlex: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+    //  -webkit-flex-flow: column wrap;
+    //  flex-flow: column wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+@mixin flex-flow-column-wrap($setFlex: true, $setColumn: true, $setWrap: true) {
+    @if($setFlex) {
+        @include flex();
+    }
+
+    @if($setColumn) {
+        @include flex-column(false);
+    }
+
+    @if($setWrap) {
+        @include flex-flow-wrap(false);
+    }
+}
+
+@mixin flex-order($val) {
+  -webkit-box-ordinal-group: $val;  
+  -moz-box-ordinal-group: $val;     
+  -ms-flex-order: $val;     
+  -webkit-order: $val;  
+  order: $val;
+}

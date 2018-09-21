@@ -1,0 +1,56 @@
+﻿@import "../suples";
+
+@mixin statistic($statistic-module: statistic) {
+    $s: $statistic-module;
+
+    $list: $s+'-stats';
+    $pic: picture;
+    $img: $s+'-img-'_+$pic;
+    $bg: $s+'-bg-'+$pic;
+    $color: $unique-name-color;
+
+
+    .#{$s}-container {
+        & .#{$list} {
+            @extend .text_name;
+            @extend .f_size_20px;
+        }
+
+        & .#{$img} {
+        }
+
+        & .#{$bg} {
+            width: 260px;
+            height: 260px;
+            @extend .img_bg;
+            background-size: contain;
+        }
+    }
+
+    .unique-name {
+        color: $color;
+    }
+
+    .bonus-positive {
+        color: forestgreen;
+    }
+
+    .bonus-negative {
+        color: red;
+    }
+
+    .link-to-target.active {
+        & span {
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            @include transition(border-color .3s linear);
+            &:focus{
+                outline:none;
+            }
+        }
+
+        &:hover span {
+            border-color: $color;
+        }
+    }
+}

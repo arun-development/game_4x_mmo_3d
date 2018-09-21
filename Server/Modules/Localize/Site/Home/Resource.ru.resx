@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Features" xml:space="preserve">
+    <value>Особенности</value>
+    <comment>Features</comment>
+  </data>
+  <data name="screenshots" xml:space="preserve">
+    <value>Cкриншоты</value>
+  </data>
+  <data name="story" xml:space="preserve">
+    <value>История</value>
+    <comment>story Head</comment>
+  </data>
+  <data name="storyDescription" xml:space="preserve">
+    <value>В будущем, когда космос уже перестал быть загадкой для человека, а покорение новых миров стало обыденностью, люди обнаружили существ с невероятной способностью к регенерации - “Скагри”. Позднее, в их геноме была найдена информация, благодаря которой люди обрели вечную жизнь. Но этого человечеству было недостаточно и они начали выращивать Скагри и проводить эксперименты с их генами. В какой-то момент ситуация вышла из-под контроля и Скагри вырвались на свободу. Движимые коллективным разумом, они поглощали планету за планетой и вскоре заполонили нашу галактику. Для противостояния Скагри, человечество объединилось в "Конфедерацию", которой предстоит исправить ошибки прошлого и вернуть человечеству господство во Вселенной.</value>
+    <comment>story</comment>
+  </data>
+  <data name="theGame" xml:space="preserve">
+    <value>Игра</value>
+  </data>
+  <data name="TheUniverse" xml:space="preserve">
+    <value>Вселенная</value>
+  </data>
+  <data name="f_freedomOfActionBody" xml:space="preserve">
+    <value>Открытый мир с тысячами солнечных систем. Вы можете делать все, что захотите. Исследовать Вселенную, колонизировать планеты, добывать ресурсы, создавать армии, улучшать технологии, бороться за суверенитет и власть во Вселенной вместе с тысячами других игроков.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_freedomOfActionHead" xml:space="preserve">
+    <value>Песочница</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="f_presidentElectionsBody" xml:space="preserve">
+    <value>Уникальная особенность игры, благодаря которой у каждого игрока будет возможность стать лидером человеческой расы в борьбе против Скагри, получая при этом значительное преимущество в развитии и военной мощи для себя и всех своих сторонников.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_presidentElectionsHead" xml:space="preserve">
+    <value>Выборы правительства</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="f_systemPvpNolimitsBody" xml:space="preserve">
+    <value>Вы сможете атаковать любого игрока вне зависимости от уровня его развития и численности его армии. Когда угодно и где угодно. За победу над другими игроками Вы будете получать PVP очки, необходимые для продвижения в рейтинге и в борьбе за кресло президента Конфедерации.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_systemPvpNolimitsHead" xml:space="preserve">
+    <value>Хардкор PvP</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="f_systemUpgradeNoLimitsBody" xml:space="preserve">
+    <value>В игре нет ограничений по уровню развития колоний и технологий. Вы сможете улучшать любое здание или технологию до нужного Вам уровня. Что позволит Вам более детально планировать своё развитие и делать акцент на интересующий Вас игровой аспект.</value>
+    <comment>Features</comment>
+  </data>
+  <data name="f_systemUpgradeNoLimitsHead" xml:space="preserve">
+    <value>Нет ограничений уровня</value>
+    <comment>Features Head</comment>
+  </data>
+  <data name="g_alliance" xml:space="preserve">
+    <value>Создайте могущественный альянс способный завоевать Вселенную или присоединяйтесь к нему. Колонизируйте планеты и защищайте их от нападений Скагри и других игроков. Помните, суверенитет - это ключ к господству во Вселенной.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_allianceHead" xml:space="preserve">
+    <value>Альянс и Суверенитет</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_gamePlay" xml:space="preserve">
+    <value>Вы командир боевого флота Конфедерации. В вашем распоряжении собственный мазершип, который вы никогда не потеряете. Вы не привязаны к какой-либо локации и можете свободно передвигаться по Вселенной которая насчитывает тысячи солнечных систем со множеством планет для колонизации и развития. Имея достаточно колоний, Вы станете значимой фигурой в Конфедерации и сможете основать могущественную империю под своим командованием, чтобы влиять на ход событий во Вселенной. Конечно, Вам будет трудно справиться с этим в одиночку, по этому постарайтесь заполучить как можно больше сторонников, это значительно увеличит ваши шансы на успех если Вы, к тому же планируете баллотироваться на пост президента Конфедерации. Остроты всему этому придают нескончаемые нападения Скагри и постоянно растущая конкуренция среди тысяч игроков по всему миру. Вселенная Скагри - жестокий мир. Сможете ли Вы выжить?</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_gamePlayHead" xml:space="preserve">
+    <value>Геймплэй</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_Politics" xml:space="preserve">
+    <value>Станьте президентом Конфедерации набрав большинство голосов на еженедельных выборах или поддержите понравившегося кандидата. Завоюйте доверие избирателей или найдите другой, почти легальный способ победить на выборах.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_PoliticsHead" xml:space="preserve">
+    <value>Политика и Дипломатия</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_Production" xml:space="preserve">
+    <value>Производите войска на базах своих колоний, наращивайте боевой потенциал своей армии или развивайте оборону колоний делая их неприступными крепостями. Выберите свой уникальный путь развития технологий для завоевания Вселенной.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_ProductionHead" xml:space="preserve">
+    <value>Производство и Технологии</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="g_Regions" xml:space="preserve">
+    <value>Каждый регион имеет свои особенности и различную концентрацию Скагри. Каждая солнечная система уникальна, вы никогда не найдёте две одинаковые солнечные системы. Планеты также отличаются богатством ресурсов и преимуществами владения.</value>
+    <comment>the game</comment>
+  </data>
+  <data name="g_RegionsHead" xml:space="preserve">
+    <value>Регионы и системы</value>
+    <comment>the game Head</comment>
+  </data>
+  <data name="r_Confederation" xml:space="preserve">
+    <value>Конфедерация</value>
+    <comment>race  Head</comment>
+  </data>
+  <data name="r_ConfederationDescription" xml:space="preserve">
+    <value>Объединённые силы человечества в борьбе против Скагри. Единое правительство во главе с Президентом и министрами. Президент и пятеро министров избираются народом, а остальные пять назначает Президент. Символ Конфедерации отображает её структуру. Президент обозначен большой звездой в центре. Звёзды по левую сторону - избранные народом министры, которые зачастую не разделяют взглядов президента и уходят в оппозицию. Звёзды по правую сторону - доверенные лица президента, которых он назначает на должности лично. Но так или иначе, все они являются частью одного целого, Конфедерацией.</value>
+    <comment>race</comment>
+  </data>
+  <data name="r_RaceSkagry" xml:space="preserve">
+    <value>Скагри - NPC</value>
+    <comment>race  Head</comment>
+  </data>
+  <data name="r_RaceSkagryDescription" xml:space="preserve">
+    <value>Инопланетный биологический вид с ускоренной регенерацией и репродуктивной функцией. Подчиняются коллективному разуму и действуют по принципу Роя, целью которого является поглощение всех форм жизни встречающихся на пути и создание колоний на всех возможных территориях. Скагри моментально адаптируются к атмосферным и ландшафтным условиям любой планеты, что позволяет им всегда вести бой как у себя дома, значительно осложняя при этом задачу для сил Конфедерации. Скагри беспощадны и не знают страха. Без преувеличения, это самые опасные твари во Вселенной.</value>
+    <comment>race</comment>
+  </data>
+  <data name="YoutubeVideoUniverseOfSkagryTrailer" xml:space="preserve">
+    <value>DphbR4Y8HGo</value>
+    <comment>https://www.youtube.com/watch?v=DphbR4Y8HGo</comment>
+  </data>
+  <data name="VideoUniverseOfSkagryTrailer" xml:space="preserve">
+    <value>skagry_trailer_ru</value>
+    <comment>https://eternplaypublic.blob.core.windows.net/skagry/skagry_trailer_ru.f4v</comment>
+  </data>
+</root>

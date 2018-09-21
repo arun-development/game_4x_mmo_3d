@@ -1,0 +1,131 @@
+﻿@import "../../suples";
+@mixin user-channels-dialog() {
+    $color: $drop-bg-colr-3;
+    $input-text-color: lighten($color,20%);
+
+    .user-channels-dialog {
+        @extend .send-message-dialog;
+
+        & md-autocomplete {
+            top: 11px;
+
+            & md-input-container {
+                & input {
+                    margin: 0;
+                    text-shadow: none;
+                    color: $input-text-color !important;
+                    border-width: 0 0 1px !important;
+                }
+            }
+        }
+
+        &.group, &.group-join {
+            /*$color: #3c5a5f;*/
+            width: auto;
+
+            md-input-container {
+                width: 99%;
+
+                .base-color {
+                    color: darken($color,10);
+                }
+
+                &.active label {
+                    color: lighten($color,10%);
+                }
+            }
+
+            md-input-container button {
+                position: absolute;
+                right: 0;
+            }
+
+            .md-input {
+                max-width: calc(100% - 55px);
+                color: $input-text-color;
+                text-shadow: none;
+            }
+        }
+
+        &.group-join {
+            h4 {
+                color: $gray-light;
+                font-size: $fs-20;
+            }
+
+            md-select {
+                max-width: calc(100% - 55px);
+                padding-top: 5px;
+                font-size: $fs-24;
+            }
+
+            md-select-value {
+                color: $color;
+                border-color: $color;
+            }
+
+            md-autocomplete {
+                max-width: 100%;
+            }
+
+            md-autocomplete-wrap {
+                width: 100%;
+
+                & .md-input {
+                    max-width: 80.5%;
+                    margin-left: 3px;
+                }
+            }
+
+            .password-container {
+                @include transition(opacity $animation-short-linear);
+
+                &[aria-hidden="false"] {
+                    opacity: 1;
+                }
+
+                &[aria-hidden="true"] {
+                    opacity: 0;
+                }
+            }
+
+            .channel-admin-info {
+                font-size: $fs-14;
+                padding: 0 5px;
+
+                .unique-name {
+                    color: lighten($color,20%);
+                }
+            }
+        }
+
+        & .error {
+            padding-top: 8px;
+        }
+    }
+
+    .md-select-menu-container.channels-group-serch-type {
+        color: $color;
+        font-size: $fs-18 !important;
+
+        md-content {
+            padding: 0;
+        }
+
+        md-option {
+            background: $yellow-tool-bar;
+            /*@include transition(background 0.5s linear);*/
+            transition-duration: 0.5s;
+        }
+
+        md-option[aria-selected="true"] {
+            background: darken($yellow-tool-bar,5);
+        }
+
+        md-option:hover {
+            background: darken($yellow-tool-bar,10);
+        }
+    }
+}
+
+@include user-channels-dialog();

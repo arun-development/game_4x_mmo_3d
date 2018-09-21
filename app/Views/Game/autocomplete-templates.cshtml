@@ -1,0 +1,36 @@
+﻿<script type="text/ng-template" id="translate-autocomplete.tmpl">
+    <form name="taCtrl.form" layout="row" layout-align="start center" class="translate-autocomplete">
+        <div ng-if="taCtrl.label" ng-bind-html="taCtrl.label" class="translate-autocomplete-label"></div>
+        <md-autocomplete class="translate-autocomplete-input" 
+                         md-no-asterisk
+                         layout="row" flex="20"
+                         md-input-name="toLang"
+                         md-items="langItem in taCtrl.querySearch(taCtrl.searchText)"
+                         md-item-text="taCtrl.getTextFromItem(langItem)"
+                         md-match-case-insensitive="true"
+                         md-selected-item="taCtrl.selectedLang"
+                         md-selected-item-change="taCtrl.onSelect(taCtrl.selectedLang)"
+                         md-search-text="taCtrl.searchText"
+                         md-search-text-change="taCtrl.onTextChange(taCtrl.searchText)"
+                         md-min-length="0"
+                         md-delay="0" 
+                         md-autofocus="false"
+                         md-clear-button="true"
+                         md-dropdown-items="80"
+                         md-menu-class="{{taCtrl.menuCss}}"
+                         md-input-minlength="2"
+                         md-require-match="true"
+                         md-input-maxlength="15">
+            <md-item-template>
+                <span md-highlight-text="menu.searchText" md-highlight-flags="^i">{{langItem.Name}}</span>
+            </md-item-template>
+            <div ng-messages="taCtrl.form.toLang.$error" class="error">
+                <div ng-message="md-require-match">This requireMmatch.</div>
+                <div ng-message="md-input-minlength">The lang name must be more than 2 characters long.</div>
+                <div ng-message="md-maxlength">The lang name must be less than 15 characters long.</div>
+
+            </div>
+            <md-not-found ng-bind="taCtrl.notFoundedMsg"></md-not-found>
+        </md-autocomplete>
+    </form>
+</script>

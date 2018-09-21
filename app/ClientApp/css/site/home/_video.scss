@@ -1,0 +1,144 @@
+@import "../../game/animation-vars";
+@import "../../mixins";
+
+.vid_cont {
+    @include transition(all .5s linear);
+    min-width: 100%;
+    top: 0;
+    position: fixed;
+    min-height: 100vh;
+}
+
+#homeVideoBackground {
+    min-height: 100vh;
+    width: auto;
+}
+
+#vid_cont_items {
+    height: 100vh;
+    width: 100%;
+    /*padding-top: 58px;*/
+    background-color: transparent;
+    @include transition(opacity .5s ease-in-out);
+    @include flex-JcAc();
+}
+
+
+#vid_cont_items .name {
+    padding: 0;
+    margin: -20px 20px 20px 20px;
+    @include flex-JcAc();
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 40px);
+}
+
+#vid_cont_items .home-skagry-label {
+    @extend .full-window-size;
+    @extend .centigen-image-container;
+    top:-30px;
+    background-size: contain;
+    max-height: 350px;
+}
+
+#scrollButton {
+    position: relative;
+    top: -200px;
+    text-align: center;
+    @include transition(opacity .5s ease-in-out);
+    @include respond-to-orientation(){ top: -100px;};
+}
+
+.window-height-margin {
+    height: 100vh;
+}
+
+
+.mouse-scroll {
+    position: absolute;
+    opacity: 1;
+    display: block;
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: normal;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    letter-spacing: 2px;
+    text-decoration: none;
+    bottom: -50px;
+    left: 50%;
+    margin-left: -0.5vh;
+    z-index: 2;
+    overflow: hidden;
+    @include transition(opacity 1s ease-in-out 1.5s);
+    cursor:pointer ;
+}
+
+.mouse {
+    position: relative;
+    display: block;
+    width: 2.5vh;
+    height: 4vh;
+    box-sizing: border-box;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    margin: 0px auto 1vh;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-radius: 23px;
+}
+
+.mouse-movement {
+    position: absolute;
+    display: block;
+    top: 29%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0px 0px -4px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    @include animation(#{$home-scroll-ani} 2s linear infinite);
+}
+
+@include prefix-keyframes($home-scroll-ani) {
+    0% {
+        opacity: 0;
+        top: 20%;
+    }
+
+    50% {
+        opacity: 1;
+        top: 50%;
+    }
+
+    100% {
+        opacity: 0;
+        top: 80%;
+    }
+}
+
+@include respond-to(2,3) {
+    #vid_cont_items label {
+        position: absolute;
+    }
+
+
+    #vid_cont_items .name {
+        position: fixed;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    /*#vid_cont_items .name img { margin-left: 0; }*/
+    .vid_cont video {
+        display: block;
+        min-height: 100vh;
+        min-width: 100vw;
+    }
+}

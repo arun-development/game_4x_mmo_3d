@@ -1,0 +1,126 @@
+﻿@import "../suples";
+
+@mixin float-vote() {
+    $s: ".float-vote";
+    $tolbarHeight: 70;
+    $items: 10;
+    $listItemPadding: 10;
+    $listItemInnerHeight: 30;
+    $listItemSumHeight: $listItemInnerHeight+($listItemPadding*2);
+    $contentHeight: $items*$listItemSumHeight;
+    $sumHeight: $tolbarHeight+$contentHeight;
+    $time: 0.2s;
+
+    $ani-height: float-vote-ani-toggle-height;
+    $ani-width: float-vote-ani-toggle-width;
+
+
+    #{$s} {
+        @include box-shadow($box-shadow-section);
+        background-color: #084a4a;
+        position: absolute;
+        z-index: 2;
+        width: #{$tolbarHeight}px;
+        overflow: hidden;
+        @include transition(width $time linear);
+        //
+        transition-delay: $time;
+
+        md-toolbar {
+            height: #{$tolbarHeight}px;
+            min-height: initial;
+            max-height: initial;
+        }
+
+        md-list {
+            @include transition(height $time linear);
+            height: 0;
+            overflow: hidden; 
+            transition-delay: 0s;
+        }
+
+        .md-toolbar-tools {
+            @include transition-transform($time linear);
+            @include translateX(-150%);
+            transition-delay: $time;
+        }
+
+        md-list-item {
+            padding: #{$listItemPadding}px 15px;
+            max-height: #{$listItemInnerHeight}px;
+            min-height: initial;
+        }
+
+
+        .float-vote-toggle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 0;
+            height: auto;
+            width: initial;
+            min-width: initial;
+            max-width: initial;
+            padding: 0;
+            //text_name
+            & md-icon {
+                @include transition-transform(0.4s linear);
+                width: #{$tolbarHeight}px;
+                height: #{$tolbarHeight}px;
+                padding: 5px;
+
+                @include rotate(135deg);
+            }
+        }
+
+        &.active {
+            width: 350px;
+            transition-delay: 0s;
+
+            md-list {
+                height: #{$contentHeight}px;
+                transition-delay: $time;
+            }
+
+            .md-toolbar-tools {
+                min-height: initial;
+                @include translateX(0);
+                transition-delay: 0s;
+            }
+
+            md-icon {
+                @include rotate(0);
+            }
+        }
+
+        .text-label {
+            margin: 0;
+            padding-top: 5px;
+        }
+
+        .unique-name {
+            @include unique-name-standart();
+        }
+        .link-to-target .unique-name{
+            font-size:$fs-18;
+        }
+
+        .send-voice-btn {
+            @include transition(color $animation-short-linear, transform $animation-short-linear);
+            transform: scale(1);
+            margin: 0 5px 0 -20px;
+            width: 1em;
+
+            &:hover {
+                transform: scale(2);
+                color: darken($creme-haki-color,30);
+            }
+
+            &:active {
+                transform: scale(1);
+                color: darken($creme-haki-color,50);
+            }
+        }
+        //float vote
+    }
+}

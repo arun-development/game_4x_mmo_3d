@@ -1,0 +1,40 @@
+﻿@using Server.Infrastructure
+@{
+    Layout = null;
+}
+ 
+<div class="container">
+    <div id="home-carousel" class="carousel slide" data-ride="carousel" data-count="@ViewData["imageCount"]">
+        <div class="relative article clearfix ">
+            @*border-shadow-default*@
+            <div class="">
+
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" class="clearfix" itemprop="image">
+                    <line class="top" x1="-45%" y1="0" x2="5%" y2="0"></line>
+                    <line class="left" x1="0" y1="-40%" x2="0" y2="10%"></line>
+                    <line class="right" x1="100%" y1="90%" x2="100%" y2="140%"></line>
+                    <line class="bottom" x1="95%" y1="100%" x2="145%" y2="100%"></line>
+                </svg>
+                <div class="clearfix"></div>
+            </div>
+            <div class="carousel-inner" itemprop="image">
+
+                @{
+                    var caruselData = (Pagination)ViewData[PageKeyVal.ImagesKey];
+                    var pathInString = caruselData.PathInString;
+                }
+
+            </div>
+
+        </div>
+        <a class="left carousel-control" href="#home-carousel" data-slide="prev" itemprop="image">
+            <span class="arrow left"></span>
+        </a>
+        <a class="right carousel-control" href="#home-carousel" data-slide="next" itemprop="image">
+            <span class="arrow right" itemprop="image"></span>
+        </a>
+    </div>
+
+    <div class="row carousel-inner" id="imgNav"></div>
+</div>
+<input type="hidden" value="" data-collection="@pathInString" disabled="disabled" id="imgCollection"/>

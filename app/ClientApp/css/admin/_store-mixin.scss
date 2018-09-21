@@ -1,0 +1,53 @@
+﻿@import "../mixins";
+
+@mixin admin-store() {
+    $prefix: "admin-store-";
+    $page: #{$prefix}page;
+    $s: #{$prefix}container;
+    $items: #{$prefix}items;
+
+    .#{$page} {
+        & #header {
+            margin: 0;
+            position: relative;
+        }
+    }
+
+    .#{$s} {
+        background-color: #5a5a51;
+        color: wheat;
+        padding: 20px;
+
+        .md-icon {
+            background-color: rgba(167,126,52,0.38);
+        }
+
+        .image-container {
+            @extend .bg-image-contain;
+            width: 320px;
+            height: 180px;
+            outline: 1px solid $white;
+        }
+    }
+
+
+
+
+    .#{$items} {
+
+        & tr {
+            padding: 10px;
+        }
+
+        & td {
+            border: 1px solid white;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+        }
+    }
+
+    button {
+        color: royalblue;
+    }
+}

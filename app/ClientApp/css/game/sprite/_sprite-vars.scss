@@ -1,0 +1,110 @@
+﻿//cdn
+//$GAME_ASSET_VERSION: "v.1.403.test.2";
+$GAME_ASSET_VERSION: "v.1.403.dist";
+$GAME_ASSET_CONTAINR: "https://eternplaypublic.blob.core.windows.net/babylon-assets/";
+$GAME_ASSET_CATALOG_NAME: "game_objects";
+$GAME_ASSET_RELATIVE_VERSION_PATH:$GAME_ASSET_CATALOG_NAME+"/"+$GAME_ASSET_VERSION+"/";
+$CDN_GAME_ASSET_CATALOG_URL: $GAME_ASSET_CONTAINR+$GAME_ASSET_RELATIVE_VERSION_PATH;
+$LOCAL_GAME_ASSET_CATALOG_URL:"/Content/babylon-assets/"+$GAME_ASSET_RELATIVE_VERSION_PATH;
+
+
+//sizes
+$sxSize: 32 !global;
+$sSize: 50 !global;
+$xsSize: 70 !global;
+$msSize: 90 !global;
+$mSize: 100 !global;
+$xlSize: 260 !global;
+
+//base icon size
+$base-sprite-icon-size: 260!global;
+//size-selector
+$sx-size-sprite-selector: sx !global;
+$s-size-sprite-selector: s !global;
+$xs-size-sprite-selector: xs !global;
+$ms-size-sprite-selector: ms !global;
+$m-size-sprite-selector: m !global;
+$xl-size-sprite-selector: xl !global;
+
+
+
+$sprite-atlas-width: 2080 !global;
+$sprite-atlas-height: $sprite-atlas-width;
+$sprite-atlas-selector: sprite_atlas !global;
+$sprite-cintrol-icons: sprite_control_icons !global;
+
+// variable for hangar sprite
+$unit-list-selectors: drone frigate battlecruiser battleship drednout !global;
+$unit-base-size: $base-sprite-icon-size !global;
+$unit-base-line-y: 0 !global; 
+$ms-size-unit-container: $msSize !global; 
+$m-size-unit-container: $mSize !global; 
+$xl-size-unit-container: $xlSize !global;
+
+//variable for tech
+$tech-list-selectors: tech-wu, tech-dc,  tech-drone,tech-frigate,tech-battlecruiser,tech-battleship,tech-drednout !global;
+$tech-base-size: $base-sprite-icon-size !global;
+$ms-size-tech-container: $msSize !global;
+$m-size-tech-container: $mSize !global;
+$xl-size-tech-container: $xlSize !global;
+//user-tech
+$tech-user-base-line-y:1200!global;
+$tech-alliance-base-line-y:1500!global;
+
+
+
+
+
+//map-control-icon
+$map-control-icon-selectors-info: hangartoggle galaxyinfo sectorinfo planetinfo starinfo !global;
+$map-control-icon-selectors-jump: openbookmarks jumptogalaxy jumpinsector jumptoplanetoid jumptostar jumptomother !global; 
+$ms-size-map-control-icon-container: $msSize !global;
+$xl-size-map-control-icon-container: $xlSize !global;
+$map-control-icon-base-size: $base-sprite-icon-size !global;
+$map-control-icon-line-y-info: 0 !global;
+$map-control-icon-line-y-jump: 300 !global;
+// end variable for hangar sprite
+
+
+//builds
+//mother
+$builds-list-selectors: storage energyconverter extractionmodule spaceshipyard turel !global;
+$builds-mother-list-selectors: motherstorage motherenergyconverter motherextractionmodule motherspaceshipyard laboratory !global;
+
+$s-size-build-container: $mSize !global;
+$ms-size-build-container: $msSize !global;
+$xl-size-build-container: $xlSize !global;
+
+$builds-base-size: $base-sprite-icon-size !global;
+
+$builds-base-line-y: 300 !global;
+$builds-mother-base-line-y: 600 !global;
+$build-icon-selector: build;
+
+
+// interface-base-icons-control ( +left  menu)
+$menu-base-icons-list-selectors: interface-icon-alliance interface-icon-confederation interface-icon-journal interface-complex-btn-icon-upgrade interface-complex-btn-icon-info interface-complex-btn-icon-jump interface-icon-message;
+$s-size-menu-left-control-container: $sSize !global;
+$xs-size-menu-left-control-container: $xsSize !global;
+$ms-complex-btn-icon-container: $msSize !global;
+$menu-base-icons-base-size: $base-sprite-icon-size !global;
+$menu-base-icons-base-line-y: 700 !global;
+$menu-base-icons-icon-selector: interface-icon-control;
+
+
+//resource
+$resource-list-selectors: dm e ir cc time !global;
+$sx-size-resource-container: $sxSize !global;
+$s-size-resource-container: $sSize !global;
+
+$resource-line-y: 900 !global;
+$resource-base-size: $base-sprite-icon-size !global;
+
+$base-resource-icon-margin: 10px !global;
+$resource-init-top: 15px !global;
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+++++++++++++++++++++++++++++++++++++++++++map object sptites++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+$sprite-map-object-selector: map-object;
+
+

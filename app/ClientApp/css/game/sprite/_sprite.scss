@@ -1,0 +1,94 @@
+﻿@import "../suples";
+@import "sprite-mixins";
+
+
+.sprite_atlas,
+.sprite_map_control {
+    background-repeat: no-repeat;
+}
+
+.sprite_control_icons {
+    background-image: url("/Content/images/game/control-icons.png");
+}
+
+.sprite_atlas {
+    background-image: url("/Content/images/game/atlas.png");
+}
+
+
+
+//s -size 90px; 
+@include hangar-sprite-container-size($ms-size-unit-container, $ms-size-sprite-selector);
+//m size -70px
+@include hangar-sprite-container-size($xsSize,$m-size-sprite-selector);
+
+//xl-size 260px
+@include hangar-sprite-container-size($xl-size-unit-container,$xl-size-sprite-selector);
+
+//hangar map control icons
+//info
+//m -size 100px;
+@include map-control-sprite-container-size($map-control-icon-selectors-info, $xsSize, $m-size-sprite-selector, true);
+@include map-control-sprite-container-size($map-control-icon-selectors-info, $ms-size-map-control-icon-container, $ms-size-sprite-selector, true);
+//jumps
+@include map-control-sprite-container-size($map-control-icon-selectors-jump, $xsSize, $m-size-sprite-selector);
+@include map-control-sprite-container-size($map-control-icon-selectors-jump, $ms-size-map-control-icon-container, $ms-size-sprite-selector);
+
+
+
+//resources
+//sx -size 32px
+@include reource-sprite-container-size($sx-size-resource-container,$sx-size-sprite-selector);
+//s -size 50px
+@include reource-sprite-container-size($s-size-resource-container,$s-size-sprite-selector);
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Builds ++++++++++++++++++++++++++++++++++++++++++++++++*/
+//planet-builds
+@include build-sprite-container-size($ms-size-build-container,$ms-size-sprite-selector);
+@include build-sprite-container-size($xl-size-build-container,$xl-size-sprite-selector);
+
+//mother
+@include build-sprite-container-size($ms-size-build-container,$ms-size-sprite-selector,true);
+@include build-sprite-container-size($xl-size-build-container,$xl-size-sprite-selector,true);
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+ 
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ teches ++++++++++++++++++++++++++++++++++++++++++++++++*/
+//user-teches
+@include user-tech-sprite($ms-size-tech-container,$ms-size-sprite-selector);
+@include user-tech-sprite($m-size-tech-container,$m-size-sprite-selector); 
+@include user-tech-sprite($xl-size-tech-container,$xl-size-sprite-selector); 
+
+//alliance-teches
+@include alliance-tech-sprite($ms-size-tech-container,$ms-size-sprite-selector);
+@include alliance-tech-sprite($m-size-tech-container,$m-size-sprite-selector);
+@include alliance-tech-sprite($xl-size-tech-container,$xl-size-sprite-selector);
+ 
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ menu-base-icons ++++++++++++++++++++++++++++++++++++++*/
+//left menu
+@include menu-base-icons-sprite($s-size-menu-left-control-container,$s-size-sprite-selector);
+
+//in partial complex button medium
+@include menu-base-icons-sprite($ms-complex-btn-icon-container,$ms-size-sprite-selector);
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+++++++++++++++++++++++++++++++++++++++++++map object sptites++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+@include map-sprite-base-initialize();
+
+//
+/*@include sprite-generator(2000,$map-control-icon-base-size,1100,$msSize, $ms-size-sprite-selector,$sprite-cintrol-icons,$sprite-map-object-selector,"interface-skagry-icon");*/
+.map-object.ms.interface-skagry-icon {
+    background-position: 0 -380.76923px;
+}
+ 
+/*++++++++++++++++++++++++++++++++++++++++end map object sptites++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+

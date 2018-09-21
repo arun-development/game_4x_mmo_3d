@@ -1,0 +1,18 @@
+﻿@import "../_main-colors";
+@import "../text-mixin";
+@import "../prefix";
+
+@mixin input-big-centr($display: block, $box-shadow-color: $color-main-1, $f-size: $fs-36, $placeholder-color:  #949482 ) {
+ 
+    text-shadow: initial;
+    text-align: center;
+    border: 1px solid;
+    display: block;
+    box-shadow: inset 0 0 20px $color-main-1;
+
+    @include prefix-placeholder() {
+        color:$placeholder-color;
+    }
+
+    @content;
+}

@@ -1,0 +1,17 @@
+@import "../../mixins";
+
+.filter {
+    width: 100%;
+    line-height: 60px;
+    @include flex-JsAc();
+
+    > select {
+        padding: 11px;
+        margin: 10px;
+        min-width: 90px;
+
+        > option {
+            height: 40px;
+        }
+    }
+}

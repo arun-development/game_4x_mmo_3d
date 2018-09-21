@@ -1,0 +1,59 @@
+﻿@import "../../mixins";
+
+.article {
+    position: relative;
+}
+
+.article > div {
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(17, 27, 30, 0.75);
+    @include transition(#{transform 1s ease-in-out , box-shadow 1s ease-in-out});
+}
+
+.article > div:hover {
+    box-shadow: inset 0 0 30px 3px rgba(24, 235, 234, .4), 0 0 5px $color-dark-green
+}
+
+.article svg {
+    border: 1px solid $color-dark-green;
+    left: 0;
+    top: 0;
+    position: absolute;
+    @include transition(transform 1s ease-in-out);
+}
+
+.article svg line {
+    stroke-width: 4;
+    stroke: $color-main-1;
+    @include transition(transform .8s ease-in-out);
+}
+
+.article:hover svg line.top {
+    @include translateX(250%);
+}
+
+html > /**/ body .article:hover svg line.left {
+    @include translateY(250%);
+}
+
+.article:hover svg line.bottom {
+    @include translateX(-250%);
+}
+
+.article:hover svg line.right {
+    @include translateY(-250%);
+}
+
+
+
+.category .articleHead {
+    display: inline-block;
+}
+
+.category .articleHead > .line {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 0.5em;
+}

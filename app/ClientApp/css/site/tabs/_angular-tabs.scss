@@ -1,0 +1,22 @@
+﻿@import "../../mixins";
+@import "../../game/animation-vars";
+
+.start-page, .store-page {
+    md-tabs {
+        border-radius: 0;
+
+        & > md-tabs-wrapper {
+            background-color: $site-tab-bg-color;
+        }
+    }
+
+    md-tab-item {
+        color: darken( $creme-haki-color,20);
+        /*@include transition(color $animation-short-linear);*/
+        @include transition-property(#{background-color, color});
+
+        &.md-active {
+            color: $color-main-1;
+        }
+    }
+}

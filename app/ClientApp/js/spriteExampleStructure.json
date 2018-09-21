@@ -1,0 +1,268 @@
+﻿{
+  "model": {
+    "img": "",
+    "customUrl": "",
+    "conditionImg": "",
+    "function": "?",
+    "annotation": "?"
+  },
+  "User": {
+    "Размеры": {
+      "106*107": {
+        "img": "conditionImg",
+        "userImgUrl": "/userImagePath",
+        "conditionImg": "Если у пользователя нет своего изображения - user(default)  || userImgUrl",
+        "function": "вывода информации по Своему аккаунту request(userId)",
+        "annotation": "Меню ресурсы- верх лево"
+
+      },
+      "90*90": {
+        "Планшет": {
+          "Планка": {
+            "Лево": {
+              "Confederation": "?"
+            },
+
+            "Право": {
+              "Альянс": {
+                "Поиск альянса": {
+                  "img": "conditionImg",
+                  "customUrl": "/TargetUserImagePath",
+                  "conditionImg": "только если у таргет юзера нет изображения - user(default) || customUrl",
+                  "function": false,
+                  "annotation": "?"
+                },
+
+                "Мой альянс": {
+                  "img": "conditionImg",
+                  "customUrl": "/userImagePath",
+                  "conditionImg": "только если текуший пользоваетль создатель альянса &&  если нет изображения -user(default) || customUrl",
+                  "function": false,
+                  "annotation": "?"
+                },
+                "Управление Альянсом": {
+                  "img": "conditionImg",
+                  "customUrl": "/userImagePath",
+                  "conditionImg": "только если текуший пользоваетль создатель альянса &&  если нет изображения -user(default) || customUrl",
+                  "function": "target-user-info(CurrentUserId)",
+                  "annotation": "?"
+                },
+
+                "Управление Альянсом Содержание-состава": {
+                  "img": "conditionImg",
+                  "customUrl": "/TargetUserImagePath",
+                  "conditionImg": "только если у таргет юзера нет изображения - user(default) || customUrl",
+                  "function": "target-user-info(TargetUserId)",
+                  "annotation": "?"
+                }
+              },
+              "Confederation": "?",
+              "Journal": {
+                "Spy": {
+
+                  "img": "conditionImg",
+                  "customUrl": "/TargetUserImagePath",
+                  "conditionImg": "только если у таргет юзера нет изображения - user(default) || customUrl",
+                  "function": "target-user-info(TargetUserId)",
+                  "annotation": "?"
+                }
+              }
+            }
+          }
+        },
+
+        "Где то еще": {
+          "ModuleName": {
+            "img": "",
+            "customUrl": "",
+            "conditionImg": "",
+            "function": "?",
+            "annotation": "?"
+          }
+        }
+      },
+      "260*260": {
+        "Персоональная информация": {
+          "img": "conditionImg",
+          "customUrl": "/userImagePath",
+          "conditionImg": " если нет изображения -user(default) || customUrl",
+          "function": false,
+          "annotation": "?"
+        },
+        "Где то еще": {
+          "ModuleName": {
+            "img": "",
+            "customUrl": "",
+            "conditionImg": null,
+            "function": "?",
+            "annotation": "?"
+          }
+        }
+      }
+    }
+  },
+  "Alliance Label": {
+    "Размеры": {
+      "90*90": {
+        "Планшет": {
+          "Планка": {
+            "Лево": {
+              "Альянс": {
+                "Поиск альянса": {
+                  "img": "conditionImg",
+                  "customUrl": "/allianceLabelPath",
+                  "conditionImg": "если нет изображения -alianceLabel(default) || customUrl",
+                  "function": false,
+                  "annotation": "?"
+                },
+                "Мой альянс": {
+                  "img": "conditionImg",
+                  "customUrl": "/allianceLabelPath",
+                  "conditionImg": "если нет изображения -alianceLabel(default) || customUrl",
+                  "function": false,
+                  "annotation": "?"
+                },
+                "Управление альянсом": {
+                  "img": "conditionImg",
+                  "customUrl": "/allianceLabelPath",
+                  "conditionImg": "если нет изображения -alianceLabel(default) || customUrl",
+                  "function": false,
+                  "annotation": "?"
+                },
+                "Управление Альянсом Содержание-состава": {
+                  "img": "conditionImg",
+                  "customUrl": "/allianceLabelPath",
+                  "conditionImg": "если нет изображения -alianceLabel(default) || customUrl",
+                  "function": false,
+                  "annotation": "?"
+                }
+
+              },
+              "Confederation": "?"
+
+            },
+            "Право": "?"
+          }
+        }
+      },
+      "260*260": {
+        "Планшет": {
+          "Содержание": {
+            "Альянс": {
+              "Поиск альянса": {
+                "img": "conditionImg",
+                "customUrl": "/TargetAllianceLabelPath",
+                "conditionImg": "если нет изображения target Alliance -alianceLabel(default) || customUrl",
+                "function": false,
+                "annotation": "?"
+              },
+              "Мой альянс": {
+                "img": "conditionImg",
+                "customUrl": "/allianceLabelPath",
+                "conditionImg": "если нет изображения -alianceLabel(default) || customUrl",
+                "function": false,
+                "annotation": "?"
+              },
+              "Управление альянсом": {
+                "img": "conditionImg",
+                "customUrl": "/allianceLabelPath",
+                "conditionImg": "если нет изображения -alianceLabel(default) || customUrl",
+                "function": false,
+                "annotation": "?"
+              },
+
+              "Confederation": "?"
+
+            }
+
+          }
+        }
+      }
+    }
+  },
+
+  "PlanetImages": {
+    "Размеры": {
+      "90*90": {
+        "Планшет": {
+          "Планка": {
+            "Лево": {
+              "Journal": {
+                "Spy": {
+                  "img": "conditionImg",
+                  "customUrl": "Mother css class",
+                  "conditionImg": "Если истоник нападения - планета planeImag(typeId) ||  customUrl",
+                  "function": "?",
+                  "annotation": "Планета - источник нападения Каждая планета отрисовывается в зависимости от типа планеты"
+                }
+              },
+              "Bookmark": {
+                "img": "\"planet_type_Id info css calss (прим: sprite_planet_icons(класс для ссылки на конкретный спрайт  с просанным в нем урлом и другими првиами) map-object(селектор типа определяет baground size  от которого вести расчет селктора размерности)  s (селктор размерности определяет размер выходного изображения ) planetType_01(определяет позиции  X  и Y  в выбранном спрайте)  eventSelector__eventType(определяет смещение  Y для этого эллемента)",
+                "customUrl": false,
+                "conditionImg": false,
+                "function": false,
+                "annotation": "Это иконка другого типа, не тоже самое что планета - присуцтвует дополнительный символ  Info ( можно подумать о дополнительном контейнере для таких эллементов)"
+              }
+
+            },
+            "Право": {
+              "Journal": {
+                "Report": {
+                  "img": "css sprite class",
+                  "customUrl": false,
+                  "conditionImg": false,
+                  "function": "?",
+                  "annotation": "Каждая планета отрисовывается в зависимости от типа планеты"
+                },
+                "Spy": {
+                  "img": "css sprite class",
+                  "customUrl": false,
+                  "conditionImg": false,
+                  "function": "?",
+                  "annotation": "Планета - цель. Каждая планета отрисовывается в зависимости от типа планеты"
+                }
+              },
+              "Bookmark": {
+                "img": "sprite_planet_icons map-object planetType_XTYPE s eventSelector__XEVENTTYPE css calss",
+                "customUrl": false,
+                "conditionImg": false,
+                "function": "jumptoPlanet(planetId)",
+                "annotation": "Это иконка другого типа, не тоже самое что планета - присуцтвует дополнительный символ  InjumptoPlanetfo ( можно подумать о дополнительном контейнере для таких эллементов)"
+              }
+            }
+          }
+        }
+      },
+      "260*260": {
+        "Планшет": {
+          "Содержание": {
+            "PlanetInfo": {
+              "img": "css sprite class",
+              "customUrl": false,
+              "conditionImg": false,
+              "function": "jumpToPlanet(planetId)",
+              "annotation": "Перейти в состояние планет селектед (из любого места  запустить анимаию перехода к таргет планете)"
+
+            },
+            "SystemInfo": {},
+            "SectorInfo": {},
+            "Bookmark": {
+              "Planets": "содержание строго из PlanetInfo",
+              "Systems": "содержание строго из SystemInfo",
+              "Sectors": "содержание строго из SectorInfo"
+            }
+
+          }
+        }
+      }
+    }
+  },
+
+
+  "Result Collection": {
+    "106*107": [ "user(default)" ],
+    "90*90": [ "user(default)", "alianceLabel(default)", "PlanetImage" ],
+    "100*100": [ "drone", "frigate", "...", "StarInfo", "PlanetInfo", "Jump to mother", "...etc..." ],
+    "260*260": [ "user(default)", "alianceLabel(default)", "PlanetImage" ]
+  }
+}

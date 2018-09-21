@@ -1,0 +1,57 @@
+﻿@import "skagry-dialog-theme-mixin";
+@import "../../suples";
+
+@mixin tech-tree-dialog() {
+    $prefix: ".tech";
+    $s: #{$prefix}-tree-dialog;
+    $row: #{$prefix}-row;
+    $tl: #{$prefix}-level;
+    $tn: #{$prefix}-name;
+
+    .tech-tree-dialog-container {
+        position: relative;
+        max-height: 80%;
+        overflow: hidden;
+        width: 600px;
+    }
+
+    $color: darken($color-main-1,5%);
+
+    @include skagry-theme-main-container($s) {
+        height: 100%;
+        width: 600px;
+
+        md-dialog-content {
+            height: 100%;
+        }
+
+        #{$row} {
+            padding: 1em 0;
+            margin-bottom: 0.5em;
+            outline: 1px solid $color;
+        }
+
+        #{$tl} {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            z-index: 2;
+        }
+
+        #{$tn} {
+            z-index: 2;
+            font-size: $fs-14;
+            text-align: center;
+            width: 100%;
+            padding: 5px 3px;
+            margin-top: 5px;
+            outline: 1px solid $color;
+            border: 2px solid rgba(0,0,0,0.4);
+
+            @extend .box-shadow-section;
+        }
+        .user-tech.m.sprite_atlas {}
+    }
+}
+
+@include tech-tree-dialog()

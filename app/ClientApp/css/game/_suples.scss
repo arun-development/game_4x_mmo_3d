@@ -1,0 +1,100 @@
+﻿@import "../mixins";
+@import "sprite/sprite-mixins";
+@import "animation-vars";
+@import "inputs-mixin";
+//colors
+$color-dark-green2: transparentize($color-dark-green,0.15);
+
+//tab selectors new-data-in-tab
+$tab-selector-new-data-in-tab: new-data-in-tab;
+
+//shadows
+$black-box-shadow-1: inset 0 0 30px 3px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.3) !global;
+$dark-green-box-shadow: inset 0 0 30px 3px $color-dark-green, 0 0 5px $color-dark-green !global;
+$dark-green-border-hover: 0 0 10px 3px rgba(24, 235, 234, .7), 0 0 5px $color-dark-green !global;
+/*$box-shadow-section: inset 0 0 29px rgba(26, 255, 255, 0.30),     inset 0 0 37px 8px rgba(26, 255, 255, 0.22),     inset 0 0 25px 44px rgba(0, 150, 200, 0.4);*/
+$box-shadow-section: inset 0 0 10px rgba(26, 255, 255, 0.3), inset 0 0 15px 8px rgba(26, 255, 255, 0.22), inset 0 0 25px 20px rgba(0, 150, 200, 0.4) !global;
+$box-shadow-out-standart: 0 0 30px 5px rgba(46, 188, 197, 0.51);
+
+
+
+$centerSizeWidth: 450px !global;
+
+
+
+
+//mixsins
+@mixin complex-button($width,$height: 0) {
+    @if($height == 0) {
+        $height: $msSize#{px};
+    }
+
+    height: $height;
+    width: $width;
+}
+
+@mixin resource-border($isCombine: false, $isTop: false,$isRight: false,$isBot: false,$isLeft: false) {
+    $w: 1px;
+    $param: $w solid $resource-out-border-color;
+
+    @if($isCombine) {
+        @if($isTop) {
+            border-top: $param;
+        }
+
+        @if($isRight) {
+            border-right: $param;
+        }
+
+        @if($isBot) {
+            border-bottom: $param;
+        }
+
+        @if($isLeft) {
+            border-left: $param;
+        }
+    }
+
+    @else {
+        border: $param;
+    }
+}
+
+@mixin resource-margin-height($margin, $mar-right: false) {
+    /*border-$type: 1px solid $color-dark-green;*/
+    @if($mar-right) {
+        margin: ($margin*2 - 1px ) 3px 0 $mar-right !important;
+    }
+    @else {
+        margin: ($margin*2 - 1px ) $margin 0 $margin !important;
+    }
+
+    height: calc(100% - (#{$margin} + 1px)*2);
+}
+
+
+
+// fix range
+@mixin change-slider-size($collection,$margin) {
+    @each $i in $collection {
+        #{$i} .slider {
+            margin: $margin;
+        }
+    }
+}
+
+//set correct font by selectorList
+//text font-size
+@mixin drop-container-list-span-font($selector-list,$font-size) {
+    @each $i in $selector-list {
+        #{$i} .#{drop-container} ul li .lower-text {
+            font-size: $font-size;
+        }
+    }
+}
+
+@mixin planshet-content() {
+    width: calc(50% - 16px);
+    padding-left: 7px;
+    margin-bottom: 7px;
+}

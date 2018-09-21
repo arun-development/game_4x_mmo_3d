@@ -1,0 +1,80 @@
+﻿@import "../../suples";
+
+@mixin skagry-theme-main-container ($mainContainerSelector) {
+    $color: darken($color-main-1,5%);
+
+    #{$mainContainerSelector} {
+        background-color: $drop-bg-colr-3;
+        @include box-shadow($box-shadow-section);
+
+        .unique-name {
+            @include unique-name()
+        }
+
+        label {
+            color: $gray-light;
+            font-style: italic;
+        }
+
+        button,
+        .md-button {
+            @include transition(background .2s linear, box-shadow .2s linear, transform .1s linear,color .1s linear);
+        }
+
+        md-toolbar {
+            @extend .text_window_head;
+            border-bottom: 1px solid $color;
+        }
+
+
+
+        .message textarea {
+            color: $color-main-1-light;
+            border: 2px solid $color-dark-green;
+            padding: 10px;
+            font-size: $fs-18;
+            @extend .font_play;
+            @include transition(border-color .2s linear);
+
+            &:focus {
+                border-color: $color;
+            }
+
+            &.md-input.ng-invalid.ng-dirty {
+                border: 2px solid $error-color;
+            }
+        }
+
+        md-dialog-actions {
+            border-top: 1px solid $color;
+            padding: 0;
+
+            & button {
+                color: $color;
+                border-radius: 3px;
+                border: 1px solid $color;
+                background: darken($color-main-1,25%);
+                min-width: 40%;
+                box-shadow: inset 0 0 29px #1e3437;
+                margin: 10px;
+                @include scale(1);
+
+                &:hover {
+                    color: lighten($color-main-1,30%);
+                    box-shadow: inset 5px 0 29px $color;
+                }
+
+                &:active {
+                    color: darken($color,5%);
+                    @include scale(0.9);
+                }
+            }
+        }
+
+        .md-char-counter {
+            color: $color-main-1;
+        }
+
+        @content;
+    }
+}

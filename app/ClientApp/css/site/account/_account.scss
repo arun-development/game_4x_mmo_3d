@@ -1,0 +1,93 @@
+@import "_account-mixin";
+
+@include my-account-mixin();
+@include chst-item-dialog();
+
+@include set-footer-to-page($account-page);
+@include set-footer-to-page($manage-page);
+
+#{$account-page}, #{$manage-page} {
+    .site-form-group, h2,h3,h4 {
+        color: $white;
+    }
+
+    .site-form-group hr {
+        border-top-color: $site-form-input-border-color;
+    }
+
+    .account-link {
+        @extend .text-center;
+
+        a {
+            color: $font-icon-color-1;
+            text-decoration: none;
+        }
+    }
+
+    .account-link, .account-form-button {
+        box-sizing: border-box;
+        border-radius: initial;
+        background-color: $site-form-input-bg-color;
+        border: 1px solid $site-form-input-border-color;
+        width: 100%;
+        margin-bottom: 5px;
+        @include transition(background-color $animation-standart);
+        color: $font-icon-color-1;
+
+        &:hover {
+            background-color: lighten($site-form-input-bg-color,5);
+        }
+
+        &:active {
+            background-color: darken($site-form-input-bg-color,5);
+        }
+    }
+
+    .login-dynamic {
+        display: none
+    }
+}
+#{$account-page} #main-container {
+    background: url(/content/images/log-in.png) no-repeat 50% 50%;
+}
+#{$manage-page} {
+    .registred-external-table-td {
+        border-top-color: $site-form-input-border-color;
+    }
+
+    .input-group-addon {
+        border: 1px solid $site-form-input-border-color;
+        border-radius: 0;
+        background-color: initial;
+    }
+
+    .manage-status-message {
+        border-radius: 0;
+        background-color: $site-form-input-bg-color;
+        border: 1px solid $site-form-input-border-color;
+    }
+
+    .nav.nav-pills.nav-stacked {
+        a {
+            background-color: $site-form-input-bg-color;
+            border: 1px solid $site-form-input-border-color;
+            border-radius: 0;
+            @include transition(color, background-color $animation-standart );
+
+            &:hover {
+                background-color: lighten($site-form-input-bg-color,5);
+            }
+
+            &:active {
+                background-color: darken($site-form-input-bg-color,5);
+            }
+        }
+
+        & .active a {
+            background-color: lighten($site-form-input-bg-color,15);
+        }
+    }
+
+
+}
+

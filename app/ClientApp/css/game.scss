@@ -1,0 +1,86 @@
+﻿/*===================== vars and mixins==================*/
+@import "_outFonts";
+@import "game/suples";
+
+@import "game/reset";
+@import "common";
+
+/*===================== core ==================*/
+
+@import "game/enter";
+@import "game/statistic/statistic";
+/*========================img================*/
+@import "game/sprite/sprite";
+@import "game/sprite-svg ";
+@import "game/images";
+@import "game/text";
+/*======================== end img================*/
+@import "game/tabs";
+@import "game/dropable";
+@import "game/buttons";
+@import "game/inputs";
+@import "game/range";
+@import "game/pager";
+@import "game/border-anim";
+@import "game/leftMenu";
+@import "game/planshet";
+@import "game/time/_timeControl";
+/*===================== end core ==================*/
+
+/*===================== modules ==================*/
+
+@import "game/controlPanel/controlPanel";
+@import "game/achievements/achievement";
+
+
+
+@import "game/resource-estate/svg-resource-view-estate";       
+@import "game/vendor/select2/target-transfer-storage";
+
+//autocpmplete
+@import "game/vendor/angular-autocomplete/angular-autocomplete";
+@import "game/vendor/angular-autocomplete/translate-autocomplete";
+
+
+//angular-dialog
+@import "game/vendor/angular-dialog/default-dialog";
+@import "game/vendor/angular-dialog/alliance-message-dialog";
+@import "game/vendor/angular-dialog/user-channels-dialog";
+@import "game/vendor/angular-dialog/upload-image-dialog"; 
+@import "game/vendor/angular-dialog/tech-tree-dialog";
+@import "game/vendor/angular-dialog/unit-detail-dialog";
+ 
+
+//mediumeditor
+@import "game/vendor/medium-editor/medium-editor";
+
+//ng-img-crop
+@import "../../wwwroot/lib/ng-img-crop/source/scss/ng-img-crop.scss";
+//ui-cropper
+@import "../../wwwroot/lib/ui-cropper/source/scss/ui-cropper.scss";
+
+@import "game/builds/builds";
+@import "game/journal/journal";
+@import "game/alliance/alliance";
+
+@import "game/map-info/map-info";
+
+@import "game/user/estateList";
+@import "game/user/prevUser";
+@import "game/user/user-profile";
+
+//animation
+@import "game/animations";
+
+//user-channels 
+@import "game/user-channels/user-channels";
+
+//confederation 
+@import "game/confederation/confederation";
+
+//float vote
+@import "game/confederation/float-vote";
+
+//dat gui
+@import "game/vendor/datGui/dat-gui"; 
+

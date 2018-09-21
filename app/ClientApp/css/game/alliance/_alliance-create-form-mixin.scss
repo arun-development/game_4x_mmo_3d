@@ -1,0 +1,23 @@
+﻿@import "../suples";
+@mixin alliance-create-form-mixin(){
+    $s:"#alliance-create-form";
+    $inp:"#alliance-create-name";
+    #{$inp}{
+        $bcolor:rgba(94,94,101,0.5);
+        border-color:$bcolor;
+        &:focus{
+         border-color:rgba($bcolor, 1);
+        }
+    }
+     #{$s}{
+         & md-content {   overflow: inherit;}
+         & [ng-message]{
+             padding:5px;
+         }
+         & .description{
+             margin:1em 0;
+         }
+     }
+ 
+}
+

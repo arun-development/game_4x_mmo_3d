@@ -1,0 +1,101 @@
+﻿
+@using DomainModels.СompexPrimitive.Products
+@using Translate.Site.Store
+@model PaymentCcViewModel
+
+@{
+    Layout = null;
+    var prefix = "buy-cc-product-store";
+    var fieldId = prefix + "-id";
+    var fieldCost = prefix + "-cost";
+    var fieldName = prefix + "-name";
+    var fieldQuantity = prefix + "-quantity";
+    var fieldTotalCost = prefix + "-total-cost";
+    var btnSubmitId = prefix + "-buy-btn";
+
+
+}
+
+
+@*@using (Html.BeginForm("Buy", "/Api/Store", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "payment_sg_form", role = "form" }))*@
+
+<form id="payment_cc_form" name="paymentCcForm"
+      role="form"
+      class="form-horizontal"
+      method="POST"
+      action="/Api/user/buyProduct/">
+
+    @{
+
+        @Html.AntiForgeryToken()
+        <input id="@fieldId" name="ProductStoreId" type="hidden" />
+        <input id="@fieldCost" name="Cost" type="hidden" />
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-lg-4">@Resource.ClientBuy</th>
+                        <th class="col-lg-4" id="@fieldName" data-field="productName"></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="col-lg-4">@Resource.ProductQuantity</th>
+                        <th class="col-lg-4">
+
+                            <div class="form-group has-feedback ">
+                                <div class="col-sm-5">
+                                    <input id="@fieldQuantity"
+                                           name="Quantity"
+                                           type="number"
+                                           value="1"
+                                           class="form-control"
+                                           min="1"
+                                           max="3" />
+                                    <span class="glyphicon form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>@Resource.ProductTotalPrice</th>
+                        <th>
+
+                            <div class="form-group has-feedback ">
+                                <div class="col-sm-8">
+                                    <input class="form-control"
+                                           id="@fieldTotalCost"
+                                           name="TotalCost"
+                                           type="number"
+                                           readonly 
+                                           value="" />
+                                    <span class="glyphicon form-control-feedback"></span>
+                                </div>
+                                <label class="col-sm-1">CC</label>
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="col-md-6 error">
+                    <p id="error-sgbalance">недостаточно CC @Html.ActionLink("Пополните баланс", "Index", "Store", new { type = 1 }, null) </p>
+
+                </div>
+                <input onclick="" 
+                       type="submit"
+                       name="BuyBtn"
+                       id="@btnSubmitId"
+                       class="btn btn-info btn-form-submit buy_btn" 
+                       value="@Resource.Buy">
+            </div>
+
+
+        </div>
+    }
+</form>

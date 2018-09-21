@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+@model Services.HtmlHelpers.ButtonsView
+<div class="btn">
+    @{
+        if (null != Model.Onclick)
+        {
+            <div class="img_btn_red btn">
+                <a href="#"
+                    onclick="@Model.Onclick" title="@Model.TranslateName">@Model.TranslateName </a>
+            </div>
+        }
+        else
+        {
+            <div class="img_btn_red btn">
+                @Html.Partial("~/Views/Game/Buttons/ajaxLink.cshtml", Model)
+            </div>
+        }
+    }
+</div>
+

@@ -1,0 +1,42 @@
+﻿@import "../../mixins";
+.site-form-group {
+    $color: #FFF;
+    @include webkit-autofill ($site-form-input-bg-color);
+
+    .form-group {
+        margin-bottom: -1px;
+        color: #bdd6ea;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"], input[type="tel"] {
+        border-radius: initial;
+        height: 46px;
+        padding: 13px 20px 13px 20px;
+        color: $color;
+        border: 1px solid $site-form-input-border-color;
+        background-color: $site-form-input-bg-color;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .checkbox {
+        input[type="checkbox"] {
+            top: 3px;
+        }
+
+        font-size: $fs-18
+    }
+
+    .text-danger {
+        color: $error-color;
+    }
+
+    .danger-container {
+        margin: 15px auto 0 auto;
+        padding: 15px;
+        color: $error-color;
+        text-align: center;
+    }
+}

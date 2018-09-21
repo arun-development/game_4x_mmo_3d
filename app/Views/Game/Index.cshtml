@@ -1,0 +1,231 @@
+﻿@using System.Configuration
+@using Server.Infrastructure
+@{
+    Layout = "/Views/Game/_Layout.cshtml";
+ 
+    var cssG = LibCollection.CssGame;
+    var jsGa = LibCollection.JsGameAngular;
+    var jsG = LibCollection.JsGame;
+ 
+
+}
+
+<canvas id="estateCanvas" tabindex="1"></canvas>
+<section id="Game" class="font_play" ng-controller="gameCtrl as gameCtrl" ng-cloak="">
+    <div user-counter></div>
+    <div ng-if="gameCtrl.skagryLoaded" skagry></div>
+</section>
+
+ 
+@section styles{
+    
+    <environment include="Development">
+        @*<link rel="stylesheet"
+              href="@cssG.LocalPath"
+              asp-append-version="@cssG.AppendVersion" />*@
+        <link rel="stylesheet"
+              href="@cssG.LocalPath" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet"
+              href="@cssG.LocalPathMin"
+              asp-append-version="@cssG.AppendVersion" />
+    </environment>
+}
+
+
+@section preloader{
+    <div id="scene-loader" class="">
+        <div class="scene-loader-words">
+            <span class="slw-1 slw">L</span>
+            <span class="slw-2 slw">O</span>
+            <span class="slw-3 slw">A</span>
+            <span class="slw-4 slw">D</span>
+            <span class="slw-5 slw">I</span>
+            <span class="slw-6 slw">N</span>
+            <span class="slw-7 slw">G</span>
+        </div>
+        <canvas id="demo"></canvas>
+        <div class="loadProgress display-none">
+            <div id="scene-loader-progress"></div>
+        </div>
+    </div> 
+}
+ 
+
+@section templatesAndSupples{
+    
+<div id="video-container">
+    @*<video id="video-sector-jump"
+               loop="loop"
+               width="1920"
+               height="1080">
+            <source src="https://eternplaypublic.blob.core.windows.net/babylon-assets/video_materiales/sector-jump.mp4" type="video/mp4">
+        </video>*@
+
+</div>
+
+<section id="svg-container">
+    @*<section id="svg-achievement">
+        <md-icon md-svg-icon="achievement-1"></md-icon>
+        <md-icon md-svg-icon="achievement-2"></md-icon>
+        <md-icon md-svg-icon="achievement-3"></md-icon>
+        <md-icon md-svg-icon="achievement-4"></md-icon>
+        <md-icon md-svg-icon="achievement-5"></md-icon>
+        <md-icon md-svg-icon="achievement-6"></md-icon>
+        <md-icon md-svg-icon="achievement-7"></md-icon>
+        <md-icon md-svg-icon="achievement-8"></md-icon>
+        <md-icon md-svg-icon="achievement-9"></md-icon>
+        <md-icon md-svg-icon="achievement-10"></md-icon>
+        <md-icon md-svg-icon="achievement-11"></md-icon>
+        <md-icon md-svg-icon="achievement-12"></md-icon>
+    </section>*@
+    @*<section id="svg-arrow">
+        <md-icon md-svg-icon="planshet-arrow"></md-icon>
+        <md-icon md-svg-icon="select-container-cursor"></md-icon>
+    </section>*@
+    <section id="svg-interface">
+        <!--res-->
+        <md-icon md-svg-icon="interface-icon-cc"></md-icon>
+        <md-icon md-svg-icon="interface-icon-e"></md-icon>
+        <md-icon md-svg-icon="interface-icon-ir"></md-icon>
+        <md-icon md-svg-icon="interface-icon-dm"></md-icon>
+        <!--left menu-->
+        <md-icon md-svg-icon="interface-icon-alliance"></md-icon>
+        <md-icon md-svg-icon="interface-icon-confederation"></md-icon>
+
+        <md-icon md-svg-icon="interface-icon-journal"></md-icon>
+        <md-icon md-svg-icon="interface-icon-message"></md-icon>
+        <!--controll menu-->
+        <md-icon md-svg-icon="interface-icon-hangar-toggle"></md-icon>
+        <md-icon md-svg-icon="interface-icon-galaxy-info"></md-icon>
+        <md-icon md-svg-icon="interface-icon-sector-info"></md-icon>
+        <md-icon md-svg-icon="interface-icon-planet-info"></md-icon>
+        <md-icon md-svg-icon="interface-icon-star-info"></md-icon>
+        <md-icon md-svg-icon="interface-icon-jump-to-sector"></md-icon>
+        <md-icon md-svg-icon="interface-icon-jump-to-planetoid"></md-icon>
+        <md-icon md-svg-icon="interface-icon-jump-to-user-planet"></md-icon>
+        <md-icon md-svg-icon="interface-icon-jump-to-mother"></md-icon>
+        <md-icon md-svg-icon="interface-icon-jump-to-galaxy"></md-icon>
+        <md-icon md-svg-icon="interface-icon-open-bookmarks"></md-icon>
+
+    </section>
+    @*<section id="svg-assets-cahce">
+        <md-icon md-svg-src="img/icons/ic_euro_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/addShoppingCart.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/android.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/angular-logo.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/bower-logo.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/cake.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/codepen-logo.svg" aria-label="Close"></md-icon>
+
+            <md-icon md-svg-src="img/icons/copy.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/copy2.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/facebook.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/favorite.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/github-icon.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/github.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/hangout.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_access_time_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_arrow_back_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_build_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_chevron_right_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_code_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_comment_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_email_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_insert_drive_file_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_label_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_launch_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_menu_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_more_vert_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_ondemand_video_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_people_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_person_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_phone_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_photo_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_place_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_play_arrow_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_play_circle_fill_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_refresh_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_school_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/ic_visibility_24px.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/launch.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/mail.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/menu.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/message.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/more_vert.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/npm-logo.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/octicon-repo.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/print.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/separator.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/sets/communication-icons.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/sets/core-icons.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/sets/device-icons.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/share-arrow.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/tabs-arrow.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/twitter.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="img/icons/upload.svg" aria-label="Close"></md-icon>
+            <md-icon md-svg-src="icons/avatar-icons.svg" aria-label="Close"></md-icon>
+    </section>*@
+</section>
+
+    <section id="angular-templates">
+        <cache expires-on="@DateTime.Now.AddDays(30)">
+            @Html.Partial("common-templates")
+            @Html.Partial("user-templates")
+            @Html.Partial("build-templates")
+            @Html.Partial("change-image-templates")
+            @Html.Partial("alliance-templates")
+            @Html.Partial("map-templates")
+            @Html.Partial("journal-templates")
+            @Html.Partial("user-channel-templates")
+            @Html.Partial("confederation-templates")
+            @Html.Partial("dialog-templates")
+            @Html.Partial("autocomplete-templates")
+        </cache>
+
+    </section>
+    
+} 
+
+@section footerFinalizeScripts{ 
+    <environment include="Development">
+        <script src="@jsG.LocalPath" asp-append-version="true"></script>
+        <script src="@jsGa.LocalPath" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="@jsG.LocalPathMin" asp-append-version="true"></script>
+        <script src="@jsGa.LocalPathMin" asp-append-version="true"></script>
+    </environment>
+    <script>
+        (function () {
+            EM.GameLoader.loadAnimation();
+            return;
+            setInterval(function () {
+                var root = $(document.getElementsByTagName('body'));
+                var watchers = [];
+
+                var f = function (element) {
+                    if (element.data().hasOwnProperty('$scope')) {
+                        angular.forEach(element.data().$scope.$$watchers, function (watcher) {
+                            watchers.push(watcher);
+                        });
+                    }
+
+                    angular.forEach(element.children(), function (childElement) {
+                        f($(childElement));
+                    });
+                };
+
+                f(root);
+
+                console.log("watchers.length", watchers.length);
+            }, 10000);
+        })();
+    </script>
+    
+}
+
+

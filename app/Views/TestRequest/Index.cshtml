@@ -1,0 +1,259 @@
+﻿@using Server.Infrastructure
+@{
+    Layout = null;
+    var mzr = LibCollection.JsModernizr;
+    var jq = LibCollection.JsJquery;
+    var jqCookie = LibCollection.JsJqCookie;
+    var lodash = LibCollection.JsLodash;
+    var jsCommon = LibCollection.JsCommon;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestRequest</title>
+
+</head>
+
+<body>
+@Html.AntiForgeryToken()
+    <script src="@mzr.CdnPathMin" asp-append-version="true"></script>
+    <script src="@jq.CdnPathMin" asp-append-version="true"></script>
+    <script src="@lodash.CdnPathMin" asp-append-version="true"></script>
+    <script src="@jqCookie.CdnPathMin" asp-append-version="true"></script>
+<script src="@jsCommon.LocalPath" asp-append-version="true"></script>
+
+
+<div>
+    <h3>Test Vote</h3>
+    <div>
+        <h3>Log:</h3>
+        <div>
+            <button onclick="run()">Run</button>
+            <button onclick="singleRun()">SingleRun</button>
+            <button onclick="stop()">Stop</button>
+            <button onclick="clean()">Clean</button>
+            <button onclick="pushFakeVoice()">PushFakeVoice</button>
+            <button onclick="registrateFackeUser()">RegistrateFackeUser</button>
+            <button onclick="TestGetMax()">TestGetMax</button>
+        </div>
+        <ul id="log" style="list-style: none; padding: 0"></ul>
+        &nbsp;
+    </div>
+    
+    <script>
+        var interval;
+        var log = $("#log");
+        var row = 0;
+
+        function add(title, data) {
+            var elem = $("<li/>");
+            row++;
+            elem.html("<span>" +
+                row +
+                ": &nbsp; &nbsp; </span><span>" +
+                title +
+                "</span><span style=color:red>" +
+                data +
+                "</span>");
+            log.prepend(elem);
+
+        };
+
+        function addHr() {
+            var elem = $("<li/>");
+            elem.html("<hr>");
+            log.prepend(elem);
+        }
+
+        function singleRun() {
+            $.ajax({
+                url: "/api/vote/testPush",
+                dataType: "json",
+                method: "post",
+                headers: Utils.XSRF.HeadersGetApiTokenObj()
+            }).then(function (data) {
+                add("activeOfficersCount:", data.activeOfficersCount);
+                add("candidatesCount:", data.candidatesCount);
+                add("endVoteTime:", data.endVoteTime);
+                add("startVoteTime:", data.startVoteTime);
+                add("startRegistrationTime:", data.startRegistrationTime);
+                add("curTime:", data.curTime);
+                add("timeToNextUpgrage:", data.timeToNextUpgrage);
+                add("periodName:", data.periodName);
+                addHr();
+
+            },
+                function (error) {
+                    var time = Date.now();
+                    console.log("error:" + time,
+                        {
+                            error: error.responseJSON
+                        });
+                    add("error see log by time:", time);
+
+                });
+        }
+
+        function run() {
+            if (interval) {
+                stop(interval);
+            }
+            add("Runned :", new Date());
+            addHr();
+            interval = setInterval(function () {
+                singleRun();
+            },
+                5000);
+
+        };
+
+        function stop() {
+            if (interval) {
+                add("Stroped :", new Date());
+                clearInterval(interval);
+            }
+        };
+
+        function clean() {
+            log.html("");
+        }
+
+        function pushFakeVoice() {
+            $.ajax({
+                url: "/api/vote/testPushFakeVoice",
+                dataType: "json",
+                headers: Utils.XSRF.HeadersGetApiTokenObj()
+            }).then(function (data) {
+                console.log("pushFakeVoice", { data: data });
+
+            },
+                function (error) {
+                    console.log("pushFakeVoice", { error: error.responseJSON });
+                });
+        }
+
+        function registrateFackeUser() {
+            $.ajax({
+                url: "/api/vote/testFakeRegister",
+                dataType: "json",
+                headers: Utils.XSRF.HeadersGetApiTokenObj()
+            }).then(function (data) {
+                console.log("registrateFackeUser", { data: data });
+
+            },
+                function (error) {
+                    console.log("registrateFackeUser", { error: error.responseJSON });
+                });
+        }
+
+        function TestGetMax(parameters) {
+            $.ajax({
+                url: "/api/vote/TestGetMax",
+                dataType: "json",
+                method: "GET",
+                headers: Utils.XSRF.HeadersGetApiTokenObj()
+                //Utils.XSRF.GetTokenObj()
+            }).then(function (data) {
+                console.log("TestGetMax", { data: data });
+
+            },
+                function (error) {
+                    console.log("TestGetMax", { error: error.responseJSON });
+                });
+        }
+
+
+    </script>
+</div>
+
+
+    
+ 
+<div>
+    <h3>TestGetAntiForgeryToken </h3>
+    <button onclick="testGet()">TestGetAntiForgeryToken Suc</button>
+    <button onclick="testGetFail()">TestGetAntiForgeryToken Fail</button>
+    <br/>
+
+    <button onclick="testPostByHeaders()">TestPostAntiForgeryTokenByHeaders Suc</button>
+    <button onclick="testPostFail()">TestPostAntiForgeryTokenByHeaders Fail</button>
+
+    <br/>
+
+    <button onclick="testPostByInsertModel()">TestPostAntiForgeryTokenByInsertValueToModel Suc</button>
+    <button onclick="testPostFail()">TestPostAntiForgeryTokenByInsertValueToModel Fail</button>
+
+    <script>
+        function testGet() {
+            $.ajax({
+                url: "/api/TestRequest/Test",
+                dataType: "json",
+                method: "get",
+                headers: Utils.XSRF.HeadersGetApiTokenObj()
+            }).then(function(e) {
+                console.log("responce", { e: e });
+            });
+        }
+
+        function testGetFail() {
+            $.ajax({
+                url: "/api/TestRequest/Test",
+                dataType: "json",
+                method: "get"
+            }).then(function(e) {
+                    console.log("wrong", { e: e });
+                },
+                function(e) {
+                    console.log("correct", { e: e });
+                    return true;
+                });
+        }
+
+        function testPostByHeaders() {
+            $.ajax({
+                url: "/api/TestRequest/Test",
+                dataType: "json",
+                method: "post",
+                data: { Id: 1, Name: "testName" },
+                headers: Utils.XSRF.HeadersGetApiTokenObj()
+            }).then(function(e) {
+                console.log("responce", { e: e });
+            });
+        }
+
+        function testPostByInsertModel() {
+            $.ajax({
+                url: "/api/TestRequest/Test",
+                dataType: "json",
+                method: "post",
+                data: Utils.XSRF.MakeIPostXsrf("model", { Id: 1, Name: "testName" })
+            }).then(function(e) {
+                console.log("responce", { e: e });
+            });
+        }
+
+
+        function testPostFail() {
+            $.ajax({
+                url: "/api/TestRequest/Test",
+                dataType: "json",
+                method: "post",
+                data: { Id: 1, Name: "testName" }
+            }).then(function(e) {
+                    console.log("wrong", { e: e });
+                },
+                function(e) {
+                    console.log("correct", { e: e });
+                    return true;
+                });
+        }
+
+    </script>
+</div>
+
+</body>
+</html>

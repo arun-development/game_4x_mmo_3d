@@ -1,0 +1,77 @@
+﻿@import "../../flex-mixin";
+#paymentForm .table { max-width: calc(100% - 7px); }
+#payment_sg_form {
+    display: none;
+}
+
+#payment_money_form { display: none; }
+
+.payment_system_container { margin-left: -15px; }
+
+.modal { min-width: 320px }
+
+
+
+.payment_system_container .select2-selection--single {
+    border: 1px solid #ccc;
+    padding-top: 2px !important;
+    height: 34px;
+}
+
+
+
+
+.payment_system_container .select2-selection__arrow { margin-top: 2px; }
+
+
+.payment_system_container .select2-selection .select2-selection--single { margin: 0; }
+
+
+
+
+
+.payment_system_item {
+    width: 100%;
+    padding: 0 15px;
+    @include flex-JsbAc();
+}
+
+.payment_system_item img {
+    max-width: 30%;
+    margin-right: 10px;
+    padding: 0;
+    max-height: 1em;
+    background-size: auto 100%;
+}
+
+
+.modal-footer .error {
+    color: #ff0000;
+    font-size: 0.8em;
+}
+
+.modal-footer .error > p > a:hover { cursor: pointer; }
+
+
+#payment_form_information *,
+#error-sgbalance,
+#error-auth { display: none; }
+
+
+
+
+.modal-body.payment_collapse,
+.modal-body.payment_collapse * {
+ 
+    animation: collapse .5s forwards linear;
+    padding: 0;margin: 0;border: 0;
+    transition: 1s;
+
+}
+
+
+@keyframes collapse {
+     0% {} 
+    100%{height: 0;line-height: 0;opacity: 0; transform: scale(0)}
+
+}

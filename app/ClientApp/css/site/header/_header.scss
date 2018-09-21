@@ -1,0 +1,16 @@
+@import "../../mixins";
+@import "header-mixin";
+
+.main-menu{
+    min-height:$site-header-h;
+}
+.underlay_animate:hover {
+    display: inline-block;
+}
+
+@include header-nixin();
+
+.login .underlay_animate > span {
+    padding-left: 2em;
+}
+.indicator-nav{}

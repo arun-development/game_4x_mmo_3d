@@ -1,0 +1,70 @@
+﻿@import "../suples";
+
+@mixin officers() {
+    $s: ".officer";
+    $container: #{$s}-container;
+
+    $content: #{$s}-content;
+    $head: #{$s}-head;
+    $image: #{$s}-image;
+    $image-container: #{$image}-container;
+
+
+    $description: #{$s}-description;
+    $img-size: 150px;
+
+    $spacing: 0.5em;
+
+    #{$container} {
+        margin: $spacing 0;
+    }
+
+
+    #{$head} {
+        @extend .profile-head;
+        outline: none;
+        border: 1px solid $color-main-1;
+        padding: 0 $spacing;
+    }
+
+    #{$content} {
+        @extend .box-shadow-section;
+        padding: $spacing;
+    }
+
+    #{$image} {
+        width: $img-size;
+        height: $img-size;
+        background-size: contain;
+        @include transition(transform $animation-short-linear, outline-color 0.5s linear);
+        outline: 1px solid transparent;
+
+        &:hover {
+            outline: 1px solid $color-main-1;
+            @include box-shadow(inset 0 0 10px $color-main-1,0 0 10px $color-main-1);
+        }
+    }
+
+    #{$image-container} {
+        width: $img-size;
+        padding-bottom:$spacing;
+        .unique-name {
+            @extend .active;
+            @extend .link-to-target;
+            font-size: $fs-18;
+            padding: 0 0 0.5em 0;
+        }
+
+        &:active #{$image} {
+            @include scale(0.9);
+        }
+    }
+
+
+
+    #{$description} {
+        font-size: $fs-14;
+        padding: 30px 1em 0 1em;
+        text-align: justify;
+    }
+}

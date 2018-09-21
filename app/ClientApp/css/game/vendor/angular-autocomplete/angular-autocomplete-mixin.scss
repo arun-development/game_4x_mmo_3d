@@ -1,0 +1,104 @@
+﻿@import "../../suples";
+
+@mixin angular-autocomplete($parent-selector: "") {
+    $s:".custom-autocomplete"+$parent-selector;
+
+    #{$s} {
+
+        & md-content {
+            min-width: 65%;
+            padding-bottom: 5px;
+        }
+
+        & md-autocomplete {
+            height: 96%;
+            border-radius: 0;
+
+            & md-autocomplete-wrap {
+                height: 100%;
+                @include input-big-centr(false,false,$fs-18); 
+
+                button {
+                    z-index: 1;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+
+                    & md-icon[aria-hidden="true"] {
+                        display: initial;
+                        $close-color: $drop-bg-colr-1;
+                        color: $close-color;
+
+                        & svg {
+                            @include transition(#{transform $animation-short-linear, color $animation-short-linear});
+                        }
+
+                        &:hover svg {
+                            color: darken($close-color,50);
+                            @include scale(1.6)
+                        }
+                    }
+                }
+
+
+                & .md-bar {
+                    height: 1px;
+                }
+
+                & md-progress-linear {
+                    bottom: 0;
+                }
+
+                & .md-bar1,
+                & .md-bar2 {
+                    background: white;
+                }
+            }
+
+            & input { 
+                margin:0;
+                text-shadow:none;
+                height:initial;
+                text-align: center;
+            }
+        }
+    }
+
+
+    @include angular-autocomplete-drop();
+    @content;
+}
+
+@mixin angular-autocomplete-drop($selector: ".custom-autocomplete-drop-1", $bg-color: $drop-bg-colr-2, $hover-shadow: $dark-green-box-shadow) {
+    #{$selector} {
+        background-color: $bg-color;
+        & li {
+
+            @include box-shadow(#{inset 0 0 0 transparent, 0 0 0 transparent});
+            @include transition(#{box-shadow .5s linear});
+            @extend .text_h_standart;
+            &:hover {
+                @include box-shadow($hover-shadow);
+            }
+        }
+    }
+}
+
+@mixin angular-md-select($class: ".custom-select-drop-1",
+$bg-color: $drop-bg-colr-1, $hover-shadow:$black-box-shadow-1, $width:260px,$translateX:360px) {
+    #{$class} {
+        min-width:$width!important;
+        background-color: $bg-color;
+        @include translateX($translateX);
+        & md-select-menu md-content {padding:0}
+        & md-option {
+                
+            @include box-shadow(#{inset 0 0 0 transparent, 0 0 0 transparent});
+            @include transition(#{box-shadow .5s linear});
+
+            &:hover {
+                @include box-shadow($hover-shadow);
+            }
+        }
+    }
+}

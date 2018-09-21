@@ -1,0 +1,420 @@
+﻿<script type="text/ng-template" id="alliance-item.tmpl">
+    <div class=dropable drop-element>
+        <div ng-click=dropElementonClickByDropable(item.skipParent)>
+            <complex-button complex-button=item.ComplexButtonView></complex-button>
+        </div>
+        <div class=drop-container>
+            <div class=drop-item>
+                <statistic statistic-model=allianceStatsModel></statistic>
+                <article class=text_justify ng-bind-html=description></article>
+                <div class="btn-group-sa slim">
+                    <paralax-button button="button" ng-repeat="button in  alianceButtons"></paralax-button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="alliance-request-message.tmpl">
+    <div class="message">
+        <img ng-src="{{message.CreatorIcon}}"
+             class="message-avatar"
+             ng-class="positionAvatarCss" alt="Avatar">
+        <div class="message-content">
+            <div class="message-content-info">
+                <div class="message-content-info-creator"
+                     ng-class="getUserProfile?'unique-name link-to-target active':''"
+                     ng-click="getUserProfile()"
+                     ng-disabled="!getUserProfile">
+                    <span ng-bind="message.FromName"></span>
+                </div>
+                <div class="message-content-info-date">
+                    <span ng-bind="dateCreate"></span>
+                </div>
+            </div>
+            <div class="message-content-text" ng-bind="message.Message"></div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="alliance-rating-centr.tmpl">
+    <div alliance-rating-centr class="alliance-rating-centr">
+        <div layout="column">
+            <span class="text-label">Name</span>
+            <span ng-bind="allianceHead.Name"></span>
+        </div>
+        <div layout="column">
+            <span class="text-label">PvP</span>
+            <span ng-bind="allianceHead.PvpPoint"></span>
+        </div>
+        <div layout="column">
+            <span class="text-label">Members</span>
+            <span ng-bind="allianceHead.Pilots"></span>
+        </div>
+        <div layout="column">
+            <span class="text-label">Planets</span>
+            <span ng-bind="allianceHead.ControlledPlanet"></span>
+        </div>
+    </div>
+</script>
+
+
+
+<script type="text/ng-template" id="alliance-tab-serch.tmpl">
+    <div ng-attr-id="{{body.BodyId}}" scroller emit-name="allianceCtrl:initializeScrollSerch">
+        <div>
+            <form role="form" class="slim" style="margin-top: 0.35em; margin-bottom: 0.5em">
+                <div class="form-group">
+                    <input class="form-control input-lg input-big-centr" id="inputlg"
+                           placeholder="{{allianceCtrl.translations.serch}}"
+                           ng-model="allianceName" alliance-item-search>
+                </div>
+            </form>
+        </div>
+
+        <alliance-item ng-repeat="item in allianceCtrl.allianceList | allianceFilter:allianceName"></alliance-item>
+        <!--item-type="0"-->
+    </div>
+</script>
+
+<script type="text/ng-template" id="alliance-planshet-root.tmpl">
+    <planshet-body-tabs ng-controller="allianceCtrl as allianceCtrl" tabs="planshetModel"></planshet-body-tabs>
+</script>
+
+
+
+<script type="text/ng-template" id="alliance-tab-manage.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <div ng-controller="allianceManageCtrl as alManage">
+            <section ng-if="alManage.notPermitted">
+                not permitted
+            </section>
+            <section ng-if="alManage.permitions.AcceptNewMembers">
+                <div ng-controller="allianceManageRequestCtrl as amrCtrl" id="alliance-manage-requests">
+                    <div class="dropable" drop-element>
+                        <div ng-click="amrCtrl.onClickCbRequests($event)">
+                            <complex-button complex-button="amrCtrl.complexButtonView"></complex-button>
+                        </div>
+                        <!--<div class="drop-container height-initial">-->
+                        <div class="drop-container">
+                            <div class="drop-item alliance-members user-requests-alliance relative" layout="row">
+                                <md-content layout="column">
+                                    <div class="alliance-member-row" ng-repeat="request in amrCtrl.requests track by request.GroupId">
+                                        <div drop-item
+                                             cont-data="request">
+                                            <div flex="none" layout="row" layout-align="space-between center" ng-click="amrCtrl.requestToggle(request)">
+                                                <div class="" flex="" layout="row" layout-align="start center">
+                                                    <span ng-bind="request.GroupName"></span>
+                                                    <!-- <span ng-bind="member.UserName" class="unique-name" ng-click="amrCtrl.getProfileInfo(member.UserId)"></span>-->
+                                                </div>
+                                                <div class="" layout-align="end  center">
+                                                    <i class="fa fa-openid fa-2x" aria-hidden="false"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="relative overflow-hidden alliance-member-drop" style="height: 0" flex="none" id="{{request.dropable.conteinerId}}">
+                                                <md-content class="alliance-member-drop-content" id="{{request.dropable.dropItemId}}" layout="column">
+                                                    <div>
+                                                        <div alliance-request-message
+                                                             message="message"
+                                                             get-user-profile="amrCtrl.getProfileInfo(request.GroupId)"
+                                                             current-user-name="amrCtrl.currentAllianceName"
+                                                             ng-repeat="message in request.Messages track by message.Id"></div>
+                                                        <div class="btn-group-sa slim">
+                                                            <paralax-button button="button" ng-repeat="button in request.ButtonsView track by $index"></paralax-button>
+                                                        </div>
+                                                    </div>
+                                                </md-content>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section ng-if="alManage.permitions.EditAllianceInfo">
+                <div ng-controller="allianceEditInfoCtrl as aeiCtrl" id="alliance-manage-edit-info">
+                    <div class="dropable" drop-element>
+                        <div ng-click="aeiCtrl.onClickCb($event)">
+                            <complex-button complex-button="aeiCtrl.complexButtonView"></complex-button>
+                        </div>
+                        <div class="drop-container">
+                            <div class="drop-item relative" layout="row">
+                                <statistic statistic-model="aeiCtrl.allianceStatsModel"></statistic>
+
+                                <div flex="100"
+                                     class="profile-description"
+                                     ng-class="aeiCtrl.description.activateEdit?'active':''"
+                                     ng-model="aeiCtrl.description.text"
+                                     medium-editor
+                                     bind-options="description.mediumBindOptions"></div>
+                                <!--data-placeholder="Enter a description"></div>-->
+
+                                <div flex="100">
+                                    <div ng-show="!aeiCtrl.description.activateEdit" class="btn-group-sa slim">
+                                        <paralax-button button="aeiCtrl.Buttons.edit"></paralax-button>
+                                    </div>
+                                    <div ng-show="aeiCtrl.description.activateEdit" class="btn-group-sa slim">
+                                        <paralax-button button="aeiCtrl.Buttons.cancel"></paralax-button>
+                                        <paralax-button button="aeiCtrl.Buttons.send"></paralax-button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section ng-if="alManage.canDeleteAlliance" class="btn-group-sa slim">
+                <paralax-button button="alManage.disbandAlliance"></paralax-button>
+            </section>
+        </div>
+
+
+
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="alliance-tab-my-alliance.tmpl">
+    <div ng-attr-id="{{body.BodyId}}">
+        <section>
+            <alliance-item ng-repeat="item in [allianceCtrl.MyAllianceData] track by item.Id" data-skip-parent="2"></alliance-item>
+        </section>
+        <section ng-controller="allianceMembersCtrl as amCtrl" id="my-alliance-members">
+            <div class="dropable" drop-element>
+                <div ng-click="dropElementonClickByDropable(2)">
+                    <complex-button complex-button=amCtrl.allianceMembers.ComplexButtonView></complex-button>
+                </div>
+                <div class="drop-container">
+                    <div class="drop-item alliance-members" layout="row">
+                        <md-content layout="column">
+                            <div class="slim">
+                                <input type="text" value="" ng-model="amCtrl.serchMemberRequest" ng-attr-placeholder="Filter" class="input-big-centr" />
+                                <input type="hidden" ng-model="amCtrl.onlyOnline" ng-attr-value="amCtrl.onlyOnline" />
+                                <button class="online" ng-click="amCtrl.onlyOnline = !amCtrl.onlyOnline">
+                                    <i class="fa" ng-class="amCtrl.onlyOnline?'fa-eye':'fa-eye-slash'" aria-hidden="false"></i>
+                                </button>
+                            </div>
+                     
+                            <md-virtual-repeat-container>
+                                <div md-item-size="50" md-virtual-repeat="member in amCtrl.members | allianceMember:amCtrl.serchMemberRequest :!!amCtrl.onlyOnline :amCtrl.updateMembers" class="alliance-member">
+                                    <div class="alliance-member-row" layout="row" layout-align="start  center" flex="100">
+                                        <div class="alliance-member-cell link-to-target active"
+                                             flex="30" layout="row"
+                                             layout-align="center center">
+                                            <span ng-bind="member.UserName" class="unique-name" 
+                                                  ng-mouseover="amCtrl.onLinkHover()"
+                                                  ng-click="amCtrl.getProfileInfo(member.UserId)"></span>
+                                        </div>
+                                        <div class="alliance-member-cell" flex layout-align="center  center" ng-bind="member.UserPvp"></div>
+                                        <div class="alliance-member-cell" flex layout-align="center  center" ng-bind="amCtrl.getTranslateRoleName(member.Role.RoleName)"></div>
+                                        <div class="alliance-member-cell" flex layout-align="center  center">
+                                            <span   ng-bind="(member.OnlineStatus)?'online':'offnline'"
+                                                     ng-style="{'color':(member.OnlineStatus)?'green':'red'}" ></span>
+                                            @*<i class="fa fa-1x" ng-class="(member.OnlineStatus)?'fa-eye':'fa-eye-slash'"></i>*@
+                                        </div>
+
+                                        <div ng-if="amCtrl.crMemberRole.Role.ShowManage"
+                                             ng-click="amCtrl.memberSettingToggle(member)"
+                                             class="alliance-member-cell" flex layout-align="center  center">
+                                            <i class="fa fa-cogs fa-1x" aria-hidden="false"></i>
+                                        </div>
+                                    </div>
+                                    <div class="alliance-member-drop" ng-if="amCtrl.crMemberRole.Role.ShowManage" ng-class="(member.setting.isOpened)?'active':''" flex="none">
+                                        <md-content layout="column" ng-if="member.setting.compileContent" class="alliance-member-drop-content">
+                                            <form name="role-permition">
+                                                <md-select aria-label="..."
+                                                           ng-model="amCtrl.selectedRoleModel"
+                                                           ng-model-options="{trackBy: '$value.Id'}"
+                                                           ng-disabled="!amCtrl.crMemberRole.Role.CanManagePermition"
+                                                           ng-change="amCtrl.onselectedRoleChange($value.Id)"
+                                                           md-container-class="custom-select-drop-1">
+                                                    <md-option ng-repeat="selectedRole in amCtrl.selectRoles track by selectedRole.Id"
+                                                               ng-value="selectedRole">
+                                                        {{ selectedRole.TranslateName }}
+                                                    </md-option>
+                                                </md-select>
+
+                                                <div layout="column" class="margin-left-10px">
+                                                    <div layout="row" class="margin-bottom-10px">
+                                                        <div flex="60">RolePropName</div>
+                                                        <div flex="30" class="text-center">RolePropVal</div>
+                                                    </div>
+
+                                                    <div layout="row" ng-repeat="role in amCtrl.getRolePropsView(amCtrl.selectedRoleModel.Id)">
+                                                        <div flex="60" ng-bind="role.propName"></div>
+                                                        <div flex="30" class="text-center">
+                                                            <md-checkbox disabled="true" ng-model="role.propVal"
+                                                                         aria-label="Disabled"></md-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--<div layout="row" class="margin-left-10px" ng-bind-html="amCtrl.getRoleDescription(role)"></div>-->
+                                                <div layout="row" class="margin-left-10px"
+                                                     ng-bind-html="amCtrl.roleDescription"></div>
+                                                <div class="btn-group-sa slim">
+                                                    <paralax-button button="button" ng-repeat="button in amCtrl.getManageBtns(member) track by $index"></paralax-button>
+                                                </div>
+                                            </form>
+                                        </md-content>
+                                    </div>
+                                </div>
+                            </md-virtual-repeat-container>
+                        </md-content>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="alliance-tech-section">
+            <div ng-controller="allianceTechCtrl as atCtrl" id="my-alliance-tech-section">
+                <div class="dropable" drop-element>
+                    <div ng-click=dropElementonClickByDropable(3)>
+                        <complex-button complex-button=atCtrl.$data.AllianceTechesOut.ComplexButtonView></complex-button>
+                    </div>
+                    <div class="drop-container">
+                        <div class="drop-item" layout="column">
+                            <div class="alliance-tech-balance-cc" layout="row" layout-align="space-between center">
+                                <span></span>
+                                <div>
+                                    <span ng-bind="atCtrl.BalanceCCTitle"></span>
+                                    <span ng-bind="atCtrl.$data.BalanceCc"></span>
+                                </div>         
+                            </div>
+                            <div  class="alliance-tech-row" ng-repeat="techItem in atCtrl.TechList" ng-class="techItem.Disabled?'grayScale':''">
+                                <div class="alliance-tech-row-container">
+                                    <statistic statistic-model="techItem.infoStatsModel"></statistic>  
+                                    <article class="text_justify ng-binding" >
+                                        <p>  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    </article> 
+                                    <div ng-if="techItem.$controls && techItem.$controls.buyBtn" class="btn-group-sa slim">
+                                        <paralax-button button="techItem.$controls.buyBtn"></paralax-button>
+                                    </div>
+                                </div>
+                           
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section ng-if="allianceCtrl.hasRequestsInMyAlliance">
+            <div ng-controller="allianceUserRequestsCtrl as aurCtrl" id="my-alliance-requests">
+                <div class="dropable" drop-element>
+                    <div ng-click=dropElementonClickByDropable(3)>
+                        <complex-button complex-button=aurCtrl.data.ComplexButtonView></complex-button>
+                    </div>
+                    <div class="drop-container">
+                        <div class="drop-item alliance-members user-requests-alliance" layout="row">
+                            <md-content layout="column">
+
+                                <div class="alliance-member-row"
+                                     ng-repeat="request in aurCtrl.requests track by request.GroupId"
+                                     ng-class="request.AllianceAccepted === 2? 'confirm':request.AllianceAccepted === 3?'reject':''">
+                                    <div drop-item
+                                         cont-data="request">
+                                        <div class="" flex="none" layout="row" layout-align="space-between center" ng-click="aurCtrl.requestToggle(request)">
+                                            <div class="" flex="" layout="row" layout-align="start center">
+                                                <span ng-bind="request.GroupName"></span>
+                                                <!-- <span ng-bind="member.UserName" class="unique-name" ng-click="amrCtrl.getProfileInfo(member.UserId)"></span>-->
+                                            </div>
+                                            <div class="" layout-align="end  center">
+                                                <i class="fa fa-openid fa-2x" aria-hidden="false"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="relative overflow-hidden alliance-member-drop" style="height: 0" flex="none" id="{{request.dropable.conteinerId}}">
+                                            <md-content class="alliance-member-drop-content" id="{{request.dropable.dropItemId}}" layout="column">
+                                                <div>
+                                                    <div alliance-request-message
+                                                         message="message"
+                                                         current-user-name="aurCtrl.currentUserName"
+                                                         ng-repeat="message in request.Messages"></div>
+                                                    <div class="btn-group-sa slim">
+                                                        <paralax-button button="button" ng-repeat="button in request.ButtonsView"></paralax-button>
+                                                    </div>
+                                                </div>
+                                            </md-content>
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-content>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section ng-if="allianceCtrl.canCreateAlliance">
+            <div ng-controller="allianceCreateCtrl as ctrl" id="alliance-create-form">
+                <div class="dropable" drop-element>
+                    <div ng-click="dropElementonClickByDropable(3)">
+                        <complex-button complex-button="ctrl.complexButtonView"></complex-button>
+                    </div>
+                    <div class="drop-container">
+                        <form name="formCreateAlliance" class="drop-item">
+                            <p ng-if="!ctrl.canBuy" ng-bind="ctrl.msgCantBuy"></p>
+                            <md-content layout="column" flex="" ng-if="ctrl.canBuy">
+                                <div layout="row" layout-align="space-between center">
+                                    <md-input-container layout="column" flex="50">
+                                        <label ng-bind="ctrl.createAllianceTitlle"></label>
+                                        <input autocomplete="off"
+                                               id="alliance-create-name"
+                                               ng-disabled="ctrl.disabled"
+                                               ng-model="ctrl.allianceName"
+                                               ng-change="ctrl.onNameChange()"
+                                               required=""
+                                               name="allianceName"
+                                               minlength="5"
+                                               maxlength="14"
+                                               ng-pattern="/^[A-Z]{1}[A-Z0-9_-]{3,}[A-Z0-9]$/i">
+
+                                        <div ng-messages="formCreateAlliance.allianceName.$error" class="error">
+                                            <div ng-message="required" ng-bind="ctrl.errorMsg.required.getCurrent()"></div>
+                                            <div ng-message="minlength" ng-bind="ctrl.errorMsg.minlength.getCurrent()"></div>
+                                            <div ng-message="maxlength" ng-bind="ctrl.errorMsg.maxlength.getCurrent()"></div>
+                                            <div ng-message="pattern" ng-bind="ctrl.errorMsg.pattern.getCurrent()"> </div>
+                                            <div ng-message="notUnic" ng-bind="ctrl.errorMsg.notUnic.getCurrent()"></div>
+                                            <div ng-message="notCeked">not checked</div>
+                                        </div>
+
+                                    </md-input-container>
+
+                                    <div layout="row" flex="10" layout-align="center center">
+                                        <i class="fa fa-2x" ng-class="ctrl.nameIcon" aria-hidden="false"></i>
+                                    </div>
+
+                                    <paralax-button button="ctrl.checkBtn"></paralax-button>
+                                </div>
+                                <p class="description" ng-bind="ctrl.msgCanBuy"></p>
+                                <div class="btn-group-sa slim">
+                                    <paralax-button button="ctrl.sendBtn"></paralax-button>
+                                </div>
+                            </md-content>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</script>

@@ -1,0 +1,48 @@
+﻿@using Server.ServicesConnected.Auth.Models.AccountViewModels
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row site-form-group JcAs">
+    <div class="col-md-4 ">
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+            <h4>Create a new account.</h4>
+            <hr/>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="display-none"></label>
+                <input asp-for="UserName" class="form-control"  placeholder="UserName"/>
+ 
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="display-none"></label>
+                <input asp-for="Email" class="form-control"  placeholder="Email"/>
+ 
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="display-none"></label>
+                <input asp-for="Password" class="form-control" placeholder="Password"/>
+ 
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="display-none"></label>
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword"/>
+            </div>
+            <h3></h3>
+            <button type="submit" class="btn btn-default  account-form-button">Register</button>
+            
+     
+            <div class="danger-container">
+                <p><span asp-validation-for="UserName" class="text-danger"></span></p>
+                <p><span asp-validation-for="Email" class="text-danger"></span></p>
+                <p><span asp-validation-for="Password" class="text-danger"></span></p>
+                <p><span asp-validation-for="ConfirmPassword" class="text-danger"></span></p>
+            </div>
+        </form>
+    </div>
+</div>
+ 

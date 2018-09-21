@@ -1,0 +1,19 @@
+﻿.home-video-poster {
+    position: absolute;
+    top: 0;
+    @extend .full-window-size;
+    @extend .centigen-image-container;
+    background-image: url("/Content/Video/Home/head2.jpg");
+
+    @include respond-to(3) {
+        display: none;
+    }
+}
+
+.webp .home-video-poster {
+    background-image: url("/Content/Video/Home/head2.webp");
+}
+
+.home-skagry-label {
+    background-image: url('/Content/logos/home-label-skagry.png');
+}

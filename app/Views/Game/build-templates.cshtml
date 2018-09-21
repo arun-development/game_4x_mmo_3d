@@ -1,0 +1,302 @@
+﻿<script type="text/ng-template" id="build-av-energy-converter.tmpl">
+    <form action="/api/EnergyConverter/ExchangeResource" method="POST" id="resource-exchange-form">
+        <table class="w_100pr exchange-item-active res">
+            <tr>
+                <td colspan="5" class="inline-centr-centr">
+                    <input class="inline-centr-centr" type="text" value="{{buildCtrl.getExchangeCourceData()}}" readonly="readonly" />
+                </td>
+            </tr>
+
+
+            <tr title="{{convertableItem.TranslateName}}" class="" ng-repeat="convertableItem in buildCtrl.energyConverterContainer.convertableItems">
+                <td ng-click="convertableItem.upgradeConnecton(convertableItem,true)">
+                    <span class="s resource sprite_atlas" ng-class="convertableItem.htmlName"></span>
+                </td>
+                <td>
+                    <div resource-item resource-data="convertableItem.source"></div>
+                </td>
+
+                <td c rowspan="3" ng-if="convertableItem.htmlName ==='e'" class="exchange-connection-container">
+                    <!--центр место для контейнера связей-->
+                    <div class="exchange-connection-item">
+                        <!--https://svg-art.ru/?page_id=897-->
+                        <!--https://svg-art.ru/?p=1114-->
+                        <!--<path d="M10,40 C150,20 200,180 433,137 " />-->
+                        <!--//M 10,40 (x,y)  1 точка координаты-->
+                        <!--//C 150,20 (x,y) рычаг точки 1-->
+                        <!--//200,180 (x,y) рычаг точки 2-->
+                        <!--//433,137 (x,y) 2 точка координаты 2-->
+
+                        <svg class="resource-connection" width="93" height="193" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="source-connection-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#000" />
+                                    <stop offset="50%" stop-color="#000" />
+                                    <stop offset="100%" stop-color="#000" />
+                                </linearGradient>
+                                <linearGradient id="target-connection-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#000" />
+                                    <stop offset="50%" stop-color="#000" />
+                                    <stop offset="100%" stop-color="#000" />
+                                </linearGradient>
+
+                            </defs>
+                            <path class="connection-item e"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  stroke="url(#source-connection-gradient)"
+                                  id="source-path-res"
+                                  stroke-width="5"
+                                  d="m0,96 93,1"
+                                  fill="transparent"></path>
+                        </svg>
+                    </div>
+                    <div class="exchange-connection-item" id="exchange-connection-value-conteiner">
+                        <input class="not-arrow" type="number" ng-model="buildCtrl.exchangeInputModel;" ng-change="buildCtrl.updateExchangeInputModel()" min="0" readonly="readonly" />
+                    </div>
+                    <div class="exchange-connection-item">
+                        <svg class="resource-connection" width="93" height="193" xmlns="http://www.w3.org/2000/svg">
+                            <path class="connection-item"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  stroke="url(#target-connection-gradient)"
+                                  id="target-path-res"
+                                  stroke-width="5"
+                                  d="m0,96 93,1"
+                                  fill="transparent"></path>
+                        </svg>
+                    </div>
+
+                </td>
+
+                <td>
+                    <div resource-item resource-data="convertableItem.target"></div>
+                </td>
+                <td ng-click="convertableItem.upgradeConnecton(convertableItem,false)"><span class="s resource sprite_atlas" ng-class="convertableItem.htmlName"></span></td>
+            </tr>
+        </table>
+
+        <div id="energy-converter-slider"
+             biuld-slider
+             register-slider="buildCtrl.registerEnergyConverterSlider"
+             slider-data="{}"
+             class="slider"></div>
+
+        <div class="text-end">
+            <paralax-button button="item.Action.Buttons.Submit"></paralax-button>
+        </div>
+    </form>
+
+
+
+</script>
+
+<script type="text/ng-template" id="build-av-extraction-module.tmpl">
+    <form action="/api/ExtractionModule/СhangeProportion" method="POST" id="extraction-form">
+        <table class="w_100pr extraction-item-active res">
+            <tr>
+                <td colspan="3" class="inline-centr-centr">
+                    <input class="inline-centr-centr" type="text"
+                           ng-value="buildCtrl.getExtractionPowerData()"
+                           readonly="readonly" />
+                </td>
+            </tr>
+            <tr title="{{productionItem.TranslateName}}" ng-repeat="productionItem in buildCtrl.extractionContainer.productionItems">
+                <td>
+                    <span class="s resource sprite_atlas" ng-class="productionItem.htmlName"></span>
+                </td>
+                <td>
+                    <div biuld-slider ng-attr-id="{{'extraction-slider-'+productionItem.htmlName}}"
+                         register-slider="buildCtrl.registerExtractionSlider"
+                         slider-data="productionItem"
+                         class="slider"></div>
+                </td>
+                <td>
+                    <span ng-bind="productionItem.extractionPerHour"></span>
+                </td>
+            </tr>
+        </table>
+        <div class="text-end">
+
+            <paralax-button button="item.Action.Buttons.Submit"></paralax-button>
+        </div>
+    </form>
+</script>
+
+<script type="text/ng-template" id="build-av-storage.tmpl">
+    <form action="/api/storage/DoTransfer" method="POST" id="resource-transfer-form">
+        <span data-type="server-message" class="visible-hidden">Sucsess</span>
+        <table class="w_100pr storage-item-active res">
+            <tr>
+                <td colspan="5" class="text-center">
+                    <select id="target-transfer-own-list" resource-transfer-list>
+                        <option ng-repeat="targetOwn in targetTransferList" ng-attr-value="{{targetOwn.OwnId}}">{{targetOwn.Name}}</option>
+                    </select>
+                    <paralax-button ng-class="(buildCtrl.getStorageTargetShowStatus())?'visible':'visible-hidden'"
+                                    button="item.Action.Buttons.SendAll"></paralax-button>
+
+
+                </td>
+            </tr>
+            <tr title="{{storableItem.TranslateName}}"
+                ng-repeat="storableItem in buildCtrl.storageStorableContainer.storableItems">
+                <td>
+                    <span class="{{storableItem.htmlName}} s resource sprite_atlas"></span>
+                </td>
+                <td>
+                    <div resource-item resource-data="storableItem.source"></div>
+                </td>
+
+                <td ng-class="(storableItem.showTarget())?'visible':'visible-hidden'">
+                    <div ng-if="storableItem.showTarget()"
+                         id="{{'storage-transfer-slider-'+storableItem.htmlName}}"
+                         biuld-slider
+                         register-slider="buildCtrl.registerStorageSlider"
+                         slider-data="storableItem"
+                         class="slider"></div>
+                </td>
+                <td ng-class="(storableItem.showTarget())?'visible':'visible-hidden'">
+                    <div resource-item resource-data="storableItem.target"></div>
+                </td>
+                <td ng-class="(storableItem.showTarget())?'visible':'visible-hidden'">
+                    <span class="{{storableItem.htmlName}} s resource sprite_atlas"></span>
+                </td>
+            </tr>
+        </table>
+        <div class="text-end">
+            <paralax-button button="item.Action.Buttons.Submit"></paralax-button>
+        </div>
+
+    </form>
+</script>
+
+
+<script type="text/ng-template" id="build-av-resource-item.tmpl">
+    <div class="resource-item border-standard"
+         ng-class="(resourceData.showItem)?'':'display-none'">
+        <p class="current-res text_p_standart border-dark-green"
+           title="{{resourceData.title}}"
+           ng-bind="resourceData.current"></p>
+        <div class="max scale_{{resourceData.htmlName}}"
+             ng-style="{width:resourceData.persent+'%'}"
+             ng-bind="(resourceData.showMax)?resourceData.max:''"></div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="build-control-centr.tmpl">
+    <div class="item">
+        <h3>{{border.Data.TranslateName}}</h3>
+        <timer-progress timer-type="buildTimer" border="border"></timer-progress>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="build-control-right.tmpl">
+    <div build-progress class="level relative" ng-class="Icon.ImagePathOrCss" ng-attr-title="{{Icon.Title}}">
+        <timer-progress timer-type="noTimerRight" timer-data="timerData"></timer-progress>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="build-planshet-root.tmpl">
+    <div id="buildContainer" class="tab_content_item dropable" ng-controller="buildCtrl as buildCtrl">        
+
+        <div ng-attr-id="{{item.$guid}}" 
+             ng-if="item.$compileItem"
+             class="unit-item dropable" 
+             ng-class="item.$mainContainerItemCss?item.$mainContainerItemCss:''"
+             ng-repeat="item in buildCtrl.$buildCollection">
+            <div drop-element ng-if="item.$isBuild">
+                <div>
+                    <complex-button complex-button="item.ComplexButtonView"></complex-button>
+                </div>
+                <div class="drop-container">
+                    <!--info-->
+                    <div class="drop-item" data-target="{{item.ComplexButtonView.Collection[0].ItemId}}">
+                        <statistic statistic-model="item.Info.infoStatsModel"></statistic>
+                        <article ng-bind="item.Info.Description"></article>
+                    </div>
+                    <!--end info-->
+                    <!--action-->
+                    <div class="drop-item" data-target="{{item.ComplexButtonView.Collection[1].ItemId}}">
+                        <section ng-include="(item.Action && item.Action.ViewPath)?item.Action.ViewPath:false"></section>
+                    </div>
+                    <!--end action-->
+                    <!--upgrade-->
+                    <div class="drop-item" data-target="{{item.ComplexButtonView.Collection[2].ItemId}}">
+                        <form action="" ng-if="(!!item.Update)" ng-class="item.Update.IsUnitUpgrade?'unit-form':''" submit="false">
+                            <!--<div itemscope itemid="properties">-->
+                            <div>
+                                <ul class="build-proprty-list">
+                                    <li ng-repeat="property in item.Update.Properties" ng-attr-title="{{property.PropertyName}}">
+                                        <i title="{{item.unitTranslate.CurrentValue +' '+property.CurrentValue}}">
+                                            {{buildCtrl.checkFloatProperty(property.CurrentValue)}}
+                                        </i>
+                                        <i> =>>>>> </i>
+                                        <i title="{{item.unitTranslate.NextValue +' '+property.NextValue}}">
+                                            {{buildCtrl.checkFloatProperty(property.NextValue)}}
+                                        </i>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!--price-->
+                            <div class="price"> 
+                                <!--other price-->
+                                <ul class="res JsbAc" ng-if="!item.Update.IsUnitUpgrade">
+                                    <li ng-attr-title="{{item.unitTranslate.enegry}}">
+                                        <span class="e resource sx sprite_atlas"></span>
+                                        <span ng-if="!item.Update.Price.forCc">{{item.Update.Price.E}}</span>
+                                        <span ng-if="item.Update.Price.forCc">0</span>
+                                    </li>
+                                    <li ng-attr-title="{{item.unitTranslate.iridium}}">
+                                        <span class="ir resource sx sprite_atlas"></span>
+                                        <span ng-if="!item.Update.Price.forCc">{{item.Update.Price.Ir}}</span>
+                                        <span ng-if="item.Update.Price.forCc">0</span>
+
+                                    </li>
+                                    <li ng-attr-title="{{item.unitTranslate.darkMatter}}">
+                                        <span class="dm resource sx sprite_atlas"></span>
+                                        <span ng-if="!item.Update.Price.forCc">{{item.Update.Price.Dm}}</span>
+                                        <span ng-if="item.Update.Price.forCc">0</span>
+                                    </li>
+
+
+                                    <li ng-attr-title="{{item.unitTranslate.timeProduction}}">
+                                        <span class="time resource sx sprite_atlas"></span>
+                                        <span ng-if="!item.Update.Price.forCc">{{item.Update.Price.TimeProduction}}</span>
+                                        <span ng-if="item.Update.Price.forCc">0</span>
+                                    </li>
+
+                                    <li ng-attr-title="{{item.unitTranslate.cc}}">
+                                        <span class="cc resource sx sprite_atlas"></span>
+                                        <span ng-if="!(item.Update.Price.forCc)">0</span>
+                                        <span ng-if="(item.Update.Price.forCc)">{{item.Update.Price.Cc}}</span>
+                                        <input type="checkbox" ng-checked="item.Update.Price.forCc" ng-model="item.Update.Price.forCc" />
+                                    </li>
+                                </ul>
+                                <!--end other price-->
+
+                            </div>
+
+                            <div class="text-end slim" ng-if="item.Update.HasButtons">
+                                <paralax-button button="item.Update.Buttons.Submit"></paralax-button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--end upgrade-->
+                </div>
+            </div>
+            <planshet-unit-item ng-if="item.$isTech" item="item"></planshet-unit-item>
+            <planshet-unit-item ng-if="item.$isUnit" item="item"></planshet-unit-item>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="planshet-unit-item.tmpl">
+    <div>
+        <complex-button complex-button="item.ComplexButtonView"></complex-button>
+    </div>
+</script>
+
+ 

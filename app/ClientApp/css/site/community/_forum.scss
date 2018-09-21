@@ -1,0 +1,330 @@
+@import "../../mixins";
+
+.forum_skagry {
+    @include flex-Jc();
+    @include flex-flow-wrap(false);
+}
+
+/*Поиск*/
+
+.forum_skagry > .serch {
+    min-width: 320px;
+}
+
+.forum_skagry > .serch * {
+    background-color: #fefefe;
+    border: none;
+}
+
+
+.forum_skagry > .serch > form {
+    @include flex-JsAc();
+}
+
+.forum_skagry > .serch > form > input {
+    font-size: 1.8em;
+    font-weight: bold;
+    width: 1920px;
+    padding: 5px;
+}
+
+.forum_skagry > .serch > form > div {
+    width: 70px;
+    font-weight: 400;
+    font-family: 'Glyphicons Halflings';
+    cursor: pointer;
+
+    @include flex-JcAc();
+}
+
+.forum_skagry > .serch > form > div i {
+    font-size: 20px;
+    color: #333;
+}
+
+#block-search-result {
+    width: 320px;
+    height: auto;
+    position: absolute;
+    z-index: 9999;
+    display: none;
+}
+
+#list-search-result > li {
+    width: calc(500px + 40px + 20px);
+    border-bottom: 1px solid #EAEAEA;
+    min-height: 70px;
+    height: auto;
+}
+
+/*Поиск*/
+
+/*====================================================*/
+
+/*категория*/
+
+.forum_skagry > .item {
+    width: 100%;
+}
+
+/*category_title*/
+
+.category_title {
+    width: 100%;
+}
+
+.category_title > div {
+    @include flex();
+    /*background-color: #c0c0c0;*/
+    background-color: #E9E9E9;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .2), 0 0 15px #000;
+    border-top: 1px solid;
+    padding: 20px;
+    width: 100%;
+    @include transition(all 1s ease-in-out);
+}
+
+
+.category_content > ul > li {
+    background-color: #D4DADC;
+    border-top: 1px solid;
+    padding: 20px;
+    width: 100%;
+    @include flex();
+    @include transition(all 1s ease-in-out);
+}
+
+
+
+
+/*.item:last-child {*/
+
+/*border-bottom: 1px solid #fff;*/
+
+/*}*/
+
+.category_title > div:hover,
+.category_content > ul > li:hover {
+    background: linear-gradient(112deg, #cbcbcb, #b0b0b0);
+    background-color: #cbcbcb;
+    background-size: 400% 400%;
+    -webkit-animation: forumfield 8s ease infinite;
+    -moz-animation: forumfield 8s ease infinite;
+    -o-animation: forumfield 8s ease infinite;
+    animation: forumfield 8s ease infinite;
+}
+
+@-webkit-keyframes forumfield {
+    0% {
+        background-position: 0% 79%;
+    }
+
+    50% {
+        background-position: 100% 22%;
+    }
+
+    100% {
+        background-position: 0% 79%;
+    }
+}
+
+@-moz-keyframes forumfield {
+    0% {
+        background-position: 0% 79%;
+    }
+
+    50% {
+        background-position: 100% 22%;
+    }
+
+    100% {
+        background-position: 0% 79%;
+    }
+}
+
+@-o-keyframes forumfield {
+    0% {
+        background-position: 0% 79%;
+    }
+
+    50% {
+        background-position: 100% 22%;
+    }
+
+    100% {
+        background-position: 0% 79%;
+    }
+}
+
+@keyframes forumfield {
+    0% {
+        background-position: 0% 79%;
+    }
+
+    50% {
+        background-position: 100% 22%;
+    }
+
+    100% {
+        background-position: 0% 79%;
+    }
+}
+
+.category_title > div > img,
+.category_content > ul > li > img {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+}
+
+.category_content > ul > li > div.left,
+.category_title > div > div.left {
+    width: 1500px;
+    margin: 0 1%;
+    @include flex-Js();
+    @include flex-flow-wrap(false);
+}
+
+.category_content > ul > li > div.left > div,
+.category_title > div > div.left > div {
+    width: 100%;
+}
+
+.category_title > div > div.left > a.name {
+    cursor: pointer;
+    font-size: 2em;
+    color: #272778;
+}
+
+
+.category_content > ul > li > div.left > div.hot,
+.category_title > div > div.left > div.hot {
+    @include flex-JsAc();
+    @include flex-flow-wrap(false);
+}
+
+
+
+.category_content > ul > li > div.left > div.hot > span,
+.category_title > div > div.left > div.hot > span {
+    padding-top: 5px;
+    margin-right: 10px;
+    @include flex();
+}
+
+.category_content > ul > li > div.left > div.hot > span:first-child,
+.category_title > div > div.left > div.hot > span:first-child {
+    font-size: 1.2em;
+    color: #272778;
+}
+
+
+.category_content > ul > li > div.left > div.hot > span > a,
+.category_title > div > div.left > div.hot > span > a {
+    cursor: pointer;
+    /*text-decoration: underline;*/
+    color: #255583;
+    margin-right: 5px;
+}
+
+.category_content > ul > li > div.left > div.hot > span > img,
+.category_title > div > div.left > div.hot > span > img {
+    display: block;
+    height: 20px;
+    width: 30px;
+    background: linear-gradient(to top, #fefcea, #f1da36);
+}
+
+.category_content > ul > li > div.right,
+.category_title > div > div.right {
+    min-width: 200px;
+    @include flex-Jsa();
+    @include flex-column(false);
+    @include flex-grow(1.2,false);
+    @include flex-shrink(0,false);
+    /*align-items: fle;*/
+    margin-right: 4%;
+}
+
+.category_content > ul > li > .right > p,
+.category_title > div > div.right > p {
+    font-size: 1.2em;
+    color: #272778;
+}
+
+.category_content > ul > li > .right > p > b,
+.category_title > div > div.right > p > b {
+    text-decoration: underline;
+    font-size: 1.3em;
+    padding: 3px;
+}
+
+.category_title > div > div.right > button > span {
+    margin-left: 10px;
+}
+
+/*category_title*/
+
+/*Содержание категории*/
+
+.item > .category_content {
+    width: 100%;
+}
+
+
+
+
+.forum_skagry .chennel_info {
+    @include flex-Js();
+    @include flex-column(false);
+}
+
+.forum_skagry .chennel_info * {
+    color: #255583;
+}
+
+.forum_skagry .chennel_data {
+    width: 100%;
+    font-size: 2em;
+    @include flex-Jsb();
+    @include flex-wrap(false);
+}
+
+.forum_skagry .creeter_info {
+    width: 100%;
+    @include flex-Jsb();
+    @include flex-wrap(false);
+}
+
+.forum_skagry .localize_info {
+    margin-right: 5%;
+    text-shadow: -2px 1px 5px #000;
+}
+
+.forum_skagry .localize_info > span {
+    @include transition(all .5s ease-in-out);
+}
+
+
+
+.forum_skagry .localize_info > span:hover {
+    color: #20436c;
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+/*/Содержание категории*/
+
+.category_content > ul > li,
+.category_content > ul > li:last-child {
+    border-radius: 0;
+}
+
+/* /категория*/
+/*====================================================*/

@@ -1,0 +1,91 @@
+﻿@import "../suples";
+
+@mixin profile-user() {
+    $prefix: profile-;
+
+    .#{$prefix}user {
+        &:first-child {
+            margin-top: 8px;
+        }
+    }
+
+    .#{$prefix}head {
+        color: #000;
+        box-shadow: inset 0 0 20px $color-main-1;
+        outline: 1px solid $color-main-1;
+        @extend.box-shadow-section;
+        @extend .text_black_red;
+
+        & span {
+            margin: 0 25px;
+            padding: 12px 0;
+            margin-left: 25px;
+            line-height: 2.2;
+        }
+    }
+
+    .#{$prefix}section {
+        margin-bottom: 20px;
+        border: 2px solid $color-dark-green;
+        box-sizing: border-box;
+
+
+
+        & .#{$prefix}section-body {
+            @extend .box-shadow-section;
+            @extend .text_name;
+            padding: 20px;
+        }
+    }
+
+    .#{$prefix}description {
+        margin: 20px 0;
+        @extend .f_size_18px;
+        @extend .text_h_standart;
+        @extend .text_justify;
+        box-shadow: inset 0 0 0 transparent, 0 0 0 transparent;
+        max-height: 200px;
+        @include transition(#{box-shadow $animation-short-linear, padding $animation-short-linear});
+
+        &.active {
+            padding: 10px;
+            box-shadow: inset 0 0 50px $black, 0 0 100px $black;
+        }
+    }
+
+    .#{$prefix}change-avatar {
+        height: 100%;
+        background-color: rgba(0,0,0,0);
+        @include flex-JcAc();
+
+        @include transition(background-color .3s linear);
+
+        $icon-color: #656043;
+
+        & i {
+            color: $icon-color;
+            @include transition(transform .3s linear, color .1s linear);
+            @include scale(0);
+
+            &:hover {
+                color: darken( $icon-color, 10% );
+            }
+
+            &:active {
+                color: darken( $icon-color, 20% );
+            }
+        }
+
+
+        &:hover {
+            background-color: rgba(0,0,0,.3);
+
+            & i {
+                @include scale(1);
+            }
+        }
+    }
+}
+
+@include profile-user();
+

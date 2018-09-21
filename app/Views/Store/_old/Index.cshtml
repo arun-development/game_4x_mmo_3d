@@ -1,0 +1,10 @@
+﻿@using DomainModels.СompexPrimitive.Products
+@using Server.Core.СompexPrimitive.Products
+@{
+    var data =(StoreView) ViewData[StoreView.ViewKey];
+
+}
+@Html.Partial("_listShop", data)
+@Html.Partial("_paymentForm")
+
+

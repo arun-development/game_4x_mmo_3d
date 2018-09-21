@@ -1,0 +1,54 @@
+﻿@import "../suples";
+
+@mixin alliance-tech() {
+    $section-id: my-alliance-tech-section;
+    $c: #{alliance-tech-section};
+
+    $spaning: 24px;
+
+    .#{$c} {
+        .drop-item {
+            width: 100%;
+            margin: 0;
+            padding: $spaning 0;
+
+            .alliance-tech-balance-cc {
+                @extend .text_black_red;
+                font-size: $fs-18;
+                padding: 0 $spaning $spaning/2 0;
+            }
+        }
+
+        .alliance-tech-row {
+            padding: 0 $spaning $spaning $spaning;
+            // margin-bottom: $spaning;
+            &:last-child {
+                padding-bottom: 80px;
+            }
+        }
+
+        .statistic-container {
+            margin: 0;
+        }
+
+        .statistic-stats {
+            margin-right: $spaning;
+        }
+
+        .alliance-tech-row-container {
+            @include transition(background-color 0.5s linear);
+            padding: $spaning;
+            border: 2px solid $color-dark-green;
+            background-color: $drop-bg-colr-3;
+
+            &:hover {
+                background-color: darken($drop-bg-colr-3,10%);
+            }
+        }
+
+
+        .btn-group-sa.slim {
+            padding: $spaning 0 0 0;
+        }
+    }
+}

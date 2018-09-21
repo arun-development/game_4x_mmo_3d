@@ -1,0 +1,77 @@
+﻿<script type="text/ng-template" id="user-profile-planshet-root.tmpl">
+    <section class="profile-user" ng-controller="profileCtrl as profileCtrl">
+        <profile-section class="profile-section" data-method="getPersonalInfo" data-type="info"></profile-section>
+        <profile-section class="profile-section" data-method="getAlliance" data-type="aliance"></profile-section>
+        <profile-section class="profile-section" data-method="getAchievements" data-type="achievement"></profile-section>
+        <profile-section class="profile-section" ng-if="profileCtrl.hasCheset()" data-method="getChest" data-type="chest"></profile-section>
+    </section>
+</script>
+<script type="text/ng-template" id="user-profile-achievements.tmpl">
+    <div ng-controller="achievementCtrl as achievementCtrl" layout="column" layout-margin="" class="achievement">
+        <!--<md-content class="md-padding">-->
+        <md-content>
+            <md-tabs md-selected="achievementCtrl.selectedIndex"
+                     md-autoselect="false"
+                     md-no-pagination
+                     md-no-ink-bar
+                     md-no-ink
+                     md-dynamic-height="true">
+                <md-tab ng-repeat="tab in achievementCtrl.tabs"
+                        ng-disabled="tab.disabled"
+                        label="{{tab.title}}">
+                    <md-tab-label>
+                        <md-icon md-svg-src="{{tab.svgName}}" class="achievement-image-small  {{!tab.count?'grayScale':''}}" 
+                                 ng-mouseover="achievementCtrl.onHover()"></md-icon>
+                        <span ng-bind="tab.count" class="achievement-count"></span>
+                    </md-tab-label>
+                    <md-tab-body>
+                        <h2 class="achievement-head" ng-bind="tab.contentHead"></h2>
+                        <md-icon md-svg-src="{{tab.svgName}}" class="achievement-image-detail" size="260"></md-icon>
+                        <p class="achievement-description" ng-bind="tab.content"></p>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+
+    </div>
+
+</script>
+<script type="text/ng-template" id="user-profile-alliance.tmpl">
+    <div layout="row" layout-wrap layout-align="space-between start">
+        <statistic statistic-model="allianceStatsModel"></statistic>
+        <div flex="100"
+             class="profile-description"
+             data-placeholder="Enter a description" ng-bind-html="description.text"></div>
+    </div>
+
+
+</script>
+<script type="text/ng-template" id="user-profile-chest.tmpl">
+    <div>Hi _profileChest</div>
+</script>
+
+<script type="text/ng-template" id="user-profile-info.tmpl">
+    <div layout="row" layout-wrap layout-align="space-between start">
+        <statistic statistic-model="profileInfoStatsModel"></statistic>
+        <div flex="100"
+             class="profile-description"
+             ng-class="bodyData.IsCurrentUser?description.activateEdit?'active':'':''"
+             ng-model="description.text"
+             medium-editor
+             bind-options="description.mediumBindOptions"></div>
+        <!--data-placeholder="Enter a description"></div>-->
+
+        <div flex="100" ng-if="bodyData.IsCurrentUser">
+            <div ng-show="!description.activateEdit" class="btn-group-sa slim">
+                <paralax-button button="bodyData.Buttons.edit"></paralax-button>
+            </div>
+            <div ng-show="description.activateEdit" class="btn-group-sa slim">
+                <paralax-button button="bodyData.Buttons.cancel"></paralax-button>
+                <paralax-button button="bodyData.Buttons.send"></paralax-button>
+            </div>
+
+        </div>
+    </div>
+</script>
+
+

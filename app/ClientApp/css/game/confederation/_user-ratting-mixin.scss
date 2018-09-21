@@ -1,0 +1,84 @@
+﻿@import "../buttons-mixins";
+
+@mixin user-rating() {
+    $s: ".user-rating";
+
+    #{$s} {
+        padding: 15px 0;
+    }
+
+    $row: #{$s}-row;
+
+    #{$row} {
+        @extend .profile-head;
+        margin: 0.5em 0;
+        font-size: $fs-18;
+
+        &:first-child {
+            margin: 0;
+        }
+
+        .md-button {
+            color: $creme-haki-color;
+            @include transition(color $animation-short-linear, transform $animation-short-linear);
+            transform: scale(1);
+            min-width: 40px;
+
+            &:hover {
+                transform: scale(2);
+                color: darken($creme-haki-color,30);
+            }
+
+            &:active {
+                transform: scale(1);
+                color: darken($creme-haki-color,50);
+            }
+
+            .md-ripple-container {
+                display: none;
+            }
+        }
+
+        @include transition(background-color $animation-short-linear);
+
+        &:hover {
+            /*background-color: darken($color-dark-green,15);*/
+            background-color: darken(opacify($color-dark-green, 0.7),40);
+            /*@include box-shadow(inset 0 0 20px darken($color-main-1,30));*/
+        }
+    }
+
+    @include text-label() {
+        text-shadow: none;
+        margin: 10px;
+    }
+
+
+
+    .custom-autocomplete {
+        md-autocomplete-wrap {
+            width: 100%;
+
+            button {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+
+    .election-items {
+        padding-top: 7px;
+    }
+
+    #{$row}.election-item {
+        > :nth-child(1) {
+            min-width: 35%;
+            padding: 0 10px;
+        }
+
+        > :nth-child(2) {
+            min-width: 30%;
+            padding: 0 10px;
+        }
+    }
+}

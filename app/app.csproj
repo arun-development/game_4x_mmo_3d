@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+   <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+   <ApplicationIcon>favicon.ico</ApplicationIcon>
+   <OutputType>Exe</OutputType>
+   <StartupObject />
+   <ApplicationInsightsResourceId>/subscriptions/26d446d9-052d-4122-bbc2-76a7a482d58d/resourcegroups/app/providers/microsoft.insights/components/skagry-dev</ApplicationInsightsResourceId>
+   <ApplicationInsightsAnnotationResourceId>/subscriptions/26d446d9-052d-4122-bbc2-76a7a482d58d/resourceGroups/app/providers/microsoft.insights/components/skagry-dev</ApplicationInsightsAnnotationResourceId>
+   <UserSecretsId>655b1111-2b8b-42c8-b4d3-262b36c14fa8</UserSecretsId>
+   
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="log\**" />
+    <Compile Remove="Views\Game\buttons\**" />
+    <Compile Remove="Views\Game\test\**" />
+    <Compile Remove="Views\Store\_old\**" />
+    <Compile Remove="wwwroot\content\babylon-assets\game_objects\old\**" />
+    <Compile Remove="wwwroot\content\babylon-assets\game_objects\v.1.401.dist\**" />
+    <Compile Remove="wwwroot\content\babylon-assets\game_objects\v.1.402.dist\**" />
+    <Compile Remove="wwwroot\Новая папка\**" />
+    <Content Remove="log\**" />
+    <Content Remove="Views\Game\buttons\**" />
+    <Content Remove="Views\Game\test\**" />
+    <Content Remove="Views\Store\_old\**" />
+    <Content Remove="wwwroot\content\babylon-assets\game_objects\old\**" />
+    <Content Remove="wwwroot\content\babylon-assets\game_objects\v.1.401.dist\**" />
+    <Content Remove="wwwroot\content\babylon-assets\game_objects\v.1.402.dist\**" />
+    <Content Remove="wwwroot\Новая папка\**" />
+    <EmbeddedResource Remove="log\**" />
+    <EmbeddedResource Remove="Views\Game\buttons\**" />
+    <EmbeddedResource Remove="Views\Game\test\**" />
+    <EmbeddedResource Remove="Views\Store\_old\**" />
+    <EmbeddedResource Remove="wwwroot\content\babylon-assets\game_objects\old\**" />
+    <EmbeddedResource Remove="wwwroot\content\babylon-assets\game_objects\v.1.401.dist\**" />
+    <EmbeddedResource Remove="wwwroot\content\babylon-assets\game_objects\v.1.402.dist\**" />
+    <EmbeddedResource Remove="wwwroot\Новая папка\**" />
+    <None Remove="log\**" />
+    <None Remove="Views\Game\buttons\**" />
+    <None Remove="Views\Game\test\**" />
+    <None Remove="Views\Store\_old\**" />
+    <None Remove="wwwroot\content\babylon-assets\game_objects\old\**" />
+    <None Remove="wwwroot\content\babylon-assets\game_objects\v.1.401.dist\**" />
+    <None Remove="wwwroot\content\babylon-assets\game_objects\v.1.402.dist\**" />
+    <None Remove="wwwroot\Новая папка\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientApp\js\Angular\Game\Directive\BuildDirective\planshetUnitItem.cs" />
+  </ItemGroup>
+
+ <ItemGroup>
+    <Content Remove="Views\Shared\modal\__________DELETE___________loginModal.cshtml" />
+    <Content Remove="wwwroot\content\babylon-assets\game_objects\v.1.401.dist.zip" />
+    <Content Remove="wwwroot\content\babylon-assets\game_objects\v.1.402.dist.zip" />
+    <Content Remove="wwwroot\content\babylon-assets\game_objects\v.1.403.dist.zip" />
+ 
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <None Remove="ClientApp\js\2.5.babylon.module.d.ts" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Server\Server.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\content\audio\game\test\" />
+    <Folder Include="wwwroot\content\images\game\user\" />
+    <Folder Include="wwwroot\log\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties ClientApp_4js_4log_1json__JSONSchema="http://json.schemastore.org/config" Properties_4launchSettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+
+ 
+
+</Project>

@@ -1,0 +1,296 @@
+﻿{
+  "userSecrets": {
+    "ex": "C://WebAppl/src/WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT",
+    "cd": "cd C:/Users/Arun/Source/Repos/skagry/app",
+    "command set": "dotnet user-secrets set testKey testValue",
+    "command list": "dotnet user-secrets list",
+    "command remove": "dotnet user-secrets remove <key>",
+    "local valuese": "%APPDATA%/microsoft/UserSecrets/<userSecretsId>/secrets.json || C:\\Users\\Arun\\AppData\\Roaming\\Microsoft\\UserSecrets"
+  },
+  "dapper +": {
+    "source": "https://github.com/zzzprojects/Dapper-Plus",
+    "doc": "http://dapper-tutorial.net/bulk-update"
+  },
+
+  "html": {
+    "SRI Hash Generator": "https://www.srihash.org/",
+    "html5checklist": "https://github.com/ihorzenich/html5checklist"
+  },
+  "habr": {
+    "иного ценных статей": "https://habrahabr.ru/users/marshinov/"
+  },
+  "IMPORTANT!!!": {
+    "убалены библиотеки": {
+      //  почему без них работает а с нми нет при том что они учавствуют в компиляции мне не ясно но факт остается фактом
+      "Microsoft.Net.Compilers": "2.3.1",
+      "Microsoft.CodeDom.jeviders.DotNetCompilerPlatform": "1.0.6"
+    },
+    "Cross Site Request атак (CSRF)": "https://habrahabr.ru/post/144406/"
+  },
+  "nuget": {
+    "reilnstall all pacjks in all progs": "Update-Package -Reinstall",
+    "How do I get NuGet to install/update all the packages in the packages.config?   ": "https://stackoverflow.com/questions/6876732/how-do-i-get-nuget-to-install-update-all-the-packages-in-the-packages-config"
+
+
+  },
+  "jsonSaveFile": "https://docs.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/json-and-xml-serialization#handling_circular_object_references",
+  "ef": {
+    "automapper": {
+      "git": "/smarly.net/asp-net-mvc-4-in-action/working-with-asp-net-mvc/mapping-with-automapper/introducing-automapper",
+      "metanit": "metanit.com/sharp/mvc5/23.4.php"
+    },
+    "ef keys": "https://msdn.microsoft.com/ru-ru/data/jj591617.aspx#1.1",
+    "about migration": "https://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application",
+    "migrationCommand": {
+      "enverotment setMigration": "enable-migrations",
+      "Get-Migrations": "Get-Migrations",
+      "setMegration": "Add-Migration    + <migrationName>",
+      "UpdateBataBase": "Update-Database",
+      "Update-Database -TargetMigration": "Update-Database -TargetMigration  ++name_of_migration"
+    },
+    "Настройка шаблонного кода - почитать на досуге": "https://habrahabr.ru/post/143024/",
+    "Service dependency injection": "https://docs.asp.net/en/latest/fundamentals/startup.html",
+    "Service dependency injection2 ": "https://blogs.msdn.microsoft.com/webdev/2014/06/17/dependency-injection-in-asp-net-vnext/",
+    "Паралелизм": {
+      "part1": "https://habrahabr.ru/post/86302/",
+      "part2": "https://habrahabr.ru/post/88394/",
+      "logic": "https://social.msdn.microsoft.com/Forums/ru-RU/567c7608-cb93-44a4-9eed-dd5d2dec5cc8/detach-in-linq-to-sql?forum=fordesktopru"
+    }
+  },
+  "sql": {
+    "Архитектура подключений к базе данных SQL Azure": "https://docs.microsoft.com/ru-ru/azure/sql-database/sql-database-connectivity-architecture",
+    "sql roles and users azureSql": "https://docs.microsoft.com/ru-ru/azure/sql-database/sql-database-manage-logins",
+    "linq to sql": "https://habrahabr.ru/post/250759/",
+    "Repository linq to sql": "https://habrahabr.ru/post/52173/",
+    "LinqToSql Repository": "http://mikehadlow.blogspot.com.es/2008/03/using-irepository-pattern-with-linq-to.html",
+    "LinqToSql Repository 2": "http://blog.gauffin.org/2013/01/repository-pattern-done-right/",
+    "LinqToSql Repository 3": "https://blog.falafel.com/implement-step-step-generic-repository-pattern-c/",
+    "LinqToSql Repository 4  старовата на русском с комментами  примерами и исправлениями ошибок": "http://blog.byndyu.ru/2011/01/domain-driven-design-repository.html",
+    "LinqToSql Repository 5 старовата": "https://gregorybeamer.wordpress.com/2008/08/18/repository-pattern-in-linq-to-sql-disconnected/",
+    "LinqToSql Repository 7": "http://jasonwatmore.com/post/2015/01/28/unit-of-work-repository-pattern-in-mvc5-and-web-api-2-with-fluent-nhibernate-and-ninject",
+    "": "http://jasonwatmore.com/post/2015/01/28/unit-of-work-repository-pattern-in-mvc5-and-web-api-2-with-fluent-nhibernate-and-ninject",
+    "sorting": "https://github.com/jgauffin/Griffin.Data/blob/master/src/Griffin.Data/Queries/QueryConstraintsT.cs",
+    "dataType convertation sql to c#": "http://stackoverflow.com/questions/1209181/what-represents-a-double-in-sql-server",
+    "полнотектсовый поиск": "http://info-comp.ru/sisadminst/486-full-text-search-ms-sql-server.html",
+    "Проблема с периодически долго выполняемыми ": "https://habrahabr.ru/post/313998/"
+  },
+  "c#": {
+    "tests": {
+      "интеграционные": {
+        "Автоматизированное интеграционное тестирование ASP.NET приложения": "https://habrahabr.ru/post/174735/"
+      }
+    },
+    "events": {
+      "week": "https://habrahabr.ru/post/89529/",
+      "События C# по-человечески": "https://habrahabr.ru/post/213809/",
+      "ms doc": "https://docs.microsoft.com/ru-ru/dotnet/csharp/programming-guide/events/how-to-implement-interface-events"
+    },
+    "dateTime": "http://stackoverflow.com/questions/463642/what-is-the-best-way-to-convert-seconds-into-hourminutessecondsmilliseconds",
+    "common lang fich": "http://stackoverflow.com/questions/9033/hidden-features-of-c",
+    "book_1": "http://www.e-reading.club/bookreader.php/135083/Rihter_-_CLR_via_C%23._Programmirovanie_na_platforme_Microsoft_.NET_Framework_2.0_na_yazyke_C%23.pdf",
+    "ConcurrentDictionary ": "https://habrahabr.ru/company/scout/blog/156125/",
+    "Plarium ConcurentDic": "https://dou.ua/lenta/articles/caching-features/",
+    "Plarium Разработка высоконагруженных систем": "https://www.youtube.com/watch?v=S7fZFpXFWU8",
+    "ConcurrentDictionary 2 ": "https://habrahabr.ru/post/245727/",
+    "ConcurrentDictionary ext ex ": "https://www.roelvanlisdonk.nl/2013/09/03/a-poor-mans-caching-component-for-c/",
+    "transaction options": "TransactionScopeAsyncFlowOption.Enabled",
+    "has timer code": "https://stackoverflow.com/questions/27527253/whenall-vs-waitall-in-parallel",
+    "Применение обобщенных табличных выражений": "\"https://technet.microsoft.com/ru-ru/library/ms190766(v=sql.105).aspx\"б",
+    "Кратко на тему рахныъ таймеров": "https://translate.googleusercontent.com/translate_c?act=url&depth=1&hl=ru&ie=UTF8&prev=_t&rurl=translate.google.es&sl=en&sp=nmt4&tl=ru&u=https://stackoverflow.com/questions/1416803/system-timers-timer-vs-system-threading-timer&usg=ALkJrhjhlgx-K-ek9XcALUG6fFN1ek0eQA"
+  },
+  "patterns": {
+    "Спецификация": "https://habrahabr.ru/post/171559/"
+  },
+  "projecting": {
+    "dot net loggong": "https://docs.microsoft.com/ru-ru/aspnet/core/fundamentals/logging?tabs=aspnetcore2x",
+    "asp routing": "https://github.com/aspnet/Docs/blob/master/aspnetcore/fundamentals/routing.md",
+    "загрузка и генерация файлов символов": "https://stackoverflow.com/questions/32104912/how-can-i-get-a-pdb-file-for-the-entityframework-nuget-package",
+    "4 вида утечек памяти в JavaScript и как с ними бороться": "https://habrahabr.ru/post/309318/",
+    "global asax methods and other": "https://habrahabr.ru/post/176001/",
+
+    "extention": {
+      "Ctrl + Click Go To Definition": "https://marketplace.visualstudio.com/items?itemName=VisualStudioProductTeam.CtrlClickGoToDefinition"
+    },
+    "vs-2017 shorcuts": "http://visualstudioshortcuts.com/2017/",
+    "shorcuts common ru": "https://habrahabr.ru/post/73835/",
+    "проектирование архитектура кластеризация": "https://habrahabr.ru/post/316370/",
+    "identyty example di": "https://toster.ru/q/251061",
+    "live projec cycle +ioc  + NHibernateRepository": "https://msdn.microsoft.com/en-us/library/aa973811.aspx",
+    "arch patterns and logic": "http://www.thereformedprogrammer.net/architecture-of-business-layer-working-with-entity-framework-core-and-v6-revisited/",
+    "di + repository + common + filters": "https://github.com/cornflourblue/mvc5-unit-of-work-example/tree/master/UnitOfWorkExample.WebApi/Helpers",
+    "NHibernate in SignalR": "http://stackoverflow.com/questions/35266008/how-to-configure-nhibernate-with-signalr",
+    "PLATIUM example config": "https://habrahabr.ru/company/plarium/blog/217151/",
+    "x-64": "https://ru.stackoverflow.com/questions/497039/%D0%A1%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%B4%D0%BB%D1%8F-64-%D0%B1%D0%B8%D1%82%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%B8%D0%B7-%D0%BF%D0%BE%D0%B4-32-%D0%B1%D0%B8%D1%82%D0%BD%D0%BE%D0%B9"
+  },
+  "babylonJs": {
+    "water good example": "https://www.babylonjs-playground.com/#DU61I8#21",
+    "fonts in GUI (3.1 prew)": "https://www.babylonjs-playground.com/#XCPP9Y#247",
+    "events": "https://www.babylonjs-playground.com/#QD9CFB",
+    "particle": {
+      "ex1 laser свеча": "https://www.babylonjs-playground.com/#8DPZWL#5",
+      "ex2 chaos boobles": "https://www.babylonjs-playground.com/#36AJXH#1",
+      "ex3 show /hide": "https://www.babylonjs-playground.com/#GRWPC6#1",
+      "ex 4 strs": "https://www.babylonjs-playground.com/#A1Q7ZZ#3"
+    },
+    "fire material + harmonic +morph": "http://www.babylonjs-playground.com/#27QHMX#1",
+    "PBRComposer rdactor for pbr materialse": "http://johann.langhofer.net/PBRComposer/",
+    //bug and send post to forum
+    "bug post to bjs": {
+      "clone/dispose": "http://www.html5gamedevs.com/topic/32822-bug-clonedispose-texture-and-material/",
+      "clone/dispose demo": "https://www.babylonjs-playground.com/indexstable#Y48SUQ"
+    },
+    //new
+    "WebGL2 support": {
+      "docs": "http://doc.babylonjs.com/overviews/webgl2",
+      "ex1": "https://www.babylonjs-playground.com/#1180R5#15"
+    },
+    //new
+    "font and more How to create 2D and 3D UI": {
+      "doc": "http://doc.babylonjs.com/overviews/gui",
+      "ex1": "https://www.babylonjs-playground.com/#ZI9AK7#1"
+    },
+    "кривые траектории спутника": "https://www.babylonjs-playground.com/#2I0VXX#45",
+    "gui": {
+      "doc": "http://doc.babylonjs.com/overviews/gui#image",
+      "ex1": "https://www.babylonjs-playground.com/#XCPP9Y#7"
+    },
+    "HighlightLayer playground knot": "http://www.babylonjs-playground.com/#150IU7#0",
+    "HighlightLayer playground sphere": "http://www.babylonjs-playground.com/#1KUJ0A#8",
+    "instances playground": "http://www.babylonjs-playground.com/#29SZC0#10",
+    "instances description": "https://doc.babylonjs.com/tutorials/How_to_use_Instances",
+    "2dIn 3d canvas": "http://babylonjs-playground.com/#1BKDEO#22",
+    "2d canvas babylonjs": "http://doc.babylonjs.com/overviews/Canvas2D_Home",
+    "labals": "http://babylonjs-playground.com/#1N9RJY#5",
+    "2d text": "http://babylonjs-playground.com/#143CL7#1",
+    "custom pointer": "http://www.babylonjs-playground.com/#21YCLG#5",
+    "rotationQuaternion": "http://www.babylonjs-playground.com/#14EGUT#48",
+    "animation": "http://babylonjs-playground.azurewebsites.net/#1QH2P6#5",
+    "translateon rotation ": "http://babylonjsguide.github.io/advanced/Rotate",
+    "tileMaterial": "http://www.babylonjs-playground.com/#1XBLWB#6",
+    "composition": "http://babylonjs-playground.azurewebsites.net/#1PHYB0#6",
+    "polyhedron and pickinfo": "http://www.babylonjs-playground.com/#21QRSK#8",
+    "star scattering chenge meshes + reflection + animation + flash": "https://www.babylonjs-playground.com/#14FG1S#7",
+    "material offset": "https://github.com/mrdoob/three.js/issues/5876",
+    "texstureWrapMAterial": "https://www.babylonjs-playground.com/#DQZYUA#3",
+    "tesstureWrapMAterialWhidthScale": "https://www.babylonjs-playground.com/#DQZYUA#4",
+    "parallax": "https://doc.babylonjs.com/tutorials/using_parallax_mapping",
+    "shraders": {
+      "Создание шейдеров на основе Babylon.js и WebGL: теория и примеры": "https://habrahabr.ru/company/plarium/blog/311138/",
+      "Creating a Spherical Reflection/Environment Mapping shader": "https://www.clicktorelease.com/blog/creating-spherical-environment-mapping-shader?WT.mc_id=14113-DEV-tuts-article4",
+      "(хороший подробный гайд) Знакомимся с WebGL и BabylonJS (часть 1)": "http://forasoft.github.io/webgl-babylonjs-p1/",
+      "Шейдеры для маглов": "https://habrahabr.ru/post/223541/",
+      "babylon shader storage": "https://www.babylonjs-playground.com/#1OH09K#6"
+    },
+    "Morph targets": "https://www.eternalcoding.com/?p=2892",
+    "lasers_1": "http://www.babylonjs-playground.com/#1U7OXA",
+    "lasers_request": "http://www.html5gamedevs.com/topic/21992-creating-a-scanning-laser-effect/",
+    "очень крутое свечение(облом - гудрейс)": "http://www.babylonjs-playground.com/#HYFQJ",
+    "есть светяшка но там все по вершинам нужноразобратсья на досуге": "http://www.babylonjs-playground.com/#1UHFAP#8",
+    "fireMAterial transformation": "https://www.babylonjs-playground.com/#27ZAG1#3",
+    "fireMaterial  +on of loading": "http://www.babylonjs-playground.com/#21IIM9",
+    "applyDisplacementMap": "http://www.babylonjs-playground.com/#P9UZG#9",
+    "sampling mode": "http://www.babylonjs-playground.com/#1IKIXK#3",
+    "random texture demo": "http://www.babylonjs.com/demos/planet/",
+    "random texture code": "https://github.com/BabylonJS/Website/blob/master/Demos/Planet/planet.js#L55",
+    "observers": "http://doc.babylonjs.com/overviews/observables#give-me-an-example",
+    "комплексное решение, видео текстура освещение валюметрик итп": "https://www.babylonjs-playground.com/#L4KLW#37",
+    "сложная анимация плоскости по вершинам, (полотенце на ветру)": "https://www.babylonjs-playground.com/#1H9JML#52",
+
+    "mix textures terrain example": "https://doc.babylonjs.com/extensions/terrain"
+  },
+  "online c#": "https://dotnetfiddle.net/7w5bS5",
+
+  "О коллекциях IEnumerable ,ICollection ,IList ,List ": "oxozle.com/2015/04/01/kollekcii-v-net-ienumerable-iqueryable-icollection-ilist",
+  "angular": {
+    "кеширование ангуляр": "https: //habrahabr.ru/sandbox/70894/",
+    "прототипное наследование в ангуляр": "http://rav.pw/angularjs-inheritance/",
+    "немного о директивах ангуляр": "https://habrahabr.ru/post/180365/",
+    "material": {
+
+      "fileinput": {
+        "github": "https://github.com/shuyu/angular-material-fileinput",
+        "example": "http://shuyu.github.io/angular-material-fileinput/example/"
+      },
+      "dialog": "https://github.com/likeastore/ngDialog",
+      "dialog src": "http://code.taobao.org/p/angularM/diff/2/angular/bower_components/angular-material/modules/js/dialog",
+      "dialog presets and more": "https://material.angularjs.org/latest/api/service/$mdDialog",
+      "dialog-options": "https://github.com/angular/material/issues/3336",
+      "dialog onOpen/close": "http://codepen.io/DevVersion/pen/NxMMbG"
+    },
+    "inject": "http://www.jvandemo.com/how-to-properly-integrate-non-angularjs-libraries-in-your-angularjs-application/",
+    "filer": "https://makeomatic.ru/blog/2014/06/06/custom_filters_Angular/",
+    "cropper": {
+      "ex1": "http://jsbin.com/qosowa/1/edit?html,js,output",
+      "ex2": "https://github.com/CrackerakiUA/ui-cropper/wiki/Options"
+    },
+    "ng-message  примеры": "https://itvdn.com/ru/blog/article/validation-angularjs",
+    "ng-message  примеры на русском": "https://makeomatic.ru/blog/2014/05/21/ngMessage/",
+    "promise q service": "https://habrahabr.ru/post/221111/",
+    "mdAutocomplete ": "https://codepen.io/donmccurdy/pen/bwLNAa",
+    "mdAutocomplete 2": "http://jsfiddle.net/54mh0skf/20/",
+    "dynamic insert directive example code": "http://plnkr.co/edit/n7SZpyeQ9nbjVSYA7ibB?p=preview"
+
+  },
+  "msBuild": {
+    "Framework 4.6 Namespace-to-Assembly Reference": "http://www.albahari.com/nutshell/namespacereference.aspx",
+    "Произошел конфликт между различными версиями одной и той же...": "https://rsdn.org/forum/dotnet/6006738.all",
+    "Программирование с использованием сборок": "https://msdn.microsoft.com/ru-ru/library/8wxf689z(v=vs.110).aspx",
+    "Использование общего среднего и выходной каталог для решения": "https://blogs.msdn.microsoft.com/kirillosenkov/2015/04/04/using-a-common-intermediate-and-output-directory-for-your-solution/",
+    "Программа из одного exe": "https://habrahabr.ru/post/85480/",
+    " Сборки и глобальный кэш сборок (C# и Visual Basic)": "https://msdn.microsoft.com/ru-ru/library/ms173099(v=vs.110).aspx",
+    "Предупреждение": "All projects referencing app.csproj must install nuget package Microsoft.Bcl.Build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317569. Job"
+  },
+  "signalR": {
+    "hub net core 2.0": {
+      "общий обзор от хабра 1": "https://habrahabr.ru/post/338490/",
+      "добавить клиент": "Microsoft.AspNetCore.SignalR.Client"
+    },
+    "IMessageBus and more": "https://github.com/aspnet/Docs/blob/master/aspnet/signalr/overview/performance/signalr-performance.md",
+    "charts-angular-signalr": "https://www.sitepoint.com/build-real-time-signalr-dashboard-angularjs/",
+    "connection states and diagrams": "https://github.com/aspnet/Docs/blob/master/aspnet/signalr/overview/guide-to-the-api/handling-connection-lifetime-events.md",
+    "angular for bower": {
+      "angular-signalr-hub": "^1.6.2"
+    }
+  },
+
+  "azure": {
+    "Непрерывное развертывание": "https://www.visualstudio.com/en-us/docs/release/examples/azure/continuous-to-app-service?1#faq",
+    "описание модулей": "https://github.com/Azure/azure-content-ruru/blob/master/articles/fundamentals-introduction-to-azure.md",
+    "storage": "https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs",
+    "storage2": "https://tahirnaushad.com/2017/08/17/azure-blob-storage-in-asp-net-core/"
+  },
+  "ninject": {
+    "настройке": "http://stackoverflow.com/questions/20595472/mvc5-web-api-2-and-ninject",
+    "owin": "https://github.com/ninject/Ninject.Web.Common/wiki/Setting-up-a-OWIN-WebApi-application",
+    "comands": "Install-Package Ninject.Web.WebApi",
+    "azure webJob Ninject example": "https://github.com/ThomVanL/NinjectAzureWebJob/blob/master/NinjectAzureWebJob/Functions.cs",
+    "parametres": "https://metanit.com/sharp/mvc5/21.3.php",
+    "общее": "https://habrahabr.ru/post/176007/"
+    //"-Ninject" "-Ninject.MVC5",
+    //"-Ninject.Web" "-Ninject.Web.Common",
+    //"-Ninject.Web.Common.WebHost" "-Ninject.Web.WebApi",
+    //"-Ninject.Web.WebApi.WebHost"
+  },
+  "Vs config applicationhost": ".vs/config/applicationhost.config",
+  "manual hos config ssl and custom port": "http://stackoverflow.com/questions/32840634/visual-studio-2015-iisexpress-change-ssl-port",
+  "lovalstorage": {
+    "путевое описание": "https://www.canonium.com/articles/html-webstorage"
+  },
+  "html editor": "https://www.froala.com/",
+  "readme": {
+    "Semantic Versioning": "http://semver.org/lang/ru/"
+  },
+  "medium-editor": {
+    "angular-medium-editor": "https://github.com/thijsw/angular-medium-editor",
+    "options": "https://github.com/yabwe/medium-editor/blob/master/OPTIONS.md",
+    "medium-editor": "https://github.com/yabwe/medium-editor"
+
+  },
+  "svg": {
+    "Карманное руководство по написанию SVG": "http://css-live.ru/articles/karmannoe-rukovodstvo-po-napisaniyu-svg-glava-3.html",
+    "Общее": "http://frontender.info/using-svg/"
+  },
+  "настройка нпм": "http://www.ryadel.com/en/visual-studio-2015-update-nodejs-andor-npm-latest-version/",
+  "css visual studio sprite": "https://github.com/madskristensen/ImageSprites",
+ 
+}

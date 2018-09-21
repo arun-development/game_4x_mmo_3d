@@ -1,0 +1,56 @@
+{
+  "names": {
+    "0": "interface-icon-e", //res
+    "1": "interface-icon-ir",
+    "2": "interface-icon-dm",
+    "3": "interface-icon-сс",
+    "4": "interface-icon-alliance", //left menu
+    "5": "interface-icon-confederation",
+    "6": "interface-icon-journal",
+    "7": "interface-icon-message",
+
+    "8": "interface-icon-hangar-toggle", //controll menu
+    "9": "interface-icon-galaxy-info",
+    "10": "interface-icon-sector-info",
+    "11": "interface-icon-planet-info",
+    "12": "interface-icon-star-info",
+    "13": "interface-icon-jump-to-sector",
+    "14": "interface-icon-jump-to-planetoid",
+    "15": "interface-icon-jump-to-mother",
+    "16": "interface-icon-jump-to-galaxy",
+    "17": "interface-icon-jump-to-user-planet",
+    "18": "interface-icon-open-bookmarks"
+
+  },
+  "size": {
+    "x": "1000px",
+    "y": "1000px"
+  },
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "prefix": "interface-icon",
+  "templateName": "{prefix}-{name}",
+  "event-default": {
+    "postfix": "event-default",
+    "template": "{name}-{postfix}",
+    "description": "каждая иконка должна иметь эллемент который будет изменяться при получении события. Ткой эллемент должен быть отмечен специальным селектром - атибутом/ид/классом (тип селектора должен быть одинаковым для всех. если выбранн класс то все иконки должныть быть помеченны классом а не ид) пример : 'interface-icon-e-event-default' <path id='interface-icon-e-event-default'.../> "
+  },
+  "bg-border":{
+      "postfix": "bg-border",
+	  "template": "{name}-{postfix}",
+	   "description": "рамка вокруг эллемента и одноцветная (solid) подложка"
+  },
+  "resource": {
+    "postfix": "capacity",
+    "template": "{name}-{postfix}",
+    "description": "у иконок ресурсов должна быть шкала индикации заполненности этог ресурса (радиальная шкала в c началом в 12 часов) начинается зеленым заканчивается красным. На текущий момент принято  что круг разбит на 12 частей. контейнер содержащий эти элементы должен называтсья в соответстви с шаблоном. Пример: 'interface-icon-e-capacity'"
+  },
+   "resource-body": {
+    "postfix": "body",
+    "template": "{name}-{postfix}",
+    "description": "тело иконки ресурса, без рамки и других атрибутов. Если представляется возможным в иконках resource делать ссылку на этот объект а не копию самого объекта. Пример именования: 'interface-icon-e-body' это независимый эллемент будет использоваться в формах. как иконка а не кнопка или объект события"
+  },
+  "description": "Каждая иконка должна находится в отдельном файле svg, имя файла и ид эллемента должны совпадать, размер иконки должен соответствовать размеру документа в соответствии параметром size, и занимать 100%. ксс стили должны быть внутренними, и лучше всего чтобы они были уникальны например '{selector}-{property}-{color/prop-type-value or number-?}' - 'interface-icon-e-fill-red','interface-icon-e-gradient-withe-blue', чем больше смысла и связи в имени класса - тем лучше, в противном случае лучше вообще не применять классы, а использовать только стили 'style='fill=#000''. Id внутренних элементов в идеале чтобы их не было вообще. Но так как это невозможно при наличии оформления, необходимо к ним применять систему. Например, движок генерирует так <radialGradient id='id0' ...> при добавлении 2-го документа svg в html не ссылкой (а именно этот вариант нам нужен для дальнейших манипуляций с изображением) будет 2 элемента в документе по id='id0', это вызовет ошибку при поиске и ошибку валидации. Такого допускать нельзя. поэтому ид внутренних элементов всегда должен начинаться с основного ид, потом тип элемента и потом какой-то определяющий символ, так можно будет обеспечить уникальность имени {id}-{tag-type}-{other}. Прошу очень внимательно отнестись к именованию и размерам, иначе мы будем все переделывать по 5 раз, и хорошо если сразу."
+}

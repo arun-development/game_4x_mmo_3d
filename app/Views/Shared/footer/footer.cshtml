@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+    //ViewBag.Title = "footer";
+}
+
+
+
+<div id="footer" class="clearfix container" name="footer">
+    <div class="jumbotron">
+        @await Html.PartialAsync("footer/template", "footer/sosial")
+        @await Html.PartialAsync("footer/template", "footer/copyright")
+    </div>
+</div>
+
+
+

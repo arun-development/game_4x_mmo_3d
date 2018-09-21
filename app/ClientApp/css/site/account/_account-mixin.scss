@@ -1,0 +1,165 @@
+@import "../../mixins";
+@import "../../game/animation-vars";  
+@import "../../pages-mixin";  
+
+@mixin my-account-mixin() {
+    $bg-color:$body-main-bg-color;
+    $red: #B60101;
+    $font-color: #eae3e3;
+    $w: 358px;
+
+    #my-account {
+        top: 61px;
+        position: absolute;
+        height: 90%;
+
+        md-sidenav {
+            min-width: $w;
+        }
+
+        .animate {
+            @include vendor-prefix(transform,translateX(0));
+            opacity: 1;
+        }
+
+        & button.close {
+            @include vendor-prefix(transition, #{opacity $animation-short});
+            font-size: 2em;
+            color: $red;
+            opacity: 0.2;
+            margin-right: 10px;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+
+        & * ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        &.submenu {
+        }
+
+
+        & .chest-header,
+        & md-content,
+        & md-sidenav {
+            background-color: $bg-color;
+        }
+
+        &.submenu > li {
+            @include flex-JsAc();
+
+            & > .icon {
+                background-color: $red;
+                padding: 20px;
+            }
+        }
+
+        .underlay_animate a {
+            color: $font-color;
+        }
+    }
+
+    #chest {
+        color: $font-color;
+        padding: 0;
+        margin: 10px 0 0 0;
+
+        .red {
+            color: $red;
+        }
+
+        md-pagination-wrapper {
+            & md-tab-item {
+                min-width: $w*0.47;
+            }
+        }
+
+        .md-button {
+            $bg-color: rgba(70, 60, 60, 0.40);
+            background-color: rgba(70, 60, 60, 0.40);
+            color: $font-color;
+            margin: 0;
+            @include scale(1);
+            @include transition-transform(0.3s linear);
+            @include transition-property(transform,background-color);
+
+
+            &:hover {
+                background-color: lighten(opacify($bg-color, 0.3), 30);
+            }
+
+            &:active {
+
+                @include scale(0.9);
+            }
+        }
+
+        .item {
+            height: 180px;
+            max-width: 320px;
+            min-width: 320px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .info {
+            // @include size-TRBL ();
+          //  padding: 10px;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+
+
+    .login_cont {
+        color: $red;
+    }
+
+    .login_cont a {
+        color: #428bca;
+    }
+
+    .login_cont a:hover {
+        background-color: transparent;
+        color: #428bca;
+        text-decoration: underline;
+        display: flex;
+    }
+
+    .buy_btn {
+        float: right;
+        min-width: 12em;
+    }
+}
+
+@mixin chst-item-dialog() {
+    $s: chest-item-info-dialog;
+
+    $prop-item: #{$s}-prop-item;
+
+    .#{$s} {
+        background-color:$body-main-bg-color;
+        max-width: 750px;
+    }
+
+    .md-dialog-content .#{$prop-item} {
+        .prop-key, .prop-val {
+            font-size: $fs-14;
+            padding-left: 0;
+            padding-right: 12px;
+        }
+         .prop-val{
+             color:$unique-name-color-solid;
+             font-weight:bold;
+         }
+    }
+}     

@@ -1,0 +1,28 @@
+{
+  "name": "game_4x_mmo_3d",
+  "version": "0.1.0",
+  "author": {
+    "name": "Arun",
+    "email": "pashtet44@yandex.ru",
+    "url": "https://github.com/arun-development/"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-bower": "^0.0.13",
+    "merge-stream": "^1.0.1",
+    "rimraf": "2.6.1",
+    "bower-dependency-tree": ""
+  },
+  "dependencies": {
+    "@aspnet/signalr": "1.0.3",
+    "medium-editor": "5.23.2",
+    "svg-assets-cache": "1.1.3",
+    "ng-file-upload": "12.2.13",
+    "select2": "4.0.4"
+  }
+}

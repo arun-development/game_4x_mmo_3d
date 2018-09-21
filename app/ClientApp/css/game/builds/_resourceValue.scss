@@ -1,0 +1,25 @@
+﻿@import "../suples";
+.resource-item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    width: 100px;
+    background-color: rgba(0,0,0, .1);
+    & p{
+        text-align:center;
+    }
+
+}
+
+.resource-item .max {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.resource-item .current-res {
+    padding: 0 3px;
+    position: relative;
+}

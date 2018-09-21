@@ -1,0 +1,138 @@
+﻿@using Server.Extensions
+@using Server.Infrastructure
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    var faCss = LibCollection.CssFontAwesome;
+    var cssMe = LibCollection.CssMediumEditor;
+    var jsMe = LibCollection.JsMediumEditor;
+    var jsJqUi = LibCollection.JsJqUi;
+    var cssJqUi = LibCollection.CssJqUi;
+    var jsJqEasing = LibCollection.JsJqEasing;
+    var jsSelect2 = LibCollection.JsSelect2;
+    var cssSelect2 = LibCollection.CssSelect2;
+    var jsBabylon = LibCollection.JsBabylonCustom;
+    var jsBabylonInspector = LibCollection.JsBabylonInspector;
+
+    //files
+    var jsInfScroll = LibCollection.JsAngularNgInfiniteScroll;
+    var jsAngFileUpload = LibCollection.JsAngularFileUpload;
+    var jsNgFileUpload = LibCollection.JsAngularNgFileUpload;
+    var jsNgImgCrop = LibCollection.JsAngularNgImgCrop;
+    var jsUiCrooper = LibCollection.JsAngularUiCropper;
+    var jsSignalR = LibCollection.JsSignalr;
+
+
+
+
+}
+
+@section styles{
+
+        @*<link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />*@
+    
+    <link rel="stylesheet"
+          href="@cssSelect2.CdnPathMin"
+          asp-fallback-href="@cssSelect2.LocalPathMin"
+          asp-fallback-test-class="@cssSelect2.FallbackTestClass"
+          asp-fallback-test-property="@cssSelect2.FallbackTestProperty"
+          asp-fallback-test-value="@cssSelect2.FallbackTestValue"
+          integrity="@cssSelect2.IntegrityMin"
+          crossorigin="anonymous" />
+    
+    <link rel="stylesheet"
+          href="@cssJqUi.CdnPathMin"
+          asp-fallback-href="@cssJqUi.LocalPathMin"
+          asp-fallback-test-class="@cssJqUi.FallbackTestClass"
+          asp-fallback-test-property="@cssJqUi.FallbackTestProperty"
+          asp-fallback-test-value="@cssJqUi.FallbackTestValue"
+          integrity="@cssJqUi.IntegrityMin"
+          crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet"
+          href="@faCss.CdnPathMin"
+          asp-fallback-href="@faCss.LocalPathMin"
+          asp-fallback-test-class="@faCss.FallbackTestClass"
+          asp-fallback-test-property="@faCss.FallbackTestProperty"
+          asp-fallback-test-value="@faCss.FallbackTestValue"
+          integrity="@faCss.IntegrityMin"
+          crossorigin="anonymous" />
+    
+    <link rel="stylesheet"
+          href="@cssMe.CdnPathMin"
+          asp-fallback-href="@cssMe.LocalPathMin"
+          asp-fallback-test-class="@cssMe.FallbackTestClass"
+          asp-fallback-test-property="@cssMe.FallbackTestProperty"
+          asp-fallback-test-value="@cssMe.FallbackTestValue"
+          integrity="@cssMe.IntegrityMin"
+          crossorigin="anonymous" />
+ 
+
+    @RenderSection("styles", false)
+}
+
+@section headerTemplates{
+    
+    @RenderSection("preloader", false)
+}
+
+@section footerHtmlAndTemplates{
+    <section id="supples" class="display-none absolute">
+        @RenderSection("templatesAndSupples", false)
+    </section>
+
+}
+@section footerScriptsLib{
+ 
+    <script src="@jsJqUi.CdnPathMin"
+            asp-fallback-src="@jsJqUi.LocalPathMin"
+            asp-fallback-test="@jsJqUi.FallbackTest"
+            integrity="@jsJqUi.IntegrityMin"
+            crossorigin="anonymous"></script>
+
+    <script src="@jsSelect2.CdnPathMin"
+            asp-fallback-src="@jsSelect2.LocalPathMin"
+            asp-fallback-test="@jsSelect2.FallbackTest"
+            integrity="@jsSelect2.IntegrityMin"
+            crossorigin="anonymous"></script>
+
+    <script src="@jsJqEasing.CdnPathMin"
+            asp-fallback-src="@jsJqEasing.LocalPathMin"
+            asp-fallback-test="@jsJqEasing.FallbackTest"
+            integrity="@jsJqEasing.IntegrityMin"
+            crossorigin="anonymous"></script>
+    <script src="@jsMe.CdnPathMin"
+            asp-fallback-src="@jsMe.LocalPathMin"
+            asp-fallback-test="@jsMe.FallbackTest"
+            integrity="@jsMe.IntegrityMin"
+            crossorigin="anonymous"></script>
+
+    <script src="@jsBabylon.LocalPathMin"></script>
+    <environment include="Development">
+        <script src="@jsBabylonInspector.LocalPathMin"></script>
+    </environment>
+
+
+
+    @RenderSection("footerScriptsLib", false)
+}
+@section footerScriptsAngular{
+    <script src="@jsInfScroll.LocalPathMin"></script>
+    <script src="@jsAngFileUpload.LocalPathMin"></script>
+    <script src="@jsNgImgCrop.LocalPathMin"></script>
+    <script src="@jsUiCrooper.LocalPathMin"></script>
+    <script src="@jsNgFileUpload.CdnPathMin"
+            asp-fallback-src="@jsNgFileUpload.LocalPathMin"
+            asp-fallback-test="@jsNgFileUpload.FallbackTest"
+            integrity="@jsNgFileUpload.IntegrityMin"
+            crossorigin="anonymous"></script>
+    <script src="@jsSignalR.LocalPath"></script>
+    
+    @RenderSection("footerScriptsAngular", required: false)
+}
+
+@section footerFinalizeScripts{
+    @RenderSection("footerFinalizeScripts", false)
+}
+
+@RenderBody()

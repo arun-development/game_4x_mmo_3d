@@ -1,0 +1,99 @@
+﻿@import "flex-mixin";
+
+.flex {
+    @include flex();
+}
+
+.inline-flex {
+    @include flex-inline();
+}
+
+.Jc {
+    @include flex-Jc();
+}
+
+.Je {
+    @include flex-Je();
+}
+
+
+.Js {
+    @include flex-Js();
+}
+
+.Ac {
+    @include flex-Ac();
+}
+
+.As {
+    @include flex-As();
+}
+
+.JcAc {
+    @include flex-JcAc();
+}
+
+.JcAs {
+    @include flex-JcAs();
+}
+
+.JcAe {
+    @include flex-JcAe();
+}
+
+.JsAc {
+    @include flex-JsAc();
+}
+
+.Jsb {
+    @include flex-Jsb();
+}
+
+.Jsa {
+    @include flex-Jsa();
+}
+
+.JsaAc {
+    @include flex-JsaAc();
+}
+
+
+
+.JsbAc {
+    @include flex-JsbAc();
+}
+
+.JsbAs {
+    @include flex-JsbAs();
+}
+
+.JsbAe {
+    @include flex-JsbAe();
+}
+
+.JeAs {
+    @include flex-JeAs();
+}
+
+.JeAc {
+    @include flex-JeAc();
+}
+
+
+
+
+.flex-wrap {
+    @include flex-wrap();
+}
+
+.flex-flow-wrap {
+    @include flex-flow-wrap();
+}
+
+.flex-column {
+    @include flex-column();
+}
+
+.ff_column_wrap {
+    @include flex-flow-column-wrap();
+}

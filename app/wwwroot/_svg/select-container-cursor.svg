@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<filter id="blur-filter" x="-2" y="-2" width="200" height="200">
+		<feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+	</filter>
+	<polygon points="10,2 25,21 45,2"></polygon>
+</svg>

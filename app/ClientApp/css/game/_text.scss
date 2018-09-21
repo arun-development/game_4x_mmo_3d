@@ -1,0 +1,71 @@
+﻿@import "suples";
+
+.font_play {
+    font-family: "Play";
+}
+
+.error {
+    color: $error-color;
+}
+.succsess {
+    color: $succsess-color;
+}
+.check-undefined {
+    color: $undefined-color;
+    /*color: #adadad;*/
+}
+
+/*==================================================================================================================*/
+
+/*text size*/
+@include create-fonts();
+/*text-color*/
+@include create-font-colors();
+/*/color*/
+
+
+/*==================================================================================================================*/
+
+/*==================================================================================================================*/
+
+/*text_decoration*/
+
+
+.text_name,
+.default_description {
+    color: $color-main-1-light;
+    text-shadow: $text-shadow-text-name-default;
+}
+
+
+/*.text-off {
+    color: transparent;
+    text-shadow: 0 0 0 transparent;
+}*/
+
+.text_h_standart {
+    @include text-shadow-color3(0,-1px, 1px,false,$dark-blu-shadow,$dark-blu-shadow);
+}
+
+.text_p_standart {
+    @include text-shadow-color3(0,-1px, 1px,false,$dark-blu-shadow,$dark-blu-shadow);
+}
+
+.text_window_head {
+    @include text-shadow-color3(false,false,0px, #000,$dark-blu-shadow2, $dark-blu-shadow2,$dark-blu-shadow2);
+}
+
+.text_black_red {
+    color: rgba(0, 0, 0, 0.99);
+    text-shadow: 0 0 8px rgba(251, 3, 3, 0.3), 1px 1px 1px $red, 1px -1px 1px $red-alpha, -1px 1px 1px $red-alpha, -1px -1px 1px $red-alpha;
+}
+
+.text_growth {
+    color: rgba(0, 255, 60, 0.99);
+    text-shadow: 1px 1px 1px rgba(111, 251, 223, 1), 0 0 8px rgba(236, 251, 3, 0.36), 1px 1px 1px rgba(246, 0, 0, 0.75);
+}
+
+
+
+/*/text_decoration*/
+/*==================================================================================================================*/

@@ -1,0 +1,198 @@
+﻿@import "../suples";
+
+#buildContainer {
+    & .s.resource {
+        margin: 10px 0;
+    }
+
+    & tr:nth-child(2),
+    & tr:nth-child(3),
+    & tr:nth-child(4) {
+        & td:first-child {
+            float: left;
+        }
+
+        td:last-child .resource {
+            float: right;
+        }
+
+        & td:first-child,
+        & td:last-child {
+            width: 70px;
+            @include clearfix;
+        }
+    }
+}
+
+#resource-transfer-form {
+    /*& section div {
+        margin: 0 1em;
+    }*/
+    & > span {
+        @extend .text_h_standart;
+        position: absolute;
+        right: 21%;
+        top: 33%;
+        font-size: 3em;
+        z-index: 0;
+
+        &.visible {
+            z-index: 1;
+        }
+    }
+
+    & .storage-item-active {
+        & #btn-storage-action-send-all {
+            float: right;
+            right: 2px;
+            position: relative;
+            @include clearfix;
+
+            & a {
+                font-size: 0.6em;
+            }
+        }
+
+        & tr:first-child td {
+            padding-bottom: 1em;
+        }
+    }
+}
+
+
+
+.visible-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.range-animation {
+    @include transition(#{left .3s ease-in-out , width .3s ease-in-out});
+}
+
+
+.storage-item-active tr td:nth-child(3) {
+    padding: 5px 30px 0 22px;
+    min-width: 160px;
+}
+
+
+
+.extraction-item-active {
+    & td:nth-child(1) {
+        width: 50px;
+    }
+
+    & td:nth-child(2) {
+        width: 100%;
+        padding: 0 30px 0 22px;
+    }
+
+    & td:nth-child(3) {
+        padding-left: 20px;
+        min-width: 100px;
+        text-align: left;
+    }
+}
+
+.exchange-item-active {
+    margin-bottom: 20px;
+
+    tr:nth-child(2) td:nth-child(3) {
+        pointer-events: none;
+        width: 100%;
+    }
+
+    & .exchange-connection-container {
+        width: 100%;
+        margin-top: 24px;
+
+        & .exchange-connection-item {
+            height: 193px;
+            width: 33.33%;
+            float: left;
+
+            &#exchange-connection-value-conteiner {
+                @include flex-JcAc();
+                outline: red;
+
+                & input {
+                    display: none;
+                }
+
+                $active-input-shadow: 0 0 50px $color-main-1;
+
+                &.active input {
+                    height: 50%;
+                    pointer-events: auto;
+                    display: inline-block;
+                    width: 100%;
+                    border: 1px solid $color-main-1;
+                    padding: 5px;
+                    margin: 0;
+                    border-radius: 50% 20%;
+                    @include vendor-prefix(box-shadow,$active-input-shadow" ,inset"$active-input-shadow);
+                    @include vendor-prefix(box-sizing,border-box);
+                    background-color: $black;
+                }
+            }
+
+
+            & .resource-connection {
+                transition: width linear 0.3s;
+                width: 0;
+
+                .connection-item {
+                    @include transition(opacity linear 0.3s);
+                    opacity: 0;
+                }
+            }
+
+            &.active .resource-connection,
+            &.active .resource-connection,
+            &.active .resource-connection {
+                width: 100%;
+            }
+
+            &.e .resource-connection .e,
+            &.ir .resource-connection .ir,
+            &.dm .resource-connection .dm {
+                opacity: 1;
+            }
+        }
+    }
+
+    & td:last-child {
+        padding-left: 20px;
+    }
+}
+
+
+
+.drop-item .res .ms {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.drop-item .res tr td:first-child .ms {
+    margin-left: 0;
+}
+
+.drop-item .res tr td:last-child .ms {
+    margin-right: 0;
+    float: right;
+    display: inline-block;
+}
+
+div.price li:first-child span {
+    margin-left: 0;
+}
+
+div.price .res span {
+    display: inline-block;
+    vertical-align: middle;
+}

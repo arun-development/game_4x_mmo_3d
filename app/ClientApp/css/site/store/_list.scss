@@ -1,0 +1,121 @@
+@import "../../mixins";
+@import "../../game/animation-vars";
+@import "../../pages-mixin";
+
+@include set-footer-to-page($strore-page);
+#storeListController {
+    padding: 20px;
+}
+
+.store-select-product-container {
+    @extend .text-center;
+    padding: 15px;
+}
+
+#store-items-list.list {
+    padding-bottom: 20px;
+    position: relative;
+    width: 100%;
+    @include flex-JcAs();
+    @include flex-wrap(false);
+}
+
+
+#{$strore-page} {  
+
+    .tab-product-container {
+        //  min-height: calc(100vh - 109px);
+        background-color: $body-main-bg-color;
+        @include transition(color 0.5s linear);
+    }
+
+    .product-item {
+        box-shadow: 0 2px 5px;
+        box-sizing: border-box;
+        margin: 20px 20px 0 0;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% auto;
+        min-width: 320px;
+        width: 320px;
+        height: 180px;
+        color: #f6efd6;
+        text-decoration: none;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        @include transition(#{background-size .5s ease-in-out, box-shadow 0.5s ease-in-out});
+
+        & .product-type-name {
+            right: 0;
+            padding: 20px;
+            position: absolute;
+            text-align: end;
+            opacity: 1;
+            @include transition(opacity .5s linear);
+        }
+
+        &:hover,
+        &.hover {
+            box-shadow: 0 0 25px;
+
+            & .product-inner-container {
+                @include translateY(0);
+            }
+
+            & .product-type-name {
+                opacity: 0;
+            }
+        }
+
+
+        & .product-inner-container {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 320px;
+            height: 180px;
+            @include translateY(140px);
+            @include transition(transform .5s ease-in-out);
+
+            & .product-description {
+                height: 80px;
+                border-top: 1px solid #fff;
+                padding: 10px;
+                overflow-y: auto;
+                border-bottom: 40px;
+            }
+
+            & h4 {
+                margin: 0;
+                box-sizing: border-box;
+                border-left: 5px solid $site-tab-bg-color;
+                padding-left: 10px;
+                line-height: 40px;
+            }
+
+            & .list_footer:hover {
+                color: #000;
+                background-color: $site-tab-bg-color;
+            }
+        }
+
+        & .product-item-footer {
+            font-size: 1.5em;
+            background-color: rgba(37, 85, 131, 0.5);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 40px;
+            @include flex-Jsa();
+
+            & span.price {
+                color: #40b232;
+                align-items: center;
+                margin-right: 1em;
+                @include flex-Js();
+            }
+        }
+    }
+}

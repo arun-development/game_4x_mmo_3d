@@ -1,0 +1,8 @@
+﻿@using Server.Services.HtmlHelpers
+@model Server.Services.HtmlHelpers.ButtonsView
+@{
+    Layout = null;
+}
+<div class="parralax-button @Model.CssClass" onclick=""  id="@(Model.ButtonId ?? null)" title="@Model.TranslateName">
+    <div class="parralax-button-content"></div>
+</div>

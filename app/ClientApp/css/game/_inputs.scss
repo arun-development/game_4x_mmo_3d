@@ -1,0 +1,37 @@
+﻿@import "suples";
+
+.input-big-centr {
+    @include input-big-centr();
+}
+
+.slim .input-big-centr {
+    font-size: $fs-18;
+    height:40px;
+}
+
+
+
+.unit-item .input-big-centr {
+    min-width: calc(100% - 8px);
+    height: 70px;
+}
+
+.alliance-members .input-big-centr,
+#journal-task .input-big-centr,
+#alliance-serch .input-big-centr {
+    min-width: calc(100% - 3px);
+    left: -3px;
+    /*height: 70px;*/
+    position: relative;
+}
+
+/*input.error-validation {
+    box-shadow: inset 0 0 20px $red !important;
+    outline: 1px solid $red !important;
+}*/
+
+input[type=number]::-webkit-inner-spin-button.not-arrow,
+input[type=number]::-webkit-outer-spin-button.not-arrow {
+    -webkit-appearance: none;
+    margin: 0;
+}

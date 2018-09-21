@@ -1,0 +1,88 @@
+﻿@using Translate.Site.Store
+@{
+    Layout = null;
+}
+    <form action="" method="get" id="payment_money_form" class="form-horizontal" role="form">
+        <input type="hidden" name="productId">
+        <input type="hidden" name="cost">
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-lg-4">@Resource.ClientBuy</th>
+                        <th class="col-lg-4" data-field="productName"></th>
+                    </tr>
+                    <tr>
+                        <th class="col-lg-4">@Resource.ProductQuantity</th>
+                        <th class="col-lg-4">
+        
+                            <div class="form-group has-feedback ">
+                                <div class="col-sm-5">
+                                    <input  type="text"  value="1" min="1" maxlength="3" class="form-control" name="quantity">
+                                    <span class="glyphicon form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>@Resource.PaymentSystem</td>
+                        <td>
+                            <div class="col-sm-12 payment_system_container">
+                               <select style="width: 180px;" class="form-control" name="paymentSystem" id="payment_system" placeholder="@Resource.PaymentSystemPlaceholder"></select>
+                               <span class="glyphicon form-control-feedback"></span>
+                            </div>
+                     
+                        </td>
+                    </tr>
+
+
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>@Resource.PaymentAccountNumber</td>
+                        <td>
+                                <div class="form-group has-feedback ">
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="countNumber">
+                                        <span class="glyphicon form-control-feedback"></span>
+                                    </div>
+                                </div>
+
+@*                                <div class="form-group has-success has-feedback col-md-12 " >*@
+@*                                    <input type="text" class="form-control" id="inputSuccess">*@
+@*                                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>*@
+@*                                </div>*@
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th>@Resource.ProductTotalPrice</th>
+                        <th>
+
+                            <select name="currencyCode" class=""></select>
+                            <span data-field="totalCost" class="col-xs-offset-1">0.00</span>
+
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <input type="submit" name="saveParamsBtn" class="btn btn-info btn-form-submit" value="@Resource.SaveParameters">
+            </div>
+            <div class="col-md-4 ">
+                <input type="submit" name="buyBtn" class="btn btn-info btn-form-submit buy_btn" value="@Resource.Buy">
+            </div>
+
+
+        </div>
+    </form>
+
+
+

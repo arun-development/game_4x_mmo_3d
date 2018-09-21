@@ -1,0 +1,22 @@
+﻿$home-page: ".start-page";
+$strore-page: ".store-page";
+$admin-store-page: ".admin-store-page";
+$account-page: ".account-page";
+$manage-page: ".manage-page";
+@mixin pages-mixin() {
+
+    #{$home-page} {
+        overflow: hidden;
+    }
+
+    #{$strore-page} #main-container {
+        //   padding-top: 15px;
+    }
+
+    .default-page,
+  //  #{$strore-page},
+    #{$admin-store-page}  {
+        height: initial;
+        min-height: 100%;
+    }
+}

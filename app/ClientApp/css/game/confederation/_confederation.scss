@@ -1,0 +1,10 @@
+﻿@import "officers-mixin";
+@import "user-ratting-mixin";
+@import "float-vote-mixin";
+
+@include officers();
+@include user-rating();
+@include float-vote();
+.election .btn-group-sa{
+    padding-top:0;
+}

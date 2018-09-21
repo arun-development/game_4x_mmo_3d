@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttackName" xml:space="preserve">
+    <value>Атака</value>
+    <comment>Attr</comment>
+  </data>
+  <data name="BattleCruiserDescription" xml:space="preserve">
+    <value>Боевой крейсер “Нага” - производство этого крейсера было запущено сразу после начала войны со Скагри. Правительство Конфедерации поручило корпорации “Горизонт” создать универсальный боевой корабль, сочетающий в себе баланс маневренности и огневой мощи. Проект был реализован как нельзя лучше и благодаря крейсерам “Нага”, силы Конфедерации смогли успешно противостоять натиску Скагри.</value>
+    <comment>UnitDescription</comment>
+  </data>
+  <data name="BattleCruiserName" xml:space="preserve">
+    <value>Крейсер</value>
+    <comment>UnitName</comment>
+  </data>
+  <data name="BattleShipDescription" xml:space="preserve">
+    <value>Линкор “Мьёльнир” - специальный проект корпорации “Горизонт”, который положил начало эры тяжелых боевых кораблей Конфедерации. “Мьёльнир” хорошо защищен и обладает внушительным арсеналом, достаточным для наступательных операций против Скагри. Благодаря своим боевым характеристикам, он также идеально подходит для обороны колоний как заградительный корабль.</value>
+    <comment>UnitDescription</comment>
+  </data>
+  <data name="BattleShipName" xml:space="preserve">
+    <value>Линкор</value>
+    <comment>UnitName</comment>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>Кредиты конфедерации</value>
+    <comment>Resource</comment>
+  </data>
+  <data name="CommandCenter" xml:space="preserve">
+    <value>Командный центр</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="CurrentValue" xml:space="preserve">
+    <value>CurrentValue ru</value>
+    <comment>CurrentValue</comment>
+  </data>
+  <data name="DarkMatter" xml:space="preserve">
+    <value>Темная материя</value>
+    <comment>Resource</comment>
+  </data>
+  <data name="DrednoutDescription" xml:space="preserve">
+    <value>Дредноут “Судья” - совместный проект корпораций “Зевс” и “Горизонт”. Космическая крепость, обладающая колоссальной разрушительной мощью. Одним выстрелом из ионной пушки, он может обратить в пепел целый флот противника.</value>
+    <comment>UnitDescription</comment>
+  </data>
+  <data name="DrednoutName" xml:space="preserve">
+    <value>Дредноут</value>
+    <comment>UnitName</comment>
+  </data>
+  <data name="DroneDescription" xml:space="preserve">
+    <value>Боевой дрон “молния”- изначально был разработан корпорацией “Зевс” в исследовательских целях, для поиска новых, отдаленных миров с пригодными для жизни планетами.. Однако, после начала войны со Скагри, дрон получил боевые модификации, и теперь, во избежание человеческих потерь, составляет основу флота конфедерации. Скорость и маневренность, делают его весьма сложной мишенью, а боевая эффективность полностью оправдывает затраты на производство.</value>
+    <comment>UnitDescription</comment>
+  </data>
+  <data name="DroneName" xml:space="preserve">
+    <value>Дрон</value>
+    <comment>UnitName</comment>
+  </data>
+  <data name="Enegry" xml:space="preserve">
+    <value>Энергия</value>
+    <comment>Resource</comment>
+  </data>
+  <data name="EnergyConverter" xml:space="preserve">
+    <value>Обмен ресурсов</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="EnergyConverterDescripton" xml:space="preserve">
+    <value>EnergyConverterDescripton ru</value>
+    <comment>BuildUnitDescription</comment>
+  </data>
+  <data name="ExchangeCourse" xml:space="preserve">
+    <value>Курс обмена</value>
+    <comment>PropertyNameEnergyConverter</comment>
+  </data>
+  <data name="ExtractionModule" xml:space="preserve">
+    <value>ExtractionModule ru</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="ExtractionModuleDescription" xml:space="preserve">
+    <value>Благодаря передовым технологиям корпорации “Зевс”, стало доступно использование энергии ядра планеты, которая получила широкое применение во всех отраслях науки и промышленности. Реактор синтеза позволяет получить различные виды ресурсов используя энергию ядра планеты на которой он установлен.</value>
+    <comment>BuildUnitDescription</comment>
+  </data>
+  <data name="FrigateDescription" xml:space="preserve">
+    <value>Боевой Фрегат “хищник” - спроектирован военно-промышленной корпорацией “Горизонт” по заказу правительства, для подавления бунтов и восстаний в отдаленных колониях галактики во время “смуты Харкина”. Он прекрасно показал себя в бою и был принят на вооружение регулярного флота. Пилоты “хищников” отразили удар первой волны Скагри, предотвратив уничтожение человечества. “Хищник” является грозным оружием флота конфедерации и блестяще справляется со всеми боевыми задачами.</value>
+    <comment>UnitDescription</comment>
+  </data>
+  <data name="FrigateName" xml:space="preserve">
+    <value>Фрегат</value>
+    <comment>UnitName</comment>
+  </data>
+  <data name="HangarToggle" xml:space="preserve">
+    <value>HangarToggle ru</value>
+    <comment>ControlPannel</comment>
+  </data>
+  <data name="HpName" xml:space="preserve">
+    <value>Структура</value>
+    <comment>Attr</comment>
+  </data>
+  <data name="IndustrialComplex" xml:space="preserve">
+    <value>Промышленный комплекс</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="Iridium" xml:space="preserve">
+    <value>Ироксиум</value>
+    <comment>Resource</comment>
+  </data>
+  <data name="MaxStorableDarkMatter" xml:space="preserve">
+    <value>MaxStorableDarkMatter ru</value>
+    <comment>PropertyNameStorage</comment>
+  </data>
+  <data name="MaxStorableEnegy" xml:space="preserve">
+    <value>MaxStorableEnegy ru</value>
+    <comment>PropertyNameStorage</comment>
+  </data>
+  <data name="MaxStorableIridium" xml:space="preserve">
+    <value>MaxStorableIroxium ru</value>
+    <comment>PropertyNameStorage</comment>
+  </data>
+  <data name="MotherEnergyConverter" xml:space="preserve">
+    <value>MotherEnergyConverter ru</value>
+    <comment>BuildNameMother</comment>
+  </data>
+  <data name="MotherEnergyConverterDescription" xml:space="preserve">
+    <value>MotherEnergyConverterDescription ru</value>
+    <comment>BuildUnitDescriptionMother</comment>
+  </data>
+  <data name="MotherExtractionModule" xml:space="preserve">
+    <value>MotherExtractionModule ru</value>
+    <comment>BuildNameMother</comment>
+  </data>
+  <data name="MotherExtractionModuleDescription" xml:space="preserve">
+    <value>MotherExtractionModuleDescription ru</value>
+    <comment>BuildUnitDescriptionMother</comment>
+  </data>
+  <data name="MotherIndustrialComplex" xml:space="preserve">
+    <value>MotherIndustrialComplex ru</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="MotherSpaceShipyard" xml:space="preserve">
+    <value>MotherSpaceShipyard ru</value>
+    <comment>BuildNameMother</comment>
+  </data>
+  <data name="MotherSpaceShipyardDescription" xml:space="preserve">
+    <value>MotherSpaceShipyardDescription ru</value>
+    <comment>BuildUnitDescriptionMother</comment>
+  </data>
+  <data name="MotherStorage" xml:space="preserve">
+    <value>MotherStorage ru</value>
+    <comment>BuildNameMother</comment>
+  </data>
+  <data name="MotherStorageDescription" xml:space="preserve">
+    <value>MotherStorageDescription ru</value>
+    <comment>BuildUnitDescriptionMother</comment>
+  </data>
+  <data name="NextValue" xml:space="preserve">
+    <value>NextValue ru</value>
+    <comment>NextValue</comment>
+  </data>
+  <data name="ProductionPower" xml:space="preserve">
+    <value>Мощность</value>
+    <comment>PropertyNameEnergyConverter</comment>
+  </data>
+  <data name="SelectTarget" xml:space="preserve">
+    <value>Выбрать цель</value>
+    <comment>Select</comment>
+  </data>
+  <data name="SendAll" xml:space="preserve">
+    <value>Отправить все</value>
+    <comment>btn</comment>
+  </data>
+  <data name="SpaceShipyard" xml:space="preserve">
+    <value>Космическая верфь</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="SpaceShipyardDescription" xml:space="preserve">
+    <value>Сборочный комплекс “Гефест”, специальная разработка военно-промышленной корпорации “Горизонт”, спроектирован для дистанционного управления производством боевых кораблей конфедерации в отдаленных колониях. Осуществляет сборку дронов и малых боевых кораблей. Усовершенствование комплекса позволит получить доступ к производству тяжелых боевых кораблей и дредноутов.</value>
+    <comment>BuildUnitDescription</comment>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Хранилище</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="StorageDescription" xml:space="preserve">
+    <value>Настоящим прорывом в области хранения и транспортировки ресурсов стало открытие “структурного преобразования материи”, что позволяет хранить практически неограниченные объемы ресурсов в условиях ограниченного пространства, а также транспортировка материи на расстояния в миллионы световых лет.</value>
+    <comment>BuildUnitDescription</comment>
+  </data>
+  <data name="TimeProduction" xml:space="preserve">
+    <value>Время производства</value>
+    <comment>Resource</comment>
+  </data>
+  <data name="TransferLosses" xml:space="preserve">
+    <value>TransferLosses ru</value>
+    <comment>PropertyNameStorage</comment>
+  </data>
+  <data name="Turel" xml:space="preserve">
+    <value>Турель</value>
+    <comment>BuildName</comment>
+  </data>
+  <data name="TurelDescription" xml:space="preserve">
+    <value>Turel Description ru</value>
+    <comment>BuildUnitDescription</comment>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Заказать</value>
+    <comment>btn</comment>
+  </data>
+</root>

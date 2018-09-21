@@ -1,0 +1,195 @@
+﻿@import "main-colors";
+@import "mixins";
+@import "geometry";
+@import "flex";
+
+body {
+    font-family: Play, Arial, sans-serif !important;
+    min-width: 320px;
+    font-size: 20px;
+    line-height: 1.42857143;
+    background-color: $body-main-bg-color;
+
+}
+
+
+
+.relative {
+    position: relative;
+}
+.relative-important {
+    position: relative!important;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.absoute-TRBL {
+    position: absolute;
+    @include size-TRBL();
+}
+
+.display-none {
+    display: none !important;
+}
+.display-block {
+    display: block;
+}
+
+.display-inline-block {
+    display: inline-block !important;
+}
+
+.visible,
+.visible-hidden {
+    @include transition(#{opacity .3s ease-in-out, visibility .3s ease-in-out});
+}
+
+.opacityPlus {
+    opacity: 1 !important;
+}
+.overflow-hidden {
+   overflow: hidden;
+}
+
+.opacityMinus {
+    opacity: 0 !important;
+}
+.test-shadow-none{
+      text-shadow: none !important;
+}
+
+.full-window-size {
+    @include size-full-window-size();
+}
+
+.full-size {
+    @include size-full-size();
+}
+
+.max-full-size {
+    @include size-max-full-size ();
+}
+
+.min-full-size {
+    @include size-min-full-size ();
+}
+
+.width-100 {
+    @include size-width-100 ();
+}
+
+.width-50 {
+    @include size-width-50();
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.bg-blcack {
+    background-color: #000;
+}
+
+
+
+[aria-hidden="false"] {
+    /*display: block;*/
+}
+
+[aria-hidden="true"] {
+    /*display: none;*/
+
+}
+
+
+.error_404 {
+    position: relative;
+    font-size: 10em;
+    color: #fafafa;
+    @include size-full-size();
+    @include flex-JcAc();
+}
+
+
+
+.modal-open {
+    margin-right: 0;
+}
+
+.modal-dialog {
+    padding-top: 10vh;
+}
+
+.float-left {
+    float: left;
+    @include clearfix;
+}
+
+.float-right {
+    float: right;
+    @include clearfix;
+}
+
+.wraper {
+    height: 100%;
+    overflow: hidden;
+
+    & .scroller {
+        height: 100%;
+        width: 200%;
+        overflow-y: scroll;
+
+        & .content {
+            width: 51.3%;
+        }
+    }
+}
+
+.color-decor1 {
+    color: $color-main-1 !important;
+}
+
+.text_justify {
+    text-align: justify;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-start {
+    text-align: left !important;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.inline-centr-centr {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.centigen-image-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-image-contain{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+

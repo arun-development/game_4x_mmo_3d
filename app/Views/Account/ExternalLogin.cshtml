@@ -1,0 +1,45 @@
+﻿@using Server.ServicesConnected.Auth.Models.AccountViewModels
+@model Server.ServicesConnected.Auth.Models.AccountViewModels.ExternalLoginViewModel
+@{
+    ViewData["Title"] = "Register";
+    
+}
+
+ 
+<h2>@ViewData["Title"]</h2>
+<h4>Associate your @Model.ExternalProviderName account.</h4>
+
+
+<div class="row site-form-group">
+    <div class="col-md-4">
+        <hr />
+        <p class="text-info">
+            You've successfully authenticated with <strong>@Model.ExternalProviderName</strong>.
+            Please enter an email address for this site below and click the Register button to finish
+            logging in.
+        </p>
+        <div>
+            <form asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                <input asp-for="ExternalProviderName" type="hidden"/>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" class="form-control"/>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" readonly="readonly" class="form-control"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <h3></h3> 
+                <button type="submit" class="btn btn-default  account-form-button">Register</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+ 
