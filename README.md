@@ -103,7 +103,7 @@
 назовите базу - "PrGame.V.0.8.5" => "опубликовать" (в строке подключения по ключу "HomeDev" в качестве имени будет указанно именно "PrGame.V.0.8.5")
  
 + Не переписывайте файл PrGame.V.0.8.5.cleaned.ready_to_init.dacpac, это основная точка возврата. Не используйте другие бек апы, их схемы и структуры данных могут не соответствовать логике приложения.
-+ Шаблон изменений для вeрсий файлов дабма bd {release}.{change_shema}.{?change proc/securyty/index etc}.{?note}
++ Шаблон изменений для вeрсий файлов дампа bd {release}.{change_shema}.{?change proc/securyty/index etc}.{?note}
 
 + Перейдите в браузере по пути (вы можете изменить порт)  https://localhost:44396/game 
 + Вы получите редирект на авторизацию https://localhost:44396/ru/Account/Login?ReturnUrl=%2Fgame
